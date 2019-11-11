@@ -1,0 +1,6 @@
+{
+	"role":{
+		"name": "osr.sec.edw.mktcld.dac::read",
+		"schema_privileges":[ { "privileges":[ "SELECT", "SELECT CDS METADATA", "EXECUTE", "EXECUTE"  ] } ]
+     }
+}
