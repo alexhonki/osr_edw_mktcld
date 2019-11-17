@@ -1,4 +1,4 @@
 {
-  "name":      "DataWareHouse.Processes",
-  "subfolder": "append"
+    "name":    "osr.edw.mktcld",
+    "subfolder": "ignore"
 }
