@@ -7,18 +7,15 @@ modules:
     type: dwf
     path: DWF
     requires:
-#      - name: OSR_MKT_CLD-uaa
       - name: OSR_MKT_CLD-dws
   - name: OSR_MKT_CLD-Backend
     type: nodejs
     path: Backend
     requires:
-#      - name: OSR_MKT_CLD-uaa
       - name: OSR_MKT_CLD-container
       - name: OSR_MKT_CLD-dws
     properties:
       API_END_POINT: '${xs-api-url}'
-#      SAP_JWT_TRUST_ACL: '[{"clientid":"*","identityzone":"*"}]'
     provides:
       - name: OSR_MKT_CLD-Backend
         properties:
@@ -29,9 +26,15 @@ modules:
     requires:
       - name: OSR_MKT_CLD-container
         properties:
-          HDI_DEPLOY_OPTIONS: { "auto_undeploy": true }
+          HDI_DEPLOY_OPTIONS:
+            auto_undeploy: true
           TARGET_CONTAINER: '~{hdi-container-name}'
       - name: edw-ext-access-grantor
+      - name: OSR-EDW-PLATFORM-grantor
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: logical-OSR-EDW-PLATFORM-grantor
+          service: '~{OSR-EDW-PLATFORM-grantor-service}'
   - name: OSR_MKT_CLD-Services
     type: nodejs
     path: Services
@@ -44,30 +47,6 @@ modules:
     build-parameters:
       timeout: 15m
 resources:
-  #- name: OSR_MKT_CLD-uaa
-  #  type: com.sap.xs.uaa
-  #  parameters:
-  #    service-name: OSR_MKT_CLD-uaa
-  #    service-plan: space
-  #    config:
-  #      xsappname: OSR_MKT_CLD
-  #      scopes:
-  #        - name: $XSAPPNAME.TOE
-  #          description: access for TOE
-  #          grant-as-authority-to-apps:
-  #            - dwf-toe
-  #            - dwf-runtime
-  #          granted-apps:
-  #            - dwf-toe
-  #            - dwf-runtime
-  #      authorities:
-  #        - $ACCEPT_GRANTED_AUTHORITIES
-  #      role-templates:
-  #        - name: User
-  #          description: Access API
-  #          scope-references:
-  #            - $XSAPPNAME.TOE
-  #            - cloud_controller.read
   - name: OSR_MKT_CLD-dws
     properties:
       dwf-edw-client-name: '${service-name}'
@@ -77,8 +56,14 @@ resources:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
     parameters:
-     service-keys:
-     - name: dwf-monitor
+      service-keys:
+        - name: dwf-monitor
   - name: edw-ext-access-grantor
     type: org.cloudfoundry.existing-service
     description: edw-ext-access-grantor
+  - name: OSR-EDW-PLATFORM-grantor
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: OSR_EDW_PLATFORM-deploy
+    properties:
+      OSR-EDW-PLATFORM-grantor-service: '${service-name}'

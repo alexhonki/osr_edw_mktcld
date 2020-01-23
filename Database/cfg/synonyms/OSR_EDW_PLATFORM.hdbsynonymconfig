@@ -1,0 +1,50 @@
+{
+  "osr.mktcld.db.synonyms::BUT000": {
+    "target": {
+      "object": "osr.edw.propagation.rms.proxy::CV_BUT000",
+      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+    }
+  },
+  "osr.mktcld.db.synonyms::BUT021_FS": {
+    "target": {
+      "object": "osr.edw.staging.md.rms.proxy::CV_BUT021FS",
+      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+    }
+  },
+  "osr.mktcld.db.synonyms::ADRC": {
+    "target": {
+      "object": "osr.edw.propagation.rms.proxy::CV_ADRC",
+      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+    }
+  },
+   "osr.mktcld.db.synonyms::ADR6": {
+    "target": {
+      "object": "osr.edw.propagation.rms.proxy::CV_ADR6",
+      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+    }
+  },
+   "osr.mktcld.db.synonyms::ADR2": {
+    "target": {
+      "object": "osr.edw.staging.md.rms.proxy::CV_ADR2",
+      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+    }
+  },
+  "osr.mktcld.db.synonyms::ACTIVE_PROCEDURES": {
+    "target": {
+      "object": "osr.hana.platform::CV_ACTIVE_PROCEDURES",
+      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+    }
+  },
+  "osr.mktcld.db.synonyms::ACTIVE_STATEMENTS": {
+    "target": {
+      "object": "osr.hana.platform::CV_ACTIVE_STATEMENTS",
+      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+    }
+  },
+  "osr.mktcld.db.synonyms::BUT100": {
+    "target": {
+      "object": "osr.edw.staging.md.rms.proxy::CV_BUT100",
+      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+    }
+  }
+}
