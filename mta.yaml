@@ -1,0 +1,69 @@
+_schema-version: '2.0'
+ID: OSR_MKT_CLD
+description: Source for OSR EDW
+version: 0.0.1
+modules:
+  - name: OSR_MKT_CLD-DWF
+    type: dwf
+    path: DWF
+    requires:
+      - name: OSR_MKT_CLD-dws
+  - name: OSR_MKT_CLD-Backend
+    type: nodejs
+    path: Backend
+    requires:
+      - name: OSR_MKT_CLD-container
+      - name: OSR_MKT_CLD-dws
+    properties:
+      API_END_POINT: '${xs-api-url}'
+    provides:
+      - name: OSR_MKT_CLD-Backend
+        properties:
+          service_url: '${default-url}'
+  - name: OSR_MKT_CLD-Database
+    type: hdb
+    path: Database
+    requires:
+      - name: OSR_MKT_CLD-container
+        properties:
+          HDI_DEPLOY_OPTIONS:
+            auto_undeploy: true
+          TARGET_CONTAINER: '~{hdi-container-name}'
+      - name: edw-ext-access-grantor
+      - name: OSR-EDW-PLATFORM-grantor
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: logical-OSR-EDW-PLATFORM-grantor
+          service: '~{OSR-EDW-PLATFORM-grantor-service}'
+  - name: OSR_MKT_CLD-Services
+    type: nodejs
+    path: Services
+    provides:
+      - name: Services_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: OSR_MKT_CLD-container
+    build-parameters:
+      timeout: 15m
+resources:
+  - name: OSR_MKT_CLD-dws
+    properties:
+      dwf-edw-client-name: '${service-name}'
+    type: com.sap.xs.dwf-edw-client
+  - name: OSR_MKT_CLD-container
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+    parameters:
+      service-keys:
+        - name: dwf-monitor
+  - name: edw-ext-access-grantor
+    type: org.cloudfoundry.existing-service
+    description: edw-ext-access-grantor
+  - name: OSR-EDW-PLATFORM-grantor
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: OSR_EDW_PLATFORM-deploy
+    properties:
+      OSR-EDW-PLATFORM-grantor-service: '${service-name}'
