@@ -9,7 +9,7 @@
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="BUT000">
+  <calculationView xsi:type="Calculation:ProjectionView" id="BUT000" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PARTNER"/>
@@ -141,6 +141,8 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld.db.synonyms::BUT000"/>
+  
+    <filter>&quot;BU_GROUP&quot;='Z002' AND &quot;PARTNER&quot; &gt; '0001014044' AND &quot;PARTNER&quot; &lt; 0001014099</filter>
   </calculationView>
 </calculationViews>
 <logicalModel id="BUT000">
