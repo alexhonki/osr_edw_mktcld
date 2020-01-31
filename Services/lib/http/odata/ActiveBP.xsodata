@@ -1,0 +1,15 @@
+/*
+ * OSR Marketing Cloud - Available DB Objects
+ * SAP Australia, Jan 2020
+ */
+ 
+service {       
+    
+    "osr.mktcld.db.views::CV_ACTIVE_BP" as "Active_BP"
+    key generate local "GenID";
+}    
+/*
+settings { 
+    metadata cache-control "max-age= 604800";
+}
+*/
