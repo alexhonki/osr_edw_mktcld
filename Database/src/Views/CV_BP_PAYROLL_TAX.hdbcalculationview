@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld.db.views::CV_BP_PAYROLL_TAX" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_BP_PAYROLL_TAX"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld::CV_BP_CURRENT_ACTIVE">
+    <resourceUri>osr.mktcld::CV_BP_CURRENT_ACTIVE</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld::CV_BP_CONTRACT_OBJECT">
+    <resourceUri>osr.mktcld::CV_BP_CONTRACT_OBJECT</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld::CV_BP_ORG_DATA">
+    <resourceUri>osr.mktcld::CV_BP_ORG_DATA</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BP_ACTIVE">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
+      <viewAttribute id="NAME_ORG1"/>
+      <viewAttribute id="NAME_ORG2"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ADR_KIND"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POSTCODE1"/>
+      <viewAttribute id="REGION_FT"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="SMTP_ADDR"/>
+      <viewAttribute id="TEL_NUMBER"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="GROUP_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_BP_CURRENT_ACTIVE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BP_CONTRACT">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+      <viewAttribute id="EMPLOYER_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_BP_CONTRACT_OBJECT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BP_ORG_STATUS">
+    <viewAttributes>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="BRSCH_FT"/>
+      <viewAttribute id="BRSCH_FT_TXT"/>
+      <viewAttribute id="FINANCIAL_STATUS"/>
+      <viewAttribute id="FINANCIAL_STATUS_DESCRIPTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_BP_ORG_DATA"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="BP_ACTIVE_CONTRACT" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
+      <viewAttribute id="NAME_ORG1"/>
+      <viewAttribute id="NAME_ORG2"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ADR_KIND"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POSTCODE1"/>
+      <viewAttribute id="REGION_FT"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="SMTP_ADDR"/>
+      <viewAttribute id="TEL_NUMBER"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="GROUP_ID"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+      <viewAttribute id="EMPLOYER_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="BP_ACTIVE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="ABN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADR_KIND" source="ADR_KIND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="GROUP_ID"/>
+    </input>
+    <input node="BP_CONTRACT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="PARTNER"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="BP_STATUS" cardinality="C1_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
+      <viewAttribute id="NAME_ORG1"/>
+      <viewAttribute id="NAME_ORG2"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ADR_KIND"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POSTCODE1"/>
+      <viewAttribute id="REGION_FT"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="SMTP_ADDR"/>
+      <viewAttribute id="TEL_NUMBER"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="GROUP_ID"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+      <viewAttribute id="EMPLOYER_STATUS"/>
+      <viewAttribute id="BRSCH_FT"/>
+      <viewAttribute id="BRSCH_FT_TXT"/>
+      <viewAttribute id="FINANCIAL_STATUS"/>
+      <viewAttribute id="FINANCIAL_STATUS_DESCRIPTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="BP_ACTIVE_CONTRACT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="ABN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADR_KIND" source="ADR_KIND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTCODE1" source="POSTCODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION_FT" source="REGION_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SMTP_ADDR" source="SMTP_ADDR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="GROUP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
+    </input>
+    <input node="BP_ORG_STATUS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT" source="BRSCH_FT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BRSCH_FT_TXT" source="BRSCH_FT_TXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FINANCIAL_STATUS" source="FINANCIAL_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FINANCIAL_STATUS_DESCRIPTION" source="FINANCIAL_STATUS_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+    </input>
+    <joinAttribute name="ACN"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="BP_STATUS">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Ext. Corporate Account ID"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="ID"/>
+    </attribute>
+    <attribute id="TYPE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TYPE"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="TYPE"/>
+    </attribute>
+    <attribute id="TITLE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="TITLE"/>
+    </attribute>
+    <attribute id="NAME_FIRST" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_FIRST"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="NAME_FIRST"/>
+    </attribute>
+    <attribute id="NAMEMIDDLE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAMEMIDDLE"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="NAMEMIDDLE"/>
+    </attribute>
+    <attribute id="NAME_LAST" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_LAST"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="NAME_LAST"/>
+    </attribute>
+    <attribute id="NAME_ORG1" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_ORG1"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="NAME_ORG1"/>
+    </attribute>
+    <attribute id="NAME_ORG2" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_ORG2"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="NAME_ORG2"/>
+    </attribute>
+    <attribute id="ABN" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Australian Business Number"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="ABN"/>
+    </attribute>
+    <attribute id="ACN" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Australian Company Number"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="ACN"/>
+    </attribute>
+    <attribute id="ADR_KIND" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Line of Business/ Address Usage"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="ADR_KIND"/>
+    </attribute>
+    <attribute id="ADDRNUMBER" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRNUMBER"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="ADDRNUMBER"/>
+    </attribute>
+    <attribute id="HOUSE_NUM1" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="House Number"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="HOUSE_NUM1"/>
+    </attribute>
+    <attribute id="STREET" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Street"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="STREET"/>
+    </attribute>
+    <attribute id="CITY1" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="City"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="CITY1"/>
+    </attribute>
+    <attribute id="POSTCODE1" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Postal Code"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="POSTCODE1"/>
+    </attribute>
+    <attribute id="REGION_FT" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Region"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="REGION_FT"/>
+    </attribute>
+    <attribute id="COUNTRY" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="SMTP_ADDR" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="E-Mail Address"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="SMTP_ADDR"/>
+    </attribute>
+    <attribute id="TEL_NUMBER" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TEL_NUMBER"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="TEL_NUMBER"/>
+    </attribute>
+    <attribute id="TELNR_LONG" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TELNR_LONG"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="TELNR_LONG"/>
+    </attribute>
+    <attribute id="GROUP_ID" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Group ID"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="GROUP_ID"/>
+    </attribute>
+    <attribute id="GROUP_STATUS" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GROUP_STATUS"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="GROUP_STATUS"/>
+    </attribute>
+    <attribute id="REGISTRATION_DATE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGISTRATION_DATE"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="REGISTRATION_DATE"/>
+    </attribute>
+    <attribute id="LODGEMENT_FREQUENCY" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LODGEMENT_FREQUENCY"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="LODGEMENT_FREQUENCY"/>
+    </attribute>
+    <attribute id="LIABILITY_START_DATE" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LIABILITY_START_DATE"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="LIABILITY_START_DATE"/>
+    </attribute>
+    <attribute id="EMPLOYER_STATUS" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYER_STATUS"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="EMPLOYER_STATUS"/>
+    </attribute>
+    <attribute id="BRSCH_FT" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Customer Industry Code"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="BRSCH_FT"/>
+    </attribute>
+    <attribute id="BRSCH_FT_TXT" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRSCH_FT_TXT"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="BRSCH_FT_TXT"/>
+    </attribute>
+    <attribute id="FINANCIAL_STATUS" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Company Financial status"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="FINANCIAL_STATUS"/>
+    </attribute>
+    <attribute id="FINANCIAL_STATUS_DESCRIPTION" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FINANCIAL_STATUS_DESCRIPTION"/>
+      <keyMapping columnObjectName="BP_STATUS" columnName="FINANCIAL_STATUS_DESCRIPTION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="328" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="BP_ACTIVE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BP_CONTRACT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BP_ORG_STATUS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="395" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BP_ACTIVE_CONTRACT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="118" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="BP_ACTIVE" modelObjectNameSpace="BP_ACTIVE_CONTRACT" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="157"/>
+    </shape>
+    <shape modelObjectName="BP_CONTRACT" modelObjectNameSpace="BP_ACTIVE_CONTRACT" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="216"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BP_STATUS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="328" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="BP_ACTIVE_CONTRACT" modelObjectNameSpace="BP_STATUS" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="BP_ORG_STATUS" modelObjectNameSpace="BP_STATUS" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="323" y="173"/>
+      <rectangleSize width="255"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

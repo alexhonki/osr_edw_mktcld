@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_BP_ORG_DATA" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_AGENCY_DATE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.db.synonyms::AGENCY_DATA">
+    <resourceUri>osr.mktcld.db.synonyms::AGENCY_DATA</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld.db.synonyms::COMPANY_REGISTER">
+    <resourceUri>osr.mktcld.db.synonyms::COMPANY_REGISTER</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld.db.synonyms::ORG_STATUS">
+    <resourceUri>osr.mktcld.db.synonyms::ORG_STATUS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="AGENCY_DATA" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="MN_INDY_CLSN"/>
+      <viewAttribute id="MN_INDY_CLSN_DESCN"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::AGENCY_DATA"/>
+    <filter>&quot;ACN&quot;!=''</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="COMPANY_REGISTER">
+    <viewAttributes>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="ORG_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::COMPANY_REGISTER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ORG_STATUS">
+    <viewAttributes>
+      <viewAttribute id="STATUS"/>
+      <viewAttribute id="STATUS_DESCRIPTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::ORG_STATUS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATUS_DESCRIPTION" source="DESCRIPTION"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="COMPANY_STATUS" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ORG_STATUS"/>
+      <viewAttribute id="ORG_STATUS_DESCRIPTION"/>
+    
+      <viewAttribute id="ABN"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="COMPANY_REGISTER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="ABN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS" source="ORG_STATUS"/>
+    </input>
+    <input node="ORG_STATUS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS_DESCRIPTION" source="STATUS_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS" source="STATUS"/>
+    </input>
+    <joinAttribute name="ORG_STATUS"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="AGENCY_STATUS" cardinality="C1_1" dynamic="false" joinType="leftOuter" optimizeJoinColumns="true">
+    <viewAttributes>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="MN_INDY_CLSN"/>
+      <viewAttribute id="MN_INDY_CLSN_DESCN"/>
+      <viewAttribute id="ORG_STATUS"/>
+      <viewAttribute id="ORG_STATUS_DESCRIPTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="AGENCY_DATA">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="ABN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN" source="MN_INDY_CLSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN_DESCN" source="MN_INDY_CLSN_DESCN"/>
+    </input>
+    <input node="COMPANY_STATUS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS" source="ORG_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS_DESCRIPTION" source="ORG_STATUS_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+    </input>
+    <joinAttribute name="ACN"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="AGENCY_STATUS">
+  <attributes>
+    <attribute id="ACN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Australian Company Number"/>
+      <keyMapping columnObjectName="AGENCY_STATUS" columnName="ACN"/>
+    </attribute>
+    <attribute id="ABN" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Australian Business Number"/>
+      <keyMapping columnObjectName="AGENCY_STATUS" columnName="ABN"/>
+    </attribute>
+    <attribute id="BRSCH_FT" order="3" displayAttribute="false" attributeHierarchyActive="false" descriptionColumnName="BRSCH_FT_TXT">
+      <descriptions defaultDescription="Customer Industry Code"/>
+      <keyMapping columnObjectName="AGENCY_STATUS" columnName="MN_INDY_CLSN"/>
+    </attribute>
+    <attribute id="BRSCH_FT_TXT" order="4" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+      <descriptions defaultDescription="Customer Industry Code Text"/>
+      <keyMapping columnObjectName="AGENCY_STATUS" columnName="MN_INDY_CLSN_DESCN"/>
+    </attribute>
+    <attribute id="FINANCIAL_STATUS" order="5" displayAttribute="false" attributeHierarchyActive="false" descriptionColumnName="FINANCIAL_STATUS_DESCRIPTION">
+      <descriptions defaultDescription="Company Financial status"/>
+      <keyMapping columnObjectName="AGENCY_STATUS" columnName="ORG_STATUS"/>
+    </attribute>
+    <attribute id="FINANCIAL_STATUS_DESCRIPTION" order="6" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+      <descriptions defaultDescription="Company Financial status Text"/>
+      <keyMapping columnObjectName="AGENCY_STATUS" columnName="ORG_STATUS_DESCRIPTION"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="328" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="AGENCY_DATA" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="395" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="COMPANY_REGISTER" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="ORG_STATUS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="COMPANY_STATUS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="118" y="376"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="COMPANY_REGISTER" modelObjectNameSpace="COMPANY_STATUS" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="184"/>
+    </shape>
+    <shape modelObjectName="ORG_STATUS" modelObjectNameSpace="COMPANY_STATUS" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="151"/>
+    </shape>
+    <shape expanded="true" modelObjectName="AGENCY_STATUS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="328" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="AGENCY_DATA" modelObjectNameSpace="AGENCY_STATUS" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="COMPANY_STATUS" modelObjectNameSpace="AGENCY_STATUS" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>
