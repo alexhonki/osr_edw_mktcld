@@ -78,10 +78,16 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <viewAttribute id="PARTNER"/>
       <viewAttribute id="PARTNERACCTYP"/>
       <viewAttribute id="PARTNERACC"/>
+    
+      <viewAttribute id="XOBSL"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_TAXPAYER_STATUS" datatype="NVARCHAR" length="10" expressionLanguage="SQL">
+        <formula>'ACTIVE'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="osr.mktcld.db.synonyms::DPSOB_BP_ACC"/>
-    <filter>&quot;PARTNERACCTYP&quot;='$$IP_PARTNERACCTYP$$'</filter>
+    <filter>&quot;PARTNERACCTYP&quot;='$$IP_PARTNERACCTYP$$' AND &quot;XOBSL&quot; &lt;&gt; 'X'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="DPSOB_GROUP_STATUS" cardinality="C1_1" joinType="leftOuter" optimizeJoinColumns="true">
     <viewAttributes>
@@ -92,6 +98,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <viewAttribute id="PARTNERACC"/>
     
       <viewAttribute id="GROUP_STATUS"/>
+    
+      <viewAttribute id="CC_TAXPAYER_STATUS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="DPSOB_BP_ACC">
@@ -100,6 +108,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACCTYP" source="PARTNERACCTYP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TAXPAYER_STATUS" source="CC_TAXPAYER_STATUS"/>
     </input>
     <input node="DFACTS_GROUP_STATUS">
       <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
@@ -214,6 +224,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <viewAttribute id="PARTNERACC"/>
       <viewAttribute id="GROUP_STATUS"/>
       <viewAttribute id="REGISTRATION_DATE"/>
+    
+      <viewAttribute id="CC_TAXPAYER_STATUS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="DPSOB_GROUP_STATUS">
@@ -223,6 +235,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACCTYP" source="PARTNERACCTYP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TAXPAYER_STATUS" source="CC_TAXPAYER_STATUS"/>
     </input>
     <input node="DFACTS_REGISTRATION_DATE">
       <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
@@ -242,6 +256,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <viewAttribute id="GROUP_STATUS"/>
       <viewAttribute id="REGISTRATION_DATE"/>
       <viewAttribute id="LODGEMENT_FREQUENCY"/>
+    
+      <viewAttribute id="CC_TAXPAYER_STATUS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="DPSOB_REGISTRATION_DATE">
@@ -252,6 +268,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TAXPAYER_STATUS" source="CC_TAXPAYER_STATUS"/>
     </input>
     <input node="DFACTS_LODGEMENT_FREQUENCY">
       <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
@@ -272,6 +290,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <viewAttribute id="REGISTRATION_DATE"/>
       <viewAttribute id="LODGEMENT_FREQUENCY"/>
       <viewAttribute id="LIABILITY_START_DATE"/>
+    
+      <viewAttribute id="CC_TAXPAYER_STATUS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="DPSOB_LODGEMENT_FREQUENCY">
@@ -283,6 +303,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TAXPAYER_STATUS" source="CC_TAXPAYER_STATUS"/>
     </input>
     <input node="DFACTS_LIABILITY_START_DATE">
       <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
@@ -304,6 +326,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <viewAttribute id="LODGEMENT_FREQUENCY"/>
       <viewAttribute id="LIABILITY_START_DATE"/>
       <viewAttribute id="EMPLOYER_STATUS"/>
+    
+      <viewAttribute id="CC_TAXPAYER_STATUS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="DPSOB_LIABILITY_START_DATE">
@@ -316,6 +340,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
       <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TAXPAYER_STATUS" source="CC_TAXPAYER_STATUS"/>
     </input>
     <input node="DFACTS_EMPLOYER_STATUS">
       <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
@@ -367,6 +393,11 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
     <attribute id="EMPLOYER_STATUS" order="10" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="EMPLOYER_STATUS"/>
       <keyMapping columnObjectName="DPSOB_EMPLOYER_STATUS" columnName="EMPLOYER_STATUS"/>
+    </attribute>
+  
+    <attribute id="TAXPAYER_STATUS" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TAXPAYER_STATUS"/>
+      <keyMapping columnObjectName="DPSOB_EMPLOYER_STATUS" columnName="CC_TAXPAYER_STATUS"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -466,7 +497,6 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' AND
     <shape modelObjectName="DFACTS_EMPLOYER_STATUS" modelObjectNameSpace="DPSOB_EMPLOYER_STATUS" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="229"/>
-    </shape>
-  </shapes>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>
