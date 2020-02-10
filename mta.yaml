@@ -17,7 +17,7 @@ modules:
     properties:
       API_END_POINT: '${xs-api-url}'
     provides:
-      - name: OSR_MKT_CLD-Backend
+      - name: OSR_MKT_CLD-Backend-API
         properties:
           service_url: '${default-url}'
   - name: OSR_MKT_CLD-Database
