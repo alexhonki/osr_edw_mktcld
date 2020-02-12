@@ -5,7 +5,7 @@
  
 service {       
     
-    "osr.mktcld.db.views::CV_SMOKE_TEST" as "SmokeTest"
+    "osr.mktcld::SCPI_LOAD_STATUS" as "SCPI_LOAD_STATUS"
     key generate local "GenID";
 }    
 /*
