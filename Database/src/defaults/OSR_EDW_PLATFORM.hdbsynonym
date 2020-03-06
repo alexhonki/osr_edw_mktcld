@@ -12,5 +12,6 @@
 	"osr.mktcld.db.synonyms::DFACTS": {},
 	"osr.mktcld.db.synonyms::BUT000_Current": {},
 	"osr.mktcld.db.synonyms::COMPANY_REGISTER": {},
-	"osr.mktcld.db.synonyms::ORG_STATUS": {}
+	"osr.mktcld.db.synonyms::ORG_STATUS": {},
+	"osr.mktcld.db.synonyms::TF_PRT_BP_REG_FACTS": {}
 }

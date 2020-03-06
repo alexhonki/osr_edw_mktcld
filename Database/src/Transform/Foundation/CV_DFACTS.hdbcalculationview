@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_DFACTS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_DFACTS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.db.synonyms::DFACTS">
+    <resourceUri>osr.mktcld.db.synonyms::DFACTS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="OBART"/>
+      <viewAttribute id="OBJID"/>
+      <viewAttribute id="FACT_TYPE_SEQ"/>
+      <viewAttribute id="FACT_TYPE_REP"/>
+      <viewAttribute id="FACT_CAT_SEQ"/>
+      <viewAttribute id="FACT_CAT_REP"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="FACT_SET"/>
+      <viewAttribute id="FACT_TYPE"/>
+      <viewAttribute id="FACT_CATEGORY"/>
+      <viewAttribute id="VALUE_GENERIC"/>
+      <viewAttribute id="QUAL_GENERIC"/>
+      <viewAttribute id="OBJNR"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::DFACTS"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="DFACTS">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="DFACTS" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="OBART" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBART"/>
+      <keyMapping columnObjectName="DFACTS" columnName="OBART"/>
+    </attribute>
+    <attribute id="OBJID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJID"/>
+      <keyMapping columnObjectName="DFACTS" columnName="OBJID"/>
+    </attribute>
+    <attribute id="FACT_TYPE_SEQ" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FACT_TYPE_SEQ"/>
+      <keyMapping columnObjectName="DFACTS" columnName="FACT_TYPE_SEQ"/>
+    </attribute>
+    <attribute id="FACT_TYPE_REP" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FACT_TYPE_REP"/>
+      <keyMapping columnObjectName="DFACTS" columnName="FACT_TYPE_REP"/>
+    </attribute>
+    <attribute id="FACT_CAT_SEQ" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FACT_CAT_SEQ"/>
+      <keyMapping columnObjectName="DFACTS" columnName="FACT_CAT_SEQ"/>
+    </attribute>
+    <attribute id="FACT_CAT_REP" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FACT_CAT_REP"/>
+      <keyMapping columnObjectName="DFACTS" columnName="FACT_CAT_REP"/>
+    </attribute>
+    <attribute id="VALID_TO" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_TO"/>
+      <keyMapping columnObjectName="DFACTS" columnName="VALID_TO"/>
+    </attribute>
+    <attribute id="VALID_FROM" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_FROM"/>
+      <keyMapping columnObjectName="DFACTS" columnName="VALID_FROM"/>
+    </attribute>
+    <attribute id="FACT_SET" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FACT_SET"/>
+      <keyMapping columnObjectName="DFACTS" columnName="FACT_SET"/>
+    </attribute>
+    <attribute id="FACT_TYPE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FACT_TYPE"/>
+      <keyMapping columnObjectName="DFACTS" columnName="FACT_TYPE"/>
+    </attribute>
+    <attribute id="FACT_CATEGORY" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FACT_CATEGORY"/>
+      <keyMapping columnObjectName="DFACTS" columnName="FACT_CATEGORY"/>
+    </attribute>
+    <attribute id="VALUE_GENERIC" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALUE_GENERIC"/>
+      <keyMapping columnObjectName="DFACTS" columnName="VALUE_GENERIC"/>
+    </attribute>
+    <attribute id="QUAL_GENERIC" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUAL_GENERIC"/>
+      <keyMapping columnObjectName="DFACTS" columnName="QUAL_GENERIC"/>
+    </attribute>
+    <attribute id="OBJNR" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJNR"/>
+      <keyMapping columnObjectName="DFACTS" columnName="OBJNR"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TYPE" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TYPE"/>
+      <keyMapping columnObjectName="DFACTS" columnName="Z_CHANGE_TYPE"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TIME" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TIME"/>
+      <keyMapping columnObjectName="DFACTS" columnName="Z_CHANGE_TIME"/>
+    </attribute>
+    <attribute id="Z_SOURCE_SYS" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_SOURCE_SYS"/>
+      <keyMapping columnObjectName="DFACTS" columnName="Z_SOURCE_SYS"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="DFACTS" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="Z_RUN_SEQ_ID" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_SEQ_ID"/>
+      <keyMapping columnObjectName="DFACTS" columnName="Z_RUN_SEQ_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="DFACTS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

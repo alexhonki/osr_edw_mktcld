@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_DPSOB_BP_ACC" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_DPSOB_BP_ACC"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.db.synonyms::DPSOB_BP_ACC">
+    <resourceUri>osr.mktcld.db.synonyms::DPSOB_BP_ACC</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DPSOB_BP_ACC">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="ERNAM"/>
+      <viewAttribute id="ERDAT"/>
+      <viewAttribute id="AENAM"/>
+      <viewAttribute id="AEDAT"/>
+      <viewAttribute id="XOBSL"/>
+      <viewAttribute id="XDELP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="LEGACYOBJK3"/>
+      <viewAttribute id="KOFIZ"/>
+      <viewAttribute id="PSOB_PAY_ACT"/>
+      <viewAttribute id="EIGBV"/>
+      <viewAttribute id="ADRNR"/>
+      <viewAttribute id="ABWRE"/>
+      <viewAttribute id="ADRRE"/>
+      <viewAttribute id="EZAWE"/>
+      <viewAttribute id="EBVTY"/>
+      <viewAttribute id="CCARD_ID"/>
+      <viewAttribute id="ABWRA"/>
+      <viewAttribute id="ADRRA"/>
+      <viewAttribute id="AZAWE"/>
+      <viewAttribute id="ABVTY"/>
+      <viewAttribute id="CCARD_OUT"/>
+      <viewAttribute id="CMGRP"/>
+      <viewAttribute id="STRAT"/>
+      <viewAttribute id="CPERS"/>
+      <viewAttribute id="DDLXG"/>
+      <viewAttribute id="MNDID"/>
+      <viewAttribute id="DDLAM"/>
+      <viewAttribute id="DDLCU"/>
+      <viewAttribute id="DDLNM"/>
+      <viewAttribute id="PSOB_CORR_ACT"/>
+      <viewAttribute id="DEF_CORR_PARTNER"/>
+      <viewAttribute id="DEF_CORR_ACKEY"/>
+      <viewAttribute id="COPRC"/>
+      <viewAttribute id="XSEPINV"/>
+      <viewAttribute id="INVTP"/>
+      <viewAttribute id="FILSTAT"/>
+      <viewAttribute id="COPER"/>
+      <viewAttribute id="FILOFFDY"/>
+      <viewAttribute id="FILOFFMT"/>
+      <viewAttribute id="CORR_MAHNV"/>
+      <viewAttribute id="FIRSTPER"/>
+      <viewAttribute id="FIRSTPER_YR"/>
+      <viewAttribute id="LASTPER"/>
+      <viewAttribute id="LASTPER_YR"/>
+      <viewAttribute id="INDIVIDUAL"/>
+      <viewAttribute id="XREMINDER"/>
+      <viewAttribute id="CALC_AMOUNT"/>
+      <viewAttribute id="CURRENCY"/>
+      <viewAttribute id="ORDER_QUANT"/>
+      <viewAttribute id="BASE_UOM"/>
+      <viewAttribute id="ADRNUM_CORR"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::DPSOB_BP_ACC"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="DPSOB_BP_ACC">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="PSOBKEY" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PSOBKEY"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="PSOBKEY"/>
+    </attribute>
+    <attribute id="PARTNER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="PARTNER"/>
+    </attribute>
+    <attribute id="PARTNERACCTYP" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNERACCTYP"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="PARTNERACCTYP"/>
+    </attribute>
+    <attribute id="ERNAM" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ERNAM"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ERNAM"/>
+    </attribute>
+    <attribute id="ERDAT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ERDAT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ERDAT"/>
+    </attribute>
+    <attribute id="AENAM" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AENAM"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="AENAM"/>
+    </attribute>
+    <attribute id="AEDAT" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AEDAT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="AEDAT"/>
+    </attribute>
+    <attribute id="XOBSL" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XOBSL"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="XOBSL"/>
+    </attribute>
+    <attribute id="XDELP" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XDELP"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="XDELP"/>
+    </attribute>
+    <attribute id="PARTNERACC" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNERACC"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="PARTNERACC"/>
+    </attribute>
+    <attribute id="LEGACYOBJK3" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LEGACYOBJK3"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="LEGACYOBJK3"/>
+    </attribute>
+    <attribute id="KOFIZ" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KOFIZ"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="KOFIZ"/>
+    </attribute>
+    <attribute id="PSOB_PAY_ACT" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PSOB_PAY_ACT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="PSOB_PAY_ACT"/>
+    </attribute>
+    <attribute id="EIGBV" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EIGBV"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="EIGBV"/>
+    </attribute>
+    <attribute id="ADRNR" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADRNR"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ADRNR"/>
+    </attribute>
+    <attribute id="ABWRE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABWRE"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ABWRE"/>
+    </attribute>
+    <attribute id="ADRRE" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADRRE"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ADRRE"/>
+    </attribute>
+    <attribute id="EZAWE" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EZAWE"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="EZAWE"/>
+    </attribute>
+    <attribute id="EBVTY" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EBVTY"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="EBVTY"/>
+    </attribute>
+    <attribute id="CCARD_ID" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CCARD_ID"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="CCARD_ID"/>
+    </attribute>
+    <attribute id="ABWRA" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABWRA"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ABWRA"/>
+    </attribute>
+    <attribute id="ADRRA" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADRRA"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ADRRA"/>
+    </attribute>
+    <attribute id="AZAWE" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AZAWE"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="AZAWE"/>
+    </attribute>
+    <attribute id="ABVTY" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABVTY"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ABVTY"/>
+    </attribute>
+    <attribute id="CCARD_OUT" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CCARD_OUT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="CCARD_OUT"/>
+    </attribute>
+    <attribute id="CMGRP" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CMGRP"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="CMGRP"/>
+    </attribute>
+    <attribute id="STRAT" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STRAT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="STRAT"/>
+    </attribute>
+    <attribute id="CPERS" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CPERS"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="CPERS"/>
+    </attribute>
+    <attribute id="DDLXG" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DDLXG"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="DDLXG"/>
+    </attribute>
+    <attribute id="MNDID" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MNDID"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="MNDID"/>
+    </attribute>
+    <attribute id="DDLAM" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DDLAM"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="DDLAM"/>
+    </attribute>
+    <attribute id="DDLCU" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DDLCU"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="DDLCU"/>
+    </attribute>
+    <attribute id="DDLNM" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DDLNM"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="DDLNM"/>
+    </attribute>
+    <attribute id="PSOB_CORR_ACT" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PSOB_CORR_ACT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="PSOB_CORR_ACT"/>
+    </attribute>
+    <attribute id="DEF_CORR_PARTNER" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEF_CORR_PARTNER"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="DEF_CORR_PARTNER"/>
+    </attribute>
+    <attribute id="DEF_CORR_ACKEY" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEF_CORR_ACKEY"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="DEF_CORR_ACKEY"/>
+    </attribute>
+    <attribute id="COPRC" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COPRC"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="COPRC"/>
+    </attribute>
+    <attribute id="XSEPINV" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XSEPINV"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="XSEPINV"/>
+    </attribute>
+    <attribute id="INVTP" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INVTP"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="INVTP"/>
+    </attribute>
+    <attribute id="FILSTAT" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILSTAT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="FILSTAT"/>
+    </attribute>
+    <attribute id="COPER" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COPER"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="COPER"/>
+    </attribute>
+    <attribute id="FILOFFDY" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILOFFDY"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="FILOFFDY"/>
+    </attribute>
+    <attribute id="FILOFFMT" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILOFFMT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="FILOFFMT"/>
+    </attribute>
+    <attribute id="CORR_MAHNV" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CORR_MAHNV"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="CORR_MAHNV"/>
+    </attribute>
+    <attribute id="FIRSTPER" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRSTPER"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="FIRSTPER"/>
+    </attribute>
+    <attribute id="FIRSTPER_YR" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRSTPER_YR"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="FIRSTPER_YR"/>
+    </attribute>
+    <attribute id="LASTPER" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LASTPER"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="LASTPER"/>
+    </attribute>
+    <attribute id="LASTPER_YR" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LASTPER_YR"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="LASTPER_YR"/>
+    </attribute>
+    <attribute id="INDIVIDUAL" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INDIVIDUAL"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="INDIVIDUAL"/>
+    </attribute>
+    <attribute id="XREMINDER" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XREMINDER"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="XREMINDER"/>
+    </attribute>
+    <attribute id="CALC_AMOUNT" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALC_AMOUNT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="CALC_AMOUNT"/>
+    </attribute>
+    <attribute id="CURRENCY" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CURRENCY"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="CURRENCY"/>
+    </attribute>
+    <attribute id="ORDER_QUANT" order="54" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_QUANT"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ORDER_QUANT"/>
+    </attribute>
+    <attribute id="BASE_UOM" order="55" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BASE_UOM"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="BASE_UOM"/>
+    </attribute>
+    <attribute id="ADRNUM_CORR" order="56" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADRNUM_CORR"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="ADRNUM_CORR"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TYPE" order="57" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TYPE"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="Z_CHANGE_TYPE"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TIME" order="58" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TIME"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="Z_CHANGE_TIME"/>
+    </attribute>
+    <attribute id="Z_SOURCE_SYS" order="59" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_SOURCE_SYS"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="Z_SOURCE_SYS"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" order="60" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="Z_RUN_SEQ_ID" order="61" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_SEQ_ID"/>
+      <keyMapping columnObjectName="DPSOB_BP_ACC" columnName="Z_RUN_SEQ_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="DPSOB_BP_ACC" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

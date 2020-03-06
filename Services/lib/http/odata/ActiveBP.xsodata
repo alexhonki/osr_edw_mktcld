@@ -5,7 +5,7 @@
  
 service {       
     
-    "osr.mktcld.db.views::CV_ACTIVE_BP" as "Active_BP"
+    "osr.mktcld::CV_BP_CURRENT_ACTIVE" as "Active_BP"
     key generate local "GenID";
 }    
 /*

@@ -7,7 +7,8 @@ service {
     
     "osr.mktcld::SCPI_LOAD_STATUS" as "SCPI_LOAD_STATUS"
     key generate local "GenID";
-}    
+} 
+
 /*
 settings { 
     metadata cache-control "max-age= 604800";

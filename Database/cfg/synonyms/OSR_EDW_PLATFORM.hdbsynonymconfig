@@ -94,5 +94,11 @@
 			"object": "osr.edw.source.md.asic.proxy::CV_ORG_STATUS",
 			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
 		}
+	},
+	"osr.mktcld.db.synonyms::TF_PRT_BP_REG_FACTS": {
+		"target": {
+			"object": "osr.edw.platform.fra.prt.dt.abn::TF_PRT_BP_REG_FACTS",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
 	}
 }

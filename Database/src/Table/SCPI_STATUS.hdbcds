@@ -3,11 +3,11 @@ namespace osr.mktcld;
 
 /*@@layout{"layoutInfo":{"x":-275,"y":-125.5}}*/
 entity SCPI_LOAD_STATUS {
-    SCPI_STATUS                    : String(30);
-    SCPI_RETURN_CODE               : String(30);
-    SCPI_RETURN_CODE_DESCRIPTION   : String(1024);
-    SCPI_LAST_REQUESTED            : UTCTimestamp;
-    SCPI_LAST_CONFIRMED            : UTCTimestamp;
-    EDW_VIEW_NAME                  : String(256);
-    EDW_NUMBER_OF_RECORD_PROCESSED : Integer;
+        SCPI_STATUS                    : String(30);
+        SCPI_RETURN_CODE               : String(30);
+        SCPI_RETURN_CODE_DESCRIPTION   : String(1024);
+    key SCPI_LAST_REQUESTED            : UTCTimestamp;
+        SCPI_LAST_CONFIRMED            : UTCTimestamp;
+    key EDW_VIEW_NAME                  : String(256);
+        EDW_NUMBER_OF_RECORD_PROCESSED : Integer;
 };

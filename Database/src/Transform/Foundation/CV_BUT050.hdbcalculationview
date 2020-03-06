@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_BUT050" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_BUT050"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.db.synonyms::BUT050">
+    <resourceUri>osr.mktcld.db.synonyms::BUT050</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BUT050">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="RELNR"/>
+      <viewAttribute id="PARTNER1"/>
+      <viewAttribute id="PARTNER2"/>
+      <viewAttribute id="DATE_TO"/>
+      <viewAttribute id="DATE_FROM"/>
+      <viewAttribute id="RELTYP"/>
+      <viewAttribute id="XRF"/>
+      <viewAttribute id="DFTVAL"/>
+      <viewAttribute id="RLTYP"/>
+      <viewAttribute id="RELKIND"/>
+      <viewAttribute id="CRUSR"/>
+      <viewAttribute id="CRDAT"/>
+      <viewAttribute id="CRTIM"/>
+      <viewAttribute id="CHUSR"/>
+      <viewAttribute id="CHDAT"/>
+      <viewAttribute id="CHTIM"/>
+      <viewAttribute id="XDFREL"/>
+      <viewAttribute id="XDFREL2"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="DB_KEY_TD"/>
+      <viewAttribute id="Z_CURR_FLAG"/>
+      <viewAttribute id="Z_VALID_FROM"/>
+      <viewAttribute id="Z_VALID_TO"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::BUT050"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="BUT050">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="BUT050" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="RELNR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELNR"/>
+      <keyMapping columnObjectName="BUT050" columnName="RELNR"/>
+    </attribute>
+    <attribute id="PARTNER1" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER1"/>
+      <keyMapping columnObjectName="BUT050" columnName="PARTNER1"/>
+    </attribute>
+    <attribute id="PARTNER2" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER2"/>
+      <keyMapping columnObjectName="BUT050" columnName="PARTNER2"/>
+    </attribute>
+    <attribute id="DATE_TO" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_TO"/>
+      <keyMapping columnObjectName="BUT050" columnName="DATE_TO"/>
+    </attribute>
+    <attribute id="DATE_FROM" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_FROM"/>
+      <keyMapping columnObjectName="BUT050" columnName="DATE_FROM"/>
+    </attribute>
+    <attribute id="RELTYP" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELTYP"/>
+      <keyMapping columnObjectName="BUT050" columnName="RELTYP"/>
+    </attribute>
+    <attribute id="XRF" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XRF"/>
+      <keyMapping columnObjectName="BUT050" columnName="XRF"/>
+    </attribute>
+    <attribute id="DFTVAL" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DFTVAL"/>
+      <keyMapping columnObjectName="BUT050" columnName="DFTVAL"/>
+    </attribute>
+    <attribute id="RLTYP" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RLTYP"/>
+      <keyMapping columnObjectName="BUT050" columnName="RLTYP"/>
+    </attribute>
+    <attribute id="RELKIND" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELKIND"/>
+      <keyMapping columnObjectName="BUT050" columnName="RELKIND"/>
+    </attribute>
+    <attribute id="CRUSR" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRUSR"/>
+      <keyMapping columnObjectName="BUT050" columnName="CRUSR"/>
+    </attribute>
+    <attribute id="CRDAT" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRDAT"/>
+      <keyMapping columnObjectName="BUT050" columnName="CRDAT"/>
+    </attribute>
+    <attribute id="CRTIM" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRTIM"/>
+      <keyMapping columnObjectName="BUT050" columnName="CRTIM"/>
+    </attribute>
+    <attribute id="CHUSR" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHUSR"/>
+      <keyMapping columnObjectName="BUT050" columnName="CHUSR"/>
+    </attribute>
+    <attribute id="CHDAT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHDAT"/>
+      <keyMapping columnObjectName="BUT050" columnName="CHDAT"/>
+    </attribute>
+    <attribute id="CHTIM" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHTIM"/>
+      <keyMapping columnObjectName="BUT050" columnName="CHTIM"/>
+    </attribute>
+    <attribute id="XDFREL" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XDFREL"/>
+      <keyMapping columnObjectName="BUT050" columnName="XDFREL"/>
+    </attribute>
+    <attribute id="XDFREL2" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XDFREL2"/>
+      <keyMapping columnObjectName="BUT050" columnName="XDFREL2"/>
+    </attribute>
+    <attribute id="DB_KEY" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DB_KEY"/>
+      <keyMapping columnObjectName="BUT050" columnName="DB_KEY"/>
+    </attribute>
+    <attribute id="DB_KEY_TD" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DB_KEY_TD"/>
+      <keyMapping columnObjectName="BUT050" columnName="DB_KEY_TD"/>
+    </attribute>
+    <attribute id="Z_CURR_FLAG" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CURR_FLAG"/>
+      <keyMapping columnObjectName="BUT050" columnName="Z_CURR_FLAG"/>
+    </attribute>
+    <attribute id="Z_VALID_FROM" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_VALID_FROM"/>
+      <keyMapping columnObjectName="BUT050" columnName="Z_VALID_FROM"/>
+    </attribute>
+    <attribute id="Z_VALID_TO" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_VALID_TO"/>
+      <keyMapping columnObjectName="BUT050" columnName="Z_VALID_TO"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TYPE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TYPE"/>
+      <keyMapping columnObjectName="BUT050" columnName="Z_CHANGE_TYPE"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TIME" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TIME"/>
+      <keyMapping columnObjectName="BUT050" columnName="Z_CHANGE_TIME"/>
+    </attribute>
+    <attribute id="Z_SOURCE_SYS" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_SOURCE_SYS"/>
+      <keyMapping columnObjectName="BUT050" columnName="Z_SOURCE_SYS"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="BUT050" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="Z_RUN_SEQ_ID" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_SEQ_ID"/>
+      <keyMapping columnObjectName="BUT050" columnName="Z_RUN_SEQ_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="BUT050" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
