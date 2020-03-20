@@ -4,8 +4,7 @@
  */
  
 service {       
-    
-    "osr.mktcld::CV_BP_CURRENT_ACTIVE" as "Active_BP"
+    "osr.mktcld::CV_BP_PRT_CORPACCT" as "Marketing Cloud Corporate Account"
     key generate local "GenID";
 }    
 /*

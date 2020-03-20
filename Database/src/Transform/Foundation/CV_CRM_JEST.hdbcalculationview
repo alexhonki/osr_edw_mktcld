@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_CRM_JEST" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_CRM_JEST"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.db.synonyms::CRM_JEST">
+    <resourceUri>osr.mktcld.db.synonyms::CRM_JEST</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CRM_JEST">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="OBJNR"/>
+      <viewAttribute id="STAT"/>
+      <viewAttribute id="INACT"/>
+      <viewAttribute id="CHGNR"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::CRM_JEST"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="CRM_JEST">
+  <attributes>
+    <attribute id="MANDT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="MANDT"/>
+    </attribute>
+    <attribute id="OBJNR" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJNR"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="OBJNR"/>
+    </attribute>
+    <attribute id="STAT" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STAT"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="STAT"/>
+    </attribute>
+    <attribute id="INACT" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INACT"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="INACT"/>
+    </attribute>
+    <attribute id="CHGNR" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHGNR"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="CHGNR"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TYPE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TYPE"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="Z_CHANGE_TYPE"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TIME" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TIME"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="Z_CHANGE_TIME"/>
+    </attribute>
+    <attribute id="Z_SOURCE_SYS" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_SOURCE_SYS"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="Z_SOURCE_SYS"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="Z_RUN_SEQ_ID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_SEQ_ID"/>
+      <keyMapping columnObjectName="CRM_JEST" columnName="Z_RUN_SEQ_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CRM_JEST" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
