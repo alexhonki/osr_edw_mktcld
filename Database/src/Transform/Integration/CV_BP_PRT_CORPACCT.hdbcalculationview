@@ -365,6 +365,8 @@
       <viewAttribute id="ORG_STATUS_DESCRIPTION"/>
       <viewAttribute id="MN_INDY_CLSN"/>
       <viewAttribute id="MN_INDY_CLSN_DESCN"/>
+    
+      <viewAttribute id="ABN_CANCN_DT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld::CV_BP_AGENCY_DATA"/>
@@ -400,6 +402,8 @@
       <viewAttribute id="ORG_STATUS_DESCRIPTION"/>
       <viewAttribute id="MN_INDY_CLSN"/>
       <viewAttribute id="MN_INDY_CLSN_DESCN"/>
+    
+      <viewAttribute id="ABN_CANCN_DT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_6">
@@ -435,6 +439,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS_DESCRIPTION" source="ORG_STATUS_DESCRIPTION"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN" source="MN_INDY_CLSN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN_DESCN" source="MN_INDY_CLSN_DESCN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN_CANCN_DT" source="ABN_CANCN_DT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
     </input>
     <joinAttribute name="BPARTNER"/>
@@ -442,7 +447,7 @@
 </calculationViews>
 <logicalModel id="Join_7">
   <attributes>
-    <attribute id="BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Ext. Corpoare Account ID Client Number"/>
       <keyMapping columnObjectName="Join_7" columnName="BPARTNER"/>
     </attribute>
@@ -505,7 +510,7 @@
       <descriptions defaultDescription="TYPE"/>
       <keyMapping columnObjectName="Join_7" columnName="TYPE"/>
     </attribute>
-    <attribute id="ADDRNUMBER" order="19" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ADDRNUMBER" order="19" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="ADDRNUMBER"/>
       <keyMapping columnObjectName="Join_7" columnName="ADDRNUMBER"/>
     </attribute>
@@ -513,7 +518,7 @@
       <descriptions defaultDescription="Phone"/>
       <keyMapping columnObjectName="Join_7" columnName="TELNR_LONG"/>
     </attribute>
-    <attribute id="TELNR_MOBILE" order="22" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="TELNR_MOBILE" order="22" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Mobile"/>
       <keyMapping columnObjectName="Join_7" columnName="TEL_NUMBER"/>
     </attribute>
@@ -525,92 +530,132 @@
       <descriptions defaultDescription="Australian Company Number"/>
       <keyMapping columnObjectName="Join_7" columnName="ACN"/>
     </attribute>
-    <attribute id="ENTITY_TYPE" order="27" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TITLE" order="28" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Legal Entity Type"/>
       <keyMapping columnObjectName="Join_7" columnName="TITLE"/>
     </attribute>
   
-    <attribute id="GROUP_STATUS" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GROUP_STATUS" order="30" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Group Status"/>
   
       <keyMapping columnObjectName="Join_7" columnName="GROUP_STATUS"/>
   
     </attribute>
-    <attribute id="REGISTRATION_DATE" order="30" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REGISTRATION_DATE" order="31" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Payroll Tax Registration Date"/>
       <keyMapping columnObjectName="Join_7" columnName="REGISTRATION_DATE"/>
     </attribute>
-    <attribute id="LODGEMENT_FREQUENCY" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LODGEMENT_FREQUENCY" order="32" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Lodgement Frequency"/>
       <keyMapping columnObjectName="Join_7" columnName="LODGEMENT_FREQUENCY"/>
     </attribute>
-    <attribute id="LIABILITY_START_DATE" order="32" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LIABILITY_START_DATE" order="33" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Liability Start Date"/>
       <keyMapping columnObjectName="Join_7" columnName="LIABILITY_START_DATE"/>
     </attribute>
-    <attribute id="FIRST_RETURN_DATE" order="33" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="FIRST_RETURN_DATE" order="34" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="First Return Date"/>
       <keyMapping columnObjectName="Join_7" columnName="FIRST_RETURN_DATE"/>
     </attribute>
-    <attribute id="EMPLOYER_STATUS" order="34" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="EMPLOYER_STATUS" order="35" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="EMPLOYER_STATUS"/>
       <keyMapping columnObjectName="Join_7" columnName="EMPLOYER_STATUS"/>
     </attribute>
-    <attribute id="ORG_STATUS" order="35" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="ORG_STATUS" order="36" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="ORG_STATUS"/>
       <keyMapping columnObjectName="Join_7" columnName="ORG_STATUS"/>
     </attribute>
-    <attribute id="ORG_STATUS_DESCRIPTION" order="36" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="ORG_STATUS_DESCRIPTION" order="37" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="DESCRIPTION"/>
       <keyMapping columnObjectName="Join_7" columnName="ORG_STATUS_DESCRIPTION"/>
-    </attribute></attributes>
+    </attribute>
+    <attribute id="ABN_CANCN_DT" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABN_CANCN_DT"/>
+      <keyMapping columnObjectName="Join_7" columnName="ABN_CANCN_DT"/>
+    </attribute>
+  </attributes>
   <calculatedAttributes>
-    <calculatedAttribute id="Z_ID_ORIGIN" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="ID_ORIGIN" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Origin of Corporate Account"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
         <formula>'OSR_EDW'</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="Z_COMPANY_NAME" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="COMPANY_NAME" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Name"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="160">
         <formula>TRIM(CONCAT(CONCAT(CONCAT(&quot;NAME_ORG1&quot;, &quot;NAME_ORG2&quot;), &quot;NAME_ORG3&quot;), &quot;NAME_ORG4&quot;))</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="Z_OPT_IN_SMTP_ADDR" order="17" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="OPT_IN_SMTP_ADDR" order="17" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="E-Mail Address Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'Y'</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="Z_OPT_IN_TELNR_LONG" order="21" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="OPT_IN_TELNR_LONG" order="21" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Phone Opt-In"/>
-      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="13">
-        <formula>'Y'</formula>
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
+        <formula>'N'</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="Z_OPT_IN_TELNR_MOBILE" order="23" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="OPT_IN_TELNR_MOBILE" order="23" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Mobile Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
-        <formula>'Y'</formula>
+        <formula>'N'</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="Z_OPT_IN_TELNR_MOBILE_SMS" order="24" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="OPT_IN_TELNR_MOBILE_SMS" order="24" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Mobile SMS Opt_in"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
-        <formula>'Y'</formula>
+        <formula>'N'</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="Z_TAXPAYER_STATUS" order="28" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="ENTITY_TYPE" order="27" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Legal Entity Type"/>
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="4">
+        <formula>CASE  
+	 WHEN &quot;TYPE&quot;='1' then 'ZIND'
+	 ELSE &quot;TITLE&quot;  
+ END</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+    <calculatedAttribute id="TAXPAYER_STATUS" order="29" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Active Payroll Tax Customer"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'Y'</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="Z_TAX_REVENUE_CODE" order="37" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <calculatedAttribute id="TAX_REVENUE_CODE" order="38" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Tax Revenue Code"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
         <formula>'PT'</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  
+    <calculatedAttribute id="ABR_STATUS" order="40" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABR Status"/>
+  
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
+  
+        <formula>CASE  
+	 WHEN &quot;ABN_CANCN_DT&quot; &lt; CURRENT_DATE then 'INACTIVE' 
+	 ELSE 'ACTIVE' 
+ END</formula>
+  
+      </keyCalculation>
+      </calculatedAttribute>
+  
+    <calculatedAttribute id="DEREGISTERED" order="41" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Degregistered Flag"/>
+  
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
+  
+        <formula>CASE  
+	 WHEN &quot;ABN_CANCN_DT&quot; &lt; CURRENT_DATE then 'Y' 
+	 ELSE 'N' 
+ END</formula>
+  
       </keyCalculation>
       </calculatedAttribute>
   </calculatedAttributes>

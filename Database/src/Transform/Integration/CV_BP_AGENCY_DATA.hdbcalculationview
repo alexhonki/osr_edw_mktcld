@@ -41,6 +41,8 @@
       <viewAttribute id="ACN"/>
       <viewAttribute id="MN_INDY_CLSN"/>
       <viewAttribute id="MN_INDY_CLSN_DESCN"/>
+    
+      <viewAttribute id="ABN_CANCN_DT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld::CV_AGENCY_DATA"/>
@@ -72,6 +74,8 @@
       <viewAttribute id="ORG_STATUS_DESCRIPTION"/>
       <viewAttribute id="MN_INDY_CLSN"/>
       <viewAttribute id="MN_INDY_CLSN_DESCN"/>
+    
+      <viewAttribute id="ABN_CANCN_DT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_1">
@@ -83,6 +87,7 @@
     <input node="AGENCY_DATA">
       <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN" source="MN_INDY_CLSN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN_DESCN" source="MN_INDY_CLSN_DESCN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN_CANCN_DT" source="ABN_CANCN_DT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
     </input>
     <joinAttribute name="ACN"/>
@@ -120,6 +125,7 @@
       <viewAttribute id="ORG_STATUS_DESCRIPTION"/>
       <viewAttribute id="MN_INDY_CLSN"/>
       <viewAttribute id="MN_INDY_CLSN_DESCN"/>
+      <viewAttribute id="ABN_CANCN_DT"/>
       <viewAttribute id="PARTNER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
@@ -130,6 +136,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS_DESCRIPTION" source="ORG_STATUS_DESCRIPTION"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN" source="MN_INDY_CLSN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN_DESCN" source="MN_INDY_CLSN_DESCN"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN_CANCN_DT" source="ABN_CANCN_DT"/>
     </input>
     <input node="CV_BUT0ID">
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
@@ -164,10 +172,16 @@
       <descriptions defaultDescription="MN_INDY_CLSN_DESCN"/>
       <keyMapping columnObjectName="Join_3" columnName="MN_INDY_CLSN_DESCN"/>
     </attribute>
+    <attribute id="ABN_CANCN_DT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABN_CANCN_DT"/>
+      <keyMapping columnObjectName="Join_3" columnName="ABN_CANCN_DT"/>
+    </attribute>
   
-    <attribute id="PARTNER" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PARTNER" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PARTNER"/>
+  
       <keyMapping columnObjectName="Join_3" columnName="PARTNER"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -178,25 +192,25 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="460.0881446356781" y="112"/>
+      <upperLeftCorner x="460" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="COMPANY_REGISTER" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999997" y="696.9999964237213"/>
+      <upperLeftCorner x="91" y="696"/>
       <rectangleSize height="30" width="214"/>
     </shape>
     <shape expanded="true" modelObjectName="ORG_STATUS" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="356" y="696.9999964237213"/>
+      <upperLeftCorner x="356" y="696"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="AGENCY_DATA" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="423.80621074177816" y="536.9999976158142"/>
+      <upperLeftCorner x="423" y="536"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="145.6666666666666" y="536.9999976158142"/>
+      <upperLeftCorner x="145" y="536"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="COMPANY_REGISTER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -208,7 +222,7 @@
       <rectangleSize width="144"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="172.33333333333323" y="376.9999988079071"/>
+      <upperLeftCorner x="172" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -221,11 +235,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_BUT0ID" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="528.0919815462216" y="376.9999988079071"/>
+      <upperLeftCorner x="528" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="460.0881446356781" y="217"/>
+      <upperLeftCorner x="460" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
@@ -234,7 +248,7 @@
     </shape>
     <shape modelObjectName="CV_BUT0ID" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="172.8076171875"/>
+      <rectangleSize width="172"/>
     </shape>
   </shapes>
 </layout>
