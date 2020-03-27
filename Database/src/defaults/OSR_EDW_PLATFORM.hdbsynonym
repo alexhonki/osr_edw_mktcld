@@ -7,15 +7,19 @@
 	"osr.mktcld.db.synonyms::BUT100": {},
 	"osr.mktcld.db.synonyms::BUT050": {},
 	"osr.mktcld.db.synonyms::BUT0ID": {},
-	"osr.mktcld.db.synonyms::AGENCY_DATA": {},
-	"osr.mktcld.db.synonyms::DPSOB_BP_ACC": {},
 	"osr.mktcld.db.synonyms::DFACTS": {},
 	"osr.mktcld.db.synonyms::BUT000_Current": {},
+	"osr.mktcld.db.synonyms::DPSOB_BP_ACC": {},
+
+	"osr.mktcld.db.synonyms::AGENCY_DATA": {},
 	"osr.mktcld.db.synonyms::COMPANY_REGISTER": {},
 	"osr.mktcld.db.synonyms::ORG_STATUS": {},
 	"osr.mktcld.db.synonyms::TF_PRT_BP_REG_FACTS": {},
+
 	"osr.mktcld.db.synonyms::CRMD_ORDERADM_H": {},
 	"osr.mktcld.db.synonyms::CRMD_ACTIVITY_H": {},
 	"osr.mktcld.db.synonyms::CRM_JEST": {},
-	"osr.mktcld.db.synonyms::CRMD_LINK": {}
+	"osr.mktcld.db.synonyms::CRMD_LINK": {},
+	"osr.mktcld.db.synonyms::CRMD_SRV_SUBJECT": {},
+	"osr.mktcld.db.synonyms::CRMD_SRV_OSSET": {}
 }
