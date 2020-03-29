@@ -141,6 +141,12 @@
 			"object": "osr.hana.platform::CV_ACTIVE_STATEMENTS",
 			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
 		}
+	},
+	"osr.mktcld.db.synonyms::CRMD_PARTNER": {
+		"target": {
+			"object": "osr.edw.staging.td.crm.proxy::CV_CRMD_PARTNER",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
 	}
 
 }

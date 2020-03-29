@@ -1,0 +1,594 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_CRM_INTERACTION_OPEN" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_CRM_INTERACTION_OPEN"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld::CV_CRMD_ORDERADM_H">
+    <resourceUri>osr.mktcld::CV_CRMD_ORDERADM_H</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld::CV_CRMD_ACTIVITY_H">
+    <resourceUri>osr.mktcld::CV_CRMD_ACTIVITY_H</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld::CV_CRM_JEST">
+    <resourceUri>osr.mktcld::CV_CRM_JEST</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CRMD_ORDERADM_H" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="GUID"/>
+      <viewAttribute id="OBJECT_ID"/>
+      <viewAttribute id="PROCESS_TYPE"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="DESCR_LANGUAGE"/>
+      <viewAttribute id="LOGICAL_SYSTEM"/>
+      <viewAttribute id="CRM_RELEASE"/>
+      <viewAttribute id="SCENARIO"/>
+      <viewAttribute id="TEMPLATE_TYPE"/>
+      <viewAttribute id="CREATED_AT"/>
+      <viewAttribute id="CREATED_BY"/>
+      <viewAttribute id="CHANGED_AT"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="HEAD_CHANGED_AT"/>
+      <viewAttribute id="ORDERADM_H_DUMMY"/>
+      <viewAttribute id="INPUT_CHANNEL"/>
+      <viewAttribute id="BTX_CLASS"/>
+      <viewAttribute id="AUTH_SCOPE"/>
+      <viewAttribute id="OBJECT_TYPE"/>
+      <viewAttribute id="ARCHIVING_FLAG"/>
+      <viewAttribute id="DESCRIPTION_UC"/>
+      <viewAttribute id="OBJECT_ID_OK"/>
+      <viewAttribute id="VERIFY_DATE"/>
+      <viewAttribute id="CRM_CHANGED_AT"/>
+      <viewAttribute id="POSTPROCESS_AT"/>
+      <viewAttribute id="COMP_TX_HEADER"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+      <viewAttribute id="Z_CURR_FLAG"/>
+      <viewAttribute id="Z_VALID_FROM"/>
+      <viewAttribute id="Z_VALID_TO"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_CRMD_ORDERADM_H"/>
+    <filter>&quot;PROCESS_TYPE&quot;='ZPTE'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CRMD_ACTIVITY_H">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="GUID"/>
+      <viewAttribute id="CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="OBJECTIVE"/>
+      <viewAttribute id="DIRECTION"/>
+      <viewAttribute id="EXTERN_ACT_ID"/>
+      <viewAttribute id="ADDRESS_ID"/>
+      <viewAttribute id="PRIVATE_FLAG"/>
+      <viewAttribute id="COMPLETION"/>
+      <viewAttribute id="ACT_LOCATION"/>
+      <viewAttribute id="ACTIVITY_H_DUMMY"/>
+      <viewAttribute id="ZZSECURE_LEVEL"/>
+      <viewAttribute id="CALENDAR"/>
+      <viewAttribute id="TASK"/>
+      <viewAttribute id="CLASS"/>
+      <viewAttribute id="ZZFLD000087"/>
+      <viewAttribute id="ZZFLD000088"/>
+      <viewAttribute id="ZZFLD00008A"/>
+      <viewAttribute id="ZZFLD00008D"/>
+      <viewAttribute id="ZZFLD00008E"/>
+      <viewAttribute id="ZZFLD00008F"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_CRMD_ACTIVITY_H"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="GUID"/>
+      <viewAttribute id="OBJECT_ID"/>
+      <viewAttribute id="PROCESS_TYPE"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="DESCR_LANGUAGE"/>
+      <viewAttribute id="LOGICAL_SYSTEM"/>
+      <viewAttribute id="CRM_RELEASE"/>
+      <viewAttribute id="SCENARIO"/>
+      <viewAttribute id="TEMPLATE_TYPE"/>
+      <viewAttribute id="CREATED_AT"/>
+      <viewAttribute id="CREATED_BY"/>
+      <viewAttribute id="CHANGED_AT"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="HEAD_CHANGED_AT"/>
+      <viewAttribute id="ORDERADM_H_DUMMY"/>
+      <viewAttribute id="INPUT_CHANNEL"/>
+      <viewAttribute id="BTX_CLASS"/>
+      <viewAttribute id="AUTH_SCOPE"/>
+      <viewAttribute id="OBJECT_TYPE"/>
+      <viewAttribute id="ARCHIVING_FLAG"/>
+      <viewAttribute id="DESCRIPTION_UC"/>
+      <viewAttribute id="OBJECT_ID_OK"/>
+      <viewAttribute id="VERIFY_DATE"/>
+      <viewAttribute id="CRM_CHANGED_AT"/>
+      <viewAttribute id="POSTPROCESS_AT"/>
+      <viewAttribute id="COMP_TX_HEADER"/>
+      <viewAttribute id="CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="OBJECTIVE"/>
+      <viewAttribute id="DIRECTION"/>
+      <viewAttribute id="EXTERN_ACT_ID"/>
+      <viewAttribute id="ADDRESS_ID"/>
+      <viewAttribute id="PRIVATE_FLAG"/>
+      <viewAttribute id="COMPLETION"/>
+      <viewAttribute id="ACT_LOCATION"/>
+      <viewAttribute id="ACTIVITY_H_DUMMY"/>
+      <viewAttribute id="ZZSECURE_LEVEL"/>
+      <viewAttribute id="CALENDAR"/>
+      <viewAttribute id="TASK"/>
+      <viewAttribute id="CLASS"/>
+      <viewAttribute id="ZZFLD000087"/>
+      <viewAttribute id="ZZFLD000088"/>
+      <viewAttribute id="ZZFLD00008A"/>
+      <viewAttribute id="ZZFLD00008D"/>
+      <viewAttribute id="ZZFLD00008E"/>
+      <viewAttribute id="ZZFLD00008F"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CRMD_ORDERADM_H">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESS_TYPE" source="PROCESS_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCR_LANGUAGE" source="DESCR_LANGUAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOGICAL_SYSTEM" source="LOGICAL_SYSTEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRM_RELEASE" source="CRM_RELEASE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCENARIO" source="SCENARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEMPLATE_TYPE" source="TEMPLATE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_AT" source="CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_CHANGED_AT" source="HEAD_CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDERADM_H_DUMMY" source="ORDERADM_H_DUMMY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INPUT_CHANNEL" source="INPUT_CHANNEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BTX_CLASS" source="BTX_CLASS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_SCOPE" source="AUTH_SCOPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ARCHIVING_FLAG" source="ARCHIVING_FLAG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_UC" source="DESCRIPTION_UC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID_OK" source="OBJECT_ID_OK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VERIFY_DATE" source="VERIFY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRM_CHANGED_AT" source="CRM_CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTPROCESS_AT" source="POSTPROCESS_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMP_TX_HEADER" source="COMP_TX_HEADER"/>
+    </input>
+    <input node="CRMD_ACTIVITY_H">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECTIVE" source="OBJECTIVE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTION" source="DIRECTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EXTERN_ACT_ID" source="EXTERN_ACT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_ID" source="ADDRESS_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIVATE_FLAG" source="PRIVATE_FLAG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION" source="COMPLETION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACT_LOCATION" source="ACT_LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACTIVITY_H_DUMMY" source="ACTIVITY_H_DUMMY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZSECURE_LEVEL" source="ZZSECURE_LEVEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALENDAR" source="CALENDAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TASK" source="TASK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLASS" source="CLASS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD000087" source="ZZFLD000087"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD000088" source="ZZFLD000088"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD00008A" source="ZZFLD00008A"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD00008D" source="ZZFLD00008D"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD00008E" source="ZZFLD00008E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD00008F" source="ZZFLD00008F"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="GUID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CRM_JEST" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="OBJNR"/>
+      <viewAttribute id="STAT"/>
+      <viewAttribute id="INACT"/>
+      <viewAttribute id="CHGNR"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_CRM_JEST"/>
+    <filter>&quot;STAT&quot;='E0001' and &quot;INACT&quot;=''</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="GUID"/>
+      <viewAttribute id="OBJECT_ID"/>
+      <viewAttribute id="PROCESS_TYPE"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="DESCR_LANGUAGE"/>
+      <viewAttribute id="LOGICAL_SYSTEM"/>
+      <viewAttribute id="CRM_RELEASE"/>
+      <viewAttribute id="SCENARIO"/>
+      <viewAttribute id="TEMPLATE_TYPE"/>
+      <viewAttribute id="CREATED_AT"/>
+      <viewAttribute id="CREATED_BY"/>
+      <viewAttribute id="CHANGED_AT"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="HEAD_CHANGED_AT"/>
+      <viewAttribute id="ORDERADM_H_DUMMY"/>
+      <viewAttribute id="INPUT_CHANNEL"/>
+      <viewAttribute id="BTX_CLASS"/>
+      <viewAttribute id="AUTH_SCOPE"/>
+      <viewAttribute id="OBJECT_TYPE"/>
+      <viewAttribute id="ARCHIVING_FLAG"/>
+      <viewAttribute id="DESCRIPTION_UC"/>
+      <viewAttribute id="OBJECT_ID_OK"/>
+      <viewAttribute id="VERIFY_DATE"/>
+      <viewAttribute id="CRM_CHANGED_AT"/>
+      <viewAttribute id="POSTPROCESS_AT"/>
+      <viewAttribute id="COMP_TX_HEADER"/>
+      <viewAttribute id="CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="OBJECTIVE"/>
+      <viewAttribute id="DIRECTION"/>
+      <viewAttribute id="EXTERN_ACT_ID"/>
+      <viewAttribute id="ADDRESS_ID"/>
+      <viewAttribute id="PRIVATE_FLAG"/>
+      <viewAttribute id="COMPLETION"/>
+      <viewAttribute id="ACT_LOCATION"/>
+      <viewAttribute id="ACTIVITY_H_DUMMY"/>
+      <viewAttribute id="ZZSECURE_LEVEL"/>
+      <viewAttribute id="CALENDAR"/>
+      <viewAttribute id="TASK"/>
+      <viewAttribute id="CLASS"/>
+      <viewAttribute id="ZZFLD000087"/>
+      <viewAttribute id="ZZFLD000088"/>
+      <viewAttribute id="ZZFLD00008A"/>
+      <viewAttribute id="ZZFLD00008D"/>
+      <viewAttribute id="ZZFLD00008E"/>
+      <viewAttribute id="ZZFLD00008F"/>
+      <viewAttribute id="STAT"/>
+      <viewAttribute id="INACT"/>
+      <viewAttribute id="CHGNR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESS_TYPE" source="PROCESS_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCR_LANGUAGE" source="DESCR_LANGUAGE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOGICAL_SYSTEM" source="LOGICAL_SYSTEM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRM_RELEASE" source="CRM_RELEASE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCENARIO" source="SCENARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEMPLATE_TYPE" source="TEMPLATE_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_BY" source="CREATED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_AT" source="CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHANGED_BY" source="CHANGED_BY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HEAD_CHANGED_AT" source="HEAD_CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDERADM_H_DUMMY" source="ORDERADM_H_DUMMY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INPUT_CHANNEL" source="INPUT_CHANNEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BTX_CLASS" source="BTX_CLASS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AUTH_SCOPE" source="AUTH_SCOPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ARCHIVING_FLAG" source="ARCHIVING_FLAG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION_UC" source="DESCRIPTION_UC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID_OK" source="OBJECT_ID_OK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VERIFY_DATE" source="VERIFY_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRM_CHANGED_AT" source="CRM_CHANGED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTPROCESS_AT" source="POSTPROCESS_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMP_TX_HEADER" source="COMP_TX_HEADER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CATEGORY" source="CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIORITY" source="PRIORITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECTIVE" source="OBJECTIVE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECTION" source="DIRECTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EXTERN_ACT_ID" source="EXTERN_ACT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS_ID" source="ADDRESS_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRIVATE_FLAG" source="PRIVATE_FLAG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPLETION" source="COMPLETION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACT_LOCATION" source="ACT_LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACTIVITY_H_DUMMY" source="ACTIVITY_H_DUMMY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZSECURE_LEVEL" source="ZZSECURE_LEVEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CALENDAR" source="CALENDAR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TASK" source="TASK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLASS" source="CLASS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD000087" source="ZZFLD000087"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD000088" source="ZZFLD000088"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD00008A" source="ZZFLD00008A"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD00008D" source="ZZFLD00008D"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD00008E" source="ZZFLD00008E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZZFLD00008F" source="ZZFLD00008F"/>
+    </input>
+    <input node="CRM_JEST">
+      <mapping xsi:type="Calculation:AttributeMapping" target="STAT" source="STAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INACT" source="INACT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHGNR" source="CHGNR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="OBJNR"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="GUID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_2">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="Join_2" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="GUID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GUID"/>
+      <keyMapping columnObjectName="Join_2" columnName="GUID"/>
+    </attribute>
+    <attribute id="OBJECT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJECT_ID"/>
+      <keyMapping columnObjectName="Join_2" columnName="OBJECT_ID"/>
+    </attribute>
+    <attribute id="PROCESS_TYPE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PROCESS_TYPE"/>
+      <keyMapping columnObjectName="Join_2" columnName="PROCESS_TYPE"/>
+    </attribute>
+    <attribute id="POSTING_DATE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSTING_DATE"/>
+      <keyMapping columnObjectName="Join_2" columnName="POSTING_DATE"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_2" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="DESCR_LANGUAGE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCR_LANGUAGE"/>
+      <keyMapping columnObjectName="Join_2" columnName="DESCR_LANGUAGE"/>
+    </attribute>
+    <attribute id="LOGICAL_SYSTEM" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOGICAL_SYSTEM"/>
+      <keyMapping columnObjectName="Join_2" columnName="LOGICAL_SYSTEM"/>
+    </attribute>
+    <attribute id="CRM_RELEASE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRM_RELEASE"/>
+      <keyMapping columnObjectName="Join_2" columnName="CRM_RELEASE"/>
+    </attribute>
+    <attribute id="SCENARIO" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SCENARIO"/>
+      <keyMapping columnObjectName="Join_2" columnName="SCENARIO"/>
+    </attribute>
+    <attribute id="TEMPLATE_TYPE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TEMPLATE_TYPE"/>
+      <keyMapping columnObjectName="Join_2" columnName="TEMPLATE_TYPE"/>
+    </attribute>
+    <attribute id="CREATED_AT" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_AT"/>
+      <keyMapping columnObjectName="Join_2" columnName="CREATED_AT"/>
+    </attribute>
+    <attribute id="CREATED_BY" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CREATED_BY"/>
+      <keyMapping columnObjectName="Join_2" columnName="CREATED_BY"/>
+    </attribute>
+    <attribute id="CHANGED_AT" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_AT"/>
+      <keyMapping columnObjectName="Join_2" columnName="CHANGED_AT"/>
+    </attribute>
+    <attribute id="CHANGED_BY" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHANGED_BY"/>
+      <keyMapping columnObjectName="Join_2" columnName="CHANGED_BY"/>
+    </attribute>
+    <attribute id="HEAD_CHANGED_AT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HEAD_CHANGED_AT"/>
+      <keyMapping columnObjectName="Join_2" columnName="HEAD_CHANGED_AT"/>
+    </attribute>
+    <attribute id="ORDERADM_H_DUMMY" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDERADM_H_DUMMY"/>
+      <keyMapping columnObjectName="Join_2" columnName="ORDERADM_H_DUMMY"/>
+    </attribute>
+    <attribute id="INPUT_CHANNEL" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INPUT_CHANNEL"/>
+      <keyMapping columnObjectName="Join_2" columnName="INPUT_CHANNEL"/>
+    </attribute>
+    <attribute id="BTX_CLASS" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BTX_CLASS"/>
+      <keyMapping columnObjectName="Join_2" columnName="BTX_CLASS"/>
+    </attribute>
+    <attribute id="AUTH_SCOPE" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AUTH_SCOPE"/>
+      <keyMapping columnObjectName="Join_2" columnName="AUTH_SCOPE"/>
+    </attribute>
+    <attribute id="OBJECT_TYPE" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJECT_TYPE"/>
+      <keyMapping columnObjectName="Join_2" columnName="OBJECT_TYPE"/>
+    </attribute>
+    <attribute id="ARCHIVING_FLAG" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ARCHIVING_FLAG"/>
+      <keyMapping columnObjectName="Join_2" columnName="ARCHIVING_FLAG"/>
+    </attribute>
+    <attribute id="DESCRIPTION_UC" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION_UC"/>
+      <keyMapping columnObjectName="Join_2" columnName="DESCRIPTION_UC"/>
+    </attribute>
+    <attribute id="OBJECT_ID_OK" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJECT_ID_OK"/>
+      <keyMapping columnObjectName="Join_2" columnName="OBJECT_ID_OK"/>
+    </attribute>
+    <attribute id="VERIFY_DATE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VERIFY_DATE"/>
+      <keyMapping columnObjectName="Join_2" columnName="VERIFY_DATE"/>
+    </attribute>
+    <attribute id="CRM_CHANGED_AT" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRM_CHANGED_AT"/>
+      <keyMapping columnObjectName="Join_2" columnName="CRM_CHANGED_AT"/>
+    </attribute>
+    <attribute id="POSTPROCESS_AT" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSTPROCESS_AT"/>
+      <keyMapping columnObjectName="Join_2" columnName="POSTPROCESS_AT"/>
+    </attribute>
+    <attribute id="COMP_TX_HEADER" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMP_TX_HEADER"/>
+      <keyMapping columnObjectName="Join_2" columnName="COMP_TX_HEADER"/>
+    </attribute>
+    <attribute id="CATEGORY" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CATEGORY"/>
+      <keyMapping columnObjectName="Join_2" columnName="CATEGORY"/>
+    </attribute>
+    <attribute id="PRIORITY" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRIORITY"/>
+      <keyMapping columnObjectName="Join_2" columnName="PRIORITY"/>
+    </attribute>
+    <attribute id="OBJECTIVE" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJECTIVE"/>
+      <keyMapping columnObjectName="Join_2" columnName="OBJECTIVE"/>
+    </attribute>
+    <attribute id="DIRECTION" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIRECTION"/>
+      <keyMapping columnObjectName="Join_2" columnName="DIRECTION"/>
+    </attribute>
+    <attribute id="EXTERN_ACT_ID" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EXTERN_ACT_ID"/>
+      <keyMapping columnObjectName="Join_2" columnName="EXTERN_ACT_ID"/>
+    </attribute>
+    <attribute id="ADDRESS_ID" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRESS_ID"/>
+      <keyMapping columnObjectName="Join_2" columnName="ADDRESS_ID"/>
+    </attribute>
+    <attribute id="PRIVATE_FLAG" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRIVATE_FLAG"/>
+      <keyMapping columnObjectName="Join_2" columnName="PRIVATE_FLAG"/>
+    </attribute>
+    <attribute id="COMPLETION" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPLETION"/>
+      <keyMapping columnObjectName="Join_2" columnName="COMPLETION"/>
+    </attribute>
+    <attribute id="ACT_LOCATION" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ACT_LOCATION"/>
+      <keyMapping columnObjectName="Join_2" columnName="ACT_LOCATION"/>
+    </attribute>
+    <attribute id="ACTIVITY_H_DUMMY" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ACTIVITY_H_DUMMY"/>
+      <keyMapping columnObjectName="Join_2" columnName="ACTIVITY_H_DUMMY"/>
+    </attribute>
+    <attribute id="ZZSECURE_LEVEL" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZSECURE_LEVEL"/>
+      <keyMapping columnObjectName="Join_2" columnName="ZZSECURE_LEVEL"/>
+    </attribute>
+    <attribute id="CALENDAR" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALENDAR"/>
+      <keyMapping columnObjectName="Join_2" columnName="CALENDAR"/>
+    </attribute>
+    <attribute id="TASK" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TASK"/>
+      <keyMapping columnObjectName="Join_2" columnName="TASK"/>
+    </attribute>
+    <attribute id="CLASS" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLASS"/>
+      <keyMapping columnObjectName="Join_2" columnName="CLASS"/>
+    </attribute>
+    <attribute id="ZZFLD000087" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZFLD000087"/>
+      <keyMapping columnObjectName="Join_2" columnName="ZZFLD000087"/>
+    </attribute>
+    <attribute id="ZZFLD000088" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZFLD000088"/>
+      <keyMapping columnObjectName="Join_2" columnName="ZZFLD000088"/>
+    </attribute>
+    <attribute id="ZZFLD00008A" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZFLD00008A"/>
+      <keyMapping columnObjectName="Join_2" columnName="ZZFLD00008A"/>
+    </attribute>
+    <attribute id="ZZFLD00008D" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZFLD00008D"/>
+      <keyMapping columnObjectName="Join_2" columnName="ZZFLD00008D"/>
+    </attribute>
+    <attribute id="ZZFLD00008E" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZFLD00008E"/>
+      <keyMapping columnObjectName="Join_2" columnName="ZZFLD00008E"/>
+    </attribute>
+    <attribute id="ZZFLD00008F" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZFLD00008F"/>
+      <keyMapping columnObjectName="Join_2" columnName="ZZFLD00008F"/>
+    </attribute>
+    <attribute id="STAT" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STAT"/>
+      <keyMapping columnObjectName="Join_2" columnName="STAT"/>
+    </attribute>
+    <attribute id="INACT" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INACT"/>
+      <keyMapping columnObjectName="Join_2" columnName="INACT"/>
+    </attribute>
+    <attribute id="CHGNR" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHGNR"/>
+      <keyMapping columnObjectName="Join_2" columnName="CHGNR"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="387.3054833689427" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CRMD_ORDERADM_H" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92.00000000000009" y="501.9999976158142"/>
+      <rectangleSize height="30" width="209"/>
+    </shape>
+    <shape expanded="true" modelObjectName="CRMD_ACTIVITY_H" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="351.00000000000006" y="501.9999976158142"/>
+      <rectangleSize height="30" width="194"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="143.16666666666677" y="360.3333321412405"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="CRMD_ORDERADM_H" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="192.671875"/>
+    </shape>
+    <shape modelObjectName="CRMD_ACTIVITY_H" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="176.67578125"/>
+    </shape>
+    <shape expanded="true" modelObjectName="CRM_JEST" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="445.1054805134271" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="387.3054833689427" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="CRM_JEST" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
