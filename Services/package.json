@@ -3,9 +3,9 @@
     "@sap/xsjs": "5.3.1",
     "@sap/xsenv": "2.2.0"
   },
-  "description": "Services",
+  "description": "my description",
   "devDependencies": {
-    "@sap/xsjs-test": "^3.0.2"
+    "@sap/xsjs-test": "2.0.16"
   },
   "files": [],
   "main": "server.js",
