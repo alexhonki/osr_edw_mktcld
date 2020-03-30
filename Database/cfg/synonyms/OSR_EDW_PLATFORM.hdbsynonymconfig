@@ -147,6 +147,12 @@
 			"object": "osr.edw.staging.td.crm.proxy::CV_CRMD_PARTNER",
 			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
 		}
+	},
+	"osr.mktcld.db.synonyms::CRM_BUT000": {
+		"target": {
+			"object": "osr.edw.staging.md.crm.proxy::CV_BUT000",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
 	}
 
 }

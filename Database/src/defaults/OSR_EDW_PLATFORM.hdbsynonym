@@ -22,5 +22,6 @@
 	"osr.mktcld.db.synonyms::CRMD_LINK": {},
 	"osr.mktcld.db.synonyms::CRMD_SRV_SUBJECT": {},
 	"osr.mktcld.db.synonyms::CRMD_SRV_OSSET": {},
-	"osr.mktcld.db.synonyms::CRMD_PARTNER": {}
+	"osr.mktcld.db.synonyms::CRMD_PARTNER": {},
+	"osr.mktcld.db.synonyms::CRM_BUT000": {}
 }
