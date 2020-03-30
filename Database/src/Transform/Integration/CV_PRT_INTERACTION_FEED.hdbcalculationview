@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_INTERACTION_FEED" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PRT_INTERACTION_FEED"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld::CV_CRM_INTERACTION_CODE">
+    <resourceUri>osr.mktcld::CV_CRM_INTERACTION_CODE</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld::CV_CRM_INTERACTION_OPEN">
+    <resourceUri>osr.mktcld::CV_CRM_INTERACTION_OPEN</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_CRM_INTERACTION_CODE">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="GUID"/>
+      <viewAttribute id="OBJECT_ID"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="SCENARIO"/>
+      <viewAttribute id="INPUT_CHANNEL"/>
+      <viewAttribute id="OBJECT_TYPE"/>
+      <viewAttribute id="GUID_SET"/>
+      <viewAttribute id="OSSET_GUID"/>
+      <viewAttribute id="CODE"/>
+      <viewAttribute id="CODEGRUPPE"/>
+      <viewAttribute id="EXTERN_ACT_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_CRM_INTERACTION_CODE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_CRM_INTERACTION_OPEN">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="GUID"/>
+      <viewAttribute id="OBJECT_ID"/>
+      <viewAttribute id="PROCESS_TYPE"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="DESCR_LANGUAGE"/>
+      <viewAttribute id="LOGICAL_SYSTEM"/>
+      <viewAttribute id="CRM_RELEASE"/>
+      <viewAttribute id="SCENARIO"/>
+      <viewAttribute id="TEMPLATE_TYPE"/>
+      <viewAttribute id="CREATED_AT"/>
+      <viewAttribute id="CREATED_BY"/>
+      <viewAttribute id="CHANGED_AT"/>
+      <viewAttribute id="CHANGED_BY"/>
+      <viewAttribute id="HEAD_CHANGED_AT"/>
+      <viewAttribute id="ORDERADM_H_DUMMY"/>
+      <viewAttribute id="INPUT_CHANNEL"/>
+      <viewAttribute id="BTX_CLASS"/>
+      <viewAttribute id="AUTH_SCOPE"/>
+      <viewAttribute id="OBJECT_TYPE"/>
+      <viewAttribute id="ARCHIVING_FLAG"/>
+      <viewAttribute id="DESCRIPTION_UC"/>
+      <viewAttribute id="OBJECT_ID_OK"/>
+      <viewAttribute id="VERIFY_DATE"/>
+      <viewAttribute id="CRM_CHANGED_AT"/>
+      <viewAttribute id="POSTPROCESS_AT"/>
+      <viewAttribute id="COMP_TX_HEADER"/>
+      <viewAttribute id="CATEGORY"/>
+      <viewAttribute id="PRIORITY"/>
+      <viewAttribute id="OBJECTIVE"/>
+      <viewAttribute id="DIRECTION"/>
+      <viewAttribute id="EXTERN_ACT_ID"/>
+      <viewAttribute id="ADDRESS_ID"/>
+      <viewAttribute id="PRIVATE_FLAG"/>
+      <viewAttribute id="COMPLETION"/>
+      <viewAttribute id="ACT_LOCATION"/>
+      <viewAttribute id="ACTIVITY_H_DUMMY"/>
+      <viewAttribute id="ZZSECURE_LEVEL"/>
+      <viewAttribute id="CALENDAR"/>
+      <viewAttribute id="TASK"/>
+      <viewAttribute id="CLASS"/>
+      <viewAttribute id="ZZFLD000087"/>
+      <viewAttribute id="ZZFLD000088"/>
+      <viewAttribute id="ZZFLD00008A"/>
+      <viewAttribute id="ZZFLD00008D"/>
+      <viewAttribute id="ZZFLD00008E"/>
+      <viewAttribute id="ZZFLD00008F"/>
+      <viewAttribute id="STAT"/>
+      <viewAttribute id="INACT"/>
+      <viewAttribute id="CHGNR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_CRM_INTERACTION_OPEN"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="GUID"/>
+      <viewAttribute id="OBJECT_ID"/>
+      <viewAttribute id="POSTING_DATE"/>
+      <viewAttribute id="DESCRIPTION"/>
+      <viewAttribute id="SCENARIO"/>
+      <viewAttribute id="INPUT_CHANNEL"/>
+      <viewAttribute id="OBJECT_TYPE"/>
+      <viewAttribute id="GUID_SET"/>
+      <viewAttribute id="OSSET_GUID"/>
+      <viewAttribute id="CODE"/>
+      <viewAttribute id="CODEGRUPPE"/>
+      <viewAttribute id="EXTERN_ACT_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CV_CRM_INTERACTION_OPEN">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
+    </input>
+    <input node="CV_CRM_INTERACTION_CODE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCENARIO" source="SCENARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INPUT_CHANNEL" source="INPUT_CHANNEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OSSET_GUID" source="OSSET_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CODE" source="CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CODEGRUPPE" source="CODEGRUPPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EXTERN_ACT_ID" source="EXTERN_ACT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="GUID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="Join_1" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="GUID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GUID"/>
+      <keyMapping columnObjectName="Join_1" columnName="GUID"/>
+    </attribute>
+    <attribute id="OBJECT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJECT_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="OBJECT_ID"/>
+    </attribute>
+    <attribute id="POSTING_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POSTING_DATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="POSTING_DATE"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_1" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="SCENARIO" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SCENARIO"/>
+      <keyMapping columnObjectName="Join_1" columnName="SCENARIO"/>
+    </attribute>
+    <attribute id="INPUT_CHANNEL" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INPUT_CHANNEL"/>
+      <keyMapping columnObjectName="Join_1" columnName="INPUT_CHANNEL"/>
+    </attribute>
+    <attribute id="OBJECT_TYPE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBJECT_TYPE"/>
+      <keyMapping columnObjectName="Join_1" columnName="OBJECT_TYPE"/>
+    </attribute>
+    <attribute id="GUID_SET" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GUID_SET"/>
+      <keyMapping columnObjectName="Join_1" columnName="GUID_SET"/>
+    </attribute>
+    <attribute id="OSSET_GUID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OSSET_GUID"/>
+      <keyMapping columnObjectName="Join_1" columnName="OSSET_GUID"/>
+    </attribute>
+    <attribute id="CODE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CODE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CODE"/>
+    </attribute>
+    <attribute id="CODEGRUPPE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CODEGRUPPE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CODEGRUPPE"/>
+    </attribute>
+    <attribute id="EXTERN_ACT_ID" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EXTERN_ACT_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="EXTERN_ACT_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="350.95934586308954" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_CODE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="376.9999988079071"/>
+      <rectangleSize height="30" width="268"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_OPEN" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="410" y="376.9999988079071"/>
+      <rectangleSize height="30" width="261"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="350.95934586308954" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="CV_CRM_INTERACTION_OPEN" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="244"/>
+    </shape>
+    <shape modelObjectName="CV_CRM_INTERACTION_CODE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="244"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

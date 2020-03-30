@@ -1,50 +1,152 @@
 {
-  "osr.mktcld.db.synonyms::BUT000": {
-    "target": {
-      "object": "osr.edw.propagation.rms.proxy::CV_BUT000",
-      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-    }
-  },
-  "osr.mktcld.db.synonyms::BUT021_FS": {
-    "target": {
-      "object": "osr.edw.staging.md.rms.proxy::CV_BUT021FS",
-      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-    }
-  },
-  "osr.mktcld.db.synonyms::ADRC": {
-    "target": {
-      "object": "osr.edw.propagation.rms.proxy::CV_ADRC",
-      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-    }
-  },
-   "osr.mktcld.db.synonyms::ADR6": {
-    "target": {
-      "object": "osr.edw.propagation.rms.proxy::CV_ADR6",
-      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-    }
-  },
-   "osr.mktcld.db.synonyms::ADR2": {
-    "target": {
-      "object": "osr.edw.staging.md.rms.proxy::CV_ADR2",
-      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-    }
-  },
-  "osr.mktcld.db.synonyms::ACTIVE_PROCEDURES": {
-    "target": {
-      "object": "osr.hana.platform::CV_ACTIVE_PROCEDURES",
-      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-    }
-  },
-  "osr.mktcld.db.synonyms::ACTIVE_STATEMENTS": {
-    "target": {
-      "object": "osr.hana.platform::CV_ACTIVE_STATEMENTS",
-      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-    }
-  },
-  "osr.mktcld.db.synonyms::BUT100": {
-    "target": {
-      "object": "osr.edw.staging.md.rms.proxy::CV_BUT100",
-      "schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-    }
-  }
+	"osr.mktcld.db.synonyms::BUT000": {
+		"target": {
+			"object": "osr.edw.propagation.rms.proxy::CV_BUT000",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::BUT021FS": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_BUT021FS",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::ADRC": {
+		"target": {
+			"object": "osr.edw.propagation.rms.proxy::CV_ADRC",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::ADR6": {
+		"target": {
+			"object": "osr.edw.propagation.rms.proxy::CV_ADR6",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::ADR2": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_ADR2",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::BUT100": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_BUT100",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::BUT050": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_BUT050",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::BUT0ID": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_BUT0ID",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::DPSOB_BP_ACC": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_DPSOB_BP_ACC",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::DFACTS": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_DFACTS",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::BUT000_Current": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_BUT000_Current",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+
+	"osr.mktcld.db.synonyms::AGENCY_DATA": {
+		"target": {
+			"object": "osr.edw.staging.md.abr.proxy::CV_AGENCY_DATA",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+
+	"osr.mktcld.db.synonyms::COMPANY_REGISTER": {
+		"target": {
+			"object": "osr.edw.staging.md.asic.proxy::CV_COMPANY_REGISTER",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::ORG_STATUS": {
+		"target": {
+			"object": "osr.edw.source.md.asic.proxy::CV_ORG_STATUS",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+
+	"osr.mktcld.db.synonyms::TF_PRT_BP_REG_FACTS": {
+		"target": {
+			"object": "osr.edw.platform.fra.prt.dt.abn::TF_PRT_BP_REG_FACTS",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+
+	"osr.mktcld.db.synonyms::CRMD_ORDERADM_H": {
+		"target": {
+			"object": "osr.edw.staging.td.crm.proxy::CV_CRMD_ORDERADM_H",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::CRMD_ACTIVITY_H": {
+		"target": {
+			"object": "osr.edw.staging.td.crm.proxy::CV_CRMD_ACTIVITY_H",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::CRM_JEST": {
+		"target": {
+			"object": "osr.edw.staging.td.crm.proxy::CV_CRM_JEST",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::CRMD_LINK": {
+		"target": {
+			"object": "osr.edw.staging.td.crm.proxy::CV_CRMD_LINK",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::CRMD_SRV_SUBJECT": {
+		"target": {
+			"object": "osr.edw.staging.td.crm.proxy::CV_CRMD_SRV_SUBJECT",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::CRMD_SRV_OSSET": {
+		"target": {
+			"object": "osr.edw.staging.td.crm.proxy::CV_CRMD_SRV_OSSET",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+
+	"osr.mktcld.db.synonyms::ACTIVE_PROCEDURES": {
+		"target": {
+			"object": "osr.hana.platform::CV_ACTIVE_PROCEDURES",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::ACTIVE_STATEMENTS": {
+		"target": {
+			"object": "osr.hana.platform::CV_ACTIVE_STATEMENTS",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::CRMD_PARTNER": {
+		"target": {
+			"object": "osr.edw.staging.td.crm.proxy::CV_CRMD_PARTNER",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	}
+
 }

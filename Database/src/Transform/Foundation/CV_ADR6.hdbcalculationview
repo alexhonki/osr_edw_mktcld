@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_ADR6" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_ADR6"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.db.synonyms::ADR6">
+    <resourceUri>osr.mktcld.db.synonyms::ADR6</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ADR6">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="PERSNUMBER"/>
+      <viewAttribute id="DATE_FROM"/>
+      <viewAttribute id="CONSNUMBER"/>
+      <viewAttribute id="FLGDEFAULT"/>
+      <viewAttribute id="FLG_NOUSE"/>
+      <viewAttribute id="HOME_FLAG"/>
+      <viewAttribute id="SMTP_ADDR"/>
+      <viewAttribute id="SMTP_SRCH"/>
+      <viewAttribute id="DFT_RECEIV"/>
+      <viewAttribute id="R3_USER"/>
+      <viewAttribute id="ENCODE"/>
+      <viewAttribute id="TNEF"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+      <viewAttribute id="STD_EMAIL"/>
+      <viewAttribute id="EMAIL_EXTRA"/>
+      <viewAttribute id="EMAIL_INFO_CODE"/>
+      <viewAttribute id="MATCH_EMAIL_USER"/>
+      <viewAttribute id="MATCH_EMAIL_DOMAIN"/>
+      <viewAttribute id="Cleanse_TABLE_ID"/>
+      <viewAttribute id="Cleanse_ROW_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::ADR6"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="ADR6">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="ADR6" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="ADDRNUMBER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRNUMBER"/>
+      <keyMapping columnObjectName="ADR6" columnName="ADDRNUMBER"/>
+    </attribute>
+    <attribute id="PERSNUMBER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PERSNUMBER"/>
+      <keyMapping columnObjectName="ADR6" columnName="PERSNUMBER"/>
+    </attribute>
+    <attribute id="DATE_FROM" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_FROM"/>
+      <keyMapping columnObjectName="ADR6" columnName="DATE_FROM"/>
+    </attribute>
+    <attribute id="CONSNUMBER" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONSNUMBER"/>
+      <keyMapping columnObjectName="ADR6" columnName="CONSNUMBER"/>
+    </attribute>
+    <attribute id="FLGDEFAULT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLGDEFAULT"/>
+      <keyMapping columnObjectName="ADR6" columnName="FLGDEFAULT"/>
+    </attribute>
+    <attribute id="FLG_NOUSE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FLG_NOUSE"/>
+      <keyMapping columnObjectName="ADR6" columnName="FLG_NOUSE"/>
+    </attribute>
+    <attribute id="HOME_FLAG" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HOME_FLAG"/>
+      <keyMapping columnObjectName="ADR6" columnName="HOME_FLAG"/>
+    </attribute>
+    <attribute id="SMTP_ADDR" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SMTP_ADDR"/>
+      <keyMapping columnObjectName="ADR6" columnName="SMTP_ADDR"/>
+    </attribute>
+    <attribute id="SMTP_SRCH" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SMTP_SRCH"/>
+      <keyMapping columnObjectName="ADR6" columnName="SMTP_SRCH"/>
+    </attribute>
+    <attribute id="DFT_RECEIV" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DFT_RECEIV"/>
+      <keyMapping columnObjectName="ADR6" columnName="DFT_RECEIV"/>
+    </attribute>
+    <attribute id="R3_USER" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="R3_USER"/>
+      <keyMapping columnObjectName="ADR6" columnName="R3_USER"/>
+    </attribute>
+    <attribute id="ENCODE" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ENCODE"/>
+      <keyMapping columnObjectName="ADR6" columnName="ENCODE"/>
+    </attribute>
+    <attribute id="TNEF" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TNEF"/>
+      <keyMapping columnObjectName="ADR6" columnName="TNEF"/>
+    </attribute>
+    <attribute id="VALID_FROM" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_FROM"/>
+      <keyMapping columnObjectName="ADR6" columnName="VALID_FROM"/>
+    </attribute>
+    <attribute id="VALID_TO" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_TO"/>
+      <keyMapping columnObjectName="ADR6" columnName="VALID_TO"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TYPE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TYPE"/>
+      <keyMapping columnObjectName="ADR6" columnName="Z_CHANGE_TYPE"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TIME" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TIME"/>
+      <keyMapping columnObjectName="ADR6" columnName="Z_CHANGE_TIME"/>
+    </attribute>
+    <attribute id="Z_SOURCE_SYS" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_SOURCE_SYS"/>
+      <keyMapping columnObjectName="ADR6" columnName="Z_SOURCE_SYS"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="ADR6" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="Z_RUN_SEQ_ID" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_SEQ_ID"/>
+      <keyMapping columnObjectName="ADR6" columnName="Z_RUN_SEQ_ID"/>
+    </attribute>
+    <attribute id="STD_EMAIL" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STD_EMAIL"/>
+      <keyMapping columnObjectName="ADR6" columnName="STD_EMAIL"/>
+    </attribute>
+    <attribute id="EMAIL_EXTRA" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAIL_EXTRA"/>
+      <keyMapping columnObjectName="ADR6" columnName="EMAIL_EXTRA"/>
+    </attribute>
+    <attribute id="EMAIL_INFO_CODE" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAIL_INFO_CODE"/>
+      <keyMapping columnObjectName="ADR6" columnName="EMAIL_INFO_CODE"/>
+    </attribute>
+    <attribute id="MATCH_EMAIL_USER" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATCH_EMAIL_USER"/>
+      <keyMapping columnObjectName="ADR6" columnName="MATCH_EMAIL_USER"/>
+    </attribute>
+    <attribute id="MATCH_EMAIL_DOMAIN" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MATCH_EMAIL_DOMAIN"/>
+      <keyMapping columnObjectName="ADR6" columnName="MATCH_EMAIL_DOMAIN"/>
+    </attribute>
+    <attribute id="Cleanse_TABLE_ID" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Cleanse_TABLE_ID"/>
+      <keyMapping columnObjectName="ADR6" columnName="Cleanse_TABLE_ID"/>
+    </attribute>
+    <attribute id="Cleanse_ROW_ID" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Cleanse_ROW_ID"/>
+      <keyMapping columnObjectName="ADR6" columnName="Cleanse_ROW_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="ADR6" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

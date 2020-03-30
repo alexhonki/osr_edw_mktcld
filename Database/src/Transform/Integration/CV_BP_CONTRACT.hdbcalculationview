@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_BP_CONTRACT" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_BP_CONTRACT"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld::CV_DPSOB_BP_ACC">
+    <resourceUri>osr.mktcld::CV_DPSOB_BP_ACC</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld::CV_DFACTS">
+    <resourceUri>osr.mktcld::CV_DFACTS</resourceUri>
+  </DataSource>
+  <DataSource id="DFACTS_REGISTRATION_DATE$$$$osr.mktcld::CV_DFACTS$$">
+    <resourceUri>osr.mktcld::CV_DFACTS</resourceUri>
+  </DataSource>
+  <DataSource id="DFACTS_LODGEMENT_FREQUENCY$$$$osr.mktcld::CV_DFACTS$$">
+    <resourceUri>osr.mktcld::CV_DFACTS</resourceUri>
+  </DataSource>
+  <DataSource id="DFACTS_LIABILITY_START_DATE$$$$osr.mktcld::CV_DFACTS$$">
+    <resourceUri>osr.mktcld::CV_DFACTS</resourceUri>
+  </DataSource>
+  <DataSource id="DFACTS_EMPLOYER_STATUS$$$$osr.mktcld::CV_DFACTS$$">
+    <resourceUri>osr.mktcld::CV_DFACTS</resourceUri>
+  </DataSource>
+  <DataSource id="DFACTS_FIRST_RETURN_DATE$$$$osr.mktcld::CV_DFACTS$$">
+    <resourceUri>osr.mktcld::CV_DFACTS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DPSOB_BP_ACC" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="XOBSL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_DPSOB_BP_ACC"/>
+    <filter>&quot;PARTNERACCTYP&quot;='PT' and &quot;XOBSL&quot; &lt;&gt; 'X'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_GROUP_STATUS" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="OBART"/>
+      <viewAttribute id="OBJID"/>
+      <viewAttribute id="FACT_TYPE_SEQ"/>
+      <viewAttribute id="FACT_TYPE_REP"/>
+      <viewAttribute id="FACT_CAT_SEQ"/>
+      <viewAttribute id="FACT_CAT_REP"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="FACT_SET"/>
+      <viewAttribute id="FACT_TYPE"/>
+      <viewAttribute id="FACT_CATEGORY"/>
+    
+      <viewAttribute id="GROUP_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_DFACTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="VALUE_GENERIC"/>
+    </input>
+    <filter>&quot;FACT_SET&quot;='ZPTX' and
+TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and 
+&quot;FACT_TYPE_SEQ&quot;='0030' and
+&quot;FACT_CAT_SEQ&quot;='11'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="GROUP_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DPSOB_BP_ACC">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="PSOBKEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACCTYP" source="PARTNERACCTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
+    </input>
+    <input node="DFACTS_GROUP_STATUS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="OBJID"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="PSOBKEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_REGISTRATION_DATE" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="OBART"/>
+      <viewAttribute id="OBJID"/>
+      <viewAttribute id="FACT_TYPE_SEQ"/>
+      <viewAttribute id="FACT_TYPE_REP"/>
+      <viewAttribute id="FACT_CAT_SEQ"/>
+      <viewAttribute id="FACT_CAT_REP"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="FACT_SET"/>
+      <viewAttribute id="FACT_TYPE"/>
+      <viewAttribute id="FACT_CATEGORY"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input emptyUnionBehavior="undefined" node="DFACTS_REGISTRATION_DATE$$$$osr.mktcld::CV_DFACTS$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="VALUE_GENERIC"/>
+    </input>
+    <filter>&quot;FACT_SET&quot;='ZPTX' and
+TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and 
+&quot;FACT_TYPE_SEQ&quot;='0010' and 
+&quot;FACT_CAT_SEQ&quot;='81'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="PSOBKEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACCTYP" source="PARTNERACCTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+    </input>
+    <input node="DFACTS_REGISTRATION_DATE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="OBJID"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="PSOBKEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_LODGEMENT_FREQUENCY" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="OBART"/>
+      <viewAttribute id="OBJID"/>
+      <viewAttribute id="FACT_TYPE_SEQ"/>
+      <viewAttribute id="FACT_TYPE_REP"/>
+      <viewAttribute id="FACT_CAT_SEQ"/>
+      <viewAttribute id="FACT_CAT_REP"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="FACT_SET"/>
+      <viewAttribute id="FACT_TYPE"/>
+      <viewAttribute id="FACT_CATEGORY"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input emptyUnionBehavior="undefined" node="DFACTS_LODGEMENT_FREQUENCY$$$$osr.mktcld::CV_DFACTS$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="VALUE_GENERIC"/>
+    </input>
+    <filter>&quot;FACT_SET&quot;='ZPTX' and
+TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and 
+&quot;FACT_TYPE_SEQ&quot;='0010' and 
+&quot;FACT_CAT_SEQ&quot;='83'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_LIABILITY_START_DATE" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="OBART"/>
+      <viewAttribute id="OBJID"/>
+      <viewAttribute id="FACT_TYPE_SEQ"/>
+      <viewAttribute id="FACT_TYPE_REP"/>
+      <viewAttribute id="FACT_CAT_SEQ"/>
+      <viewAttribute id="FACT_CAT_REP"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="FACT_SET"/>
+      <viewAttribute id="FACT_TYPE"/>
+      <viewAttribute id="FACT_CATEGORY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input emptyUnionBehavior="undefined" node="DFACTS_LIABILITY_START_DATE$$$$osr.mktcld::CV_DFACTS$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="VALUE_GENERIC"/>
+    </input>
+    <filter>&quot;FACT_SET&quot;='ZPTX' and
+TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and 
+&quot;FACT_TYPE_SEQ&quot;='0030' and 
+&quot;FACT_CAT_SEQ&quot;='20'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="PSOBKEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACCTYP" source="PARTNERACCTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
+    </input>
+    <input node="DFACTS_LODGEMENT_FREQUENCY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="OBJID"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="PSOBKEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_3">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="PSOBKEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACCTYP" source="PARTNERACCTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
+    </input>
+    <input node="DFACTS_LIABILITY_START_DATE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="OBJID"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="PSOBKEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_EMPLOYER_STATUS" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="OBART"/>
+      <viewAttribute id="OBJID"/>
+      <viewAttribute id="FACT_TYPE_SEQ"/>
+      <viewAttribute id="FACT_TYPE_REP"/>
+      <viewAttribute id="FACT_CAT_SEQ"/>
+      <viewAttribute id="FACT_CAT_REP"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="FACT_SET"/>
+      <viewAttribute id="FACT_TYPE"/>
+      <viewAttribute id="FACT_CATEGORY"/>
+      <viewAttribute id="EMPLOYER_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input emptyUnionBehavior="undefined" node="DFACTS_EMPLOYER_STATUS$$$$osr.mktcld::CV_DFACTS$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="VALUE_GENERIC"/>
+    </input>
+    <filter>&quot;FACT_SET&quot;='ZPTX' and
+TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and 
+&quot;FACT_TYPE_SEQ&quot;='0030' and 
+&quot;FACT_CAT_SEQ&quot;='13'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+      <viewAttribute id="EMPLOYER_STATUS"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="PSOBKEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACCTYP" source="PARTNERACCTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
+    </input>
+    <input node="DFACTS_EMPLOYER_STATUS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="OBJID"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="PSOBKEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PSOBKEY"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNERACCTYP"/>
+      <viewAttribute id="PARTNERACC"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+      <viewAttribute id="EMPLOYER_STATUS"/>
+      <viewAttribute id="FIRST_RETURN_DATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_5">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="PSOBKEY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACCTYP" source="PARTNERACCTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNERACC" source="PARTNERACC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
+    </input>
+    <input node="DFACTS_FIRST_RETURN_DATE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="FIRST_RETURN_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="OBJID"/>
+    </input>
+    <joinAttribute name="CLIENT"/>
+    <joinAttribute name="PSOBKEY"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_FIRST_RETURN_DATE" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="OBART"/>
+      <viewAttribute id="OBJID"/>
+      <viewAttribute id="FACT_TYPE_SEQ"/>
+      <viewAttribute id="FACT_TYPE_REP"/>
+      <viewAttribute id="FACT_CAT_SEQ"/>
+      <viewAttribute id="FACT_CAT_REP"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="FACT_SET"/>
+      <viewAttribute id="FACT_TYPE"/>
+      <viewAttribute id="FACT_CATEGORY"/>
+      <viewAttribute id="FIRST_RETURN_DATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input emptyUnionBehavior="undefined" node="DFACTS_FIRST_RETURN_DATE$$$$osr.mktcld::CV_DFACTS$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="VALUE_GENERIC"/>
+    </input>
+    <filter>&quot;FACT_SET&quot;='ZPTX' and
+TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and 
+&quot;FACT_CATEGORY&quot;='0014' and 
+&quot;FACT_CAT_SEQ&quot;='50' and
+&quot;FACT_TYPE&quot;='RG01'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_6">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="Join_6" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="PSOBKEY" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PSOBKEY"/>
+      <keyMapping columnObjectName="Join_6" columnName="PSOBKEY"/>
+    </attribute>
+    <attribute id="PARTNER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER"/>
+      <keyMapping columnObjectName="Join_6" columnName="PARTNER"/>
+    </attribute>
+    <attribute id="PARTNERACCTYP" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNERACCTYP"/>
+      <keyMapping columnObjectName="Join_6" columnName="PARTNERACCTYP"/>
+    </attribute>
+    <attribute id="PARTNERACC" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNERACC"/>
+      <keyMapping columnObjectName="Join_6" columnName="PARTNERACC"/>
+    </attribute>
+    <attribute id="GROUP_STATUS" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GROUP_STATUS"/>
+      <keyMapping columnObjectName="Join_6" columnName="GROUP_STATUS"/>
+    </attribute>
+    <attribute id="REGISTRATION_DATE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGISTRATION_DATE"/>
+      <keyMapping columnObjectName="Join_6" columnName="REGISTRATION_DATE"/>
+    </attribute>
+    <attribute id="LODGEMENT_FREQUENCY" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LODGEMENT_FREQUENCY"/>
+      <keyMapping columnObjectName="Join_6" columnName="LODGEMENT_FREQUENCY"/>
+    </attribute>
+    <attribute id="LIABILITY_START_DATE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LIABILITY_START_DATE"/>
+      <keyMapping columnObjectName="Join_6" columnName="LIABILITY_START_DATE"/>
+    </attribute>
+    <attribute id="EMPLOYER_STATUS" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYER_STATUS"/>
+      <keyMapping columnObjectName="Join_6" columnName="EMPLOYER_STATUS"/>
+    </attribute>
+  
+    <attribute id="FIRST_RETURN_DATE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRST_RETURN_DATE"/>
+      <keyMapping columnObjectName="Join_6" columnName="FIRST_RETURN_DATE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="1033.1098957838797" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="DPSOB_BP_ACC" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91.99999999999991" y="1156.9999928474426"/>
+      <rectangleSize height="30" width="237"/>
+    </shape>
+    <shape expanded="true" modelObjectName="DFACTS_GROUP_STATUS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="378.99999999999966" y="1156.9999928474426"/>
+      <rectangleSize height="30" width="213"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="157.16666666666643" y="996.9999940395355"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="DPSOB_BP_ACC" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="186"/>
+    </shape>
+    <shape modelObjectName="DFACTS_GROUP_STATUS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="238"/>
+    </shape>
+    <shape expanded="true" modelObjectName="DFACTS_REGISTRATION_DATE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="446.96196636538025" y="996.9999940395355"/>
+      <rectangleSize width="245"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="183.83333333333306" y="836.9999952316284"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="DFACTS_REGISTRATION_DATE" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="246"/>
+    </shape>
+    <shape expanded="true" modelObjectName="DFACTS_LODGEMENT_FREQUENCY" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="564.3361598155817" y="836.9999952316284"/>
+      <rectangleSize width="301"/>
+    </shape>
+    <shape expanded="true" modelObjectName="DFACTS_LIABILITY_START_DATE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="719.8181087457898" y="676.9999964237213"/>
+      <rectangleSize width="251"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="210.49999999999957" y="676.9999964237213"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="202"/>
+    </shape>
+    <shape modelObjectName="DFACTS_LODGEMENT_FREQUENCY" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="277"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="237.1666666666661" y="516.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="230"/>
+    </shape>
+    <shape modelObjectName="DFACTS_LIABILITY_START_DATE" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="260"/>
+    </shape>
+    <shape expanded="true" modelObjectName="DFACTS_EMPLOYER_STATUS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="874.5384232943564" y="516.9999976158142"/>
+      <rectangleSize width="226"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="263.8333333333327" y="356.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="230"/>
+    </shape>
+    <shape modelObjectName="DFACTS_EMPLOYER_STATUS" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="238"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1033.1098957838797" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="DFACTS_FIRST_RETURN_DATE" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="248.458984375"/>
+    </shape>
+    <shape expanded="true" modelObjectName="DFACTS_FIRST_RETURN_DATE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="1030.2586649473205" y="356.9999988079071"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

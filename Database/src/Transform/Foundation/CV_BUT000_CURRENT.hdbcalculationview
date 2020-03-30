@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_BUT000_CURRENT" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_BUT000_CURRENT"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.db.synonyms::BUT000_Current">
+    <resourceUri>osr.mktcld.db.synonyms::BUT000_Current</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BUT000_CURRENT">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="NAME_LAST"/>
+      <viewAttribute id="NAME1_TEXT"/>
+      <viewAttribute id="XSEXF"/>
+      <viewAttribute id="BPEXT"/>
+      <viewAttribute id="CHDAT"/>
+      <viewAttribute id="NAME_ORG3"/>
+      <viewAttribute id="BIRTHDT"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NICKNAME"/>
+      <viewAttribute id="BIRTHPL"/>
+      <viewAttribute id="BU_SORT1"/>
+      <viewAttribute id="CHTIM"/>
+      <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="DEATHDT"/>
+      <viewAttribute id="NAME_LST2"/>
+      <viewAttribute id="INITIALS"/>
+      <viewAttribute id="PARTGRPTYP"/>
+      <viewAttribute id="NOT_RELEASED"/>
+      <viewAttribute id="MARST"/>
+      <viewAttribute id="BU_SORT2"/>
+      <viewAttribute id="PARTNER_GUID"/>
+      <viewAttribute id="LEGAL_ENTY"/>
+      <viewAttribute id="PERNO"/>
+      <viewAttribute id="NAME_LAST2"/>
+      <viewAttribute id="NAME_GRP1"/>
+      <viewAttribute id="NOT_LG_COMPETENT"/>
+      <viewAttribute id="EMPLO"/>
+      <viewAttribute id="SOURCE"/>
+      <viewAttribute id="ADDRCOMM"/>
+      <viewAttribute id="IND_SECTOR"/>
+      <viewAttribute id="CHILDREN"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_GRP2"/>
+      <viewAttribute id="PRINT_MODE"/>
+      <viewAttribute id="KBANKS"/>
+      <viewAttribute id="NATIO"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="TD_SWITCH"/>
+      <viewAttribute id="LEGAL_ORG"/>
+      <viewAttribute id="MEM_HOUSE"/>
+      <viewAttribute id="TITLE_ACA1"/>
+      <viewAttribute id="MC_NAME1"/>
+      <viewAttribute id="BP_EEW_DUMMY"/>
+      <viewAttribute id="KBANKL"/>
+      <viewAttribute id="CNTAX"/>
+      <viewAttribute id="XDELE"/>
+      <viewAttribute id="IS_ORG_CENTRE"/>
+      <viewAttribute id="FOUND_DAT"/>
+      <viewAttribute id="MC_NAME2"/>
+      <viewAttribute id="TITLE_LET"/>
+      <viewAttribute id="ZZELMREFEREN"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+      <viewAttribute id="CNDSC"/>
+      <viewAttribute id="XBLCK"/>
+      <viewAttribute id="DB_KEY"/>
+      <viewAttribute id="LIQUID_DAT"/>
+      <viewAttribute id="TITLE_ACA2"/>
+      <viewAttribute id="NATPERS"/>
+      <viewAttribute id="NAMEFORMAT"/>
+      <viewAttribute id="Z_RUN_SEQ_ID"/>
+      <viewAttribute id="CRUSR"/>
+      <viewAttribute id="BU_LOGSYS"/>
+      <viewAttribute id="ZZLANDTAXMOR"/>
+      <viewAttribute id="Z_CURR_FLAG"/>
+      <viewAttribute id="PERSNUMBER"/>
+      <viewAttribute id="AUGRP"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="LOCATION_1"/>
+      <viewAttribute id="TITLE_ROYL"/>
+      <viewAttribute id="PAR_REL"/>
+      <viewAttribute id="NAMCOUNTRY"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="CRDAT"/>
+      <viewAttribute id="CONTACT"/>
+      <viewAttribute id="ZZCALENDARRE"/>
+      <viewAttribute id="Z_VALID_FROM"/>
+      <viewAttribute id="XSEXU"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="LOCATION_2"/>
+      <viewAttribute id="PREFIX1"/>
+      <viewAttribute id="BP_SORT"/>
+      <viewAttribute id="LANGU_CORR"/>
+      <viewAttribute id="BPKIND"/>
+      <viewAttribute id="CRTIM"/>
+      <viewAttribute id="NAME_ORG1"/>
+      <viewAttribute id="XUBNAME"/>
+      <viewAttribute id="XPCPT"/>
+      <viewAttribute id="LOCATION_3"/>
+      <viewAttribute id="PREFIX2"/>
+      <viewAttribute id="XSEXM"/>
+      <viewAttribute id="BU_GROUP"/>
+      <viewAttribute id="CHUSR"/>
+      <viewAttribute id="NAME_ORG2"/>
+      <viewAttribute id="BU_LANGU"/>
+      <viewAttribute id="Z_SOURCE_SYS"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="Z_CHANGE_TYPE"/>
+      <viewAttribute id="Z_VALID_TO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::BUT000_Current"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="BUT000_CURRENT">
+  <attributes>
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="PARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PARTNER"/>
+    </attribute>
+    <attribute id="NAME_LAST" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_LAST"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_LAST"/>
+    </attribute>
+    <attribute id="NAME1_TEXT" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME1_TEXT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME1_TEXT"/>
+    </attribute>
+    <attribute id="XSEXF" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XSEXF"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="XSEXF"/>
+    </attribute>
+    <attribute id="BPEXT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BPEXT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BPEXT"/>
+    </attribute>
+    <attribute id="CHDAT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHDAT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CHDAT"/>
+    </attribute>
+    <attribute id="NAME_ORG3" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_ORG3"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_ORG3"/>
+    </attribute>
+    <attribute id="BIRTHDT" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BIRTHDT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BIRTHDT"/>
+    </attribute>
+    <attribute id="NAME_FIRST" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_FIRST"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_FIRST"/>
+    </attribute>
+    <attribute id="NICKNAME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NICKNAME"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NICKNAME"/>
+    </attribute>
+    <attribute id="BIRTHPL" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BIRTHPL"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BIRTHPL"/>
+    </attribute>
+    <attribute id="BU_SORT1" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BU_SORT1"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BU_SORT1"/>
+    </attribute>
+    <attribute id="CHTIM" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHTIM"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CHTIM"/>
+    </attribute>
+    <attribute id="NAME_ORG4" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_ORG4"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_ORG4"/>
+    </attribute>
+    <attribute id="DEATHDT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEATHDT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="DEATHDT"/>
+    </attribute>
+    <attribute id="NAME_LST2" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_LST2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_LST2"/>
+    </attribute>
+    <attribute id="INITIALS" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INITIALS"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="INITIALS"/>
+    </attribute>
+    <attribute id="PARTGRPTYP" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTGRPTYP"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PARTGRPTYP"/>
+    </attribute>
+    <attribute id="NOT_RELEASED" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOT_RELEASED"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NOT_RELEASED"/>
+    </attribute>
+    <attribute id="MARST" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MARST"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="MARST"/>
+    </attribute>
+    <attribute id="BU_SORT2" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BU_SORT2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BU_SORT2"/>
+    </attribute>
+    <attribute id="PARTNER_GUID" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER_GUID"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PARTNER_GUID"/>
+    </attribute>
+    <attribute id="LEGAL_ENTY" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LEGAL_ENTY"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="LEGAL_ENTY"/>
+    </attribute>
+    <attribute id="PERNO" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PERNO"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PERNO"/>
+    </attribute>
+    <attribute id="NAME_LAST2" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_LAST2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_LAST2"/>
+    </attribute>
+    <attribute id="NAME_GRP1" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_GRP1"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_GRP1"/>
+    </attribute>
+    <attribute id="NOT_LG_COMPETENT" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOT_LG_COMPETENT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NOT_LG_COMPETENT"/>
+    </attribute>
+    <attribute id="EMPLO" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLO"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="EMPLO"/>
+    </attribute>
+    <attribute id="SOURCE" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOURCE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="SOURCE"/>
+    </attribute>
+    <attribute id="ADDRCOMM" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRCOMM"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="ADDRCOMM"/>
+    </attribute>
+    <attribute id="IND_SECTOR" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_SECTOR"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="IND_SECTOR"/>
+    </attribute>
+    <attribute id="CHILDREN" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHILDREN"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CHILDREN"/>
+    </attribute>
+    <attribute id="NAMEMIDDLE" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAMEMIDDLE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAMEMIDDLE"/>
+    </attribute>
+    <attribute id="NAME_GRP2" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_GRP2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_GRP2"/>
+    </attribute>
+    <attribute id="PRINT_MODE" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRINT_MODE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PRINT_MODE"/>
+    </attribute>
+    <attribute id="KBANKS" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KBANKS"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="KBANKS"/>
+    </attribute>
+    <attribute id="NATIO" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NATIO"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NATIO"/>
+    </attribute>
+    <attribute id="TITLE" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="TITLE"/>
+    </attribute>
+    <attribute id="TD_SWITCH" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TD_SWITCH"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="TD_SWITCH"/>
+    </attribute>
+    <attribute id="LEGAL_ORG" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LEGAL_ORG"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="LEGAL_ORG"/>
+    </attribute>
+    <attribute id="MEM_HOUSE" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MEM_HOUSE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="MEM_HOUSE"/>
+    </attribute>
+    <attribute id="TITLE_ACA1" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE_ACA1"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="TITLE_ACA1"/>
+    </attribute>
+    <attribute id="MC_NAME1" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MC_NAME1"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="MC_NAME1"/>
+    </attribute>
+    <attribute id="BP_EEW_DUMMY" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_EEW_DUMMY"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BP_EEW_DUMMY"/>
+    </attribute>
+    <attribute id="KBANKL" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="KBANKL"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="KBANKL"/>
+    </attribute>
+    <attribute id="CNTAX" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNTAX"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CNTAX"/>
+    </attribute>
+    <attribute id="XDELE" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XDELE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="XDELE"/>
+    </attribute>
+    <attribute id="IS_ORG_CENTRE" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IS_ORG_CENTRE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="IS_ORG_CENTRE"/>
+    </attribute>
+    <attribute id="FOUND_DAT" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FOUND_DAT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="FOUND_DAT"/>
+    </attribute>
+    <attribute id="MC_NAME2" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MC_NAME2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="MC_NAME2"/>
+    </attribute>
+    <attribute id="TITLE_LET" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE_LET"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="TITLE_LET"/>
+    </attribute>
+    <attribute id="ZZELMREFEREN" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZELMREFEREN"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="ZZELMREFEREN"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TIME" order="54" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TIME"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="Z_CHANGE_TIME"/>
+    </attribute>
+    <attribute id="CNDSC" order="55" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNDSC"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CNDSC"/>
+    </attribute>
+    <attribute id="XBLCK" order="56" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XBLCK"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="XBLCK"/>
+    </attribute>
+    <attribute id="DB_KEY" order="57" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DB_KEY"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="DB_KEY"/>
+    </attribute>
+    <attribute id="LIQUID_DAT" order="58" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LIQUID_DAT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="LIQUID_DAT"/>
+    </attribute>
+    <attribute id="TITLE_ACA2" order="59" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE_ACA2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="TITLE_ACA2"/>
+    </attribute>
+    <attribute id="NATPERS" order="60" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NATPERS"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NATPERS"/>
+    </attribute>
+    <attribute id="NAMEFORMAT" order="61" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAMEFORMAT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAMEFORMAT"/>
+    </attribute>
+    <attribute id="Z_RUN_SEQ_ID" order="62" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_SEQ_ID"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="Z_RUN_SEQ_ID"/>
+    </attribute>
+    <attribute id="CRUSR" order="63" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRUSR"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CRUSR"/>
+    </attribute>
+    <attribute id="BU_LOGSYS" order="64" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BU_LOGSYS"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BU_LOGSYS"/>
+    </attribute>
+    <attribute id="ZZLANDTAXMOR" order="65" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZLANDTAXMOR"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="ZZLANDTAXMOR"/>
+    </attribute>
+    <attribute id="Z_CURR_FLAG" order="66" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CURR_FLAG"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="Z_CURR_FLAG"/>
+    </attribute>
+    <attribute id="PERSNUMBER" order="67" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PERSNUMBER"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PERSNUMBER"/>
+    </attribute>
+    <attribute id="AUGRP" order="68" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AUGRP"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="AUGRP"/>
+    </attribute>
+    <attribute id="VALID_FROM" order="69" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_FROM"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="VALID_FROM"/>
+    </attribute>
+    <attribute id="LOCATION_1" order="70" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION_1"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="LOCATION_1"/>
+    </attribute>
+    <attribute id="TITLE_ROYL" order="71" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE_ROYL"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="TITLE_ROYL"/>
+    </attribute>
+    <attribute id="PAR_REL" order="72" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PAR_REL"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PAR_REL"/>
+    </attribute>
+    <attribute id="NAMCOUNTRY" order="73" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAMCOUNTRY"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAMCOUNTRY"/>
+    </attribute>
+    <attribute id="TYPE" order="74" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TYPE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="TYPE"/>
+    </attribute>
+    <attribute id="CRDAT" order="75" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRDAT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CRDAT"/>
+    </attribute>
+    <attribute id="CONTACT" order="76" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTACT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CONTACT"/>
+    </attribute>
+    <attribute id="ZZCALENDARRE" order="77" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZZCALENDARRE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="ZZCALENDARRE"/>
+    </attribute>
+    <attribute id="Z_VALID_FROM" order="78" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_VALID_FROM"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="Z_VALID_FROM"/>
+    </attribute>
+    <attribute id="XSEXU" order="79" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XSEXU"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="XSEXU"/>
+    </attribute>
+    <attribute id="VALID_TO" order="80" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_TO"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="VALID_TO"/>
+    </attribute>
+    <attribute id="LOCATION_2" order="81" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION_2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="LOCATION_2"/>
+    </attribute>
+    <attribute id="PREFIX1" order="82" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PREFIX1"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PREFIX1"/>
+    </attribute>
+    <attribute id="BP_SORT" order="83" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_SORT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BP_SORT"/>
+    </attribute>
+    <attribute id="LANGU_CORR" order="84" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LANGU_CORR"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="LANGU_CORR"/>
+    </attribute>
+    <attribute id="BPKIND" order="85" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BPKIND"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BPKIND"/>
+    </attribute>
+    <attribute id="CRTIM" order="86" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRTIM"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CRTIM"/>
+    </attribute>
+    <attribute id="NAME_ORG1" order="87" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_ORG1"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_ORG1"/>
+    </attribute>
+    <attribute id="XUBNAME" order="88" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XUBNAME"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="XUBNAME"/>
+    </attribute>
+    <attribute id="XPCPT" order="89" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XPCPT"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="XPCPT"/>
+    </attribute>
+    <attribute id="LOCATION_3" order="90" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION_3"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="LOCATION_3"/>
+    </attribute>
+    <attribute id="PREFIX2" order="91" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PREFIX2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="PREFIX2"/>
+    </attribute>
+    <attribute id="XSEXM" order="92" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XSEXM"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="XSEXM"/>
+    </attribute>
+    <attribute id="BU_GROUP" order="93" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BU_GROUP"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BU_GROUP"/>
+    </attribute>
+    <attribute id="CHUSR" order="94" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHUSR"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="CHUSR"/>
+    </attribute>
+    <attribute id="NAME_ORG2" order="95" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_ORG2"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="NAME_ORG2"/>
+    </attribute>
+    <attribute id="BU_LANGU" order="96" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BU_LANGU"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="BU_LANGU"/>
+    </attribute>
+    <attribute id="Z_SOURCE_SYS" order="97" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_SOURCE_SYS"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="Z_SOURCE_SYS"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" order="98" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TYPE" order="99" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TYPE"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="Z_CHANGE_TYPE"/>
+    </attribute>
+    <attribute id="Z_VALID_TO" order="100" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_VALID_TO"/>
+      <keyMapping columnObjectName="BUT000_CURRENT" columnName="Z_VALID_TO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="143.95325657094003" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="BUT000_CURRENT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="236.9999988079071"/>
+      <rectangleSize height="30" width="257"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

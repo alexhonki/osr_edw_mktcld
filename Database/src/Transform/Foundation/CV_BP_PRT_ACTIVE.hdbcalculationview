@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_BP_PRT_ACTIVE" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_BP_PRT_ACTIVE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.db.synonyms::TF_PRT_BP_REG_FACTS" type="TABLE_FUNCTION">
+    <resourceUri>osr.mktcld.db.synonyms::TF_PRT_BP_REG_FACTS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="ACTIVE_PAYROLL_TAX_BP" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="BPARTNER"/>
+      <viewAttribute id="GRP_STATUS"/>
+      <viewAttribute id="PRT_LIAB_DATE"/>
+      <viewAttribute id="QLD_LIAB_DATE"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="VALID_TO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.db.synonyms::TF_PRT_BP_REG_FACTS"/>
+    <filter>&quot;VALID_TO&quot;&gt;=TO_NVARCHAR(CURRENT_DATE)</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="ACTIVE_PAYROLL_TAX_BP">
+  <attributes>
+    <attribute id="BPARTNER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BPARTNER"/>
+      <keyMapping columnObjectName="ACTIVE_PAYROLL_TAX_BP" columnName="BPARTNER"/>
+    </attribute>
+    <attribute id="GRP_STATUS" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GRP_STATUS"/>
+      <keyMapping columnObjectName="ACTIVE_PAYROLL_TAX_BP" columnName="GRP_STATUS"/>
+    </attribute>
+    <attribute id="PRT_LIAB_DATE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRT_LIAB_DATE"/>
+      <keyMapping columnObjectName="ACTIVE_PAYROLL_TAX_BP" columnName="PRT_LIAB_DATE"/>
+    </attribute>
+    <attribute id="QLD_LIAB_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QLD_LIAB_DATE"/>
+      <keyMapping columnObjectName="ACTIVE_PAYROLL_TAX_BP" columnName="QLD_LIAB_DATE"/>
+    </attribute>
+    <attribute id="VALID_FROM" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_FROM"/>
+      <keyMapping columnObjectName="ACTIVE_PAYROLL_TAX_BP" columnName="VALID_FROM"/>
+    </attribute>
+    <attribute id="VALID_TO" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_TO"/>
+      <keyMapping columnObjectName="ACTIVE_PAYROLL_TAX_BP" columnName="VALID_TO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="151" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="ACTIVE_PAYROLL_TAX_BP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91" y="236"/>
+      <rectangleSize height="30" width="272"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

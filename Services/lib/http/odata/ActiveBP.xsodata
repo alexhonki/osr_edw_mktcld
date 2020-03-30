@@ -1,0 +1,14 @@
+/*
+ * OSR Marketing Cloud - Available DB Objects
+ * SAP Australia, Jan 2020
+ */
+ 
+service {       
+    "osr.mktcld::CV_BP_PRT_CORPACCT" as "Marketing Cloud Corporate Account"
+    key generate local "GenID";
+}    
+/*
+settings { 
+    metadata cache-control "max-age= 604800";
+}
+*/
