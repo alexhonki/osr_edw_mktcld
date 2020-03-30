@@ -30,6 +30,9 @@
   <DataSource id="osr.mktcld::CV_BP_AGENCY_DATA">
     <resourceUri>osr.mktcld::CV_BP_AGENCY_DATA</resourceUri>
   </DataSource>
+  <DataSource id="osr.mktcld::CV_BUT050">
+    <resourceUri>osr.mktcld::CV_BUT050</resourceUri>
+  </DataSource>
 </dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BP_PRT_ACTIVE">
@@ -317,6 +320,7 @@
       <viewAttribute id="STD_EMAIL"/>
       <viewAttribute id="TEL_NUMBER"/>
       <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="GROUP_ID"/>
       <viewAttribute id="GROUP_STATUS"/>
       <viewAttribute id="REGISTRATION_DATE"/>
       <viewAttribute id="LODGEMENT_FREQUENCY"/>
@@ -326,7 +330,7 @@
       <viewAttribute id="FIRST_RETURN_DATE"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="Join_5">
+    <input node="Join_8">
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
@@ -344,6 +348,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="GROUP_ID"/>
     </input>
     <input node="CV_BP_CONTRACT">
       <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
@@ -391,6 +397,7 @@
       <viewAttribute id="TEL_NUMBER"/>
       <viewAttribute id="TELNR_LONG"/>
       <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="GROUP_ID"/>
       <viewAttribute id="REGISTRATION_DATE"/>
       <viewAttribute id="LODGEMENT_FREQUENCY"/>
       <viewAttribute id="LIABILITY_START_DATE"/>
@@ -431,6 +438,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="FIRST_RETURN_DATE"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="GROUP_ID"/>
     </input>
     <input node="CV_BP_AGENCY_DATA">
       <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
@@ -443,6 +452,65 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
     </input>
     <joinAttribute name="BPARTNER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_8" cardinality="CN_N" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="BPARTNER"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="NAME_ORG1"/>
+      <viewAttribute id="NAME_ORG2"/>
+      <viewAttribute id="NAME_ORG3"/>
+      <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POST_CODE1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="STD_EMAIL"/>
+      <viewAttribute id="TEL_NUMBER"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="GROUP_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_5">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+    </input>
+    <input node="CV_BUT050">
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="PARTNER1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER2"/>
+    </input>
+    <joinAttribute name="BPARTNER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_BUT050" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="RELNR"/>
+      <viewAttribute id="PARTNER1"/>
+      <viewAttribute id="PARTNER2"/>
+      <viewAttribute id="DATE_TO"/>
+      <viewAttribute id="RELTYP"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_BUT050"/>
+    <filter>&quot;RELTYP&quot;='ZGRM' and TO_DATE(&quot;DATE_TO&quot;) &gt; CURRENT_DATE</filter>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_7">
@@ -507,11 +575,11 @@
       <keyMapping columnObjectName="Join_7" columnName="STD_EMAIL"/>
     </attribute>
     <attribute id="TYPE" order="18" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="TYPE"/>
+      <descriptions defaultDescription="Type"/>
       <keyMapping columnObjectName="Join_7" columnName="TYPE"/>
     </attribute>
     <attribute id="ADDRNUMBER" order="19" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
-      <descriptions defaultDescription="ADDRNUMBER"/>
+      <descriptions defaultDescription="Address Number"/>
       <keyMapping columnObjectName="Join_7" columnName="ADDRNUMBER"/>
     </attribute>
     <attribute id="TELNR_LONG" order="20" displayAttribute="false" attributeHierarchyActive="false">
@@ -541,36 +609,40 @@
       <keyMapping columnObjectName="Join_7" columnName="GROUP_STATUS"/>
   
     </attribute>
-    <attribute id="REGISTRATION_DATE" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GROUP_ID" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Group ID"/>
+      <keyMapping columnObjectName="Join_7" columnName="GROUP_ID"/>
+    </attribute>
+    <attribute id="REGISTRATION_DATE" order="32" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Payroll Tax Registration Date"/>
       <keyMapping columnObjectName="Join_7" columnName="REGISTRATION_DATE"/>
     </attribute>
-    <attribute id="LODGEMENT_FREQUENCY" order="32" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LODGEMENT_FREQUENCY" order="33" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Lodgement Frequency"/>
       <keyMapping columnObjectName="Join_7" columnName="LODGEMENT_FREQUENCY"/>
     </attribute>
-    <attribute id="LIABILITY_START_DATE" order="33" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LIABILITY_START_DATE" order="34" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Liability Start Date"/>
       <keyMapping columnObjectName="Join_7" columnName="LIABILITY_START_DATE"/>
     </attribute>
-    <attribute id="FIRST_RETURN_DATE" order="34" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="FIRST_RETURN_DATE" order="35" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="First Return Date"/>
       <keyMapping columnObjectName="Join_7" columnName="FIRST_RETURN_DATE"/>
     </attribute>
-    <attribute id="EMPLOYER_STATUS" order="35" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
-      <descriptions defaultDescription="EMPLOYER_STATUS"/>
+    <attribute id="EMPLOYER_STATUS" order="36" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+      <descriptions defaultDescription="Employer Status"/>
       <keyMapping columnObjectName="Join_7" columnName="EMPLOYER_STATUS"/>
     </attribute>
-    <attribute id="ORG_STATUS" order="36" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
-      <descriptions defaultDescription="ORG_STATUS"/>
+    <attribute id="FINANCIAL_STATUS" order="37" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+      <descriptions defaultDescription="Company Financial status"/>
       <keyMapping columnObjectName="Join_7" columnName="ORG_STATUS"/>
     </attribute>
-    <attribute id="ORG_STATUS_DESCRIPTION" order="37" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
-      <descriptions defaultDescription="DESCRIPTION"/>
+    <attribute id="FINANCIAL_STATUS_DESCRIPTION" order="38" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+      <descriptions defaultDescription="Company Financial status description"/>
       <keyMapping columnObjectName="Join_7" columnName="ORG_STATUS_DESCRIPTION"/>
     </attribute>
-    <attribute id="ABN_CANCN_DT" order="39" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ABN_CANCN_DT"/>
+    <attribute id="ABN_CANCN_DT" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABN Cancel Date "/>
       <keyMapping columnObjectName="Join_7" columnName="ABN_CANCN_DT"/>
     </attribute>
   </attributes>
@@ -626,14 +698,14 @@
         <formula>'Y'</formula>
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="TAX_REVENUE_CODE" order="38" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <calculatedAttribute id="TAX_REVENUE_CODE" order="39" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Tax Revenue Code"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
         <formula>'PT'</formula>
       </keyCalculation>
       </calculatedAttribute>
   
-    <calculatedAttribute id="ABR_STATUS" order="40" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="ABR_STATUS" order="41" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ABR Status"/>
   
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
@@ -646,7 +718,7 @@
       </keyCalculation>
       </calculatedAttribute>
   
-    <calculatedAttribute id="DEREGISTERED" order="41" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="DEREGISTERED" order="42" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Degregistered Flag"/>
   
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
@@ -666,21 +738,21 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="885" y="112"/>
+      <upperLeftCorner x="869.1367504134025" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_BP_PRT_ACTIVE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="1336"/>
+      <upperLeftCorner x="92.00000000000001" y="1496.9999904632568"/>
       <rectangleSize height="30" width="222"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BUT000_CURRENT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="364" y="1336"/>
+      <upperLeftCorner x="364" y="1496.9999904632568"/>
       <rectangleSize height="30" width="210"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="149" y="1176"/>
+      <upperLeftCorner x="149.66666666666663" y="1336.9999916553497"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_BP_PRT_ACTIVE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -692,11 +764,11 @@
       <rectangleSize width="197"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BUT021FS" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="452" y="1176"/>
+      <upperLeftCorner x="442.3622854662236" y="1336.9999916553497"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="176" y="1016"/>
+      <upperLeftCorner x="176.33333333333326" y="1176.9999928474426"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -708,11 +780,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_ADRC" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="572" y="1016"/>
+      <upperLeftCorner x="542.3609490045999" y="1176.9999928474426"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="203" y="856"/>
+      <upperLeftCorner x="202.9999999999999" y="1016.9999940395355"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
@@ -724,11 +796,11 @@
       <rectangleSize width="164"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_ADR6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="712" y="856"/>
+      <upperLeftCorner x="657.2821583541825" y="1016.9999940395355"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="229" y="696"/>
+      <upperLeftCorner x="229.66666666666654" y="856.9999952316284"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
@@ -741,11 +813,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_ADR2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="868" y="696"/>
+      <upperLeftCorner x="785.4145055165131" y="856.9999952316284"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="826" y="536"/>
+      <upperLeftCorner x="256.33333333333314" y="696.9999964237213"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
@@ -758,14 +830,14 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_BP_CONTRACT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1036" y="536"/>
+      <upperLeftCorner x="608.0980846026011" y="536.9999976158142"/>
       <rectangleSize height="30" width="200"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1018" y="376"/>
+      <upperLeftCorner x="654.7647512692679" y="376.9999988079071"/>
       <rectangleSize height="30" width="160"/>
     </shape>
-    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+    <shape modelObjectName="Join_8" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
@@ -775,11 +847,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_BP_AGENCY_DATA" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="747" y="376"/>
+      <upperLeftCorner x="920.7849939100204" y="376.9999988079071"/>
       <rectangleSize height="30" width="221"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="885" y="217"/>
+      <upperLeftCorner x="869.1367504134025" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
@@ -789,6 +861,23 @@
     <shape modelObjectName="CV_BP_AGENCY_DATA" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="240"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="898.1803084983953" y="536.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="CV_BUT050" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="143.6640625"/>
+    </shape>
+    <shape expanded="true" modelObjectName="CV_BUT050" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="924.8469751650621" y="696.9999964237213"/>
+      <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
 </layout>
