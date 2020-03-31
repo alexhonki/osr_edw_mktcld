@@ -1,0 +1,16 @@
+{
+	"logical-OSR-EDW-SURVEY-grantor": {
+		"object_owner": { 
+			"container_roles": [
+				"osr.edw.survey.dac::read_g#"
+				
+			]
+		},
+		"application_user": {
+			"container_roles": [
+				"osr.edw.survey.dac::read"
+			]
+		}
+	}
+} 
+ 
