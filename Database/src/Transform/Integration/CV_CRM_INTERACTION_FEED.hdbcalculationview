@@ -96,6 +96,8 @@
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="GUID"/>
       <viewAttribute id="OBJECT_ID"/>
+      <viewAttribute id="CREATED_AT"/>
+      <viewAttribute id="PROCESS_TYPE"/>
       <viewAttribute id="POSTING_DATE"/>
       <viewAttribute id="DESCRIPTION"/>
       <viewAttribute id="SCENARIO"/>
@@ -112,6 +114,9 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESS_TYPE" source="PROCESS_TYPE"/>
     </input>
     <input node="CV_CRM_INTERACTION_CODE">
       <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
@@ -130,7 +135,7 @@
     <joinAttribute name="CLIENT"/>
     <joinAttribute name="GUID"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_CRM_INTERACTION_BP">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="GUID"/>
@@ -145,6 +150,8 @@
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="GUID"/>
       <viewAttribute id="OBJECT_ID"/>
+      <viewAttribute id="CREATED_AT"/>
+      <viewAttribute id="PROCESS_TYPE"/>
       <viewAttribute id="POSTING_DATE"/>
       <viewAttribute id="DESCRIPTION"/>
       <viewAttribute id="SCENARIO"/>
@@ -172,8 +179,11 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CODE" source="CODE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CODEGRUPPE" source="CODEGRUPPE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="EXTERN_ACT_ID" source="EXTERN_ACT_ID"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CREATED_AT" source="CREATED_AT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESS_TYPE" source="PROCESS_TYPE"/>
     </input>
-    <input node="Projection_1">
+    <input node="CV_CRM_INTERACTION_BP">
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
@@ -186,65 +196,124 @@
 </calculationViews>
 <logicalModel id="Join_2">
   <attributes>
-    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="CLIENT"/>
       <keyMapping columnObjectName="Join_2" columnName="CLIENT"/>
     </attribute>
-    <attribute id="GUID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GUID" order="2" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="GUID"/>
       <keyMapping columnObjectName="Join_2" columnName="GUID"/>
     </attribute>
-    <attribute id="OBJECT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="OBJECT_ID"/>
+    <attribute id="TIMESTAMP " order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UTC Timestamp "/>
+      <keyMapping columnObjectName="Join_2" columnName="CREATED_AT"/>
+    </attribute>
+    <attribute id="IA_REASON " order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Reason "/>
+      <keyMapping columnObjectName="Join_2" columnName="CODE"/>
+    </attribute>
+    <attribute id="SOURCE_OBJECT_TYPE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source Object Type "/>
+      <keyMapping columnObjectName="Join_2" columnName="PROCESS_TYPE"/>
+    </attribute>
+    <attribute id="SOURCE_OBJECT_ID" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Source Object ID"/>
       <keyMapping columnObjectName="Join_2" columnName="OBJECT_ID"/>
     </attribute>
-    <attribute id="POSTING_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CONTENT_DATA" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Content"/>
+      <keyMapping columnObjectName="Join_2" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="YY1_FBN_MIA" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Payroll Tax - Form Bundle Number"/>
+      <keyMapping columnObjectName="Join_2" columnName="EXTERN_ACT_ID"/>
+    </attribute>
+    <attribute id="POSTING_DATE" order="17" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="POSTING_DATE"/>
       <keyMapping columnObjectName="Join_2" columnName="POSTING_DATE"/>
     </attribute>
-    <attribute id="DESCRIPTION" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DESCRIPTION"/>
-      <keyMapping columnObjectName="Join_2" columnName="DESCRIPTION"/>
-    </attribute>
-    <attribute id="SCENARIO" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SCENARIO" order="18" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="SCENARIO"/>
       <keyMapping columnObjectName="Join_2" columnName="SCENARIO"/>
     </attribute>
-    <attribute id="INPUT_CHANNEL" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="INPUT_CHANNEL" order="19" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="INPUT_CHANNEL"/>
       <keyMapping columnObjectName="Join_2" columnName="INPUT_CHANNEL"/>
     </attribute>
-    <attribute id="OBJECT_TYPE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OBJECT_TYPE" order="20" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="OBJECT_TYPE"/>
       <keyMapping columnObjectName="Join_2" columnName="OBJECT_TYPE"/>
     </attribute>
-    <attribute id="GUID_SET" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GUID_SET" order="21" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="GUID_SET"/>
       <keyMapping columnObjectName="Join_2" columnName="GUID_SET"/>
     </attribute>
-    <attribute id="OSSET_GUID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OSSET_GUID" order="22" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="OSSET_GUID"/>
       <keyMapping columnObjectName="Join_2" columnName="OSSET_GUID"/>
     </attribute>
-    <attribute id="CODE" order="11" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CODE"/>
-      <keyMapping columnObjectName="Join_2" columnName="CODE"/>
-    </attribute>
-    <attribute id="CODEGRUPPE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CODEGRUPPE" order="23" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="CODEGRUPPE"/>
       <keyMapping columnObjectName="Join_2" columnName="CODEGRUPPE"/>
     </attribute>
-    <attribute id="EXTERN_ACT_ID" order="13" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="EXTERN_ACT_ID"/>
-      <keyMapping columnObjectName="Join_2" columnName="EXTERN_ACT_ID"/>
-    </attribute>
   
-    <attribute id="PARTNER" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PARTNER" order="24" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="PARTNER"/>
+  
       <keyMapping columnObjectName="Join_2" columnName="PARTNER"/>
+  
     </attribute>
   </attributes>
-  <calculatedAttributes/>
+  <calculatedAttributes>
+    <calculatedAttribute id="ID_ORIGIN" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Origin of Contact"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>'OSR_EDW'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="ID" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Ext. Interaction Contact ID"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>CONCAT(TRIM(LEADING '0' FROM &quot;PARTNER&quot;), 'PT')</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="COMM_MEDIUM" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Communication Medium"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>'OSR_TRM_SYS_EVENT'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="IA_TYPE" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Type"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>'OSR_TRM_PRT_NEW_REG'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="INTEREST_ITEM" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Item of Interest"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>'PT'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="CONTENT_TITLE" order="12" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Content Subject"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>'Payroll Tax - Notice of Registration'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="MKT_AREA_ID" order="14" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Marketing Area ID"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>'OSR_GLOBAL'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+    <calculatedAttribute id="YY1_TAX_REVENUE_STREAM_MIA" order="16" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Tax Revenue Stream"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>'PT'</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/>
@@ -252,22 +321,22 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="474.34051045305625" y="112"/>
+      <upperLeftCorner x="474" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_CODE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999997" y="516.9999976158142"/>
+      <upperLeftCorner x="91" y="516"/>
       <rectangleSize height="30" width="268"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_OPEN" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="410" y="516.9999976158142"/>
+      <upperLeftCorner x="410" y="516"/>
       <rectangleSize height="30" width="261"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="172.66666666666663" y="356.9999988079071"/>
+      <upperLeftCorner x="172" y="356"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_CRM_INTERACTION_OPEN" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -279,21 +348,21 @@
       <rectangleSize width="244"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="524.1661048157421" y="356.9999988079071"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_BP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="524" y="356"/>
+      <rectangleSize height="30" width="252"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="474.34051045305625" y="217"/>
+      <upperLeftCorner x="474" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <shape modelObjectName="CV_CRM_INTERACTION_BP" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="146.5107421875"/>
+      <rectangleSize width="146"/>
     </shape>
   </shapes>
 </layout>

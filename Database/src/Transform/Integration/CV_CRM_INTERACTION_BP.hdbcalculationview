@@ -108,7 +108,7 @@
     <joinAttribute name="GUID"/>
     <joinAttribute name="CLIENT"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="CV_CRMD_PARTNER">
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_CRMD_PARTNER" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PARTNER_GUID"/>
@@ -118,9 +118,13 @@
       <viewAttribute id="ADDR_NR"/>
       <viewAttribute id="ADDR_NP"/>
       <viewAttribute id="ADDR_TYPE"/>
+    
+      <viewAttribute id="PARTNER_FCT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld::CV_CRMD_PARTNER"/>
+  
+    <filter>&quot;PARTNER_FCT&quot;='00000009'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_N" joinType="leftOuter">
     <viewAttributes>
