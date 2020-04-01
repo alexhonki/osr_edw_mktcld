@@ -1,3 +1,4 @@
 {
-	"osr.mktcld.db.synonyms::CV_PTax_Refund": {}
+	"osr.mktcld.db.synonyms::CV_PTax_Refund": {},
+	"osr.mktcld.db.synonyms::CV_PTax_Deferral": {}
 }
