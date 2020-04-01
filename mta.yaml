@@ -35,11 +35,6 @@ modules:
         properties:
           key: logical-OSR-EDW-PLATFORM-grantor
           service: '~{OSR-EDW-PLATFORM-grantor-service}'
-      - name: OSR-EDW-SURVEY-grantor
-        group: SERVICE_REPLACEMENTS
-        properties:
-          key: logical-OSR-EDW-SURVEY-grantor
-          service: '~{OSR-EDW-SURVEY-grantor-service}'          
   - name: OSR_MKT_CLD-Services
     type: nodejs
     path: Services
@@ -72,9 +67,3 @@ resources:
       service-name: OSR_EDW_PLATFORM-deploy
     properties:
       OSR-EDW-PLATFORM-grantor-service: '${service-name}'
-  - name: OSR-EDW-SURVEY-grantor
-    type: org.cloudfoundry.existing-service
-    parameters:
-      service-name: OSR_EDW_SURVEY-deploy
-    properties:
-      OSR-EDW-SURVEY-grantor-service: '${service-name}'      

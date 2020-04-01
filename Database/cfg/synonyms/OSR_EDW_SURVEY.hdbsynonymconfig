@@ -1,9 +1,0 @@
-{
-	"osr.mktcld.db.synonyms::CV_PTax_Refund": {
-		"target": {
-			"object": "osr.edw.survey.Views.Refund::CV_PTax_Refund",
-			"schema.configure": "logical-OSR-EDW-SURVEY-grantor/schema"
-		}
-	}
-
-}
