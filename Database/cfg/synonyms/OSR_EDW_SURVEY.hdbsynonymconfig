@@ -4,6 +4,12 @@
 			"object": "osr.edw.survey.Views.Refund::CV_PTax_Refund",
 			"schema.configure": "logical-OSR-EDW-SURVEY-grantor/schema"
 		}
-	}
+	},
+	"osr.mktcld.db.synonyms::CV_PTax_Deferral": {
+		"target": {
+			"object": "osr.edw.survey.Views.Deferral::CV_PTax_Deferral",
+			"schema.configure": "logical-OSR-EDW-SURVEY-grantor/schema"
+		}
+	}	
 
 }
