@@ -274,7 +274,7 @@
     <calculatedAttribute id="ID" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Ext. Interaction Contact ID"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
-        <formula>CONCAT(TRIM(LEADING '0' FROM &quot;PARTNER&quot;), 'PT')</formula>
+        <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;PARTNER&quot;), '_'), 'PT')</formula>
       </keyCalculation>
     </calculatedAttribute>
     <calculatedAttribute id="COMM_MEDIUM" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
