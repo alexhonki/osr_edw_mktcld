@@ -245,7 +245,7 @@
     <input node="osr.mktcld::CV_ADR2"/>
     <filter>&quot;R3_USER&quot;='3'</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
@@ -421,7 +421,7 @@
     </input>
     <joinAttribute name="BPARTNER"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_6" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_6" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
@@ -723,21 +723,21 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="944.9294596936093" y="112"/>
+      <upperLeftCorner x="944" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_BP_PRT_ACTIVE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92.00000000000006" y="1656.999989271164"/>
+      <upperLeftCorner x="92" y="1656"/>
       <rectangleSize height="30" width="222"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BUT000_CURRENT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="363.99999999999983" y="1656.999989271164"/>
+      <upperLeftCorner x="363" y="1656"/>
       <rectangleSize height="30" width="210"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="149.66666666666669" y="1496.9999904632568"/>
+      <upperLeftCorner x="149" y="1496"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_BP_PRT_ACTIVE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -749,11 +749,11 @@
       <rectangleSize width="197"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BUT021FS" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="453.8514963906534" y="1496.9999904632568"/>
+      <upperLeftCorner x="453" y="1496"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="176.33333333333331" y="1336.9999916553497"/>
+      <upperLeftCorner x="176" y="1336"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -765,11 +765,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_ADRC" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="576.9350277642058" y="1336.9999916553497"/>
+      <upperLeftCorner x="576" y="1336"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="202.99999999999994" y="1176.9999928474426"/>
+      <upperLeftCorner x="202" y="1176"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
@@ -781,11 +781,11 @@
       <rectangleSize width="164"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_ADR6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="720.8933603284538" y="1176.9999928474426"/>
+      <upperLeftCorner x="720" y="1176"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="229.66666666666669" y="1016.9999940395355"/>
+      <upperLeftCorner x="229" y="1016"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
@@ -798,11 +798,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_ADR2_MOBILE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="881.1138619831675" y="1016.9999940395355"/>
+      <upperLeftCorner x="881" y="1016"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="844.097379261902" y="856.9999952316284"/>
+      <upperLeftCorner x="844" y="856"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
@@ -815,11 +815,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_BP_CONTRACT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1133.6809738982265" y="536.9999976158142"/>
+      <upperLeftCorner x="1133" y="536"/>
       <rectangleSize height="30" width="200"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1091.7325847016014" y="376.9999988079071"/>
+      <upperLeftCorner x="1091" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
@@ -832,7 +832,7 @@
     </shape>
   
     <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="838.7032055537065" y="536.9999976158142"/>
+      <upperLeftCorner x="838" y="536"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
@@ -844,7 +844,7 @@
       <rectangleSize width="143"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1026.5347393845002" y="696.9999964237213"/>
+      <upperLeftCorner x="1026" y="696"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
@@ -856,22 +856,22 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BUT050" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="812.03653888704" y="696.9999964237213"/>
+      <upperLeftCorner x="812" y="696"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_ADR2_PHONE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1054.097379261902" y="856.9999952316284"/>
+      <upperLeftCorner x="1054" y="856"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   
   
   
     <shape expanded="true" modelObjectName="CV_BP_AGENCY_DATA" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="820.7325847016016" y="376.9999988079071"/>
+      <upperLeftCorner x="820" y="376"/>
       <rectangleSize height="30" width="221"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="944.9294596936093" y="217"/>
+      <upperLeftCorner x="944" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
