@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_INTERACTION_COVID19" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PRT_INTERACTION_COVID19"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld::CV_PTAX_REFUND">
+    <resourceUri>osr.mktcld::CV_PTAX_REFUND</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld::CV_PTAX_DEFERRAL">
+    <resourceUri>osr.mktcld::CV_PTAX_DEFERRAL</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_PTAX_REFUND">
+    <viewAttributes>
+      <viewAttribute id="SURVEYID"/>
+      <viewAttribute id="RESPONSEID"/>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="QUAL_ABN"/>
+      <viewAttribute id="QUAL_EMAIL"/>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;QUAL_BPARTNER&quot;), '_'), 'Z1')</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_COMM_MEDIUM" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'OSR_TRM_SYS_EVENT'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'OSR_PT_REFUND'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_UTC_TIMESTAMP" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>NOW()</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='X' then 'PT_COVID-19_RELIEF_OV65M'
+	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='' then  'PT_COVID-19_RELIEF_UN65M'
+	 ELSE ''
+ END</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_REASON" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='X' then 'Z001' 
+	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='' then 'Z002' 
+	 ELSE '' 
+ END</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_SOURCE_OBJECT_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'QUALTRICS_SURVEY'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_SOURCE_DATA_URL" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>''</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_CONTENT_SUBJECT" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'COVID-19 Payroll Tax Deferral'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_MARKETING_AREA" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'OSR_GLOBAL'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_REVENUE_STREAM" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'PT'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_CONTACT_ORIGIN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'OSR_EDW'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="osr.mktcld::CV_PTAX_REFUND"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_PTAX_DEFERRAL">
+    <viewAttributes>
+      <viewAttribute id="SURVEYID"/>
+      <viewAttribute id="RESPONSEID"/>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="QUAL_ABN"/>
+      <viewAttribute id="QUAL_EMAIL"/>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;QUAL_BPARTNER&quot;), '_'), 'Z1')</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_COMM_MEDIUM" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'OSR_TRM_SYS_EVENT'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'OSR_PT_RELIEF_OPT_IN'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_UTC_TIMESTAMP" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>NOW()</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'PT_COVID-19'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_REASON" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'Z001'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_SOURCE_OBJECT_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'QUALTRICS_SURVEY'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_SOURCE_DATA_URL" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>''</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_CONTENT_SUBJECT" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'COVID-19 Payroll Tax Deferral'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_MARKETING_AREA" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'OSR_GLOBAL'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_REVENUE_STREAM" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'PT'</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_CONTACT_ORIGIN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'OSR_EDW'</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input emptyUnionBehavior="undefined" node="osr.mktcld::CV_PTAX_DEFERRAL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="CC_CONTACT_ORIGIN"/>
+      <viewAttribute id="CC_QUAL_BPARTNER"/>
+      <viewAttribute id="CC_COMM_MEDIUM"/>
+      <viewAttribute id="CC_TYPE"/>
+      <viewAttribute id="CC_UTC_TIMESTAMP"/>
+      <viewAttribute id="CC_INTEREST"/>
+      <viewAttribute id="CC_REASON"/>
+      <viewAttribute id="CC_SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SURVEYID"/>
+      <viewAttribute id="CC_SOURCE_DATA_URL"/>
+      <viewAttribute id="CC_CONTENT_SUBJECT"/>
+      <viewAttribute id="CC_MARKETING_AREA"/>
+      <viewAttribute id="CC_REVENUE_STREAM"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CV_PTAX_REFUND">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTACT_ORIGIN" source="CC_CONTACT_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_QUAL_BPARTNER" source="CC_QUAL_BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_COMM_MEDIUM" source="CC_COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_UTC_TIMESTAMP" source="CC_UTC_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_INTEREST" source="CC_INTEREST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_REASON" source="CC_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_SOURCE_OBJECT_TYPE" source="CC_SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_SOURCE_DATA_URL" source="CC_SOURCE_DATA_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTENT_SUBJECT" source="CC_CONTENT_SUBJECT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_MARKETING_AREA" source="CC_MARKETING_AREA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_REVENUE_STREAM" source="CC_REVENUE_STREAM"/>
+    </input>
+    <input node="CV_PTAX_DEFERRAL">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTACT_ORIGIN" source="CC_CONTACT_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_QUAL_BPARTNER" source="CC_QUAL_BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_COMM_MEDIUM" source="CC_COMM_MEDIUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_UTC_TIMESTAMP" source="CC_UTC_TIMESTAMP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_INTEREST" source="CC_INTEREST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_REASON" source="CC_REASON"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_SOURCE_OBJECT_TYPE" source="CC_SOURCE_OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_SOURCE_DATA_URL" source="CC_SOURCE_DATA_URL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTENT_SUBJECT" source="CC_CONTENT_SUBJECT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_MARKETING_AREA" source="CC_MARKETING_AREA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_REVENUE_STREAM" source="CC_REVENUE_STREAM"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="CONTACT_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Contact Origin"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_CONTACT_ORIGIN"/>
+    </attribute>
+    <attribute id="QUAL_BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Contact Id"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_QUAL_BPARTNER"/>
+    </attribute>
+    <attribute id="COMM_MEDIUM" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Communication Medium"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_COMM_MEDIUM"/>
+    </attribute>
+    <attribute id="TYPE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Type"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_TYPE"/>
+    </attribute>
+    <attribute id="UTC_TIMESTAMP" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Time Stamp UTC"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_UTC_TIMESTAMP"/>
+    </attribute>
+    <attribute id="INTEREST" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Interests"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_INTEREST"/>
+    </attribute>
+    <attribute id="REASON" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Reason"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_REASON"/>
+    </attribute>
+    <attribute id="SOURCE_OBJECT_TYPE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Source Object Type"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_SOURCE_OBJECT_TYPE"/>
+    </attribute>
+    <attribute id="SOURCE_OBJECT_ID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Source Object"/>
+      <keyMapping columnObjectName="Union_1" columnName="SURVEYID"/>
+    </attribute>
+    <attribute id="SOURCE_DATA_URL" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Source Data URL"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_SOURCE_DATA_URL"/>
+    </attribute>
+    <attribute id="CONTENT_SUBJECT" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Interaction Content Subject"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_CONTENT_SUBJECT"/>
+    </attribute>
+    <attribute id="MARKETING_AREA" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Marketing Area"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_MARKETING_AREA"/>
+    </attribute>
+    <attribute id="REVENUE_STREAM" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YY1_TAX_REVENUE_STREAM_MIA"/>
+      <keyMapping columnObjectName="Union_1" columnName="CC_REVENUE_STREAM"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="252.92105451248827" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CV_PTAX_REFUND" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="356.9999988079071"/>
+      <rectangleSize height="30" width="179"/>
+    </shape>
+    <shape expanded="true" modelObjectName="CV_PTAX_DEFERRAL" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="321" y="356.9999988079071"/>
+      <rectangleSize width="199"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="252.9210545124883" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
