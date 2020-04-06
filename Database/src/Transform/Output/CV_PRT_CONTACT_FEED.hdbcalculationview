@@ -19,6 +19,9 @@
   <DataSource id="osr.mktcld::CV_ADR2">
     <resourceUri>osr.mktcld::CV_ADR2</resourceUri>
   </DataSource>
+  <DataSource id="CV_ADR2_PHONE$$$$osr.mktcld::CV_ADR2$$">
+    <resourceUri>osr.mktcld::CV_ADR2</resourceUri>
+  </DataSource>
 </dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BP_PRT_CORPACCT">
@@ -93,7 +96,7 @@
     <input node="osr.mktcld::CV_ADRC"/>
     <filter>TO_TIMESTAMP(&quot;DATE_TO&quot;)&gt;=CURRENT_TIMESTAMP</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="ID_ORIGIN"/>
       <viewAttribute id="ID"/>
@@ -136,7 +139,7 @@
     <calculatedViewAttributes/>
     <input node="osr.mktcld::CV_ADR6"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="ID_ORIGIN"/>
       <viewAttribute id="ID"/>
@@ -172,16 +175,19 @@
     </input>
     <joinAttribute name="ADDRNUMBER"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADR2">
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADR2_MOBILE" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="TELNR_LONG"/>
       <viewAttribute id="TEL_NUMBER"/>
+    
+      <viewAttribute id="R3_USER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld::CV_ADR2"/>
+    <filter>&quot;R3_USER&quot;='3'</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="ID_ORIGIN"/>
       <viewAttribute id="ID"/>
@@ -214,80 +220,130 @@
     
       <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
     </input>
-    <input node="CV_ADR2">
+    <input node="CV_ADR2_MOBILE">
       <mapping xsi:type="Calculation:AttributeMapping" source="TELNR_LONG" target="TELNR_LONG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" source="TEL_NUMBER" target="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TELNR_LONG" target="TEL_NUMBER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
     </input>
     <joinAttribute name="ADDRNUMBER"/>
   </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMPANY_NAME"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POST_CODE1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="STD_EMAIL"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="TEL_NUMBER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_4">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID_ORIGIN" source="ID_ORIGIN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPANY_NAME" source="COMPANY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
+    </input>
+    <input node="CV_ADR2_PHONE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+    </input>
+    <joinAttribute name="ADDRNUMBER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADR2_PHONE" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="TEL_NUMBER"/>
+      <viewAttribute id="R3_USER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input emptyUnionBehavior="undefined" node="CV_ADR2_PHONE$$$$osr.mktcld::CV_ADR2$$"/>
+    <filter>&quot;R3_USER&quot;='1'</filter>
+  </calculationView>
 </calculationViews>
-<logicalModel id="Join_4">
+<logicalModel id="Join_5">
   <attributes>
     <attribute id="ID_ORIGIN" displayAttribute="false" order="1" attributeHierarchyActive="false">
       <descriptions defaultDescription="Origin of Contact"/>
-      <keyMapping columnObjectName="Join_4" columnName="ID_ORIGIN"/>
+      <keyMapping columnObjectName="Join_5" columnName="ID_ORIGIN"/>
     </attribute>
-    <attribute id="ID_ACCOUNT" displayAttribute="false" order="3" attributeHierarchyActive="false" hidden="true">
+    <attribute id="ACCOUNT_ID" displayAttribute="false" order="3" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Ext. Corporate Account ID"/>
-      <keyMapping columnObjectName="Join_4" columnName="ID"/>
+      <keyMapping columnObjectName="Join_5" columnName="ID"/>
     </attribute>
     <attribute id="COMPANY_NAME" displayAttribute="false" order="4" attributeHierarchyActive="false">
       <descriptions defaultDescription="Corporate Account Name"/>
-      <keyMapping columnObjectName="Join_4" columnName="COMPANY_NAME"/>
+      <keyMapping columnObjectName="Join_5" columnName="COMPANY_NAME"/>
     </attribute>
     <attribute id="COUNTRY" displayAttribute="false" order="7" attributeHierarchyActive="false">
       <descriptions defaultDescription="Country"/>
-      <keyMapping columnObjectName="Join_4" columnName="COUNTRY"/>
+      <keyMapping columnObjectName="Join_5" columnName="COUNTRY"/>
     </attribute>
     <attribute id="REGION" displayAttribute="false" order="8" attributeHierarchyActive="false">
       <descriptions defaultDescription="Region"/>
-      <keyMapping columnObjectName="Join_4" columnName="REGION"/>
+      <keyMapping columnObjectName="Join_5" columnName="REGION"/>
     </attribute>
     <attribute id="CITY1" displayAttribute="false" order="9" attributeHierarchyActive="false">
       <descriptions defaultDescription="City"/>
-      <keyMapping columnObjectName="Join_4" columnName="CITY1"/>
+      <keyMapping columnObjectName="Join_5" columnName="CITY1"/>
     </attribute>
     <attribute id="POST_CODE1" displayAttribute="false" order="10" attributeHierarchyActive="false">
       <descriptions defaultDescription="Postal Code"/>
-      <keyMapping columnObjectName="Join_4" columnName="POST_CODE1"/>
+      <keyMapping columnObjectName="Join_5" columnName="POST_CODE1"/>
     </attribute>
     <attribute id="STREET" displayAttribute="false" order="11" attributeHierarchyActive="false">
       <descriptions defaultDescription="Street"/>
-      <keyMapping columnObjectName="Join_4" columnName="STREET"/>
+      <keyMapping columnObjectName="Join_5" columnName="STREET"/>
     </attribute>
     <attribute id="HOUSE_NUM1" displayAttribute="false" order="12" attributeHierarchyActive="false">
       <descriptions defaultDescription="House Number"/>
-      <keyMapping columnObjectName="Join_4" columnName="HOUSE_NUM1"/>
+      <keyMapping columnObjectName="Join_5" columnName="HOUSE_NUM1"/>
     </attribute>
     <attribute id="STD_EMAIL" displayAttribute="false" order="13" attributeHierarchyActive="false">
       <descriptions defaultDescription="E-Mail Address"/>
-      <keyMapping columnObjectName="Join_4" columnName="STD_EMAIL"/>
+      <keyMapping columnObjectName="Join_5" columnName="STD_EMAIL"/>
     </attribute>
     <attribute id="TELNR_LONG" displayAttribute="false" order="15" attributeHierarchyActive="false">
       <descriptions defaultDescription="Phone"/>
-      <keyMapping columnObjectName="Join_4" columnName="TELNR_LONG"/>
+      <keyMapping columnObjectName="Join_5" columnName="TELNR_LONG"/>
     </attribute>
     <attribute id="TELNR_MOBILE" displayAttribute="false" order="17" attributeHierarchyActive="false">
       <descriptions defaultDescription="Mobile"/>
-      <keyMapping columnObjectName="Join_4" columnName="TEL_NUMBER"/>
+      <keyMapping columnObjectName="Join_5" columnName="TEL_NUMBER"/>
     </attribute>
   
     <attribute id="ENTITY_TYPE" displayAttribute="false" order="20" attributeHierarchyActive="false">
       <descriptions defaultDescription="Title"/>
   
-      <keyMapping columnObjectName="Join_4" columnName="TITLE"/>
+      <keyMapping columnObjectName="Join_5" columnName="TITLE"/>
   
     </attribute>
     <attribute hidden="true" id="ADDRNUMBER" displayAttribute="false" order="22" attributeHierarchyActive="false">
       <descriptions defaultDescription="ADDRNUMBER"/>
-      <keyMapping columnObjectName="Join_4" columnName="ADDRNUMBER"/>
+      <keyMapping columnObjectName="Join_5" columnName="ADDRNUMBER"/>
     </attribute></attributes>
   <calculatedAttributes>
     <calculatedAttribute semanticType="empty" id="ID" displayAttribute="false" order="2" attributeHierarchyActive="false">
       <descriptions defaultDescription="Account ID"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="20">
-        <formula>TRIM(LEADING '0' FROM CONCAT(CONCAT(&quot;ID_ACCOUNT&quot;, '_'),'PT'))</formula>
+        <formula>TRIM(LEADING '0' FROM &quot;ACCOUNT_ID&quot;)</formula>
       </keyCalculation>
     </calculatedAttribute>
   
@@ -334,9 +390,16 @@
     <calculatedAttribute semanticType="empty" id="EXT_INTERACTION_CONTACT_ID" displayAttribute="false" order="21" attributeHierarchyActive="false">
       <descriptions defaultDescription="Ext. Interaction Contact ID"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="60">
-        <formula>&quot;ID&quot;</formula>
+        <formula>TRIM(LEADING '0' FROM CONCAT(CONCAT(&quot;ACCOUNT_ID&quot;, '_'),'PT'))</formula>
       </keyCalculation>
-    </calculatedAttribute></calculatedAttributes>
+    </calculatedAttribute>
+    <calculatedAttribute id="EXT_CORPORATE_ACCOUNT_ID" order="23" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Ext. Corporate Account ID"/>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>TRIM(LEADING '0' FROM &quot;ACCOUNT_ID&quot;)</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/>
@@ -344,16 +407,16 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
-      <upperLeftCorner x="580" y="112"/>
+      <upperLeftCorner x="703" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BP_PRT_CORPACCT">
-      <upperLeftCorner x="91" y="856"/>
+      <upperLeftCorner x="92" y="996"/>
       <rectangleSize width="201" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_1">
-      <upperLeftCorner x="139" y="696"/>
+      <upperLeftCorner x="139" y="836"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="CV_BP_PRT_CORPACCT">
@@ -365,15 +428,15 @@
       <rectangleSize width="164"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BUT021FS">
-      <upperLeftCorner x="342" y="856"/>
+      <upperLeftCorner x="343" y="996"/>
       <rectangleSize width="216" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADRC">
-      <upperLeftCorner x="425" y="696"/>
+      <upperLeftCorner x="424" y="836"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_2">
-      <upperLeftCorner x="165" y="536"/>
+      <upperLeftCorner x="165" y="676"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="Join_1">
@@ -385,11 +448,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR6">
-      <upperLeftCorner x="523" y="536"/>
+      <upperLeftCorner x="519" y="676"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_3">
-      <upperLeftCorner x="192" y="376"/>
+      <upperLeftCorner x="192" y="516"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="Join_2">
@@ -400,21 +463,38 @@
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR2">
-      <upperLeftCorner x="638" y="376"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR2_MOBILE">
+      <upperLeftCorner x="628" y="516"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_4">
-      <upperLeftCorner x="580" y="217"/>
+      <upperLeftCorner x="219" y="356"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput" modelObjectName="Join_3">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput" modelObjectName="CV_ADR2">
+    <shape modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput" modelObjectName="CV_ADR2_MOBILE">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="703" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="CV_ADR2_PHONE" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="169"/>
+    </shape>
+    <shape expanded="true" modelObjectName="CV_ADR2_PHONE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="752" y="356"/>
+      <rectangleSize width="160"/>
     </shape>
   </shapes>
 </layout>

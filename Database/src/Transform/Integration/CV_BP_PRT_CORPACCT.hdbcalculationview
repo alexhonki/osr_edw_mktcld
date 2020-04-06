@@ -307,7 +307,7 @@
     <calculatedViewAttributes/>
     <input node="osr.mktcld::CV_BP_CONTRACT"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_8" cardinality="CN_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_8" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
@@ -371,7 +371,7 @@
     </input>
     <joinAttribute name="BPARTNER"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_7" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="C1_N" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
@@ -504,7 +504,7 @@
     <calculatedViewAttributes/>
     <input node="osr.mktcld::CV_BP_AGENCY_DATA"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_9" cardinality="CN_1" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_9" cardinality="C1_1" joinType="inner">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
