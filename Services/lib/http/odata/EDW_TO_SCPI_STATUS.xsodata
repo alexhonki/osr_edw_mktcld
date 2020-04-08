@@ -1,0 +1,16 @@
+/*
+ * OSR Marketing Cloud
+ * SCPI writes back ETL status back to EDW
+ * SAP Australia, 2020
+ */
+ 
+service {       
+    "osr.mktcld::SCPI_STATUS" as "ETL_Status"
+    key generate local "GenID";
+} 
+
+/*
+settings { 
+    metadata cache-control "max-age= 604800";
+}
+*/
