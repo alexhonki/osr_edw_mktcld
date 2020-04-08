@@ -58,7 +58,7 @@
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="CV_PTAX_REFUND">
+    <input node="CV_PTAX_REFUND" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="RESPONSEID" source="RESPONSEID"/>
@@ -67,7 +67,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK"/>
     </input>
-    <input node="CV_PTAX_DEFERRAL">
+    <input node="CV_PTAX_DEFERRAL" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="RESPONSEID" source="RESPONSEID"/>
@@ -95,12 +95,14 @@
     </calculatedViewAttributes>
     <input node="osr.mktcld::CV_BP_PRT_CORPACCT"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner">
     <viewAttributes>
       <viewAttribute id="QUAL_BPARTNER"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="CC_COMPANY_NAME"/>
       <viewAttribute id="CC_BP_NUMBER"/>
+    
+      <viewAttribute id="CC_TYPE"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_ID_ORIGIN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -128,6 +130,8 @@
     <input node="Union_1">
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
     </input>
     <input node="CV_BP_PRT_CORPACCT">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_COMPANY_NAME" source="CC_COMPANY_NAME"/>
@@ -139,45 +143,50 @@
 </calculationViews>
 <logicalModel id="Join_1">
   <attributes>
-    <attribute id="CC_ID_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_ID_ORIGIN"/>
+    <attribute id="ID_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID_ORIGIN"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_ID_ORIGIN"/>
     </attribute>
-    <attribute id="CC_QUAL_BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_QUAL_BPARTNER"/>
+    <attribute id="QUAL_BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUAL_BPARTNER"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_QUAL_BPARTNER"/>
     </attribute>
-    <attribute id="CC_FIRST_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_FIRST_NAME"/>
+    <attribute id="FIRST_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRST_NAME"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_FIRST_NAME"/>
     </attribute>
-    <attribute id="CC_LAST_NAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_LAST_NAME"/>
+    <attribute id="LAST_NAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_NAME"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_LAST_NAME"/>
     </attribute>
-    <attribute id="CC_COMPANY_NAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_COMPANY_NAME"/>
+    <attribute id="COMPANY_NAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_NAME"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_COMPANY_NAME"/>
     </attribute>
-    <attribute id="CC_ACCOUNT_ORIGIN" order="6" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_ACCOUNT_ORIGIN"/>
+    <attribute id="ACCOUNT_ORIGIN" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ACCOUNT_ORIGIN"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_ACCOUNT_ORIGIN"/>
     </attribute>
-    <attribute id="CC_BP_NUMBER" order="7" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_BP_NUMBER"/>
+    <attribute id="BP_NUMBER" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_NUMBER"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_BP_NUMBER"/>
     </attribute>
-    <attribute id="CC_FUNCTION" order="8" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_FUNCTION"/>
+    <attribute id="FUNCTION" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FUNCTION"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_FUNCTION"/>
     </attribute>
     <attribute id="QUAL_EMAIL" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="QUAL_EMAIL"/>
       <keyMapping columnObjectName="Join_1" columnName="QUAL_EMAIL"/>
     </attribute>
-    <attribute id="CC_OPT_IN_SMTP_ADDR" order="10" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_OPT_IN_SMTP_ADDR"/>
+    <attribute id="OPT_IN_SMTP_ADDR" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPT_IN_SMTP_ADDR"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_OPT_IN_SMTP_ADDR"/>
+    </attribute>
+  
+    <attribute id="CC_TYPE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Refund or Deferral"/>
+      <keyMapping columnObjectName="Join_1" columnName="CC_TYPE"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -188,38 +197,38 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="403.31656477411315" y="112"/>
+      <upperLeftCorner x="403" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PTAX_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="516.9999976158142"/>
+      <upperLeftCorner x="92" y="516"/>
       <rectangleSize height="30" width="202"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PTAX_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="343.99999999999994" y="516.9999976158142"/>
+      <upperLeftCorner x="343" y="516"/>
       <rectangleSize height="30" width="200"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="139.66666666666669" y="376.9999988079071"/>
+      <upperLeftCorner x="139" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="438.23722517308573" y="376.9999988079071"/>
+      <upperLeftCorner x="438" y="376"/>
       <rectangleSize height="30" width="219"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="403.31656477411315" y="217"/>
+      <upperLeftCorner x="403" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Union_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="232.49658203125"/>
+      <rectangleSize width="232"/>
     </shape>
     <shape modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="208.46875"/>
+      <rectangleSize width="208"/>
     </shape>
   </shapes>
 </layout>

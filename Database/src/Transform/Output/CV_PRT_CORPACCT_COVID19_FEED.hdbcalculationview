@@ -119,7 +119,7 @@
     </calculatedViewAttributes>
     <input node="osr.mktcld::CV_BP_PRT_CORPACCT"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner">
     <viewAttributes>
       <viewAttribute id="QUAL_BPARTNER"/>
       <viewAttribute id="QUAL_ABN"/>
@@ -163,7 +163,8 @@
       <calculatedViewAttribute id="CC_UNDER_THRESHOLD" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>CASE 
 	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot; = 'X' then '' 
-	 ELSE &quot;PTAX_THRESHOLD_CHECK&quot; 
+     WHEN &quot;PTAX_THRESHOLD_CHECK&quot; IS NULL then 'X' 
+	 ELSE NULL
  END</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_TAXPAYER_STATUS" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -205,16 +206,16 @@
 </calculationViews>
 <logicalModel id="Join_1">
   <attributes>
-    <attribute id="CC_ID_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_ID_ORIGIN"/>
+    <attribute id="ID_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID_ORIGIN"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_ID_ORIGIN"/>
     </attribute>
-    <attribute id="CC_QUAL_BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_QUAL_BPARTNER"/>
+    <attribute id="QUAL_BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUAL_BPARTNER"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_QUAL_BPARTNER"/>
     </attribute>
-    <attribute id="CC_COMPANY_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_COMPANY_NAME"/>
+    <attribute id="COMPANY_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_NAME"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_COMPANY_NAME"/>
     </attribute>
     <attribute id="COUNTRY" order="4" displayAttribute="false" attributeHierarchyActive="false">
@@ -245,20 +246,20 @@
       <descriptions defaultDescription="STD_EMAIL"/>
       <keyMapping columnObjectName="Join_1" columnName="STD_EMAIL"/>
     </attribute>
-    <attribute id="CC_OPT_IN_SMTP_ADDR" order="11" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_OPT_IN_SMTP_ADDR"/>
+    <attribute id="OPT_IN_SMTP_ADDR" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPT_IN_SMTP_ADDR"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_OPT_IN_SMTP_ADDR"/>
     </attribute>
     <attribute id="TEL_NUMBER" order="12" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TEL_NUMBER"/>
       <keyMapping columnObjectName="Join_1" columnName="TEL_NUMBER"/>
     </attribute>
-    <attribute id="CC_OPT_IN_TELNR_LONG" order="13" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_OPT_IN_TELNR_LONG"/>
+    <attribute id="OPT_IN_TELNR_LONG" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OPT_IN_TELNR_LONG"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_OPT_IN_TELNR_LONG"/>
     </attribute>
-    <attribute id="CC_BP_NUMBER" order="14" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_BP_NUMBER"/>
+    <attribute id="BP_NUMBER" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_NUMBER"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_BP_NUMBER"/>
     </attribute>
     <attribute id="REGISTRATION_DATE" order="15" displayAttribute="false" attributeHierarchyActive="false">
@@ -269,16 +270,16 @@
       <descriptions defaultDescription="ABN"/>
       <keyMapping columnObjectName="Join_1" columnName="ABN"/>
     </attribute>
-    <attribute id="CC_TAXPAYER_STATUS" order="17" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_TAXPAYER_STATUS"/>
+    <attribute id="TAXPAYER_STATUS" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TAXPAYER_STATUS"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_TAXPAYER_STATUS"/>
     </attribute>
     <attribute id="GROUP_STATUS" order="18" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="GROUP_STATUS"/>
       <keyMapping columnObjectName="Join_1" columnName="GROUP_STATUS"/>
     </attribute>
-    <attribute id="CC_UNDER_THRESHOLD" order="19" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_UNDER_THRESHOLD"/>
+    <attribute id="UNDER_THRESHOLD" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UNDER_THRESHOLD"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_UNDER_THRESHOLD"/>
     </attribute>
     <attribute id="TITLE" order="20" displayAttribute="false" attributeHierarchyActive="false">
@@ -301,6 +302,11 @@
       <descriptions defaultDescription="GROUP_ID"/>
       <keyMapping columnObjectName="Join_1" columnName="GROUP_ID"/>
     </attribute>
+  
+    <attribute id="CC_TYPE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Refund or Deferral"/>
+      <keyMapping columnObjectName="Join_1" columnName="CC_TYPE"/>
+    </attribute>
   </attributes>
   <calculatedAttributes/>
   <baseMeasures/>
@@ -310,30 +316,30 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="371.9198875628177" y="112"/>
+      <upperLeftCorner x="371" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PRT_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="516.9999976158142"/>
+      <upperLeftCorner x="92" y="516"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PRT_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="302" y="516.9999976158142"/>
+      <upperLeftCorner x="302" y="516"/>
       <rectangleSize height="30" width="200"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="118.66666666666669" y="376.9999988079071"/>
+      <upperLeftCorner x="118" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="404.9237571756447" y="376.9999988079071"/>
+      <upperLeftCorner x="404" y="376"/>
       <rectangleSize height="30" width="231"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="371.9198875628177" y="217"/>
+      <upperLeftCorner x="371" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Union_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
