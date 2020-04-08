@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_INTERACTION_COVID19" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_INTERACTION_COVID19_FEED" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_PRT_INTERACTION_COVID19"/>
 <localVariables/>
 <variableMappings/>
@@ -135,7 +135,7 @@
       <viewAttribute id="CC_REVENUE_STREAM"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="CV_PTAX_REFUND">
+    <input node="CV_PTAX_REFUND" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTACT_ORIGIN" source="CC_CONTACT_ORIGIN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_QUAL_BPARTNER" source="CC_QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_COMM_MEDIUM" source="CC_COMM_MEDIUM"/>
@@ -150,7 +150,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_MARKETING_AREA" source="CC_MARKETING_AREA"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_REVENUE_STREAM" source="CC_REVENUE_STREAM"/>
     </input>
-    <input node="CV_PTAX_DEFERRAL">
+    <input node="CV_PTAX_DEFERRAL" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTACT_ORIGIN" source="CC_CONTACT_ORIGIN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_QUAL_BPARTNER" source="CC_QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_COMM_MEDIUM" source="CC_COMM_MEDIUM"/>
@@ -230,21 +230,21 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="252.92105451248827" y="112"/>
+      <upperLeftCorner x="252" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PTAX_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="356.9999988079071"/>
+      <upperLeftCorner x="92" y="356"/>
       <rectangleSize height="30" width="179"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PTAX_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="321" y="356.9999988079071"/>
+      <upperLeftCorner x="321" y="356"/>
       <rectangleSize width="199"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="252.9210545124883" y="217"/>
+      <upperLeftCorner x="252" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
