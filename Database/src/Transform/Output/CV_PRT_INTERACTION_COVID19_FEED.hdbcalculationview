@@ -32,7 +32,7 @@
         <formula>'OSR_PT_REFUND'</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_UTC_TIMESTAMP" datatype="VARCHAR" length="13" expressionLanguage="SQL">
-        <formula>NOW()</formula>
+        <formula>CURRENT_UTCTIMESTAMP</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>CASE  
@@ -89,7 +89,7 @@
         <formula>'OSR_PT_RELIEF_OPT_IN'</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_UTC_TIMESTAMP" datatype="VARCHAR" length="13" expressionLanguage="SQL">
-        <formula>NOW()</formula>
+        <formula>CURRENT_UTCTIMESTAMP</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'PT_COVID-19'</formula>
