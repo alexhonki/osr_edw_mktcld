@@ -1,0 +1,17 @@
+namespace osr.mktcld;
+
+
+/*@@layout{"layoutInfo":{}}*/
+entity CONTACT_COVID19 {
+    ID_ORIGIN      : hana.VARCHAR(13);
+    QUAL_BPARTNER  : hana.VARCHAR(13);
+    FIRST_NAME     : hana.VARCHAR(13);
+    LAST_NAME      : hana.VARCHAR(13);
+    COMPANY_NAME   : hana.VARCHAR(300);
+    ACCOUNT_ORIGIN : hana.VARCHAR(13);
+    BP_NUMBER      : hana.VARCHAR(13);
+    FUNCTION       : hana.VARCHAR(13);
+    QUAL_EMAIL     : String(1024);
+    CC_TYPE        : hana.VARCHAR(13);
+    ZCHANGETIME    : UTCTimestamp;
+};

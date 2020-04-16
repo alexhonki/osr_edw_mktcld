@@ -10,14 +10,14 @@
   <DataSource id="osr.mktcld::CV_PTAX_DEFERRAL">
     <resourceUri>osr.mktcld::CV_PTAX_DEFERRAL</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_BP_PRT_CORPACCT">
-    <resourceUri>osr.mktcld::CV_BP_PRT_CORPACCT</resourceUri>
-  </DataSource>
   <DataSource id="BPARTNER_REFUND$$$$osr.mktcld::CV_PTAX_REFUND$$">
     <resourceUri>osr.mktcld::CV_PTAX_REFUND</resourceUri>
   </DataSource>
   <DataSource id="BPARTNER_DEFERRAL$$$$osr.mktcld::CV_PTAX_DEFERRAL$$">
     <resourceUri>osr.mktcld::CV_PTAX_DEFERRAL</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld::CV_BP_PRT_CORPACCT">
+    <resourceUri>osr.mktcld::CV_BP_PRT_CORPACCT</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -132,6 +132,39 @@
     <restrictedViewAttributes/>
     <input node="Join_1"/>
   </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK_REFUND"/>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK_DEFER"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="BPARTNER_REFUND">
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK_REFUND" source="PTAX_THRESHOLD_CHECK"/>
+    </input>
+    <input node="BPARTNER_DEFERRAL">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK_DEFER" source="PTAX_THRESHOLD_CHECK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
+    </input>
+    <joinAttribute name="QUAL_BPARTNER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BPARTNER_REFUND">
+    <viewAttributes>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="BPARTNER_REFUND$$$$osr.mktcld::CV_PTAX_REFUND$$"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="BPARTNER_DEFERRAL">
+    <viewAttributes>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    
+      <viewAttribute id="QUAL_BPARTNER"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="BPARTNER_DEFERRAL$$$$osr.mktcld::CV_PTAX_DEFERRAL$$"/>
+  </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BP_PRT_CORPACCT">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
@@ -158,7 +191,7 @@
       <viewAttribute id="RELTYP"/>
     </viewAttributes>
     <calculatedViewAttributes>
-      <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="300" expressionLanguage="SQL">
         <formula>TRIM(CONCAT(CONCAT(CONCAT(&quot;NAME_ORG1&quot;, &quot;NAME_ORG2&quot;), &quot;NAME_ORG3&quot;), &quot;NAME_ORG4&quot;))</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_GROUP_ID" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -211,20 +244,20 @@
       <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>TRIM(LEADING '0' FROM &quot;QUAL_BPARTNER&quot;)</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_OPT_IN_SMTP_ADDR" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_OPT_IN_SMTP_ADDR" datatype="VARCHAR" length="1" expressionLanguage="SQL">
         <formula>'N'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_OPT_IN_TELNR_LONG" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_OPT_IN_TELNR_LONG" datatype="VARCHAR" length="1" expressionLanguage="SQL">
         <formula>'N'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_UNDER_THRESHOLD" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_UNDER_THRESHOLD" datatype="VARCHAR" length="1" expressionLanguage="SQL">
         <formula>CASE 
 	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot; = 'X' then '' 
      WHEN &quot;PTAX_THRESHOLD_CHECK&quot; IS NULL then 'X' 
 	 ELSE NULL
  END</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_TAXPAYER_STATUS" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_TAXPAYER_STATUS" datatype="VARCHAR" length="1" expressionLanguage="SQL">
         <formula>'X'</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
@@ -261,39 +294,6 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="BPARTNER"/>
     </input>
     <joinAttribute name="QUAL_BPARTNER"/>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="BPARTNER_REFUND">
-    <viewAttributes>
-      <viewAttribute id="QUAL_BPARTNER"/>
-      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="BPARTNER_REFUND$$$$osr.mktcld::CV_PTAX_REFUND$$"/>
-  </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
-    <viewAttributes>
-      <viewAttribute id="QUAL_BPARTNER"/>
-      <viewAttribute id="PTAX_THRESHOLD_CHECK_REFUND"/>
-      <viewAttribute id="PTAX_THRESHOLD_CHECK_DEFER"/>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="BPARTNER_REFUND">
-      <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK_REFUND" source="PTAX_THRESHOLD_CHECK"/>
-    </input>
-    <input node="BPARTNER_DEFERRAL">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK_DEFER" source="PTAX_THRESHOLD_CHECK"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
-    </input>
-    <joinAttribute name="QUAL_BPARTNER"/>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="BPARTNER_DEFERRAL">
-    <viewAttributes>
-      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
-    
-      <viewAttribute id="QUAL_BPARTNER"/></viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="BPARTNER_DEFERRAL$$$$osr.mktcld::CV_PTAX_DEFERRAL$$"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_3">
@@ -403,8 +403,10 @@
     </attribute>
   
     <attribute id="ZCHANGETIME" order="26" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ZCHANGETIME"/>
+      <descriptions defaultDescription="ETL Timestamp"/>
+  
       <keyMapping columnObjectName="Join_3" columnName="ZCHANGETIME"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -448,6 +450,27 @@
       <upperLeftCorner x="344" y="676"/>
       <rectangleSize height="30" width="187"/>
     </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="357" y="781"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="BPARTNER_REFUND" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="232"/>
+    </shape>
+    <shape modelObjectName="BPARTNER_DEFERRAL" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="232"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="BPARTNER_REFUND" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="173" y="921"/>
+      <rectangleSize height="30" width="175"/>
+    </shape>
+    <shape expanded="true" modelObjectName="BPARTNER_DEFERRAL" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="398" y="921"/>
+      <rectangleSize height="30" width="201"/>
+    </shape>
   
   
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
@@ -465,27 +488,6 @@
     <shape modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="230"/>
-    </shape>
-  
-    <shape expanded="true" modelObjectName="BPARTNER_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="173" y="921"/>
-      <rectangleSize height="30" width="175"/>
-    </shape>
-    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="357" y="781"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
-    <shape modelObjectName="BPARTNER_REFUND" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="232"/>
-    </shape>
-    <shape modelObjectName="BPARTNER_DEFERRAL" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="232"/>
-    </shape>
-    <shape expanded="true" modelObjectName="BPARTNER_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="398" y="921"/>
-      <rectangleSize height="30" width="201"/>
     </shape></shapes>
 </layout>
 </Calculation:scenario>
