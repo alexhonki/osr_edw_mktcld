@@ -17,6 +17,8 @@
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    
+      <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld.db.synonyms::CV_PTax_Deferral"/>
@@ -47,6 +49,11 @@
     <attribute id="PTAX_THRESHOLD_CHECK" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PTAX_THRESHOLD_CHECK"/>
       <keyMapping columnObjectName="CV_PTAX_DEFERRAL" columnName="PTAX_THRESHOLD_CHECK"/>
+    </attribute>
+  
+    <attribute id="ZCHANGETIME" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZCHANGETIME"/>
+      <keyMapping columnObjectName="CV_PTAX_DEFERRAL" columnName="ZCHANGETIME"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>

@@ -20,6 +20,8 @@
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    
+      <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -77,6 +79,8 @@
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    
+      <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -133,6 +137,8 @@
       <viewAttribute id="CC_CONTENT_SUBJECT"/>
       <viewAttribute id="CC_MARKETING_AREA"/>
       <viewAttribute id="CC_REVENUE_STREAM"/>
+    
+      <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CV_PTAX_REFUND" emptyUnionBehavior="NO_ROW">
@@ -149,6 +155,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTENT_SUBJECT" source="CC_CONTENT_SUBJECT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_MARKETING_AREA" source="CC_MARKETING_AREA"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_REVENUE_STREAM" source="CC_REVENUE_STREAM"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
     <input node="CV_PTAX_DEFERRAL" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTACT_ORIGIN" source="CC_CONTACT_ORIGIN"/>
@@ -164,6 +172,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_CONTENT_SUBJECT" source="CC_CONTENT_SUBJECT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_MARKETING_AREA" source="CC_MARKETING_AREA"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_REVENUE_STREAM" source="CC_REVENUE_STREAM"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
   </calculationView>
 </calculationViews>
@@ -220,6 +230,11 @@
     <attribute id="REVENUE_STREAM" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="YY1_TAX_REVENUE_STREAM_MIA"/>
       <keyMapping columnObjectName="Union_1" columnName="CC_REVENUE_STREAM"/>
+    </attribute>
+  
+    <attribute id="ZCHANGETIME" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZCHANGETIME"/>
+      <keyMapping columnObjectName="Union_1" columnName="ZCHANGETIME"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
