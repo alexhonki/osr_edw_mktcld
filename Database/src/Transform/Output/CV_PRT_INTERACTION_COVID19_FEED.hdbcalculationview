@@ -57,7 +57,7 @@
         <formula>''</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_CONTENT_SUBJECT" datatype="VARCHAR" length="13" expressionLanguage="SQL">
-        <formula>'COVID-19 Payroll Tax Deferral'</formula>
+        <formula>'COVID-19 Payroll Tax Refund'</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_MARKETING_AREA" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'OSR_GLOBAL'</formula>
@@ -234,7 +234,9 @@
   
     <attribute id="ZCHANGETIME" order="14" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ZCHANGETIME"/>
+  
       <keyMapping columnObjectName="Union_1" columnName="ZCHANGETIME"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>
