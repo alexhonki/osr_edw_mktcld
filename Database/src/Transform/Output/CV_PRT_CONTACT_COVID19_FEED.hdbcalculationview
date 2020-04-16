@@ -23,6 +23,8 @@
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    
+      <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -39,6 +41,8 @@
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    
+      <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -56,6 +60,8 @@
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+    
+      <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CV_PTAX_REFUND" emptyUnionBehavior="NO_ROW">
@@ -66,6 +72,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_ABN" source="QUAL_ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
     <input node="CV_PTAX_DEFERRAL" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
@@ -75,6 +83,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_ABN" source="QUAL_ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BP_PRT_CORPACCT">
@@ -103,6 +113,8 @@
       <viewAttribute id="CC_BP_NUMBER"/>
     
       <viewAttribute id="CC_TYPE"/>
+    
+      <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_ID_ORIGIN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -132,6 +144,8 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
     <input node="CV_BP_PRT_CORPACCT">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_COMPANY_NAME" source="CC_COMPANY_NAME"/>
@@ -179,14 +193,21 @@
       <descriptions defaultDescription="QUAL_EMAIL"/>
       <keyMapping columnObjectName="Join_1" columnName="QUAL_EMAIL"/>
     </attribute>
-    <attribute id="OPT_IN_SMTP_ADDR" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OPT_IN_SMTP_ADDR" order="10" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="OPT_IN_SMTP_ADDR"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_OPT_IN_SMTP_ADDR"/>
     </attribute>
   
     <attribute id="CC_TYPE" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Refund or Deferral"/>
+  
       <keyMapping columnObjectName="Join_1" columnName="CC_TYPE"/>
+  
+    </attribute>
+  
+    <attribute id="ZCHANGETIME" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZCHANGETIME"/>
+      <keyMapping columnObjectName="Join_1" columnName="ZCHANGETIME"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
