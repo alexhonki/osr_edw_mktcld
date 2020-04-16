@@ -96,7 +96,7 @@
       <viewAttribute id="NAME_ORG4"/>
     </viewAttributes>
     <calculatedViewAttributes>
-      <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="300" expressionLanguage="SQL">
         <formula>TRIM(CONCAT(CONCAT(CONCAT(&quot;NAME_ORG1&quot;, &quot;NAME_ORG2&quot;), &quot;NAME_ORG3&quot;), &quot;NAME_ORG4&quot;))</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_BP_NUMBER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -206,8 +206,10 @@
     </attribute>
   
     <attribute id="ZCHANGETIME" order="12" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ZCHANGETIME"/>
+      <descriptions defaultDescription="ETL Timestamp"/>
+  
       <keyMapping columnObjectName="Join_1" columnName="ZCHANGETIME"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>

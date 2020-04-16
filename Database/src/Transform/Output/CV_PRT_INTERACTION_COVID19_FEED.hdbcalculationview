@@ -27,16 +27,16 @@
       <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;QUAL_BPARTNER&quot;), '_'), 'Z1')</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_COMM_MEDIUM" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_COMM_MEDIUM" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'OSR_TRM_SYS_EVENT'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'OSR_PT_REFUND'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_UTC_TIMESTAMP" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_UTC_TIMESTAMP" datatype="TIMESTAMP" expressionLanguage="SQL">
         <formula>CURRENT_UTCTIMESTAMP</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="60" expressionLanguage="SQL">
         <formula>CASE  
 	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='X' then 'PT_COVID-19_RELIEF_OV65M'
 	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='' then  'PT_COVID-19_RELIEF_UN65M'
@@ -50,13 +50,13 @@
 	 ELSE '' 
  END</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_SOURCE_OBJECT_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_SOURCE_OBJECT_TYPE" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'QUALTRICS_SURVEY'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_SOURCE_DATA_URL" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_SOURCE_DATA_URL" datatype="VARCHAR" length="300" expressionLanguage="SQL">
         <formula>''</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_CONTENT_SUBJECT" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_CONTENT_SUBJECT" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'COVID-19 Payroll Tax Refund'</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_MARKETING_AREA" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -86,28 +86,28 @@
       <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;QUAL_BPARTNER&quot;), '_'), 'Z1')</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_COMM_MEDIUM" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_COMM_MEDIUM" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'OSR_TRM_SYS_EVENT'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'OSR_PT_RELIEF_OPT_IN'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_UTC_TIMESTAMP" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_UTC_TIMESTAMP" datatype="TIMESTAMP" expressionLanguage="SQL">
         <formula>CURRENT_UTCTIMESTAMP</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="60" expressionLanguage="SQL">
         <formula>'PT_COVID-19'</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_REASON" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'Z001'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_SOURCE_OBJECT_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_SOURCE_OBJECT_TYPE" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'QUALTRICS_SURVEY'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_SOURCE_DATA_URL" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_SOURCE_DATA_URL" datatype="VARCHAR" length="300" expressionLanguage="SQL">
         <formula>''</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_CONTENT_SUBJECT" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_CONTENT_SUBJECT" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'COVID-19 Payroll Tax Deferral'</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_MARKETING_AREA" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -233,7 +233,7 @@
     </attribute>
   
     <attribute id="ZCHANGETIME" order="14" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ZCHANGETIME"/>
+      <descriptions defaultDescription="ETL Timestamp"/>
   
       <keyMapping columnObjectName="Union_1" columnName="ZCHANGETIME"/>
   
