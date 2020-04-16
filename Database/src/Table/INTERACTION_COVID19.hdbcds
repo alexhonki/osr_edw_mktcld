@@ -1,0 +1,19 @@
+namespace osr.mktcld;
+
+
+/*@@layout{"layoutInfo":{"x":-447,"y":-271.5}}*/
+entity INTERACTION_COVID19 {
+    CONTACT_ORIGIN     : hana.VARCHAR(13);
+    QUAL_BPARTNER      : hana.VARCHAR(13);
+    COMM_MEDIUM        : hana.VARCHAR(30);
+    UTC_TIMESTAMP      : UTCTimestamp;
+    INTEREST           : hana.VARCHAR(60);
+    REASON             : hana.VARCHAR(13);
+    SOURCE_OBJECT_TYPE : hana.VARCHAR(30);
+    SOURCE_OBJECT_ID   : String(100);
+    SOURCE_DATA_URL    : hana.VARCHAR(300);
+    CONTENT_SUBJECT    : hana.VARCHAR(30);
+    MARKETING_AREA     : hana.VARCHAR(13);
+    REVENUE_STREAM     : hana.VARCHAR(13);
+    ZCHANGETIME        : UTCTimestamp;
+};
