@@ -11,7 +11,7 @@
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="CV_BP_PRT_CORPACCT">
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_BP_PRT_CORPACCT" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
@@ -49,8 +49,8 @@
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_GROUP_ID" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>CASE  
-	 WHEN &quot;GROUP_STATUS&quot;='GM' and &quot;RELTYP&quot;='ZGRM' then &quot;GROUP_ID&quot; 
-	 WHEN &quot;GROUP_STATUS&quot;='DGE' and &quot;RELTYP&quot;='ZDGE' then &quot;GROUP_ID&quot; 
+	 WHEN &quot;GROUP_STATUS&quot;='GM' and &quot;RELTYP&quot;='ZGRM' then TRIM(LEADING '0' FROM &quot;GROUP_ID&quot;) 
+	 WHEN &quot;GROUP_STATUS&quot;='DGE' and &quot;RELTYP&quot;='ZDGE' then TRIM(LEADING '0' FROM &quot;GROUP_ID&quot;) 
 	 ELSE '' 
  END</formula>
       </calculatedViewAttribute>
@@ -80,6 +80,11 @@
       </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="osr.mktcld::CV_BP_PRT_CORPACCT"/>
+    <filter>(&quot;RELTYP&quot;='ZDGE' and &quot;GROUP_STATUS&quot;='DGE')
+or
+(&quot;RELTYP&quot;='ZGRM' and &quot;GROUP_STATUS&quot;='GM')
+or
+(&quot;RELTYP&quot;='' or &quot;RELTYP&quot; is null)</filter>
   </calculationView>
 </calculationViews>
 <logicalModel id="CV_BP_PRT_CORPACCT">
@@ -208,25 +213,25 @@
         <formula>'OSR_EDW'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="OPT_IN_SMTP_ADDR" order="13" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="OPT_IN_SMTP_ADDR" order="13" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="E-Mail Address Opt-In"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>'N'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="OPT_IN_TELNR_LONG" order="15" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="OPT_IN_TELNR_LONG" order="15" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Phone Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="OPT_IN_TELNR_MOBILE" order="17" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="OPT_IN_TELNR_MOBILE" order="17" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Mobile Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="OPT_IN_TELNR_MOBILE_SMS" order="18" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="OPT_IN_TELNR_MOBILE_SMS" order="18" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Mobile SMS Opt_in"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
@@ -243,7 +248,13 @@
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
         <formula>'PT'</formula>
       </keyCalculation>
-    </calculatedAttribute></calculatedAttributes>
+    </calculatedAttribute>
+    <calculatedAttribute id="CLIENT" order="37" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>&quot;ID&quot;</formula>
+      </keyCalculation>
+    </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/>
@@ -251,12 +262,12 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="131" y="112"/>
+      <upperLeftCorner x="131.6617743349323" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="236"/>
+      <upperLeftCorner x="92" y="236.9999988079071"/>
       <rectangleSize height="30" width="232"/>
     </shape>
   </shapes>
