@@ -1,0 +1,65 @@
+namespace osr.mktcld.table;
+
+context CDS_PRT_COVID19 {
+
+    /*@@layout{"layoutInfo":{}}*/
+    entity CORPACCT {
+        ID_ORIGIN           : hana.VARCHAR(13);
+        QUAL_BPARTNER       : hana.VARCHAR(13);
+        COMPANY_NAME        : hana.VARCHAR(300);
+        COUNTRY             : String(3);
+        REGION              : String(3);
+        CITY1               : String(40);
+        POST_CODE1          : String(10);
+        STREET              : String(60);
+        HOUSE_NUM1          : String(10);
+        STD_EMAIL           : String(100);
+        TEL_NUMBER          : String(30);
+        BP_NUMBER           : hana.VARCHAR(13);
+        REGISTRATION_DATE   : String(40);
+        ABN                 : String(11);
+        TAXPAYER_STATUS     : hana.VARCHAR(1);
+        GROUP_STATUS        : String(40);
+        UNDER_THRESHOLD     : hana.VARCHAR(1);
+        TITLE               : String(4);
+        ACN                 : String(9);
+        LODGEMENT_FREQUENCY : String(40);
+        ORG_STATUS          : String(4);
+        GROUP_ID            : String(10);
+        CC_TYPE             : hana.VARCHAR(13);
+        ZCHANGETIME         : UTCTimestamp;
+    };
+
+    /*@@layout{"layoutInfo":{}}*/
+    entity CONTACT {
+        ID_ORIGIN      : hana.VARCHAR(13);
+        QUAL_BPARTNER  : hana.VARCHAR(13);
+        FIRST_NAME     : hana.VARCHAR(13);
+        LAST_NAME      : hana.VARCHAR(13);
+        COMPANY_NAME   : hana.VARCHAR(300);
+        ACCOUNT_ORIGIN : hana.VARCHAR(13);
+        BP_NUMBER      : hana.VARCHAR(13);
+        FUNCTION       : hana.VARCHAR(13);
+        QUAL_EMAIL     : String(1024);
+        CC_TYPE        : hana.VARCHAR(13);
+        ZCHANGETIME    : UTCTimestamp;
+    };
+
+    /*@@layout{"layoutInfo":{}}*/
+    entity INTERACTION {
+        CONTACT_ORIGIN     : hana.VARCHAR(13);
+        QUAL_BPARTNER      : hana.VARCHAR(13);
+        COMM_MEDIUM        : hana.VARCHAR(30);
+        TYPE               : hana.VARCHAR(30);
+        UTC_TIMESTAMP      : UTCTimestamp;
+        INTEREST           : hana.VARCHAR(60);
+        REASON             : hana.VARCHAR(13);
+        SOURCE_OBJECT_TYPE : hana.VARCHAR(30);
+        SOURCE_OBJECT_ID   : String(100);
+        SOURCE_DATA_URL    : hana.VARCHAR(300);
+        CONTENT_SUBJECT    : hana.VARCHAR(30);
+        MARKETING_AREA     : hana.VARCHAR(13);
+        REVENUE_STREAM     : hana.VARCHAR(13);
+        ZCHANGETIME        : UTCTimestamp;
+    };
+};

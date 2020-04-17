@@ -5,7 +5,7 @@
  */
  
 service {       
-    "osr.mktcld::SCPI_STATUS" as "ETL_Status"
+    "osr.mktcld.table::SCPI_LOAD_STATUS" as "ETL_Status"
     key generate local "GenID";
 } 
 

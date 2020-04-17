@@ -1,4 +1,4 @@
 {
-    "name":    "osr.mktcld.db.views",
-    "subfolder": "ignore"
+	"name": "osr.mktcld.flowgraph",
+	"subfolder": "ignore"
 }

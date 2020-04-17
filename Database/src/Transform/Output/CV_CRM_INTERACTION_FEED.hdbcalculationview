@@ -279,13 +279,13 @@
     </calculatedAttribute>
     <calculatedAttribute id="COMM_MEDIUM" order="5" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Communication Medium"/>
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="30">
         <formula>'OSR_TRM_SYS_EVENT'</formula>
       </keyCalculation>
     </calculatedAttribute>
     <calculatedAttribute id="IA_TYPE" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Type"/>
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="30">
         <formula>'OSR_TRM_PRT_NEW_REG'</formula>
       </keyCalculation>
     </calculatedAttribute>
@@ -297,7 +297,7 @@
     </calculatedAttribute>
     <calculatedAttribute id="CONTENT_TITLE" order="12" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Content Subject"/>
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="60">
         <formula>'Payroll Tax - Notice of Registration'</formula>
       </keyCalculation>
     </calculatedAttribute>
@@ -321,22 +321,22 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="474" y="112"/>
+      <upperLeftCorner x="501.01498672969234" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_CODE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91" y="516"/>
+      <upperLeftCorner x="91.99999999999989" y="536.9999976158142"/>
       <rectangleSize height="30" width="268"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_OPEN" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="410" y="516"/>
+      <upperLeftCorner x="409.9999999999999" y="536.9999976158142"/>
       <rectangleSize height="30" width="261"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="172" y="356"/>
+      <upperLeftCorner x="172.66666666666657" y="376.9999988079071"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_CRM_INTERACTION_OPEN" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -349,11 +349,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_BP" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="524" y="356"/>
+      <upperLeftCorner x="509.3277106150757" y="376.9999988079071"/>
       <rectangleSize height="30" width="252"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="474" y="217"/>
+      <upperLeftCorner x="501.01498672969234" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
