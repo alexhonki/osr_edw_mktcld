@@ -205,7 +205,9 @@
         <formula>TRIM(LEADING '0' FROM &quot;BPARTNER&quot;)</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input node="osr.mktcld::CV_BP_PRT_CORPACCT"/>
+    <input node="osr.mktcld::CV_BP_PRT_CORPACCT">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TELNR_LONG"/>
+    </input>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_1" joinType="inner">
     <viewAttributes>
@@ -386,8 +388,8 @@
       <descriptions defaultDescription="LODGEMENT_FREQUENCY"/>
       <keyMapping columnObjectName="Join_3" columnName="LODGEMENT_FREQUENCY"/>
     </attribute>
-    <attribute id="ORG_STATUS" order="23" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ORG_STATUS"/>
+    <attribute id="YY1_ORG_STATUS_MCP" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Organisation Status"/>
       <keyMapping columnObjectName="Join_3" columnName="ORG_STATUS"/>
     </attribute>
     <attribute id="GROUP_ID" order="24" displayAttribute="false" attributeHierarchyActive="false">

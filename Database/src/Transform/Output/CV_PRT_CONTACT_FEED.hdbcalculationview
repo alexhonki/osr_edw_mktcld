@@ -363,25 +363,25 @@
         <formula>'TAX'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute semanticType="empty" id="OPT_IN_SMTP_ADDR" displayAttribute="false" order="14" attributeHierarchyActive="false">
+    <calculatedAttribute semanticType="empty" id="OPT_IN_SMTP_ADDR" displayAttribute="false" order="14" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="E-Mail Address Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute semanticType="empty" id="OPT_IN_TELNR_LONG" displayAttribute="false" order="16" attributeHierarchyActive="false">
+    <calculatedAttribute semanticType="empty" id="OPT_IN_TELNR_LONG" displayAttribute="false" order="16" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Phone Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute semanticType="empty" id="OPT_IN_TELNR_MOBILE" displayAttribute="false" order="18" attributeHierarchyActive="false">
+    <calculatedAttribute semanticType="empty" id="OPT_IN_TELNR_MOBILE" displayAttribute="false" order="18" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Mobile Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute semanticType="empty" id="OPT_IN_TELNR_MOBILE_SMS" displayAttribute="false" order="19" attributeHierarchyActive="false">
+    <calculatedAttribute semanticType="empty" id="OPT_IN_TELNR_MOBILE_SMS" displayAttribute="false" order="19" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Mobile SMS Opt_in"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
