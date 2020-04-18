@@ -57,7 +57,7 @@
       <calculatedViewAttribute id="CC_ID" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>TRIM(LEADING '0' FROM &quot;BPARTNER&quot;)</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="300" expressionLanguage="SQL">
         <formula>TRIM(CONCAT(CONCAT(CONCAT(&quot;NAME_ORG1&quot;, &quot;NAME_ORG2&quot;), &quot;NAME_ORG3&quot;), &quot;NAME_ORG4&quot;))</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_ENTITY_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -250,6 +250,7 @@ or
       </keyCalculation>
     </calculatedAttribute>
     <calculatedAttribute id="CLIENT" order="37" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Client"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>&quot;ID&quot;</formula>
       </keyCalculation>

@@ -39,7 +39,7 @@
       <calculatedViewAttribute id="CC_ID_ORIGIN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'OSR_EDW'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+      <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="300" expressionLanguage="SQL">
         <formula>TRIM(CONCAT(CONCAT(CONCAT(&quot;NAME_ORG1&quot;, &quot;NAME_ORG2&quot;), &quot;NAME_ORG3&quot;), &quot;NAME_ORG4&quot;))</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
