@@ -1,0 +1,18 @@
+/*
+ * OSR Marketing Cloud Feed
+ * EDW Corporate Contact feed to SCPI...then to SCM
+ * SAP Australia, 2020
+ */
+ 
+service {       
+    "osr.mktcld::CV_PRT_CONTACT_FEED" as "Contact"
+    key generate local "GenID";
+}
+
+settings { 
+	support null;
+    metadata cache-control "max-age= 86401";
+    limits 
+      max_records = 99999, 
+      max_expanded_records = 30; 
+}
