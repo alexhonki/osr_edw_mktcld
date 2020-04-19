@@ -1,13 +1,12 @@
 /*
  * OSR Marketing Cloud Feed
- * EDW COVID-19 Contact feed to SCPI...then to SCM
+ * EDW Corporate Account feed to SCPI...then to SCM
  * SAP Australia, 2020
  */
  
 service {       
-    "osr.mktcld::CV_PRT_CONTACT_COVID19_FEED" as "COVID_19_Contact"
-    key ("ZCHANGETIME","QUAL_BPARTNER","CC_TYPE");
-//    key generate local "GenID";
+    "osr.mktcld::CV_PRT_CORPACCT_FEED" as "Corporate_Account"
+    key generate local "GenID";
 }
 
 settings { 

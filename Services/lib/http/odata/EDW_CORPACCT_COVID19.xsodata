@@ -6,10 +6,14 @@
  
 service {       
     "osr.mktcld::CV_PRT_CORPACCT_COVID19_FEED" as "COVID_19_Corporate_Account"
-    key generate local "GenID";
+    key ("ZCHANGETIME","QUAL_BPARTNER","CC_TYPE");
+//    key generate local "GenID";
 }
-/*
+
 settings { 
-    metadata cache-control "max-age= 604800";
+	support null;
+    metadata cache-control "max-age= 86401";
+    limits 
+      max_records = 99999, 
+      max_expanded_records = 30; 
 }
-*/
