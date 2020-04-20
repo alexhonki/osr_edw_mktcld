@@ -25,7 +25,7 @@
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
-        <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;QUAL_BPARTNER&quot;), '_'), 'Z1')</formula>
+        <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;QUAL_BPARTNER&quot;), '_'), 'Z4')</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_COMM_MEDIUM" datatype="VARCHAR" length="30" expressionLanguage="SQL">
         <formula>'OSR_TRM_SYS_EVENT'</formula>
@@ -176,66 +176,87 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
   </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Aggregation_1">
+    <viewAttributes>
+      <viewAttribute id="CC_CONTACT_ORIGIN"/>
+      <viewAttribute id="CC_QUAL_BPARTNER"/>
+      <viewAttribute id="CC_COMM_MEDIUM"/>
+      <viewAttribute id="CC_TYPE"/>
+      <viewAttribute id="CC_UTC_TIMESTAMP"/>
+      <viewAttribute id="CC_INTEREST"/>
+      <viewAttribute id="CC_REASON"/>
+      <viewAttribute id="CC_SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SURVEYID"/>
+      <viewAttribute id="CC_SOURCE_DATA_URL"/>
+      <viewAttribute id="CC_CONTENT_SUBJECT"/>
+      <viewAttribute id="CC_MARKETING_AREA"/>
+      <viewAttribute id="CC_REVENUE_STREAM"/>
+      <viewAttribute id="ZCHANGETIME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Union_1"/>
+  </calculationView>
 </calculationViews>
-<logicalModel id="Union_1">
+<logicalModel id="Aggregation_1">
   <attributes>
     <attribute id="CONTACT_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Contact Origin"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_CONTACT_ORIGIN"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_CONTACT_ORIGIN"/>
     </attribute>
     <attribute id="QUAL_BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Contact Id"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_QUAL_BPARTNER"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_QUAL_BPARTNER"/>
     </attribute>
     <attribute id="COMM_MEDIUM" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Communication Medium"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_COMM_MEDIUM"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_COMM_MEDIUM"/>
     </attribute>
     <attribute id="TYPE" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Type"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_TYPE"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_TYPE"/>
     </attribute>
     <attribute id="UTC_TIMESTAMP" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Time Stamp UTC"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_UTC_TIMESTAMP"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_UTC_TIMESTAMP"/>
     </attribute>
     <attribute id="INTEREST" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Interests"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_INTEREST"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_INTEREST"/>
     </attribute>
     <attribute id="REASON" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Reason"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_REASON"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_REASON"/>
     </attribute>
     <attribute id="SOURCE_OBJECT_TYPE" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Source Object Type"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_SOURCE_OBJECT_TYPE"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_SOURCE_OBJECT_TYPE"/>
     </attribute>
     <attribute id="SOURCE_OBJECT_ID" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Source Object"/>
-      <keyMapping columnObjectName="Union_1" columnName="SURVEYID"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="SURVEYID"/>
     </attribute>
     <attribute id="SOURCE_DATA_URL" order="10" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Source Data URL"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_SOURCE_DATA_URL"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_SOURCE_DATA_URL"/>
     </attribute>
     <attribute id="CONTENT_SUBJECT" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Content Subject"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_CONTENT_SUBJECT"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_CONTENT_SUBJECT"/>
     </attribute>
     <attribute id="MARKETING_AREA" order="12" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Marketing Area"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_MARKETING_AREA"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_MARKETING_AREA"/>
     </attribute>
     <attribute id="REVENUE_STREAM" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="YY1_TAX_REVENUE_STREAM_MIA"/>
-      <keyMapping columnObjectName="Union_1" columnName="CC_REVENUE_STREAM"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="CC_REVENUE_STREAM"/>
     </attribute>
   
     <attribute id="ZCHANGETIME" order="14" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ETL Timestamp"/>
   
-      <keyMapping columnObjectName="Union_1" columnName="ZCHANGETIME"/>
+      <keyMapping columnObjectName="Aggregation_1" columnName="ZCHANGETIME"/>
   
     </attribute>
   </attributes>
@@ -247,21 +268,26 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="252" y="112"/>
+      <upperLeftCorner x="279.5342240487832" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PTAX_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="356"/>
+      <upperLeftCorner x="92.00000000000004" y="481.9999976158142"/>
       <rectangleSize height="30" width="179"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PTAX_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="321" y="356"/>
+      <upperLeftCorner x="321" y="481.9999976158142"/>
       <rectangleSize width="199"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="252" y="217"/>
+      <upperLeftCorner x="255.33473787455324" y="341.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="255.33473787455324" y="236.9999988079071"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
