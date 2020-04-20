@@ -30,6 +30,13 @@
       <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'REFUND'</formula>
       </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="20" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(&quot;QUAL_BPARTNER&quot;, '_'), 'Z4')</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_FUNCTION" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'Z4'</formula>
+      </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="osr.mktcld::CV_PTAX_REFUND"/>
   </calculationView>
@@ -48,6 +55,13 @@
       <calculatedViewAttribute id="CC_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'DEFERRAL'</formula>
       </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="20" expressionLanguage="SQL">
+        <formula>CONCAT(CONCAT(&quot;QUAL_BPARTNER&quot;, '_'), 'Z1')</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_FUNCTION" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>'Z1'</formula>
+      </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="osr.mktcld::CV_PTAX_DEFERRAL"/>
   </calculationView>
@@ -62,6 +76,9 @@
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
     
       <viewAttribute id="ZCHANGETIME"/>
+    
+      <viewAttribute id="CC_QUAL_BPARTNER"/>
+      <viewAttribute id="CC_FUNCTION"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CV_PTAX_REFUND" emptyUnionBehavior="NO_ROW">
@@ -74,6 +91,9 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_QUAL_BPARTNER" source="CC_QUAL_BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_FUNCTION" source="CC_FUNCTION"/>
     </input>
     <input node="CV_PTAX_DEFERRAL" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
@@ -85,6 +105,9 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_QUAL_BPARTNER" source="CC_QUAL_BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_FUNCTION" source="CC_FUNCTION"/>
     </input>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BP_PRT_CORPACCT">
@@ -115,13 +138,13 @@
       <viewAttribute id="CC_TYPE"/>
     
       <viewAttribute id="ZCHANGETIME"/>
+    
+      <viewAttribute id="CC_QUAL_BPARTNER"/>
+      <viewAttribute id="CC_FUNCTION"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_ID_ORIGIN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'OSR_EDW'</formula>
-      </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
-        <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;QUAL_BPARTNER&quot;), '_'), 'Z1')</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_FIRST_NAME" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'COVID-19'</formula>
@@ -132,20 +155,20 @@
       <calculatedViewAttribute id="CC_ACCOUNT_ORIGIN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'OSR_EDW'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_FUNCTION" datatype="VARCHAR" length="13" expressionLanguage="SQL">
-        <formula>'Z1'</formula>
-      </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_OPT_IN_SMTP_ADDR" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'N'</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input node="Union_1">
+    <input node="Remove_Duplicate">
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_QUAL_BPARTNER" source="CC_QUAL_BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_FUNCTION" source="CC_FUNCTION"/>
     </input>
     <input node="CV_BP_PRT_CORPACCT">
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_COMPANY_NAME" source="CC_COMPANY_NAME"/>
@@ -153,6 +176,22 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="BPARTNER"/>
     </input>
     <joinAttribute name="QUAL_BPARTNER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Remove_Duplicate">
+    <viewAttributes>
+      <viewAttribute id="CC_TYPE"/>
+      <viewAttribute id="SURVEYID"/>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="QUAL_ABN"/>
+      <viewAttribute id="QUAL_EMAIL"/>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+      <viewAttribute id="ZCHANGETIME"/>
+      <viewAttribute id="CC_QUAL_BPARTNER"/>
+      <viewAttribute id="CC_FUNCTION"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Union_1"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_1">
@@ -220,38 +259,43 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="403" y="112"/>
+      <upperLeftCorner x="281.48109200254197" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PTAX_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="516"/>
+      <upperLeftCorner x="109.8231497657402" y="641.9999964237213"/>
       <rectangleSize height="30" width="202"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PTAX_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="343" y="516"/>
+      <upperLeftCorner x="361.8231497657402" y="641.9999964237213"/>
       <rectangleSize height="30" width="200"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="139" y="376"/>
+      <upperLeftCorner x="157.48981643240685" y="501.9999976158142"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="438" y="376"/>
+      <upperLeftCorner x="92" y="376.9999988079071"/>
       <rectangleSize height="30" width="219"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="403" y="217"/>
+      <upperLeftCorner x="281.48109200254197" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
-    <shape modelObjectName="Union_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectName="Remove_Duplicate" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="232"/>
     </shape>
     <shape modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="208"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Remove_Duplicate" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="361" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
 </layout>

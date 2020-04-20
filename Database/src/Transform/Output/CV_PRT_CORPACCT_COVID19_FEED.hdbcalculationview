@@ -24,7 +24,6 @@
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_PRT_REFUND">
     <viewAttributes>
       <viewAttribute id="SURVEYID"/>
-      <viewAttribute id="RESPONSEID"/>
       <viewAttribute id="QUAL_BPARTNER"/>
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
@@ -60,7 +59,6 @@
   <calculationView xsi:type="Calculation:UnionView" id="Union_1">
     <viewAttributes>
       <viewAttribute id="SURVEYID"/>
-      <viewAttribute id="RESPONSEID"/>
       <viewAttribute id="QUAL_BPARTNER"/>
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
@@ -70,9 +68,8 @@
       <viewAttribute id="ZCHANGETIME"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="CV_PRT_REFUND" emptyUnionBehavior="NO_ROW">
+    <input node="Join_2" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="RESPONSEID" source="RESPONSEID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_ABN" source="QUAL_ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
@@ -81,22 +78,20 @@
     
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
-    <input node="Join_2" emptyUnionBehavior="NO_ROW">
+  
+    <input node="CV_PRT_REFUND">
       <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="RESPONSEID" source="RESPONSEID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_ABN" source="QUAL_ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
-    
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="SURVEYID"/>
-      <viewAttribute id="RESPONSEID"/>
       <viewAttribute id="QUAL_BPARTNER"/>
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
@@ -108,7 +103,6 @@
     <calculatedViewAttributes/>
     <input node="CV_PRT_DEFERRAL">
       <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="RESPONSEID" source="RESPONSEID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_ABN" source="QUAL_ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
@@ -215,7 +209,6 @@
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
-      <viewAttribute id="CC_TYPE"/>
       <viewAttribute id="CC_COMPANY_NAME"/>
       <viewAttribute id="COUNTRY"/>
       <viewAttribute id="REGION"/>
@@ -263,12 +256,11 @@
         <formula>'X'</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input node="Union_1">
+    <input node="Remove_Duplicate">
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_ABN" source="QUAL_ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
@@ -296,6 +288,19 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="BPARTNER"/>
     </input>
     <joinAttribute name="QUAL_BPARTNER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AggregationView" id="Remove_Duplicate">
+    <viewAttributes>
+      <viewAttribute id="SURVEYID"/>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="QUAL_ABN"/>
+      <viewAttribute id="QUAL_EMAIL"/>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+      <viewAttribute id="ZCHANGETIME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="Union_1"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_3">
@@ -397,14 +402,7 @@
       <keyMapping columnObjectName="Join_3" columnName="GROUP_ID"/>
     </attribute>
   
-    <attribute id="CC_TYPE" order="25" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Refund or Deferral"/>
-  
-      <keyMapping columnObjectName="Join_3" columnName="CC_TYPE"/>
-  
-    </attribute>
-  
-    <attribute id="ZCHANGETIME" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ZCHANGETIME" order="25" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ETL Timestamp"/>
   
       <keyMapping columnObjectName="Join_3" columnName="ZCHANGETIME"/>
@@ -419,25 +417,25 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="324" y="112"/>
+      <upperLeftCorner x="384.09821612073966" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PRT_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="450" y="516"/>
+      <upperLeftCorner x="403.1867253719477" y="621.9999976158142"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PRT_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91" y="676"/>
+      <upperLeftCorner x="92.00000000000001" y="781.9999964237213"/>
       <rectangleSize height="30" width="200"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="412" y="376"/>
+      <upperLeftCorner x="243.90672162396163" y="481.9999988079071"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="138" y="516"/>
+      <upperLeftCorner x="138.66666666666663" y="621.9999976158142"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_PRT_DEFERRAL" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -449,11 +447,11 @@
       <rectangleSize width="284"/>
     </shape>
     <shape expanded="true" modelObjectName="BP_REFUND_DEFER" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="344" y="676"/>
+      <upperLeftCorner x="344.1374999392032" y="781.9999964237213"/>
       <rectangleSize height="30" width="187"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="357" y="781"/>
+      <upperLeftCorner x="357.6374999392032" y="886.9999964237213"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="BPARTNER_REFUND" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -466,30 +464,35 @@
     </shape>
   
     <shape expanded="true" modelObjectName="BPARTNER_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="173" y="921"/>
+      <upperLeftCorner x="208.972434606136" y="1046.9999952316284"/>
       <rectangleSize height="30" width="175"/>
     </shape>
     <shape expanded="true" modelObjectName="BPARTNER_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="398" y="921"/>
+      <upperLeftCorner x="433.972434606136" y="1046.9999952316284"/>
       <rectangleSize height="30" width="201"/>
     </shape>
   
   
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="131" y="376"/>
+      <upperLeftCorner x="453.90672162396163" y="376.9999988079071"/>
       <rectangleSize height="30" width="231"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="324" y="217"/>
+      <upperLeftCorner x="384.09821612073966" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
-    <shape modelObjectName="Union_1" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <shape modelObjectName="Remove_Duplicate" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="232"/>
+      <rectangleSize width="232.49658203125"/>
     </shape>
     <shape modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="230"/>
-    </shape></shapes>
+    </shape>
+    <shape expanded="true" modelObjectName="Remove_Duplicate" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="243.9067216239617" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
 </layout>
 </Calculation:scenario>
