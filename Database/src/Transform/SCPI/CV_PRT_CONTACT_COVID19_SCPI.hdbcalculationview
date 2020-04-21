@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_CONTACT_COVID19_SCPI" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PRT_CONTACT_COVID19_SCPI"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.table::CDS_PRT_COVID19.CONTACT">
+    <resourceUri>osr.mktcld.table::CDS_PRT_COVID19.CONTACT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CDS_PRT_COVID19_CONTACT">
+    <viewAttributes>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="FIRST_NAME"/>
+      <viewAttribute id="LAST_NAME"/>
+      <viewAttribute id="COMPANY_NAME"/>
+      <viewAttribute id="ACCOUNT_ORIGIN"/>
+      <viewAttribute id="BP_NUMBER"/>
+      <viewAttribute id="FUNCTION"/>
+      <viewAttribute id="QUAL_EMAIL"/>
+      <viewAttribute id="CC_TYPE"/>
+      <viewAttribute id="ZCHANGETIME"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.table::CDS_PRT_COVID19.CONTACT"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="CDS_PRT_COVID19_CONTACT">
+  <attributes>
+    <attribute id="ID_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID_ORIGIN"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="ID_ORIGIN"/>
+    </attribute>
+    <attribute id="QUAL_BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUAL_BPARTNER"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="QUAL_BPARTNER"/>
+    </attribute>
+    <attribute id="FIRST_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRST_NAME"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="FIRST_NAME"/>
+    </attribute>
+    <attribute id="LAST_NAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LAST_NAME"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="LAST_NAME"/>
+    </attribute>
+    <attribute id="COMPANY_NAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_NAME"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="COMPANY_NAME"/>
+    </attribute>
+    <attribute id="ACCOUNT_ORIGIN" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ACCOUNT_ORIGIN"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="ACCOUNT_ORIGIN"/>
+    </attribute>
+    <attribute id="BP_NUMBER" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BP_NUMBER"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="BP_NUMBER"/>
+    </attribute>
+    <attribute id="FUNCTION" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FUNCTION"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="FUNCTION"/>
+    </attribute>
+    <attribute id="QUAL_EMAIL" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUAL_EMAIL"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="QUAL_EMAIL"/>
+    </attribute>
+    <attribute id="CC_TYPE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CC_TYPE"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="CC_TYPE"/>
+    </attribute>
+    <attribute id="ZCHANGETIME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZCHANGETIME"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="ZCHANGETIME"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" hidden="true" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="162.69927698313484" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CDS_PRT_COVID19_CONTACT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91.99999999999997" y="236.9999988079071"/>
+      <rectangleSize height="30" width="292"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

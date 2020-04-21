@@ -24,10 +24,10 @@ context CDS_PRT_COVID19 {
         TITLE               : String(4);
         ACN                 : String(9);
         LODGEMENT_FREQUENCY : String(40);
-        ORG_STATUS          : String(4);
+        YY1_ORG_STATUS_MCP  : String(4);
         GROUP_ID            : String(10);
-        CC_TYPE             : hana.VARCHAR(13);
         ZCHANGETIME         : UTCTimestamp;
+        Z_RUN_ROW_NO        : Integer;
     };
 
     /*@@layout{"layoutInfo":{}}*/
@@ -43,6 +43,7 @@ context CDS_PRT_COVID19 {
         QUAL_EMAIL     : String(1024);
         CC_TYPE        : hana.VARCHAR(13);
         ZCHANGETIME    : UTCTimestamp;
+        Z_RUN_ROW_NO   : Integer;
     };
 
     /*@@layout{"layoutInfo":{}}*/
@@ -61,5 +62,6 @@ context CDS_PRT_COVID19 {
         MARKETING_AREA     : hana.VARCHAR(13);
         REVENUE_STREAM     : hana.VARCHAR(13);
         ZCHANGETIME        : UTCTimestamp;
+        Z_RUN_ROW_NO       : Integer;
     };
 };
