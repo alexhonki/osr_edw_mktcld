@@ -5,7 +5,7 @@
  */
  
 service {       
-    "osr.mktcld::CV_PRT_CONTACT_COVID19_FEED" as "COVID_19_Contact"
+    "osr.mktcld::CV_PRT_CONTACT_COVID19_SCPI" as "COVID_19_Contact"
 //    key ("ZCHANGETIME","QUAL_BPARTNER","CC_TYPE");
     key generate local "GenID";
 }

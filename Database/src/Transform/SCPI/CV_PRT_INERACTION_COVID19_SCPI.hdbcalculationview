@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_INERACTION_COVID19_SCPI" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PRT_INERACTION_COVID19_SCPI"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.table::CDS_PRT_COVID19.INTERACTION">
+    <resourceUri>osr.mktcld.table::CDS_PRT_COVID19.INTERACTION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CDS_PRT_COVID19_INERACTION">
+    <viewAttributes>
+      <viewAttribute id="CONTACT_ORIGIN"/>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="UTC_TIMESTAMP"/>
+      <viewAttribute id="INTEREST"/>
+      <viewAttribute id="REASON"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="SOURCE_DATA_URL"/>
+      <viewAttribute id="CONTENT_SUBJECT"/>
+      <viewAttribute id="MARKETING_AREA"/>
+      <viewAttribute id="REVENUE_STREAM"/>
+      <viewAttribute id="ZCHANGETIME"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.table::CDS_PRT_COVID19.INTERACTION"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="CDS_PRT_COVID19_INERACTION">
+  <attributes>
+    <attribute id="CONTACT_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTACT_ORIGIN"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="CONTACT_ORIGIN"/>
+    </attribute>
+    <attribute id="QUAL_BPARTNER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUAL_BPARTNER"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="QUAL_BPARTNER"/>
+    </attribute>
+    <attribute id="COMM_MEDIUM" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMM_MEDIUM"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="COMM_MEDIUM"/>
+    </attribute>
+    <attribute id="TYPE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TYPE"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="TYPE"/>
+    </attribute>
+    <attribute id="UTC_TIMESTAMP" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UTC_TIMESTAMP"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="UTC_TIMESTAMP"/>
+    </attribute>
+    <attribute id="INTEREST" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INTEREST"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="INTEREST"/>
+    </attribute>
+    <attribute id="REASON" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REASON"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="REASON"/>
+    </attribute>
+    <attribute id="SOURCE_OBJECT_TYPE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOURCE_OBJECT_TYPE"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="SOURCE_OBJECT_TYPE"/>
+    </attribute>
+    <attribute id="SOURCE_OBJECT_ID" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOURCE_OBJECT_ID"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="SOURCE_OBJECT_ID"/>
+    </attribute>
+    <attribute id="SOURCE_DATA_URL" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOURCE_DATA_URL"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="SOURCE_DATA_URL"/>
+    </attribute>
+    <attribute id="CONTENT_SUBJECT" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTENT_SUBJECT"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="CONTENT_SUBJECT"/>
+    </attribute>
+    <attribute id="MARKETING_AREA" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MARKETING_AREA"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="MARKETING_AREA"/>
+    </attribute>
+    <attribute id="REVENUE_STREAM" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REVENUE_STREAM"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="REVENUE_STREAM"/>
+    </attribute>
+    <attribute id="ZCHANGETIME" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZCHANGETIME"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="ZCHANGETIME"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" hidden="true" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="CDS_PRT_COVID19_INERACTION" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="158.41447231749035" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CDS_PRT_COVID19_INERACTION" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="236.9999988079071"/>
+      <rectangleSize height="30" width="284"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
