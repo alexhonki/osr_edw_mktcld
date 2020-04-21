@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_CONTACT_SCPI" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PRT_CONTACT_SCPI"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.table::CDS_PRT_MVP.CONTACT">
+    <resourceUri>osr.mktcld.table::CDS_PRT_MVP.CONTACT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CDS_PRT_MVP_CONTACT">
+    <viewAttributes>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMPANY_NAME"/>
+      <viewAttribute id="FIRSTNAME"/>
+      <viewAttribute id="LASTNAME"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POST_CODE1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="STD_EMAIL"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="TELNR_MOBILE"/>
+      <viewAttribute id="ENTITY_TYPE"/>
+      <viewAttribute id="EXT_INTERACTION_CONTACT_ID"/>
+      <viewAttribute id="EXT_CORPORATE_ACCOUNT_ID"/>
+      <viewAttribute id="ZCHANGETIME"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.table::CDS_PRT_MVP.CONTACT"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="CDS_PRT_MVP_CONTACT">
+  <attributes>
+    <attribute id="ID_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID_ORIGIN"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="ID_ORIGIN"/>
+    </attribute>
+    <attribute id="ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="ID"/>
+    </attribute>
+    <attribute id="COMPANY_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_NAME"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="COMPANY_NAME"/>
+    </attribute>
+    <attribute id="FIRSTNAME" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRSTNAME"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="FIRSTNAME"/>
+    </attribute>
+    <attribute id="LASTNAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LASTNAME"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="LASTNAME"/>
+    </attribute>
+    <attribute id="COUNTRY" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="REGION" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="REGION"/>
+    </attribute>
+    <attribute id="CITY1" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY1"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="CITY1"/>
+    </attribute>
+    <attribute id="POST_CODE1" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POST_CODE1"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="POST_CODE1"/>
+    </attribute>
+    <attribute id="STREET" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STREET"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="STREET"/>
+    </attribute>
+    <attribute id="HOUSE_NUM1" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HOUSE_NUM1"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="HOUSE_NUM1"/>
+    </attribute>
+    <attribute id="STD_EMAIL" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STD_EMAIL"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="STD_EMAIL"/>
+    </attribute>
+    <attribute id="TELNR_LONG" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TELNR_LONG"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="TELNR_LONG"/>
+    </attribute>
+    <attribute id="TELNR_MOBILE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TELNR_MOBILE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="TELNR_MOBILE"/>
+    </attribute>
+    <attribute id="ENTITY_TYPE" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ENTITY_TYPE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="ENTITY_TYPE"/>
+    </attribute>
+    <attribute id="EXT_INTERACTION_CONTACT_ID" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EXT_INTERACTION_CONTACT_ID"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="EXT_INTERACTION_CONTACT_ID"/>
+    </attribute>
+    <attribute id="EXT_CORPORATE_ACCOUNT_ID" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EXT_CORPORATE_ACCOUNT_ID"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="EXT_CORPORATE_ACCOUNT_ID"/>
+    </attribute>
+    <attribute id="ZCHANGETIME" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZCHANGETIME"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="ZCHANGETIME"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" hidden="true" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="158.9500729006959" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CDS_PRT_MVP_CONTACT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91.99999999999997" y="236.9999988079071"/>
+      <rectangleSize height="30" width="285"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

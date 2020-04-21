@@ -1,11 +1,11 @@
 /*
  * OSR Marketing Cloud Feed
- * EDW Corporate Account feed to SCPI...then to SCM
+ * EDW Interaction feed to SCPI...then to SCM
  * SAP Australia, 2020
  */
  
 service {       
-    "osr.mktcld::CV_PRT_CORPACCT_SCPI" as "Corporate_Account"
+    "osr.mktcld::CV_PRT_INERACTION_COVID19_SCPI" as "Interaction"
     key generate local "GenID";
 }
 

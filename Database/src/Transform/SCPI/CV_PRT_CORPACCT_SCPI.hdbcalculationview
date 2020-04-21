@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_CORPACCT_SCPI" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PRT_CORPACCT_SCPI"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.table::CDS_PRT_MVP.CORPACCT">
+    <resourceUri>osr.mktcld.table::CDS_PRT_MVP.CORPACCT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CDS_PRT_MVP_CORPACCT">
+    <viewAttributes>
+      <viewAttribute id="ID_ORIGIN"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="COMPANY_NAME"/>
+      <viewAttribute id="BRSCH_FT"/>
+      <viewAttribute id="BRSCH_FT_TXT"/>
+      <viewAttribute id="COUNTRY_FT"/>
+      <viewAttribute id="REGION_FT"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POST_CODE1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="SMTP_ADDR"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="TELNR_MOBILE"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="ENTITY_TYPE"/>
+      <viewAttribute id="TAXPAYER_STATUS"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="GROUP_ID"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+      <viewAttribute id="FIRST_RETURN_DATE"/>
+      <viewAttribute id="EMPLOYER_STATUS"/>
+      <viewAttribute id="DEREGISTERED"/>
+      <viewAttribute id="ASIC_STATUS"/>
+      <viewAttribute id="TAX_REVENUE_CODE"/>
+      <viewAttribute id="FINANCIAL_STATUS"/>
+      <viewAttribute id="FINANCIAL_STATUS_TXT"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="ZCHANGETIME"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.table::CDS_PRT_MVP.CORPACCT"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="CDS_PRT_MVP_CORPACCT">
+  <attributes>
+    <attribute id="ID_ORIGIN" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID_ORIGIN"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ID_ORIGIN"/>
+    </attribute>
+    <attribute id="ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ID"/>
+    </attribute>
+    <attribute id="COMPANY_NAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPANY_NAME"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="COMPANY_NAME"/>
+    </attribute>
+    <attribute id="BRSCH_FT" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRSCH_FT"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="BRSCH_FT"/>
+    </attribute>
+    <attribute id="BRSCH_FT_TXT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BRSCH_FT_TXT"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="BRSCH_FT_TXT"/>
+    </attribute>
+    <attribute id="COUNTRY_FT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY_FT"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="COUNTRY_FT"/>
+    </attribute>
+    <attribute id="REGION_FT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGION_FT"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="REGION_FT"/>
+    </attribute>
+    <attribute id="CITY1" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY1"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="CITY1"/>
+    </attribute>
+    <attribute id="POST_CODE1" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="POST_CODE1"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="POST_CODE1"/>
+    </attribute>
+    <attribute id="STREET" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="STREET"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="STREET"/>
+    </attribute>
+    <attribute id="HOUSE_NUM1" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HOUSE_NUM1"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="HOUSE_NUM1"/>
+    </attribute>
+    <attribute id="SMTP_ADDR" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SMTP_ADDR"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="SMTP_ADDR"/>
+    </attribute>
+    <attribute id="TELNR_LONG" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TELNR_LONG"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TELNR_LONG"/>
+    </attribute>
+    <attribute id="TELNR_MOBILE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TELNR_MOBILE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TELNR_MOBILE"/>
+    </attribute>
+    <attribute id="ABN" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ABN"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ABN"/>
+    </attribute>
+    <attribute id="ACN" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ACN"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ACN"/>
+    </attribute>
+    <attribute id="ENTITY_TYPE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ENTITY_TYPE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ENTITY_TYPE"/>
+    </attribute>
+    <attribute id="TAXPAYER_STATUS" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TAXPAYER_STATUS"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TAXPAYER_STATUS"/>
+    </attribute>
+    <attribute id="GROUP_STATUS" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GROUP_STATUS"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="GROUP_STATUS"/>
+    </attribute>
+    <attribute id="GROUP_ID" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GROUP_ID"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="GROUP_ID"/>
+    </attribute>
+    <attribute id="REGISTRATION_DATE" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REGISTRATION_DATE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="REGISTRATION_DATE"/>
+    </attribute>
+    <attribute id="LODGEMENT_FREQUENCY" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LODGEMENT_FREQUENCY"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="LODGEMENT_FREQUENCY"/>
+    </attribute>
+    <attribute id="LIABILITY_START_DATE" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LIABILITY_START_DATE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="LIABILITY_START_DATE"/>
+    </attribute>
+    <attribute id="FIRST_RETURN_DATE" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIRST_RETURN_DATE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="FIRST_RETURN_DATE"/>
+    </attribute>
+    <attribute id="EMPLOYER_STATUS" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPLOYER_STATUS"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="EMPLOYER_STATUS"/>
+    </attribute>
+    <attribute id="DEREGISTERED" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEREGISTERED"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="DEREGISTERED"/>
+    </attribute>
+    <attribute id="ASIC_STATUS" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ASIC_STATUS"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ASIC_STATUS"/>
+    </attribute>
+    <attribute id="TAX_REVENUE_CODE" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TAX_REVENUE_CODE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TAX_REVENUE_CODE"/>
+    </attribute>
+    <attribute id="FINANCIAL_STATUS" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FINANCIAL_STATUS"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="FINANCIAL_STATUS"/>
+    </attribute>
+    <attribute id="FINANCIAL_STATUS_TXT" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FINANCIAL_STATUS_TXT"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="FINANCIAL_STATUS_TXT"/>
+    </attribute>
+    <attribute id="TITLE" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TITLE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TITLE"/>
+    </attribute>
+    <attribute id="TYPE" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TYPE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TYPE"/>
+    </attribute>
+    <attribute id="CLIENT" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CLIENT"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="CLIENT"/>
+    </attribute>
+    <attribute id="ZCHANGETIME" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ZCHANGETIME"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ZCHANGETIME"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" hidden="true" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="158.41447231749035" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CDS_PRT_MVP_CORPACCT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="236.9999988079071"/>
+      <rectangleSize height="30" width="284"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
