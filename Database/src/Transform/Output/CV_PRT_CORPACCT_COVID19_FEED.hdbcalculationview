@@ -79,7 +79,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
     </input>
   
-    <input node="CV_PRT_REFUND">
+    <input node="CV_PRT_REFUND" emptyUnionBehavior="NO_ROW">
       <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_ABN" source="QUAL_ABN"/>
@@ -190,8 +190,8 @@
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_GROUP_ID" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>CASE  
-	 WHEN &quot;GROUP_STATUS&quot;='GM' and &quot;RELTYP&quot;='ZGRM' then &quot;GROUP_ID&quot; 
-	 WHEN &quot;GROUP_STATUS&quot;='DGE' and &quot;RELTYP&quot;='ZDGE' then &quot;GROUP_ID&quot; 
+	 WHEN &quot;GROUP_STATUS&quot;='GM' and &quot;RELTYP&quot;='ZGRM' then TRIM(LEADING '0' FROM &quot;GROUP_ID&quot;) 
+	 WHEN &quot;GROUP_STATUS&quot;='DGE' and &quot;RELTYP&quot;='ZDGE' then TRIM(LEADING '0' FROM &quot;GROUP_ID&quot;) 
 	 ELSE '' 
  END</formula>
       </calculatedViewAttribute>
@@ -291,13 +291,13 @@
   </calculationView>
   <calculationView xsi:type="Calculation:AggregationView" id="Remove_Duplicate">
     <viewAttributes>
-      <viewAttribute id="SURVEYID"/>
       <viewAttribute id="QUAL_BPARTNER"/>
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
       <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
       <viewAttribute id="ZCHANGETIME"/>
-    </viewAttributes>
+    
+      <viewAttribute id="SURVEYID"/></viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
     <input node="Union_1"/>
@@ -399,7 +399,7 @@
     </attribute>
     <attribute id="GROUP_ID" order="24" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="GROUP_ID"/>
-      <keyMapping columnObjectName="Join_3" columnName="GROUP_ID"/>
+      <keyMapping columnObjectName="Join_3" columnName="CC_GROUP_ID"/>
     </attribute>
   
     <attribute id="ZCHANGETIME" order="25" displayAttribute="false" attributeHierarchyActive="false">
@@ -417,25 +417,25 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="384.09821612073966" y="112"/>
+      <upperLeftCorner x="384" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PRT_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="403.1867253719477" y="621.9999976158142"/>
+      <upperLeftCorner x="403" y="621"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PRT_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92.00000000000001" y="781.9999964237213"/>
+      <upperLeftCorner x="92" y="781"/>
       <rectangleSize height="30" width="200"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="243.90672162396163" y="481.9999988079071"/>
+      <upperLeftCorner x="243" y="481"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="138.66666666666663" y="621.9999976158142"/>
+      <upperLeftCorner x="138" y="621"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_PRT_DEFERRAL" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -447,11 +447,11 @@
       <rectangleSize width="284"/>
     </shape>
     <shape expanded="true" modelObjectName="BP_REFUND_DEFER" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="344.1374999392032" y="781.9999964237213"/>
+      <upperLeftCorner x="344" y="781"/>
       <rectangleSize height="30" width="187"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="357.6374999392032" y="886.9999964237213"/>
+      <upperLeftCorner x="357" y="886"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="BPARTNER_REFUND" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -464,33 +464,33 @@
     </shape>
   
     <shape expanded="true" modelObjectName="BPARTNER_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="208.972434606136" y="1046.9999952316284"/>
+      <upperLeftCorner x="208" y="1046"/>
       <rectangleSize height="30" width="175"/>
     </shape>
     <shape expanded="true" modelObjectName="BPARTNER_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="433.972434606136" y="1046.9999952316284"/>
+      <upperLeftCorner x="433" y="1046"/>
       <rectangleSize height="30" width="201"/>
     </shape>
   
   
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="453.90672162396163" y="376.9999988079071"/>
+      <upperLeftCorner x="453" y="376"/>
       <rectangleSize height="30" width="231"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="384.09821612073966" y="217"/>
+      <upperLeftCorner x="384" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Remove_Duplicate" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="232.49658203125"/>
+      <rectangleSize width="232"/>
     </shape>
     <shape modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="230"/>
     </shape>
     <shape expanded="true" modelObjectName="Remove_Duplicate" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="243.9067216239617" y="376.9999988079071"/>
+      <upperLeftCorner x="243" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
