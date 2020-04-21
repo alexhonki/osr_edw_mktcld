@@ -153,8 +153,11 @@
       <calculatedViewAttribute id="CC_FIRST_NAME" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'COVID-19'</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute id="CC_LAST_NAME" datatype="VARCHAR" length="13" expressionLanguage="SQL">
-        <formula>'Applicant'</formula>
+      <calculatedViewAttribute id="CC_LAST_NAME" datatype="VARCHAR" length="30" expressionLanguage="SQL">
+        <formula>CASE 
+	 WHEN &quot;CC_TYPE&quot;='DEFERRAL' then 'Deferral Contact'  
+	 ELSE 'Refund Contact'
+ END</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_ACCOUNT_ORIGIN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'OSR_EDW'</formula>
@@ -263,29 +266,29 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="281.48109200254197" y="112"/>
+      <upperLeftCorner x="281" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PTAX_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="109.8231497657402" y="641.9999964237213"/>
+      <upperLeftCorner x="109" y="641"/>
       <rectangleSize height="30" width="202"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PTAX_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="361.8231497657402" y="641.9999964237213"/>
+      <upperLeftCorner x="361" y="641"/>
       <rectangleSize height="30" width="200"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="157.48981643240685" y="501.9999976158142"/>
+      <upperLeftCorner x="157" y="501"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999997" y="376.9999988079071"/>
+      <upperLeftCorner x="91" y="376"/>
       <rectangleSize height="30" width="219"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="281.48109200254197" y="217"/>
+      <upperLeftCorner x="281" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Remove_Duplicate" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -298,7 +301,7 @@
     </shape>
   
     <shape expanded="true" modelObjectName="Remove_Duplicate" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="361" y="376.9999988079071"/>
+      <upperLeftCorner x="361" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
