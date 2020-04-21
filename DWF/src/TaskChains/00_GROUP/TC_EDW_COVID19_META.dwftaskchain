@@ -1,0 +1,70 @@
+{
+  "description": "COVID-19: EDW to SCPI Data Feed",
+  "maxParallelExecution": 10,
+  "resumeBehavior": "NO_RESUME",
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_PRT_CONTACT_COVID19_FEED",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.mktcld.flowgraph::FG_PRT_CONTACT_COVID19_FEED"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_PRT_CORPACCT_COVID19_FEED",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.mktcld.flowgraph::FG_PRT_CORPACCT_COVID19_FEED"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_PRT_INTERACTION_COVID19_FEED",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.mktcld.flowgraph::FG_PRT_INTERACTION_COVID19_FEED"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
