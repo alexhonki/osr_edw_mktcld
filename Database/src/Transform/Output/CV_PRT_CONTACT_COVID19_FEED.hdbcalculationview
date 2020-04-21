@@ -32,7 +32,9 @@
       </calculatedViewAttribute>
     
       <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="20" expressionLanguage="SQL">
-        <formula>CONCAT(CONCAT(&quot;QUAL_BPARTNER&quot;, '_'), 'Z4')</formula>
+    
+        <formula>TRIM(LEADING '0' FROM CONCAT(CONCAT(&quot;QUAL_BPARTNER&quot;, '_'), 'Z4'))</formula>
+    
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_FUNCTION" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'Z4'</formula>
@@ -57,7 +59,9 @@
       </calculatedViewAttribute>
     
       <calculatedViewAttribute id="CC_QUAL_BPARTNER" datatype="VARCHAR" length="20" expressionLanguage="SQL">
-        <formula>CONCAT(CONCAT(&quot;QUAL_BPARTNER&quot;, '_'), 'Z1')</formula>
+    
+        <formula>TRIM(LEADING '0' FROM CONCAT(CONCAT(&quot;QUAL_BPARTNER&quot;, '_'), 'Z1'))</formula>
+    
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_FUNCTION" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>'Z1'</formula>
@@ -179,16 +183,16 @@
   </calculationView>
   <calculationView xsi:type="Calculation:AggregationView" id="Remove_Duplicate">
     <viewAttributes>
-      <viewAttribute id="CC_TYPE"/>
-      <viewAttribute id="SURVEYID"/>
       <viewAttribute id="QUAL_BPARTNER"/>
-      <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
-      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+      <viewAttribute id="CC_TYPE"/>
       <viewAttribute id="ZCHANGETIME"/>
       <viewAttribute id="CC_QUAL_BPARTNER"/>
       <viewAttribute id="CC_FUNCTION"/>
-    </viewAttributes>
+    
+      <viewAttribute id="SURVEYID"/>
+      <viewAttribute id="QUAL_ABN"/>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK"/></viewAttributes>
     <calculatedViewAttributes/>
     <restrictedViewAttributes/>
     <input node="Union_1"/>
@@ -277,7 +281,7 @@
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="376.9999988079071"/>
+      <upperLeftCorner x="91.99999999999997" y="376.9999988079071"/>
       <rectangleSize height="30" width="219"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
