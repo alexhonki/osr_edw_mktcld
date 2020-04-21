@@ -204,11 +204,11 @@
       <descriptions defaultDescription="GUID"/>
       <keyMapping columnObjectName="Join_2" columnName="GUID"/>
     </attribute>
-    <attribute id="TIMESTAMP " order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TIMESTAMP" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="UTC Timestamp "/>
       <keyMapping columnObjectName="Join_2" columnName="CREATED_AT"/>
     </attribute>
-    <attribute id="IA_REASON " order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="IA_REASON" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Reason "/>
       <keyMapping columnObjectName="Join_2" columnName="CODE"/>
     </attribute>
@@ -321,22 +321,22 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="501.01498672969234" y="112"/>
+      <upperLeftCorner x="501" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_CODE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999989" y="536.9999976158142"/>
+      <upperLeftCorner x="91" y="536"/>
       <rectangleSize height="30" width="268"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_OPEN" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="409.9999999999999" y="536.9999976158142"/>
+      <upperLeftCorner x="409" y="536"/>
       <rectangleSize height="30" width="261"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="172.66666666666657" y="376.9999988079071"/>
+      <upperLeftCorner x="172" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_CRM_INTERACTION_OPEN" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -349,11 +349,11 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_INTERACTION_BP" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="509.3277106150757" y="376.9999988079071"/>
+      <upperLeftCorner x="509" y="376"/>
       <rectangleSize height="30" width="252"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="501.01498672969234" y="217"/>
+      <upperLeftCorner x="501" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">

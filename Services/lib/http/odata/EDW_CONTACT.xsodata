@@ -5,7 +5,7 @@
  */
  
 service {       
-    "osr.mktcld::CV_PRT_CONTACT_FEED" as "Contact"
+    "osr.mktcld::CV_PRT_CONTACT_SCPI" as "Contact"
     key generate local "GenID";
 }
 
