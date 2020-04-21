@@ -20,7 +20,6 @@
       <viewAttribute id="BP_NUMBER"/>
       <viewAttribute id="FUNCTION"/>
       <viewAttribute id="QUAL_EMAIL"/>
-      <viewAttribute id="CC_TYPE"/>
       <viewAttribute id="ZCHANGETIME"/>
       <viewAttribute id="Z_RUN_ROW_NO"/>
     </viewAttributes>
@@ -66,15 +65,11 @@
       <descriptions defaultDescription="QUAL_EMAIL"/>
       <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="QUAL_EMAIL"/>
     </attribute>
-    <attribute id="CC_TYPE" order="10" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_TYPE"/>
-      <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="CC_TYPE"/>
-    </attribute>
-    <attribute id="ZCHANGETIME" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ZCHANGETIME" order="10" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ZCHANGETIME"/>
       <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="ZCHANGETIME"/>
     </attribute>
-    <attribute id="Z_RUN_ROW_NO" hidden="true" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Z_RUN_ROW_NO" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Z_RUN_ROW_NO"/>
       <keyMapping columnObjectName="CDS_PRT_COVID19_CONTACT" columnName="Z_RUN_ROW_NO"/>
     </attribute>
@@ -87,13 +82,13 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="162.69927698313484" y="112"/>
+      <upperLeftCorner x="162" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CDS_PRT_COVID19_CONTACT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999997" y="236.9999988079071"/>
+      <upperLeftCorner x="91" y="236"/>
       <rectangleSize height="30" width="292"/>
     </shape>
   </shapes>
