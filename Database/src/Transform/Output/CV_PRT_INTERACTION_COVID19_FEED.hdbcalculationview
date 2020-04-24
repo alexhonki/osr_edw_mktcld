@@ -39,15 +39,13 @@
       <calculatedViewAttribute id="CC_INTEREST" datatype="VARCHAR" length="60" expressionLanguage="SQL">
         <formula>CASE  
 	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='X' then 'PT_COVID-19_RELIEF_OV65M'
-	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='' then  'PT_COVID-19_RELIEF_UN65M'
-	 ELSE ''
+	 ELSE 'PT_COVID-19_RELIEF_UN65M'
  END</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_REASON" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>CASE  
 	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='X' then 'Z001' 
-	 WHEN &quot;PTAX_THRESHOLD_CHECK&quot;='' then 'Z002' 
-	 ELSE '' 
+	 ELSE 'Z002' 
  END</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_SOURCE_OBJECT_TYPE" datatype="VARCHAR" length="30" expressionLanguage="SQL">
@@ -268,26 +266,26 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="279.5342240487832" y="112"/>
+      <upperLeftCorner x="279" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PTAX_REFUND" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92.00000000000004" y="481.9999976158142"/>
+      <upperLeftCorner x="92" y="481"/>
       <rectangleSize height="30" width="179"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_PTAX_DEFERRAL" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="321" y="481.9999976158142"/>
+      <upperLeftCorner x="321" y="481"/>
       <rectangleSize width="199"/>
     </shape>
     <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="255.33473787455324" y="341.9999988079071"/>
+      <upperLeftCorner x="255" y="341"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Aggregation_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="255.33473787455324" y="236.9999988079071"/>
+      <upperLeftCorner x="255" y="236"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
