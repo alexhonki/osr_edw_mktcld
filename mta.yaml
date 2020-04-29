@@ -39,7 +39,7 @@ modules:
         group: SERVICE_REPLACEMENTS
         properties:
           key: logical-OSR-EDW-SURVEY-grantor
-          service: '~{OSR-EDW-SURVEY-grantor-service}'          
+          service: '~{OSR-EDW-SURVEY-grantor-service}'
   - name: OSR_MKT_CLD-Services
     type: nodejs
     path: Services
@@ -49,7 +49,7 @@ modules:
           url: '${default-url}'
     requires:
       - name: OSR_MKT_CLD-container
-      - name: OSR_MKTCLD-uaa
+      - name: OSR_MKT_CLD-uaa
     build-parameters:
       timeout: 15m
 resources:
@@ -78,8 +78,8 @@ resources:
     parameters:
       service-name: OSR_EDW_SURVEY-deploy
     properties:
-      OSR-EDW-SURVEY-grantor-service: '${service-name}'      
-  - name: OSR_MKTCLD-uaa
+      OSR-EDW-SURVEY-grantor-service: '${service-name}'
+  - name: OSR_MKT_CLD-uaa
     type: com.sap.xs.uaa
     description: UAA for this particular MTA project
     parameters:
