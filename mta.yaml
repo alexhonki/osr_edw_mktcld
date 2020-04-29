@@ -79,7 +79,7 @@ resources:
       service-name: OSR_EDW_SURVEY-deploy
     properties:
       OSR-EDW-SURVEY-grantor-service: '${service-name}'
-  - name: OSR_MKTCLD-uaa
+  - name: OSR_MKT_CLD-uaa
     type: com.sap.xs.uaa
     description: UAA for this particular MTA
     parameters:
