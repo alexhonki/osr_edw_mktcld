@@ -12,6 +12,7 @@
   <calculationView xsi:type="Calculation:ProjectionView" id="CDS_PRT_MVP_CONTACT">
     <viewAttributes>
       <viewAttribute id="ID_ORIGIN"/>
+    
       <viewAttribute id="ID"/>
       <viewAttribute id="COMPANY_NAME"/>
       <viewAttribute id="FIRSTNAME"/>
@@ -25,11 +26,10 @@
       <viewAttribute id="STD_EMAIL"/>
       <viewAttribute id="TELNR_LONG"/>
       <viewAttribute id="TELNR_MOBILE"/>
-      <viewAttribute id="ENTITY_TYPE"/>
       <viewAttribute id="EXT_INTERACTION_CONTACT_ID"/>
-      <viewAttribute id="EXT_CORPORATE_ACCOUNT_ID"/>
       <viewAttribute id="ZCHANGETIME"/>
       <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="CONTACT_FUNCTION"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld.table::CDS_PRT_MVP.CONTACT"/>
@@ -41,6 +41,7 @@
       <descriptions defaultDescription="ID_ORIGIN"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="ID_ORIGIN"/>
     </attribute>
+  
     <attribute id="ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ID"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="ID"/>
@@ -93,25 +94,21 @@
       <descriptions defaultDescription="TELNR_MOBILE"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="TELNR_MOBILE"/>
     </attribute>
-    <attribute id="ENTITY_TYPE" order="15" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ENTITY_TYPE"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="ENTITY_TYPE"/>
-    </attribute>
-    <attribute id="EXT_INTERACTION_CONTACT_ID" order="16" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="EXT_INTERACTION_CONTACT_ID" order="15" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="EXT_INTERACTION_CONTACT_ID"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="EXT_INTERACTION_CONTACT_ID"/>
     </attribute>
-    <attribute id="EXT_CORPORATE_ACCOUNT_ID" order="17" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="EXT_CORPORATE_ACCOUNT_ID"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="EXT_CORPORATE_ACCOUNT_ID"/>
-    </attribute>
-    <attribute id="ZCHANGETIME" order="18" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ZCHANGETIME" order="16" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ZCHANGETIME"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="ZCHANGETIME"/>
     </attribute>
-    <attribute id="Z_RUN_ROW_NO" hidden="true" order="19" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Z_RUN_ROW_NO" order="17" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Z_RUN_ROW_NO"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="CONTACT_FUNCTION" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTACT_FUNCTION"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CONTACT" columnName="CONTACT_FUNCTION"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -122,13 +119,13 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="158.9500729006959" y="112"/>
+      <upperLeftCorner x="158" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CDS_PRT_MVP_CONTACT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999997" y="236.9999988079071"/>
+      <upperLeftCorner x="91" y="236"/>
       <rectangleSize height="30" width="285"/>
     </shape>
   </shapes>

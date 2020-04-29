@@ -12,6 +12,7 @@
   <calculationView xsi:type="Calculation:ProjectionView" id="CDS_PRT_MVP_CORPACCT">
     <viewAttributes>
       <viewAttribute id="ID_ORIGIN"/>
+    
       <viewAttribute id="ID"/>
       <viewAttribute id="COMPANY_NAME"/>
       <viewAttribute id="BRSCH_FT"/>
@@ -35,17 +36,13 @@
       <viewAttribute id="LODGEMENT_FREQUENCY"/>
       <viewAttribute id="LIABILITY_START_DATE"/>
       <viewAttribute id="FIRST_RETURN_DATE"/>
-      <viewAttribute id="EMPLOYER_STATUS"/>
       <viewAttribute id="DEREGISTERED"/>
-      <viewAttribute id="ASIC_STATUS"/>
-      <viewAttribute id="TAX_REVENUE_CODE"/>
       <viewAttribute id="FINANCIAL_STATUS"/>
-      <viewAttribute id="FINANCIAL_STATUS_TXT"/>
-      <viewAttribute id="TITLE"/>
-      <viewAttribute id="TYPE"/>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="ZCHANGETIME"/>
       <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="ORG_STATUS_DATE"/>
+      <viewAttribute id="UNDER_THRESHOLD"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld.table::CDS_PRT_MVP.CORPACCT"/>
@@ -57,6 +54,7 @@
       <descriptions defaultDescription="ID_ORIGIN"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ID_ORIGIN"/>
     </attribute>
+  
     <attribute id="ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ID"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ID"/>
@@ -149,49 +147,33 @@
       <descriptions defaultDescription="FIRST_RETURN_DATE"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="FIRST_RETURN_DATE"/>
     </attribute>
-    <attribute id="EMPLOYER_STATUS" order="25" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="EMPLOYER_STATUS"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="EMPLOYER_STATUS"/>
-    </attribute>
-    <attribute id="DEREGISTERED" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DEREGISTERED" order="25" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DEREGISTERED"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="DEREGISTERED"/>
     </attribute>
-    <attribute id="ASIC_STATUS" order="27" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="ASIC_STATUS"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ASIC_STATUS"/>
-    </attribute>
-    <attribute id="TAX_REVENUE_CODE" order="28" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="TAX_REVENUE_CODE"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TAX_REVENUE_CODE"/>
-    </attribute>
-    <attribute id="FINANCIAL_STATUS" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="FINANCIAL_STATUS" order="26" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="FINANCIAL_STATUS"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="FINANCIAL_STATUS"/>
     </attribute>
-    <attribute id="FINANCIAL_STATUS_TXT" order="30" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="FINANCIAL_STATUS_TXT"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="FINANCIAL_STATUS_TXT"/>
-    </attribute>
-    <attribute id="TITLE" order="31" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="TITLE"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TITLE"/>
-    </attribute>
-    <attribute id="TYPE" order="32" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="TYPE"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TYPE"/>
-    </attribute>
-    <attribute id="CLIENT" order="33" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CLIENT" order="27" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CLIENT"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="CLIENT"/>
     </attribute>
-    <attribute id="ZCHANGETIME" order="34" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ZCHANGETIME" order="28" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ZCHANGETIME"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ZCHANGETIME"/>
     </attribute>
-    <attribute id="Z_RUN_ROW_NO" hidden="true" order="35" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Z_RUN_ROW_NO" order="29" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Z_RUN_ROW_NO"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="ORG_STATUS_DATE" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORG_STATUS_DATE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ORG_STATUS_DATE"/>
+    </attribute>
+    <attribute id="UNDER_THRESHOLD" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UNDER_THRESHOLD"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="UNDER_THRESHOLD"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -202,13 +184,13 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="158.41447231749035" y="112"/>
+      <upperLeftCorner x="158" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CDS_PRT_MVP_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="236.9999988079071"/>
+      <upperLeftCorner x="92" y="236"/>
       <rectangleSize height="30" width="284"/>
     </shape>
   </shapes>
