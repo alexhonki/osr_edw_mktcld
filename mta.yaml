@@ -49,7 +49,7 @@ modules:
           url: '${default-url}'
     requires:
       - name: OSR_MKT_CLD-container
-      - name: OSR_MKTCLD-uaa
+      - name: OSR_MKT_CLD-uaa
     build-parameters:
       timeout: 15m
 resources:
@@ -83,6 +83,6 @@ resources:
     type: com.sap.xs.uaa
     description: UAA for this particular MTA
     parameters:
-      service-name: OSR_MKTCLD-uaa
+      service-name: OSR_MKT_CLD-uaa
       service-plan: space
       path: xs-security.json
