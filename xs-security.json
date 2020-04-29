@@ -1,12 +1,12 @@
 {
-	"xsappname": "OSR_MKTCLD",
+	"xsappname": "OSR_MKT_CLD",
 	"scopes": [{
-		"name": "$XSAPPNAME.VIEWER",
+		"name": "$XSAPPNAME.QUERY",
 		"description": "OSR Marketing Cloud Endpoint"
 	}],
 	"role-templates": [{
-		"name": "OSR_MKTCLD",
+		"name": "OSR_MKT_CLD",
 		"description": "Role OSR_MKTCLD for all",
-		"scope-references": ["$XSAPPNAME.VIEWER"]
+		"scope-references": ["$XSAPPNAME.QUERY"]
 	}]
 }

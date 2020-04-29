@@ -39,7 +39,7 @@ modules:
         group: SERVICE_REPLACEMENTS
         properties:
           key: logical-OSR-EDW-SURVEY-grantor
-          service: '~{OSR-EDW-SURVEY-grantor-service}'
+          service: '~{OSR-EDW-SURVEY-grantor-service}'          
   - name: OSR_MKT_CLD-Services
     type: nodejs
     path: Services
@@ -78,11 +78,11 @@ resources:
     parameters:
       service-name: OSR_EDW_SURVEY-deploy
     properties:
-      OSR-EDW-SURVEY-grantor-service: '${service-name}'
+      OSR-EDW-SURVEY-grantor-service: '${service-name}'      
   - name: OSR_MKTCLD-uaa
     type: com.sap.xs.uaa
-    description: UAA for this particular MTA
+    description: UAA for this particular MTA project
     parameters:
-      service-name: OSR_MKTCLD-uaa
+      service-name: OSR_MKT_CLD-uaa
       service-plan: space
       path: xs-security.json
