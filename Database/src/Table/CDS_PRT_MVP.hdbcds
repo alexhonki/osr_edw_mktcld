@@ -2,62 +2,6 @@ namespace osr.mktcld.table;
 
 context CDS_PRT_MVP {
 
-    /*@@layout{"layoutInfo":{}}*/
-    entity CONTACT {
-            ID_ORIGIN                  : hana.VARCHAR(13);
-        key ID                         : String(20);
-            COMPANY_NAME               : hana.VARCHAR(300);
-            FIRSTNAME                  : String(60);
-            LASTNAME                   : String(60);
-            COUNTRY                    : String(3);
-            REGION                     : String(3);
-            CITY1                      : String(40);
-            POST_CODE1                 : String(10);
-            STREET                     : String(60);
-            HOUSE_NUM1                 : String(10);
-            STD_EMAIL                  : String(100);
-            TELNR_LONG                 : String(30);
-            TELNR_MOBILE               : String(30);
-            EXT_INTERACTION_CONTACT_ID : String(60);
-            CONTACT_FUNCTION           : hana.VARCHAR(13);
-            ZCHANGETIME                : UTCTimestamp;
-            Z_RUN_ROW_NO               : Integer;
-    };
-
-    /*@@layout{"layoutInfo":{}}*/
-    entity CORPACCT {
-            ID_ORIGIN            : hana.VARCHAR(13);
-        key ID                   : hana.VARCHAR(13);
-            COMPANY_NAME         : hana.VARCHAR(300);
-            BRSCH_FT             : String(5);
-            BRSCH_FT_TXT         : String(100);
-            COUNTRY_FT           : String(3);
-            REGION_FT            : String(3);
-            CITY1                : String(40);
-            POST_CODE1           : String(10);
-            STREET               : String(60);
-            HOUSE_NUM1           : String(10);
-            SMTP_ADDR            : String(100);
-            TELNR_LONG           : String(30);
-            TELNR_MOBILE         : String(30);
-            CLIENT               : hana.VARCHAR(13);
-            REGISTRATION_DATE    : String(40);
-            ORG_STATUS_DATE      : String(40);
-            FIRST_RETURN_DATE    : String(40);
-            ABN                  : String(11);
-            TAXPAYER_STATUS      : String(1);
-            GROUP_STATUS         : String(40);
-            UNDER_THRESHOLD      : String(60);
-            ENTITY_TYPE          : hana.VARCHAR(13);
-            LIABILITY_START_DATE : String(40);
-            ACN                  : String(9);
-            LODGEMENT_FREQUENCY  : String(40);
-            FINANCIAL_STATUS     : String(4);
-            GROUP_ID             : hana.VARCHAR(13);
-            DEREGISTERED         : hana.VARCHAR(13);
-            ZCHANGETIME          : UTCTimestamp;
-            Z_RUN_ROW_NO         : Integer;
-    };
 
     /*@@layout{"layoutInfo":{}}*/
     entity INTERACTION {
@@ -77,5 +21,61 @@ context CDS_PRT_MVP {
             YY1_TAX_REVENUE_STREAM_MIA : hana.VARCHAR(13);
             ZCHANGETIME                : UTCTimestamp;
             Z_RUN_ROW_NO               : Integer;
+    };
+
+    /*@@layout{"layoutInfo":{"x":-202,"y":-282.5}}*/
+    entity CONTACT {
+            ID_ORIGIN                  : hana.VARCHAR(13);
+        key ID                         : String(20);
+            COMPANY_NAME               : hana.VARCHAR(300);
+            FIRST_NAME                 : String(60);
+            LAST_NAME                  : String(60);
+            COUNTRY_FT                 : String(3);
+            REGION                     : String(3);
+            CITY1                      : String(40);
+            POSTCODE1                  : String(10);
+            STREET                     : String(60);
+            HOUSE_NUM1                 : String(10);
+            SMTP_ADDR                  : String(100);
+            TELNR_LONG                 : String(30);
+            TELNR_MOBILE               : String(30);
+            EXT_INTERACTION_CONTACT_ID : String(60);
+            CONTACT_FUNCTION           : hana.VARCHAR(13);
+            ZCHANGETIME                : UTCTimestamp;
+            Z_RUN_ROW_NO               : Integer;
+    };
+
+    /*@@layout{"layoutInfo":{"x":-562,"y":-338.5}}*/
+    entity CORPACCT {
+            ID_ORIGIN            : hana.VARCHAR(13);
+        key ID                   : hana.VARCHAR(13);
+            COMPANY_NAME         : hana.VARCHAR(300);
+            BRSCH_FT             : String(5);
+            COUNTRY_FT           : String(3);
+            REGION_FT            : String(3);
+            CITY1                : String(40);
+            POST_CODE1           : String(10);
+            STREET               : String(60);
+            HOUSE_NUM1           : String(10);
+            SMTP_ADDR            : String(100);
+            TELNR_LONG           : String(30);
+            TELNR_MOBILE         : String(30);
+            CLIENT               : hana.VARCHAR(13);
+            REGISTRATION_DATE    : String(40);
+            ORG_STATUS_DATE      : String(40);
+            FIRST_RETURN_DATE    : String(40);
+            ABN                  : String(11);
+            TAXPAYER_STATUS      : String(1);
+            GROUP_STATUS         : String(40);
+            CC_UNDER_THRESHOLD   : hana.VARCHAR(13);
+            ENTITY_TYPE          : hana.VARCHAR(13);
+            LIABILITY_START_DATE : String(40);
+            ACN                  : String(9);
+            LODGEMENT_FREQUENCY  : String(40);
+            FINANCIAL_STATUS     : String(4);
+            GROUP_ID             : hana.VARCHAR(13);
+            DEREGISTERED         : hana.VARCHAR(13);
+            ZCHANGETIME          : UTCTimestamp;
+            Z_RUN_ROW_NO         : Integer;
     };
 };

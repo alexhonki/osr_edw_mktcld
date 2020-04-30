@@ -16,7 +16,6 @@
       <viewAttribute id="ID"/>
       <viewAttribute id="COMPANY_NAME"/>
       <viewAttribute id="BRSCH_FT"/>
-      <viewAttribute id="BRSCH_FT_TXT"/>
       <viewAttribute id="COUNTRY_FT"/>
       <viewAttribute id="REGION_FT"/>
       <viewAttribute id="CITY1"/>
@@ -42,7 +41,7 @@
       <viewAttribute id="ZCHANGETIME"/>
       <viewAttribute id="Z_RUN_ROW_NO"/>
       <viewAttribute id="ORG_STATUS_DATE"/>
-      <viewAttribute id="UNDER_THRESHOLD"/>
+      <viewAttribute id="CC_UNDER_THRESHOLD"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld.table::CDS_PRT_MVP.CORPACCT"/>
@@ -67,113 +66,109 @@
       <descriptions defaultDescription="BRSCH_FT"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="BRSCH_FT"/>
     </attribute>
-    <attribute id="BRSCH_FT_TXT" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="BRSCH_FT_TXT"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="BRSCH_FT_TXT"/>
-    </attribute>
-    <attribute id="COUNTRY_FT" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="COUNTRY_FT" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="COUNTRY_FT"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="COUNTRY_FT"/>
     </attribute>
-    <attribute id="REGION_FT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REGION_FT" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="REGION_FT"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="REGION_FT"/>
     </attribute>
-    <attribute id="CITY1" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CITY1" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CITY1"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="CITY1"/>
     </attribute>
-    <attribute id="POST_CODE1" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="POST_CODE1" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="POST_CODE1"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="POST_CODE1"/>
     </attribute>
-    <attribute id="STREET" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="STREET" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="STREET"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="STREET"/>
     </attribute>
-    <attribute id="HOUSE_NUM1" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="HOUSE_NUM1" order="10" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="HOUSE_NUM1"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="HOUSE_NUM1"/>
     </attribute>
-    <attribute id="SMTP_ADDR" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SMTP_ADDR" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SMTP_ADDR"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="SMTP_ADDR"/>
     </attribute>
-    <attribute id="TELNR_LONG" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TELNR_LONG" order="12" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TELNR_LONG"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TELNR_LONG"/>
     </attribute>
-    <attribute id="TELNR_MOBILE" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TELNR_MOBILE" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TELNR_MOBILE"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TELNR_MOBILE"/>
     </attribute>
-    <attribute id="ABN" order="15" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ABN" order="14" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ABN"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ABN"/>
     </attribute>
-    <attribute id="ACN" order="16" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ACN" order="15" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ACN"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ACN"/>
     </attribute>
-    <attribute id="ENTITY_TYPE" order="17" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ENTITY_TYPE" order="16" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ENTITY_TYPE"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ENTITY_TYPE"/>
     </attribute>
-    <attribute id="TAXPAYER_STATUS" order="18" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TAXPAYER_STATUS" order="17" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TAXPAYER_STATUS"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="TAXPAYER_STATUS"/>
     </attribute>
-    <attribute id="GROUP_STATUS" order="19" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GROUP_STATUS" order="18" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="GROUP_STATUS"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="GROUP_STATUS"/>
     </attribute>
-    <attribute id="GROUP_ID" order="20" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GROUP_ID" order="19" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="GROUP_ID"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="GROUP_ID"/>
     </attribute>
-    <attribute id="REGISTRATION_DATE" order="21" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REGISTRATION_DATE" order="20" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="REGISTRATION_DATE"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="REGISTRATION_DATE"/>
     </attribute>
-    <attribute id="LODGEMENT_FREQUENCY" order="22" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LODGEMENT_FREQUENCY" order="21" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="LODGEMENT_FREQUENCY"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="LODGEMENT_FREQUENCY"/>
     </attribute>
-    <attribute id="LIABILITY_START_DATE" order="23" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LIABILITY_START_DATE" order="22" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="LIABILITY_START_DATE"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="LIABILITY_START_DATE"/>
     </attribute>
-    <attribute id="FIRST_RETURN_DATE" order="24" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="FIRST_RETURN_DATE" order="23" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="FIRST_RETURN_DATE"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="FIRST_RETURN_DATE"/>
     </attribute>
-    <attribute id="DEREGISTERED" order="25" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DEREGISTERED" order="24" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="DEREGISTERED"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="DEREGISTERED"/>
     </attribute>
-    <attribute id="FINANCIAL_STATUS" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="FINANCIAL_STATUS" order="25" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="FINANCIAL_STATUS"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="FINANCIAL_STATUS"/>
     </attribute>
-    <attribute id="CLIENT" order="27" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CLIENT" order="26" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CLIENT"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="CLIENT"/>
     </attribute>
-    <attribute id="ZCHANGETIME" order="28" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ZCHANGETIME" order="27" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ZCHANGETIME"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ZCHANGETIME"/>
     </attribute>
-    <attribute id="Z_RUN_ROW_NO" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Z_RUN_ROW_NO" order="28" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Z_RUN_ROW_NO"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="Z_RUN_ROW_NO"/>
     </attribute>
-    <attribute id="ORG_STATUS_DATE" order="30" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ORG_STATUS_DATE" order="29" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ORG_STATUS_DATE"/>
       <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="ORG_STATUS_DATE"/>
     </attribute>
-    <attribute id="UNDER_THRESHOLD" order="31" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="UNDER_THRESHOLD"/>
-      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="UNDER_THRESHOLD"/>
+    <attribute id="CC_UNDER_THRESHOLD" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CC_UNDER_THRESHOLD"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_CORPACCT" columnName="CC_UNDER_THRESHOLD"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
