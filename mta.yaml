@@ -1,8 +1,22 @@
 _schema-version: '2.0'
 ID: OSR_MKT_CLD
-description: Source for OSR EDW
+description: Source for OSR EDW MKT CLD
 version: 0.0.1
 modules:
+  - name: OSR_EDW_MKT_CLD-Web
+    type: html5
+    path: Web
+    requires:
+      - name: OSR_MKT_CLD-uaa
+      - name: Services_api
+        properties:
+          name: Services_url
+          url: '~{url}'
+          forwardAuthToken: true
+          timeout: 240000
+        group: destinations
+    properties:
+      timeout: 30m
   - name: OSR_MKT_CLD-DWF
     type: dwf
     path: DWF
