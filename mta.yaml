@@ -54,6 +54,11 @@ modules:
         properties:
           key: logical-OSR-EDW-SURVEY-grantor
           service: '~{OSR-EDW-SURVEY-grantor-service}'
+      - name: OSR-BUSINESS-SEMANTIC-grantor
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: logical-OSR-BUSINESS-SEMANTIC-grantor
+          service: '~{OSR-BUSINESS-SEMANTIC-grantor-service}'
   - name: OSR_MKT_CLD-Services
     type: nodejs
     path: Services
@@ -100,3 +105,9 @@ resources:
       service-name: OSR_MKT_CLD-uaa
       service-plan: space
       path: xs-security.json
+  - name: OSR-BUSINESS-SEMANTIC-grantor
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: OSR_BUSINESS_SEMANTIC-deploy
+    properties:
+      OSR-BUSINESS-SEMANTIC-grantor-service: '${service-name}'
