@@ -3,7 +3,7 @@ ID: OSR_MKT_CLD
 description: Source for OSR EDW MKT CLD
 version: 0.0.1
 modules:
-  - name: OSR_EDW_MKT_CLD-Web
+  - name: OSR_MKT_CLD-Web
     type: html5
     path: Web
     requires:
