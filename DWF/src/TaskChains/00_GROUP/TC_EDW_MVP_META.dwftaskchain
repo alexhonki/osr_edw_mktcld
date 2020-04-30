@@ -1,0 +1,73 @@
+{
+  "description": "MVP Meta Chain",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
+  "maxParallelExecution": 3,
+  "resumeBehavior": "NO_RESUME",
+  "taskList": {
+    "1": {
+      "inline": {
+        "type": "START",
+        "taskGroup": "com.sap.dwf.toe.executionControl"
+      }
+    },
+    "2": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_PRT_CONTACT_FEED",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.mktcld.flowgraph::FG_PRT_CONTACT_FEED"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "3": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_PRT_CORPACCT_FEED",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.mktcld.flowgraph::FG_PRT_CORPACCT_FEED"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    },
+    "4": {
+      "inline": {
+        "type": "executeFlowGraph",
+        "taskGroup": "hanaNative",
+        "description": "FG_CRM_INTERACTION_FEED",
+        "parameterValues": [
+          {
+            "id": "flowGraphName",
+            "value": "osr.mktcld.flowgraph::FG_CRM_INTERACTION_FEED"
+          }
+        ]
+      },
+      "preconditions": [
+        {
+          "from": "1",
+          "status": "NEUTRAL"
+        }
+      ]
+    }
+  }
+}
