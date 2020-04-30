@@ -84,6 +84,6 @@ module.exports = {
 		var xsjsApp = xsjs(options);
 
 		//need to match with what is given in xs-app
-		app.use("/metadata/srv/xs", xsjsApp);
+		app.use("/", xsjsApp);
 	}
 };

@@ -16,6 +16,7 @@ var init = require(__dirname + "/" + "utils/initialize");
 var app = init.initExpress();
 
 //Setup Routes
+//not needed for non node js implementation
 //var router = require("./router")(app);
 
 //Initialize the XSJS Compatibility Layer

@@ -1,7 +1,7 @@
 {
 	"authenticationMethod": "route",
 	"routes": [{
-		"source": "/metadata/srv/xs/(.*)",
+		"source": "/(.*)",
 		"destination": "Services_url",
 		"csrfProtection": true,
 		"scope": "$XSAPPNAME.QUERY",
