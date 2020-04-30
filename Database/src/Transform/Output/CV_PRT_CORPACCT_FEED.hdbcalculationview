@@ -101,7 +101,7 @@ or
       <descriptions defaultDescription="Customer Industry Code"/>
       <keyMapping columnObjectName="CV_BP_PRT_CORPACCT" columnName="MN_INDY_CLSN"/>
     </attribute>
-    <attribute id="BRSCH_FT_TXT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="BRSCH_FT_TXT" order="5" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Customer Industry Code Text"/>
       <keyMapping columnObjectName="CV_BP_PRT_CORPACCT" columnName="MN_INDY_CLSN_DESCN"/>
     </attribute>
@@ -146,7 +146,7 @@ or
       <keyMapping columnObjectName="CV_BP_PRT_CORPACCT" columnName="REGISTRATION_DATE"/>
     </attribute>
     <attribute id="ORG_STATUS_DATE" order="21" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="YY1_PT_ORG_STATUS_DATE_MCP"/>
+      <descriptions defaultDescription="Organisation Status Date"/>
       <keyMapping columnObjectName="CV_BP_PRT_CORPACCT" columnName="ABN_CANCN_DT"/>
     </attribute>
     <attribute id="FIRST_RETURN_DATE" order="22" displayAttribute="false" attributeHierarchyActive="false">
@@ -258,7 +258,8 @@ or
       </keyCalculation>
   
     </calculatedAttribute>
-    <calculatedAttribute id="UNDER_THRESHOLD" order="26" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="CC_UNDER_THRESHOLD" order="26" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Under Payroll Tax Threshold"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>'X'</formula>
       </keyCalculation>
