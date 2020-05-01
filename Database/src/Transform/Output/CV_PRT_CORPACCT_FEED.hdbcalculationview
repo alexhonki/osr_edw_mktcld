@@ -146,7 +146,7 @@ or
       <viewAttribute id="CC_ENTITY_TYPE"/>
       <viewAttribute id="CC_ASIC_STATUS"/>
       <viewAttribute id="CC_DEREGISTERED"/>
-      <viewAttribute id="CC_UNDER_THRESHOLD"/>
+      <viewAttribute id="UNDER_THRESHOLD"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CV_BP_PRT_CORPACCT">
@@ -190,7 +190,7 @@ or
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_DEREGISTERED" source="CC_DEREGISTERED"/>
     </input>
     <input node="CV_PRTCLIENTOVERVIEW">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CC_UNDER_THRESHOLD" source="CC_UNDER_THRESHOLD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UNDER_THRESHOLD" source="CC_UNDER_THRESHOLD"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER_THRESHOLD"/>
     </input>
     <joinAttribute name="BPARTNER"/>
@@ -270,57 +270,58 @@ or
       <descriptions defaultDescription="Group Status"/>
       <keyMapping columnObjectName="Join_1" columnName="GROUP_STATUS"/>
     </attribute>
-    <attribute id="CC_UNDER_THRESHOLD" order="26" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_UNDER_THRESHOLD"/>
-      <keyMapping columnObjectName="Join_1" columnName="CC_UNDER_THRESHOLD"/>
-    </attribute>
-    <attribute id="ENTITY_TYPE" order="27" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ENTITY_TYPE" order="26" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Legal Entity Type"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_ENTITY_TYPE"/>
     </attribute>
-    <attribute id="LIABILITY_START_DATE" order="28" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LIABILITY_START_DATE" order="27" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Payroll Tax - Liability From"/>
       <keyMapping columnObjectName="Join_1" columnName="LIABILITY_START_DATE"/>
     </attribute>
-    <attribute id="ACN" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ACN" order="28" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Australian Company Number"/>
       <keyMapping columnObjectName="Join_1" columnName="ACN"/>
     </attribute>
-    <attribute id="LODGEMENT_FREQUENCY" order="30" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LODGEMENT_FREQUENCY" order="29" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Lodgement Freqency"/>
       <keyMapping columnObjectName="Join_1" columnName="LODGEMENT_FREQUENCY"/>
     </attribute>
-    <attribute id="FINANCIAL_STATUS" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="FINANCIAL_STATUS" order="30" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Company Financial Status"/>
       <keyMapping columnObjectName="Join_1" columnName="ORG_STATUS"/>
     </attribute>
-    <attribute id="FINANCIAL_STATUS_TXT" order="32" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="FINANCIAL_STATUS_TXT" order="31" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Company Financial Status Text"/>
       <keyMapping columnObjectName="Join_1" columnName="ORG_STATUS_DESCRIPTION"/>
     </attribute>
-    <attribute id="GROUP_ID" order="33" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GROUP_ID" order="32" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Group ID"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_GROUP_ID"/>
     </attribute>
-    <attribute id="DEREGISTERED" order="34" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DEREGISTERED" order="33" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Degregistered"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_DEREGISTERED"/>
     </attribute>
-    <attribute id="EMPLOYER_STATUS" order="35" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="EMPLOYER_STATUS" order="34" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Employer Status"/>
       <keyMapping columnObjectName="Join_1" columnName="EMPLOYER_STATUS"/>
     </attribute>
-    <attribute id="ASIC_STATUS" order="36" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="ASIC_STATUS" order="35" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="ASIC Status"/>
       <keyMapping columnObjectName="Join_1" columnName="CC_ASIC_STATUS"/>
     </attribute>
-    <attribute id="TITLE" order="38" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="TITLE" order="37" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="TITLE"/>
       <keyMapping columnObjectName="Join_1" columnName="TITLE"/>
     </attribute>
-    <attribute id="TYPE" order="39" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <attribute id="TYPE" order="38" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="TYPE"/>
       <keyMapping columnObjectName="Join_1" columnName="TYPE"/>
+    </attribute>
+  
+    <attribute id="UNDER_THRESHOLD" hidden="true" keepFlag="true" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UNDER_THRESHOLD"/>
+      <keyMapping columnObjectName="Join_1" columnName="UNDER_THRESHOLD"/>
     </attribute>
   </attributes>
   <calculatedAttributes>
@@ -370,12 +371,21 @@ or
   
       </keyCalculation>
       </calculatedAttribute>
-    <calculatedAttribute id="TAX_REVENUE_CODE" order="37" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <calculatedAttribute id="TAX_REVENUE_CODE" order="36" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Tax Revenue Code"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
         <formula>'PT'</formula>
       </keyCalculation>
-      </calculatedAttribute></calculatedAttributes>
+      </calculatedAttribute>
+    <calculatedAttribute id="CC_UNDER_THRESHOLD" order="39" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+        <formula>CASE  
+	 WHEN &quot;UNDER_THRESHOLD&quot;='X' then 'X' 
+	 ELSE '' 
+ END</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/>
@@ -406,7 +416,7 @@ or
     </shape>
     <shape modelObjectName="CV_PRTCLIENTOVERVIEW" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="363" y="43"/>
-      <rectangleSize width="221.07763671875"/>
+      <rectangleSize width="221"/>
     </shape>
   </shapes>
 </layout>
