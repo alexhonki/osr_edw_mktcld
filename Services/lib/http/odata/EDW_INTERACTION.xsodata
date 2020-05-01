@@ -5,7 +5,7 @@
  */
  
 service {       
-    "osr.mktcld::CV_PRT_INERACTION_COVID19_SCPI" as "Interaction"
+    "osr.mktcld::CV_CRM_INTERACTION_SCPI" as "Interaction"
     key generate local "GenID";
 }
 

@@ -2,27 +2,26 @@ namespace osr.mktcld.table;
 
 context CDS_PRT_MVP {
 
+
     /*@@layout{"layoutInfo":{}}*/
     entity CONTACT {
-            ID_ORIGIN                  : hana.VARCHAR(13);
-        key ID                         : String(20);
-            COMPANY_NAME               : hana.VARCHAR(300);
-            FIRSTNAME                  : String(60);
-            LASTNAME                   : String(60);
-            COUNTRY                    : String(3);
-            REGION                     : String(3);
-            CITY1                      : String(40);
-            POST_CODE1                 : String(10);
-            STREET                     : String(60);
-            HOUSE_NUM1                 : String(10);
-            STD_EMAIL                  : String(100);
-            TELNR_LONG                 : String(30);
-            TELNR_MOBILE               : String(30);
-            ENTITY_TYPE                : String(4);
-            EXT_INTERACTION_CONTACT_ID : String(60);
-            EXT_CORPORATE_ACCOUNT_ID   : hana.VARCHAR(13);
-        key ZCHANGETIME                : UTCTimestamp;
-            Z_RUN_ROW_NO               : Integer;
+            ID_ORIGIN                : hana.VARCHAR(13);
+            COMPANY_NAME             : hana.VARCHAR(300);
+            FIRSTNAME                : String(60);
+            LASTNAME                 : String(60);
+            COUNTRY                  : String(3);
+            CITY1                    : String(40);
+            POST_CODE1               : String(10);
+            STREET                   : String(60);
+            HOUSE_NUM1               : String(10);
+            STD_EMAIL                : String(100);
+            TELNR_LONG               : String(30);
+            TELNR_MOBILE             : String(30);
+        key ID                       : String(60);
+            EXT_CORPORATE_ACCOUNT_ID : hana.VARCHAR(13);
+            CONTACT_FUNCTION         : hana.VARCHAR(13);
+            Z_CHANGE_TIME            : UTCTimestamp;
+            Z_RUN_ROW_NO             : Integer;
     };
 
     /*@@layout{"layoutInfo":{}}*/
@@ -31,7 +30,6 @@ context CDS_PRT_MVP {
         key ID                   : hana.VARCHAR(13);
             COMPANY_NAME         : hana.VARCHAR(300);
             BRSCH_FT             : String(5);
-            BRSCH_FT_TXT         : String(100);
             COUNTRY_FT           : String(3);
             REGION_FT            : String(3);
             CITY1                : String(40);
@@ -41,46 +39,42 @@ context CDS_PRT_MVP {
             SMTP_ADDR            : String(100);
             TELNR_LONG           : String(30);
             TELNR_MOBILE         : String(30);
+            CLIENT               : hana.VARCHAR(13);
+            REGISTRATION_DATE    : String(40);
+            ORG_STATUS_DATE      : String(40);
+            FIRST_RETURN_DATE    : String(40);
             ABN                  : String(11);
-            ACN                  : String(9);
-            ENTITY_TYPE          : hana.VARCHAR(13);
             TAXPAYER_STATUS      : String(1);
             GROUP_STATUS         : String(40);
-            GROUP_ID             : hana.VARCHAR(13);
-            REGISTRATION_DATE    : String(40);
-            LODGEMENT_FREQUENCY  : String(40);
+            CC_UNDER_THRESHOLD   : hana.VARCHAR(13);
+            ENTITY_TYPE          : hana.VARCHAR(13);
             LIABILITY_START_DATE : String(40);
-            FIRST_RETURN_DATE    : String(40);
-            EMPLOYER_STATUS      : String(40);
-            DEREGISTERED         : hana.VARCHAR(13);
-            ASIC_STATUS          : hana.VARCHAR(13);
-            TAX_REVENUE_CODE     : String(10);
+            ACN                  : String(9);
+            LODGEMENT_FREQUENCY  : String(40);
             FINANCIAL_STATUS     : String(4);
-            FINANCIAL_STATUS_TXT : String(1024);
-            TITLE                : String(4);
-            TYPE                 : String(1);
-            CLIENT               : hana.VARCHAR(13);
-        key ZCHANGETIME          : UTCTimestamp;
+            GROUP_ID             : hana.VARCHAR(13);
+            DEREGISTERED         : hana.VARCHAR(13);
+            Z_CHANGE_TIME        : UTCTimestamp;
             Z_RUN_ROW_NO         : Integer;
     };
 
     /*@@layout{"layoutInfo":{}}*/
     entity INTERACTION {
-            ID_ORIGIN                  : hana.VARCHAR(13);
-        key ID                         : hana.VARCHAR(13);
-            COMM_MEDIUM                : hana.VARCHAR(30);
-            IA_TYPE                    : hana.VARCHAR(30);
-            TIMESTAMP                  : String(15);
-            INTEREST_ITEM              : hana.VARCHAR(13);
-            IA_REASON                  : String(4);
-            SOURCE_OBJECT_TYPE         : String(4);
-            SOURCE_OBJECT_ID           : String(10);
-            CONTENT_TITLE              : hana.VARCHAR(60);
-            CONTENT_DATA               : String(40);
-            MKT_AREA_ID                : hana.VARCHAR(13);
-            YY1_FBN_MIA                : String(20);
-            YY1_TAX_REVENUE_STREAM_MIA : hana.VARCHAR(13);
-        key ZCHANGETIME                : UTCTimestamp;
-            Z_RUN_ROW_NO               : Integer;
+            CONTACT_ORIGIN     : hana.VARCHAR(13);
+        key QUAL_BPARTNER      : hana.VARCHAR(13);
+            COMM_MEDIUM        : hana.VARCHAR(30);
+            TYPE               : hana.VARCHAR(30);
+            UTC_TIMESTAMP      : String(15);
+            INTEREST           : hana.VARCHAR(13);
+            REASON             : String(4);
+            SOURCE_OBJECT_TYPE : String(4);
+            SOURCE_OBJECT_ID   : String(10);
+            CONTENT_TITLE      : hana.VARCHAR(60);
+            CONTENT_SUBJECT    : String(40);
+            MARKETING_AREA     : hana.VARCHAR(13);
+            YY1_FBN_MIA        : String(20);
+            REVENUE_STREAM     : hana.VARCHAR(13);
+            Z_CHANGE_TIME      : UTCTimestamp;
+            Z_RUN_ROW_NO       : Integer;
     };
 };

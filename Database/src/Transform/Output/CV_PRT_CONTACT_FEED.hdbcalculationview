@@ -296,7 +296,7 @@
       <descriptions defaultDescription="Country"/>
       <keyMapping columnObjectName="Join_5" columnName="COUNTRY"/>
     </attribute>
-    <attribute id="REGION" displayAttribute="false" order="8" attributeHierarchyActive="false">
+    <attribute id="REGION" displayAttribute="false" order="8" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Region"/>
       <keyMapping columnObjectName="Join_5" columnName="REGION"/>
     </attribute>
@@ -329,7 +329,7 @@
       <keyMapping columnObjectName="Join_5" columnName="TEL_NUMBER"/>
     </attribute>
   
-    <attribute id="ENTITY_TYPE" displayAttribute="false" order="20" attributeHierarchyActive="false">
+    <attribute id="ENTITY_TYPE" displayAttribute="false" order="20" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Title"/>
   
       <keyMapping columnObjectName="Join_5" columnName="TITLE"/>
@@ -340,7 +340,7 @@
       <keyMapping columnObjectName="Join_5" columnName="ADDRNUMBER"/>
     </attribute></attributes>
   <calculatedAttributes>
-    <calculatedAttribute semanticType="empty" id="ID" displayAttribute="false" order="2" attributeHierarchyActive="false">
+    <calculatedAttribute semanticType="empty" id="ACCT_ID" displayAttribute="false" order="2" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Account ID"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="20">
         <formula>TRIM(LEADING '0' FROM &quot;ACCOUNT_ID&quot;)</formula>
@@ -352,7 +352,7 @@
   
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="60">
   
-        <formula>'PAYROLL'</formula>
+        <formula>&quot;EXT_CORPORATE_ACCOUNT_ID&quot;</formula>
   
       </keyCalculation>
   
@@ -360,7 +360,7 @@
     <calculatedAttribute semanticType="empty" id="LASTNAME" displayAttribute="false" order="6" attributeHierarchyActive="false">
       <descriptions defaultDescription="Last Name"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="60">
-        <formula>'TAX'</formula>
+        <formula>'PAYROLL TAX'</formula>
       </keyCalculation>
     </calculatedAttribute>
     <calculatedAttribute semanticType="empty" id="OPT_IN_SMTP_ADDR" displayAttribute="false" order="14" attributeHierarchyActive="false" hidden="true">
@@ -387,17 +387,28 @@
         <formula>'N'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute semanticType="empty" id="EXT_INTERACTION_CONTACT_ID" displayAttribute="false" order="21" attributeHierarchyActive="false">
+    <calculatedAttribute semanticType="empty" id="ID" displayAttribute="false" order="21" attributeHierarchyActive="false" hidden="false">
       <descriptions defaultDescription="Ext. Interaction Contact ID"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="60">
         <formula>TRIM(LEADING '0' FROM CONCAT(CONCAT(&quot;ACCOUNT_ID&quot;, '_'),'PT'))</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="EXT_CORPORATE_ACCOUNT_ID" order="23" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="EXT_CORPORATE_ACCOUNT_ID" order="23" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="false">
       <descriptions defaultDescription="Ext. Corporate Account ID"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>TRIM(LEADING '0' FROM &quot;ACCOUNT_ID&quot;)</formula>
       </keyCalculation>
+    </calculatedAttribute>
+  
+    <calculatedAttribute id="CONTACT_FUNCTION" order="24" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Contact Function"/>
+  
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
+  
+        <formula>'Z2'</formula>
+  
+      </keyCalculation>
+  
     </calculatedAttribute>
   </calculatedAttributes>
   <baseMeasures/>

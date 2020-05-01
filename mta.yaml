@@ -1,8 +1,22 @@
 _schema-version: '2.0'
 ID: OSR_MKT_CLD
-description: Source for OSR EDW
+description: Source for OSR EDW MKT CLD
 version: 0.0.1
 modules:
+  - name: OSR_MKT_CLD-Web
+    type: html5
+    path: Web
+    requires:
+      - name: OSR_MKT_CLD-uaa
+      - name: Services_api
+        properties:
+          name: Services_url
+          url: '~{url}'
+          forwardAuthToken: true
+          timeout: 240000
+        group: destinations
+    properties:
+      timeout: 30m
   - name: OSR_MKT_CLD-DWF
     type: dwf
     path: DWF
@@ -39,7 +53,12 @@ modules:
         group: SERVICE_REPLACEMENTS
         properties:
           key: logical-OSR-EDW-SURVEY-grantor
-          service: '~{OSR-EDW-SURVEY-grantor-service}'          
+          service: '~{OSR-EDW-SURVEY-grantor-service}'
+      - name: OSR-BUSINESS-SEMANTIC-grantor
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: logical-OSR-BUSINESS-SEMANTIC-grantor
+          service: '~{OSR-BUSINESS-SEMANTIC-grantor-service}'
   - name: OSR_MKT_CLD-Services
     type: nodejs
     path: Services
@@ -49,6 +68,7 @@ modules:
           url: '${default-url}'
     requires:
       - name: OSR_MKT_CLD-container
+      - name: OSR_MKT_CLD-uaa
     build-parameters:
       timeout: 15m
 resources:
@@ -77,4 +97,17 @@ resources:
     parameters:
       service-name: OSR_EDW_SURVEY-deploy
     properties:
-      OSR-EDW-SURVEY-grantor-service: '${service-name}'      
+      OSR-EDW-SURVEY-grantor-service: '${service-name}'
+  - name: OSR_MKT_CLD-uaa
+    type: com.sap.xs.uaa
+    description: UAA for this particular MTA project
+    parameters:
+      service-name: OSR_MKT_CLD-uaa
+      service-plan: space
+      path: xs-security.json
+  - name: OSR-BUSINESS-SEMANTIC-grantor
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: OSR_BUSINESS_SEMANTIC-deploy
+    properties:
+      OSR-BUSINESS-SEMANTIC-grantor-service: '${service-name}'

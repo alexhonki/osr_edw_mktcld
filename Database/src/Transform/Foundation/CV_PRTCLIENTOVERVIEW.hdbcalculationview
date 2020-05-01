@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRTCLIENTOVERVIEW" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_PRTCLIENTOVERVIEW"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld::TF_PRTCLIENTOVERVIEW" type="TABLE_FUNCTION">
+    <resourceUri>osr.mktcld::TF_PRTCLIENTOVERVIEW</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="T_PrtClientOverview">
+    <viewAttributes>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="PARTNER1"/>
+    
+      <viewAttribute id="PARTNER_THRESHOLD"/>
+      <viewAttribute id="RMS_PTAX_THRESHOLD"/>
+      <viewAttribute id="RELTYP"/>
+      <viewAttribute id="VALID_FROM"/>
+      <viewAttribute id="VALID_TO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::TF_PRTCLIENTOVERVIEW"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="T_PrtClientOverview">
+  <attributes>
+    <attribute id="PARTNER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER"/>
+      <keyMapping columnObjectName="T_PrtClientOverview" columnName="PARTNER"/>
+    </attribute>
+    <attribute id="PARTNER1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER1"/>
+      <keyMapping columnObjectName="T_PrtClientOverview" columnName="PARTNER1"/>
+    </attribute>
+  
+    <attribute id="PARTNER_THRESHOLD" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PARTNER_THRESHOLD"/>
+      <keyMapping columnObjectName="T_PrtClientOverview" columnName="PARTNER_THRESHOLD"/>
+    </attribute>
+    <attribute id="RMS_PTAX_THRESHOLD" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RMS_PTAX_THRESHOLD"/>
+      <keyMapping columnObjectName="T_PrtClientOverview" columnName="RMS_PTAX_THRESHOLD"/>
+    </attribute>
+    <attribute id="RELTYP" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RELTYP"/>
+      <keyMapping columnObjectName="T_PrtClientOverview" columnName="RELTYP"/>
+    </attribute>
+    <attribute id="VALID_FROM" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_FROM"/>
+      <keyMapping columnObjectName="T_PrtClientOverview" columnName="VALID_FROM"/>
+    </attribute>
+    <attribute id="VALID_TO" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VALID_TO"/>
+      <keyMapping columnObjectName="T_PrtClientOverview" columnName="VALID_TO"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="110" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="T_PrtClientOverview" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="197"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
