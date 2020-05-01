@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_CRM_INTERACTION_SCPI" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_CRM_INTERACTION"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="osr.mktcld.table::CDS_PRT_MVP.INTERACTION">
+    <resourceUri>osr.mktcld.table::CDS_PRT_MVP.INTERACTION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CDS_PRT_MVP_INTERACTION">
+    <viewAttributes>
+      <viewAttribute id="COMM_MEDIUM"/>
+      <viewAttribute id="SOURCE_OBJECT_TYPE"/>
+      <viewAttribute id="SOURCE_OBJECT_ID"/>
+      <viewAttribute id="CONTENT_TITLE"/>
+      <viewAttribute id="YY1_FBN_MIA"/>
+      <viewAttribute id="Z_RUN_ROW_NO"/>
+      <viewAttribute id="CONTACT_ORIGIN"/>
+      <viewAttribute id="QUAL_BPARTNER"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="UTC_TIMESTAMP"/>
+      <viewAttribute id="INTEREST"/>
+      <viewAttribute id="REASON"/>
+      <viewAttribute id="CONTENT_SUBJECT"/>
+      <viewAttribute id="MARKETING_AREA"/>
+      <viewAttribute id="REVENUE_STREAM"/>
+      <viewAttribute id="Z_CHANGE_TIME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld.table::CDS_PRT_MVP.INTERACTION"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="CDS_PRT_MVP_INTERACTION">
+  <attributes>
+    <attribute id="COMM_MEDIUM" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMM_MEDIUM"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="COMM_MEDIUM"/>
+    </attribute>
+    <attribute id="SOURCE_OBJECT_TYPE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOURCE_OBJECT_TYPE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="SOURCE_OBJECT_TYPE"/>
+    </attribute>
+    <attribute id="SOURCE_OBJECT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SOURCE_OBJECT_ID"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="SOURCE_OBJECT_ID"/>
+    </attribute>
+    <attribute id="CONTENT_TITLE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTENT_TITLE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="CONTENT_TITLE"/>
+    </attribute>
+    <attribute id="YY1_FBN_MIA" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YY1_FBN_MIA"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="YY1_FBN_MIA"/>
+    </attribute>
+    <attribute id="Z_RUN_ROW_NO" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_RUN_ROW_NO"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="Z_RUN_ROW_NO"/>
+    </attribute>
+    <attribute id="CONTACT_ORIGIN" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTACT_ORIGIN"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="CONTACT_ORIGIN"/>
+    </attribute>
+    <attribute id="QUAL_BPARTNER" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QUAL_BPARTNER"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="QUAL_BPARTNER"/>
+    </attribute>
+    <attribute id="TYPE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TYPE"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="TYPE"/>
+    </attribute>
+    <attribute id="UTC_TIMESTAMP" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UTC_TIMESTAMP"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="UTC_TIMESTAMP"/>
+    </attribute>
+    <attribute id="INTEREST" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INTEREST"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="INTEREST"/>
+    </attribute>
+    <attribute id="REASON" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REASON"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="REASON"/>
+    </attribute>
+    <attribute id="CONTENT_SUBJECT" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTENT_SUBJECT"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="CONTENT_SUBJECT"/>
+    </attribute>
+    <attribute id="MARKETING_AREA" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MARKETING_AREA"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="MARKETING_AREA"/>
+    </attribute>
+    <attribute id="REVENUE_STREAM" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="REVENUE_STREAM"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="REVENUE_STREAM"/>
+    </attribute>
+    <attribute id="Z_CHANGE_TIME" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Z_CHANGE_TIME"/>
+      <keyMapping columnObjectName="CDS_PRT_MVP_INTERACTION" columnName="Z_CHANGE_TIME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="159" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="CDS_PRT_MVP_INTERACTION" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="236"/>
+      <rectangleSize height="30" width="286"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
