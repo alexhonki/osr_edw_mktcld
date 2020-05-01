@@ -292,11 +292,11 @@
       <descriptions defaultDescription="Corporate Account Name"/>
       <keyMapping columnObjectName="Join_5" columnName="COMPANY_NAME"/>
     </attribute>
-    <attribute id="COUNTRY_FT" displayAttribute="false" order="7" attributeHierarchyActive="false">
+    <attribute id="COUNTRY" displayAttribute="false" order="7" attributeHierarchyActive="false">
       <descriptions defaultDescription="Country"/>
       <keyMapping columnObjectName="Join_5" columnName="COUNTRY"/>
     </attribute>
-    <attribute id="REGION" displayAttribute="false" order="8" attributeHierarchyActive="false">
+    <attribute id="REGION" displayAttribute="false" order="8" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Region"/>
       <keyMapping columnObjectName="Join_5" columnName="REGION"/>
     </attribute>
@@ -304,7 +304,7 @@
       <descriptions defaultDescription="City"/>
       <keyMapping columnObjectName="Join_5" columnName="CITY1"/>
     </attribute>
-    <attribute id="POSTCODE1" displayAttribute="false" order="10" attributeHierarchyActive="false">
+    <attribute id="POST_CODE1" displayAttribute="false" order="10" attributeHierarchyActive="false">
       <descriptions defaultDescription="Postal Code"/>
       <keyMapping columnObjectName="Join_5" columnName="POST_CODE1"/>
     </attribute>
@@ -316,7 +316,7 @@
       <descriptions defaultDescription="House Number"/>
       <keyMapping columnObjectName="Join_5" columnName="HOUSE_NUM1"/>
     </attribute>
-    <attribute id="SMTP_ADDR" displayAttribute="false" order="13" attributeHierarchyActive="false">
+    <attribute id="STD_EMAIL" displayAttribute="false" order="13" attributeHierarchyActive="false">
       <descriptions defaultDescription="E-Mail Address"/>
       <keyMapping columnObjectName="Join_5" columnName="STD_EMAIL"/>
     </attribute>
@@ -340,14 +340,14 @@
       <keyMapping columnObjectName="Join_5" columnName="ADDRNUMBER"/>
     </attribute></attributes>
   <calculatedAttributes>
-    <calculatedAttribute semanticType="empty" id="ID" displayAttribute="false" order="2" attributeHierarchyActive="false" hidden="false">
+    <calculatedAttribute semanticType="empty" id="ACCT_ID" displayAttribute="false" order="2" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Account ID"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="20">
         <formula>TRIM(LEADING '0' FROM &quot;ACCOUNT_ID&quot;)</formula>
       </keyCalculation>
     </calculatedAttribute>
   
-    <calculatedAttribute semanticType="empty" id="FIRST_NAME" displayAttribute="false" order="5" attributeHierarchyActive="false">
+    <calculatedAttribute semanticType="empty" id="FIRSTNAME" displayAttribute="false" order="5" attributeHierarchyActive="false">
       <descriptions defaultDescription="First Name"/>
   
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="60">
@@ -357,7 +357,7 @@
       </keyCalculation>
   
     </calculatedAttribute>
-    <calculatedAttribute semanticType="empty" id="LAST_NAME" displayAttribute="false" order="6" attributeHierarchyActive="false">
+    <calculatedAttribute semanticType="empty" id="LASTNAME" displayAttribute="false" order="6" attributeHierarchyActive="false">
       <descriptions defaultDescription="Last Name"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="60">
         <formula>'PAYROLL TAX'</formula>
@@ -387,13 +387,13 @@
         <formula>'N'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute semanticType="empty" id="EXT_INTERACTION_CONTACT_ID" displayAttribute="false" order="21" attributeHierarchyActive="false" hidden="false">
+    <calculatedAttribute semanticType="empty" id="ID" displayAttribute="false" order="21" attributeHierarchyActive="false" hidden="false">
       <descriptions defaultDescription="Ext. Interaction Contact ID"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="60">
         <formula>TRIM(LEADING '0' FROM CONCAT(CONCAT(&quot;ACCOUNT_ID&quot;, '_'),'PT'))</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="EXT_CORPORATE_ACCOUNT_ID" order="23" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
+    <calculatedAttribute id="EXT_CORPORATE_ACCOUNT_ID" order="23" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="false">
       <descriptions defaultDescription="Ext. Corporate Account ID"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>TRIM(LEADING '0' FROM &quot;ACCOUNT_ID&quot;)</formula>

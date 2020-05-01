@@ -204,11 +204,11 @@
       <descriptions defaultDescription="GUID"/>
       <keyMapping columnObjectName="Join_2" columnName="GUID"/>
     </attribute>
-    <attribute id="TIMESTAMP" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="UTC_TIMESTAMP" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="UTC Timestamp "/>
       <keyMapping columnObjectName="Join_2" columnName="CREATED_AT"/>
     </attribute>
-    <attribute id="IA_REASON" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REASON" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Reason "/>
       <keyMapping columnObjectName="Join_2" columnName="CODE"/>
     </attribute>
@@ -220,7 +220,7 @@
       <descriptions defaultDescription="Source Object ID"/>
       <keyMapping columnObjectName="Join_2" columnName="OBJECT_ID"/>
     </attribute>
-    <attribute id="CONTENT_DATA" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CONTENT_SUBJECT" order="13" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Content"/>
       <keyMapping columnObjectName="Join_2" columnName="DESCRIPTION"/>
     </attribute>
@@ -265,13 +265,13 @@
     </attribute>
   </attributes>
   <calculatedAttributes>
-    <calculatedAttribute id="ID_ORIGIN" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="CONTACT_ORIGIN" order="3" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Origin of Contact"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>'OSR_EDW'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="ID" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="QUAL_BPARTNER" order="4" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Ext. Interaction Contact ID"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>CONCAT(CONCAT(TRIM(LEADING '0' FROM &quot;PARTNER&quot;), '_'), 'PT')</formula>
@@ -283,13 +283,13 @@
         <formula>'OSR_TRM_SYS_EVENT'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="IA_TYPE" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="TYPE" order="6" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Interaction Type"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="30">
         <formula>'OSR_TRM_PRT_NEW_REG'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="INTEREST_ITEM" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="INTEREST" order="8" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Item of Interest"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>'PT'</formula>
@@ -301,13 +301,13 @@
         <formula>'Payroll Tax - Notice of Registration'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="MKT_AREA_ID" order="14" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="MARKETING_AREA" order="14" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Marketing Area ID"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>'OSR_GLOBAL'</formula>
       </keyCalculation>
     </calculatedAttribute>
-    <calculatedAttribute id="YY1_TAX_REVENUE_STREAM_MIA" order="16" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+    <calculatedAttribute id="REVENUE_STREAM" order="16" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Tax Revenue Stream"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>'PT'</formula>
