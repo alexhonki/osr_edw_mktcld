@@ -73,7 +73,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_ABN" source="QUAL_ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_EMAIL" source="QUAL_EMAIL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="CC_PTAX_THRESHOLD_CHECK"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
@@ -95,12 +95,21 @@
       <viewAttribute id="QUAL_BPARTNER"/>
       <viewAttribute id="QUAL_ABN"/>
       <viewAttribute id="QUAL_EMAIL"/>
-      <viewAttribute id="PTAX_THRESHOLD_CHECK"/>
+      <viewAttribute id="PTAX_THRESHOLD_CHECK_DEFERRAL"/>
       <viewAttribute id="CC_TYPE"/>
     
       <viewAttribute id="ZCHANGETIME"/>
+    
+      <viewAttribute id="PTAX_THRESHOLD_CHECK_REFUND"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_PTAX_THRESHOLD_CHECK" datatype="NVARCHAR" length="1" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;PTAX_THRESHOLD_CHECK_REFUND&quot; IS NULL then &quot;PTAX_THRESHOLD_CHECK_DEFERRAL&quot; 
+	 ELSE &quot;PTAX_THRESHOLD_CHECK_REFUND&quot; 
+ END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="CV_PRT_DEFERRAL">
       <mapping xsi:type="Calculation:AttributeMapping" target="SURVEYID" source="SURVEYID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
@@ -109,9 +118,11 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CC_TYPE" source="CC_TYPE"/>
     
       <mapping xsi:type="Calculation:AttributeMapping" target="ZCHANGETIME" source="ZCHANGETIME"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK_DEFERRAL" source="PTAX_THRESHOLD_CHECK"/>
     </input>
     <input node="BP_REFUND_DEFER">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK" source="PTAX_THRESHOLD_CHECK_REFUND"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PTAX_THRESHOLD_CHECK_REFUND" source="PTAX_THRESHOLD_CHECK_REFUND"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="QUAL_BPARTNER" source="QUAL_BPARTNER"/>
     </input>
     <joinAttribute name="QUAL_BPARTNER"/>
@@ -495,4 +506,4 @@
     </shape>
   </shapes>
 </layout>
-</Calculation:scenario> 
+</Calculation:scenario>
