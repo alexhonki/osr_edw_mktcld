@@ -47,12 +47,6 @@
 			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
 		}
 	},
-	"osr.mktcld.db.synonyms::DPSOB_BP_ACC": {
-		"target": {
-			"object": "osr.edw.staging.md.rms.proxy::CV_DPSOB_BP_ACC",
-			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
-		}
-	},
 	"osr.mktcld.db.synonyms::DFACTS": {
 		"target": {
 			"object": "osr.edw.staging.md.rms.proxy::CV_DFACTS",
@@ -62,6 +56,18 @@
 	"osr.mktcld.db.synonyms::BUT000_Current": {
 		"target": {
 			"object": "osr.edw.staging.md.rms.proxy::CV_BUT000_Current",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::DPSOB_BP_ACC": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.proxy::CV_DPSOB_BP_ACC",
+			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
+		}
+	},
+	"osr.mktcld.db.synonyms::TFMCA_INCORR_PER": {
+		"target": {
+			"object": "osr.edw.staging.md.rms.pscd.proxy::CV_TFMCA_INCORR_PER",
 			"schema.configure": "logical-OSR-EDW-PLATFORM-grantor/schema"
 		}
 	},

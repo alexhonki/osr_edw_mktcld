@@ -25,6 +25,9 @@
   <DataSource id="DFACTS_FIRST_RETURN_DATE$$$$osr.mktcld::CV_DFACTS$$">
     <resourceUri>osr.mktcld::CV_DFACTS</resourceUri>
   </DataSource>
+  <DataSource id="osr.mktcld::CV_TFMCA_INCORR_PER">
+    <resourceUri>osr.mktcld::CV_TFMCA_INCORR_PER</resourceUri>
+  </DataSource>
 </dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="DPSOB_BP_ACC" filterExpressionLanguage="SQL">
@@ -333,19 +336,20 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
     </input>
-    <input node="DFACTS_FIRST_RETURN_DATE">
-      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="FIRST_RETURN_DATE"/>
+    <input node="Join_7">
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="INCORR_FAEDN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PSOBKEY" source="OBJID"/>
     </input>
     <joinAttribute name="CLIENT"/>
     <joinAttribute name="PSOBKEY"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_FIRST_RETURN_DATE" filterExpressionLanguage="SQL">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="CN_N" joinType="inner">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
-      <viewAttribute id="OBART"/>
       <viewAttribute id="OBJID"/>
+      <viewAttribute id="FIRST_RETURN_DATE"/>
+      <viewAttribute id="OBART"/>
       <viewAttribute id="FACT_TYPE_SEQ"/>
       <viewAttribute id="FACT_TYPE_REP"/>
       <viewAttribute id="FACT_CAT_SEQ"/>
@@ -354,9 +358,48 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <viewAttribute id="FACT_SET"/>
       <viewAttribute id="FACT_TYPE"/>
       <viewAttribute id="FACT_CATEGORY"/>
-      <viewAttribute id="FIRST_RETURN_DATE"/>
+      <viewAttribute id="INCORR_FAEDN"/>
     </viewAttributes>
     <calculatedViewAttributes/>
+    <input node="DFACTS_FIRST_RETURN_DATE">
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="FIRST_RETURN_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBJID" source="OBJID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBART" source="OBART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_TYPE_SEQ" source="FACT_TYPE_SEQ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_TYPE_REP" source="FACT_TYPE_REP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_CAT_SEQ" source="FACT_CAT_SEQ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_CAT_REP" source="FACT_CAT_REP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO" source="VALID_TO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_SET" source="FACT_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_TYPE" source="FACT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_CATEGORY" source="FACT_CATEGORY"/></input>
+    <input node="TFMCA_INCORR_PER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCORR_FAEDN" source="INCORR_FAEDN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="PERSL"/>
+    </input>
+    <joinAttribute name="FIRST_RETURN_DATE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_FIRST_RETURN_DATE" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="FIRST_RETURN_DATE"/>
+    
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="OBJID"/>
+      <viewAttribute id="OBART"/>
+      <viewAttribute id="FACT_TYPE_SEQ"/>
+      <viewAttribute id="FACT_TYPE_REP"/>
+      <viewAttribute id="FACT_CAT_SEQ"/>
+      <viewAttribute id="FACT_CAT_REP"/>
+      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="FACT_SET"/>
+      <viewAttribute id="FACT_TYPE"/>
+      <viewAttribute id="FACT_CATEGORY"/></viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_FIRST_RETURN_DATE" datatype="NVARCHAR" length="4" expressionLanguage="SQL">
+        <formula>&quot;FIRST_RETURN_DATE&quot;</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input emptyUnionBehavior="undefined" node="DFACTS_FIRST_RETURN_DATE$$$$osr.mktcld::CV_DFACTS$$">
       <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="VALUE_GENERIC"/>
     </input>
@@ -366,6 +409,14 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
 &quot;FACT_CAT_SEQ&quot;='50' and
 &quot;FACT_TYPE&quot;='RG01'</filter>
   </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="TFMCA_INCORR_PER" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="INCOTYP"/>
+      <viewAttribute id="PERSL"/>
+      <viewAttribute id="INCORR_FAEDN"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="osr.mktcld::CV_TFMCA_INCORR_PER"/></calculationView>
 </calculationViews>
 <logicalModel id="Join_6">
   <attributes>
@@ -412,7 +463,9 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
   
     <attribute id="FIRST_RETURN_DATE" order="11" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="FIRST_RETURN_DATE"/>
+  
       <keyMapping columnObjectName="Join_6" columnName="FIRST_RETURN_DATE"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -423,21 +476,21 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="1033.1098957838797" y="112"/>
+      <upperLeftCorner x="694" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="DPSOB_BP_ACC" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999991" y="1156.9999928474426"/>
+      <upperLeftCorner x="354" y="1176"/>
       <rectangleSize height="30" width="237"/>
     </shape>
     <shape expanded="true" modelObjectName="DFACTS_GROUP_STATUS" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="378.99999999999966" y="1156.9999928474426"/>
+      <upperLeftCorner x="92" y="1176"/>
       <rectangleSize height="30" width="213"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="157.16666666666643" y="996.9999940395355"/>
+      <upperLeftCorner x="145" y="1016"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="DPSOB_BP_ACC" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -449,11 +502,11 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <rectangleSize width="238"/>
     </shape>
     <shape expanded="true" modelObjectName="DFACTS_REGISTRATION_DATE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="446.96196636538025" y="996.9999940395355"/>
+      <upperLeftCorner x="449" y="1016"/>
       <rectangleSize width="245"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="183.83333333333306" y="836.9999952316284"/>
+      <upperLeftCorner x="171" y="856"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -465,16 +518,16 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <rectangleSize width="246"/>
     </shape>
     <shape expanded="true" modelObjectName="DFACTS_LODGEMENT_FREQUENCY" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="564.3361598155817" y="836.9999952316284"/>
+      <upperLeftCorner x="597" y="856"/>
       <rectangleSize width="301"/>
     </shape>
     <shape expanded="true" modelObjectName="DFACTS_LIABILITY_START_DATE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="719.8181087457898" y="676.9999964237213"/>
+      <upperLeftCorner x="792" y="696"/>
       <rectangleSize width="251"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="210.49999999999957" y="676.9999964237213"/>
+      <upperLeftCorner x="198" y="696"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
@@ -486,7 +539,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <rectangleSize width="277"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="237.1666666666661" y="516.9999976158142"/>
+      <upperLeftCorner x="780" y="536"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
@@ -498,11 +551,11 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <rectangleSize width="260"/>
     </shape>
     <shape expanded="true" modelObjectName="DFACTS_EMPLOYER_STATUS" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="874.5384232943564" y="516.9999976158142"/>
+      <upperLeftCorner x="993" y="536"/>
       <rectangleSize width="226"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="263.8333333333327" y="356.9999988079071"/>
+      <upperLeftCorner x="807" y="376"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
@@ -515,21 +568,38 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
     </shape>
   
     <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1033.1098957838797" y="217"/>
+      <upperLeftCorner x="694" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="DFACTS_FIRST_RETURN_DATE" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
+    <shape modelObjectName="Join_7" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="248.458984375"/>
+      <rectangleSize width="204"/>
     </shape>
-    <shape expanded="true" modelObjectName="DFACTS_FIRST_RETURN_DATE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1030.2586649473205" y="356.9999988079071"/>
+    <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="468" y="390"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="DFACTS_FIRST_RETURN_DATE" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-  </shapes>
+    <shape modelObjectName="TFMCA_INCORR_PER" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="365" y="107"/>
+      <rectangleSize width="191"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="DFACTS_FIRST_RETURN_DATE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="449" y="536"/>
+      <rectangleSize width="250"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="TFMCA_INCORR_PER" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="239" y="536"/>
+      <rectangleSize height="30" width="160"/>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>
