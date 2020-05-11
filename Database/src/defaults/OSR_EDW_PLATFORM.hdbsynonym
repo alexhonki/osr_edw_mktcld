@@ -10,6 +10,7 @@
 	"osr.mktcld.db.synonyms::DFACTS": {},
 	"osr.mktcld.db.synonyms::BUT000_Current": {},
 	"osr.mktcld.db.synonyms::DPSOB_BP_ACC": {},
+	"osr.mktcld.db.synonyms::TFMCA_INCORR_PER": {},
 
 	"osr.mktcld.db.synonyms::AGENCY_DATA": {},
 	"osr.mktcld.db.synonyms::COMPANY_REGISTER": {},
