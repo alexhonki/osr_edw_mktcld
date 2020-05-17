@@ -344,8 +344,10 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
     <joinAttribute name="CLIENT"/>
     <joinAttribute name="PSOBKEY"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="CN_N" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="CN_N" joinType="inner" filterExpressionLanguage="SQL">
     <viewAttributes>
+      <viewAttribute id="INCORR_FAEDN"/>
+    
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="OBJID"/>
       <viewAttribute id="FIRST_RETURN_DATE"/>
@@ -358,7 +360,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <viewAttribute id="FACT_SET"/>
       <viewAttribute id="FACT_TYPE"/>
       <viewAttribute id="FACT_CATEGORY"/>
-      <viewAttribute id="INCORR_FAEDN"/>
+      <viewAttribute id="INCOTYP"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="DFACTS_FIRST_RETURN_DATE">
@@ -376,6 +378,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <mapping xsi:type="Calculation:AttributeMapping" target="FACT_CATEGORY" source="FACT_CATEGORY"/></input>
     <input node="TFMCA_INCORR_PER">
       <mapping xsi:type="Calculation:AttributeMapping" target="INCORR_FAEDN" source="INCORR_FAEDN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCOTYP" source="INCOTYP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="PERSL"/>
     </input>
     <joinAttribute name="FIRST_RETURN_DATE"/>
@@ -411,12 +414,14 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="TFMCA_INCORR_PER" filterExpressionLanguage="SQL">
     <viewAttributes>
-      <viewAttribute id="INCOTYP"/>
-      <viewAttribute id="PERSL"/>
       <viewAttribute id="INCORR_FAEDN"/>
-    </viewAttributes>
+    
+      <viewAttribute id="PERSL"/>
+      <viewAttribute id="INCOTYP"/></viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_TFMCA_INCORR_PER"/></calculationView>
+    <input node="osr.mktcld::CV_TFMCA_INCORR_PER"/>
+    <filter>&quot;INCOTYP&quot; IN ('PT-A', 'PT-H', 'PT-M', 'PT-Q')</filter>
+  </calculationView>
 </calculationViews>
 <logicalModel id="Join_6">
   <attributes>
