@@ -145,7 +145,7 @@
     <input node="osr.mktcld::CV_ADRC"/>
     <filter>TO_TIMESTAMP(&quot;DATE_TO&quot;)&gt;=CURRENT_TIMESTAMP</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
@@ -192,7 +192,7 @@
     <calculatedViewAttributes/>
     <input node="osr.mktcld::CV_ADR6"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
