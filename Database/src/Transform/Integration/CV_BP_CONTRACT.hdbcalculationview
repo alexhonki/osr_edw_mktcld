@@ -68,7 +68,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
 &quot;FACT_TYPE_SEQ&quot;='0030' and
 &quot;FACT_CAT_SEQ&quot;='11'</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PSOBKEY"/>
@@ -117,7 +117,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
 &quot;FACT_TYPE_SEQ&quot;='0010' and 
 &quot;FACT_CAT_SEQ&quot;='81'</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PSOBKEY"/>
@@ -192,7 +192,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
 &quot;FACT_TYPE_SEQ&quot;='0030' and 
 &quot;FACT_CAT_SEQ&quot;='20'</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_N" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PSOBKEY"/>
@@ -221,7 +221,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
     <joinAttribute name="CLIENT"/>
     <joinAttribute name="PSOBKEY"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_N" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PSOBKEY"/>
@@ -276,7 +276,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
 &quot;FACT_TYPE_SEQ&quot;='0030' and 
 &quot;FACT_CAT_SEQ&quot;='13'</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="CN_N" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PSOBKEY"/>
@@ -344,7 +344,7 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
     <joinAttribute name="CLIENT"/>
     <joinAttribute name="PSOBKEY"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="CN_N" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="INCORR_FAEDN"/>
     
@@ -361,6 +361,8 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <viewAttribute id="FACT_TYPE"/>
       <viewAttribute id="FACT_CATEGORY"/>
       <viewAttribute id="INCOTYP"/>
+    
+      <viewAttribute hidden="true" id="JOIN$CC_FIRST_RETURN_DATE$PERSL"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="DFACTS_FIRST_RETURN_DATE">
@@ -375,13 +377,15 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO" source="VALID_TO"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="FACT_SET" source="FACT_SET"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="FACT_TYPE" source="FACT_TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_CATEGORY" source="FACT_CATEGORY"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FACT_CATEGORY" source="FACT_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CC_FIRST_RETURN_DATE$PERSL" source="CC_FIRST_RETURN_DATE"/>
+    </input>
     <input node="TFMCA_INCORR_PER">
       <mapping xsi:type="Calculation:AttributeMapping" target="INCORR_FAEDN" source="INCORR_FAEDN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="INCOTYP" source="INCOTYP"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="PERSL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$CC_FIRST_RETURN_DATE$PERSL" source="PERSL"/>
     </input>
-    <joinAttribute name="FIRST_RETURN_DATE"/>
+    <joinAttribute name="JOIN$CC_FIRST_RETURN_DATE$PERSL"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="DFACTS_FIRST_RETURN_DATE" filterExpressionLanguage="SQL">
     <viewAttributes>
@@ -400,7 +404,11 @@ TO_NVARCHAR(&quot;VALID_TO&quot;)='99991231235959' and
       <viewAttribute id="FACT_CATEGORY"/></viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_FIRST_RETURN_DATE" datatype="NVARCHAR" length="4" expressionLanguage="SQL">
-        <formula>&quot;FIRST_RETURN_DATE&quot;</formula>
+        <formula>CASE  
+	 WHEN RIGHT(&quot;FIRST_RETURN_DATE&quot;, 2) IN ('H2','Q4','12') then CONCAT('20', REPLACE(LEFT(&quot;FIRST_RETURN_DATE&quot;,2),'X','0') )
+	 ELSE &quot;FIRST_RETURN_DATE&quot; 
+ END
+</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input emptyUnionBehavior="undefined" node="DFACTS_FIRST_RETURN_DATE$$$$osr.mktcld::CV_DFACTS$$">
