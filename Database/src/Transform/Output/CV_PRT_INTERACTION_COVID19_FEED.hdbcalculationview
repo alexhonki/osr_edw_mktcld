@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_INTERACTION_COVID19_FEED" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld.transform.output::CV_PRT_INTERACTION_COVID19_FEED" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_PRT_INTERACTION_COVID19"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="osr.mktcld::CV_PTAX_REFUND">
-    <resourceUri>osr.mktcld::CV_PTAX_REFUND</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_PTAX_REFUND">
+    <resourceUri>osr.mktcld.transform.foundation::CV_PTAX_REFUND</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_PTAX_DEFERRAL">
-    <resourceUri>osr.mktcld::CV_PTAX_DEFERRAL</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_PTAX_DEFERRAL">
+    <resourceUri>osr.mktcld.transform.foundation::CV_PTAX_DEFERRAL</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -67,7 +67,7 @@
         <formula>'OSR_EDW'</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input node="osr.mktcld::CV_PTAX_REFUND"/>
+    <input node="osr.mktcld.transform.foundation::CV_PTAX_REFUND"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_PTAX_DEFERRAL">
     <viewAttributes>
@@ -118,7 +118,7 @@
         <formula>'OSR_EDW'</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input emptyUnionBehavior="undefined" node="osr.mktcld::CV_PTAX_DEFERRAL"/>
+    <input emptyUnionBehavior="undefined" node="osr.mktcld.transform.foundation::CV_PTAX_DEFERRAL"/>
   </calculationView>
   <calculationView xsi:type="Calculation:UnionView" id="Union_1">
     <viewAttributes>

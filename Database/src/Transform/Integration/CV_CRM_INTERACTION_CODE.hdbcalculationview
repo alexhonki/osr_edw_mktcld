@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_CRM_INTERACTION_CODE" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" dimensionType="STANDARD" schemaVersion="3.0" dataCategory="DIMENSION" cacheInvalidationPeriod="NONE" id="osr.mktcld.transform.integration::CV_CRM_INTERACTION_CODE" applyPrivilegeType="NONE" outputViewType="Projection" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_CRM_INTERACTION_REASON"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="osr.mktcld::CV_CRMD_ORDERADM_H">
-    <resourceUri>osr.mktcld::CV_CRMD_ORDERADM_H</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRMD_ORDERADM_H">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRMD_ORDERADM_H</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRMD_ACTIVITY_H">
-    <resourceUri>osr.mktcld::CV_CRMD_ACTIVITY_H</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRMD_ACTIVITY_H">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRMD_ACTIVITY_H</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRMD_LINK">
-    <resourceUri>osr.mktcld::CV_CRMD_LINK</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRMD_LINK">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRMD_LINK</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRMD_SRV_OSSET">
-    <resourceUri>osr.mktcld::CV_CRMD_SRV_OSSET</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRMD_SRV_OSSET">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRMD_SRV_OSSET</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRMD_SRV_SUBJECT">
-    <resourceUri>osr.mktcld::CV_CRMD_SRV_SUBJECT</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRMD_SRV_SUBJECT">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRMD_SRV_SUBJECT</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -61,7 +61,7 @@
       <viewAttribute id="Z_SOURCE_SYS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRMD_ORDERADM_H"/>
+    <input node="osr.mktcld.transform.foundation::CV_CRMD_ORDERADM_H"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CRMD_ACTIVITY_H">
     <viewAttributes>
@@ -94,7 +94,7 @@
       <viewAttribute id="Z_RUN_SEQ_ID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRMD_ACTIVITY_H"/>
+    <input node="osr.mktcld.transform.foundation::CV_CRMD_ACTIVITY_H"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
     <viewAttributes>
@@ -110,17 +110,17 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CRMD_ORDERADM_H">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SCENARIO" source="SCENARIO"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="INPUT_CHANNEL" source="INPUT_CHANNEL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CLIENT" target="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID" target="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_ID" target="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POSTING_DATE" target="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="DESCRIPTION" target="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SCENARIO" target="SCENARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="INPUT_CHANNEL" target="INPUT_CHANNEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_TYPE" target="OBJECT_TYPE"/>
     </input>
     <input node="CRMD_LINK">
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID_SET" target="GUID_SET"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID_HI"/>
     </input>
@@ -129,9 +129,9 @@
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CRMD_LINK" filterExpressionLanguage="SQL">
     <viewAttributes>
+      <viewAttribute id="GUID_SET"/>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="GUID_HI"/>
-      <viewAttribute id="GUID_SET"/>
       <viewAttribute id="OBJTYPE_HI"/>
       <viewAttribute id="OBJTYPE_SET"/>
       <viewAttribute id="Z_CHANGE_TYPE"/>
@@ -141,7 +141,7 @@
       <viewAttribute id="Z_RUN_SEQ_ID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRMD_LINK"/>
+    <input node="osr.mktcld.transform.foundation::CV_CRMD_LINK"/>
     <filter>&quot;OBJTYPE_SET&quot;='29'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CRMD_SRV_OSSET">
@@ -161,7 +161,7 @@
       <viewAttribute id="Z_VALID_TO"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRMD_SRV_OSSET"/>
+    <input node="osr.mktcld.transform.foundation::CV_CRMD_SRV_OSSET"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="inner">
     <viewAttributes>
@@ -178,18 +178,18 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_1">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SCENARIO" source="SCENARIO"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="INPUT_CHANNEL" source="INPUT_CHANNEL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CLIENT" target="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID" target="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID_SET" target="GUID_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_ID" target="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POSTING_DATE" target="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="DESCRIPTION" target="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SCENARIO" target="SCENARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="INPUT_CHANNEL" target="INPUT_CHANNEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_TYPE" target="OBJECT_TYPE"/>
     </input>
     <input node="CRMD_SRV_OSSET">
-      <mapping xsi:type="Calculation:AttributeMapping" target="OSSET_GUID" source="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID" target="OSSET_GUID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
     </input>
@@ -213,20 +213,20 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SCENARIO" source="SCENARIO"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="INPUT_CHANNEL" source="INPUT_CHANNEL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OSSET_GUID" source="OSSET_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CLIENT" target="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID" target="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID_SET" target="GUID_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_ID" target="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POSTING_DATE" target="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="DESCRIPTION" target="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SCENARIO" target="SCENARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="INPUT_CHANNEL" target="INPUT_CHANNEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_TYPE" target="OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OSSET_GUID" target="OSSET_GUID"/>
     </input>
     <input node="CRMD_SRV_SUBJECT">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CODE" source="CODE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CODEGRUPPE" source="CODEGRUPPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CODE" target="CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CODEGRUPPE" target="CODEGRUPPE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="OSSET_GUID" source="GUID_REF"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
     </input>
@@ -235,16 +235,16 @@
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CRMD_SRV_SUBJECT">
     <viewAttributes>
+      <viewAttribute id="CODE"/>
+      <viewAttribute id="CODEGRUPPE"/>
+      <viewAttribute id="GUID_REF"/>
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="GUID"/>
-      <viewAttribute id="GUID_REF"/>
       <viewAttribute id="USERNAME"/>
       <viewAttribute id="TIMESTAMP"/>
       <viewAttribute id="Z_TIMESTAMP_LC"/>
       <viewAttribute id="Z_TIMESTAMP_TS"/>
       <viewAttribute id="KATALOGART"/>
-      <viewAttribute id="CODEGRUPPE"/>
-      <viewAttribute id="CODE"/>
       <viewAttribute id="DEFECTCLASS"/>
       <viewAttribute id="QUALITY"/>
       <viewAttribute id="DEFQUANTITY"/>
@@ -264,7 +264,7 @@
       <viewAttribute id="Z_VALID_TO"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRMD_SRV_SUBJECT"/>
+    <input node="osr.mktcld.transform.foundation::CV_CRMD_SRV_SUBJECT"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="CN_N" joinType="inner">
     <viewAttributes>
@@ -284,21 +284,21 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_3">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SCENARIO" source="SCENARIO"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="INPUT_CHANNEL" source="INPUT_CHANNEL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_TYPE" source="OBJECT_TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OSSET_GUID" source="OSSET_GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CODE" source="CODE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CODEGRUPPE" source="CODEGRUPPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CLIENT" target="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID" target="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID_SET" target="GUID_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_ID" target="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POSTING_DATE" target="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="DESCRIPTION" target="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="SCENARIO" target="SCENARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="INPUT_CHANNEL" target="INPUT_CHANNEL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_TYPE" target="OBJECT_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OSSET_GUID" target="OSSET_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CODE" target="CODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CODEGRUPPE" target="CODEGRUPPE"/>
     </input>
     <input node="CRMD_ACTIVITY_H">
-      <mapping xsi:type="Calculation:AttributeMapping" target="EXTERN_ACT_ID" source="EXTERN_ACT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="EXTERN_ACT_ID" target="EXTERN_ACT_ID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
     </input>
@@ -308,55 +308,55 @@
 </calculationViews>
 <logicalModel id="Join_4">
   <attributes>
-    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CLIENT" displayAttribute="false" order="1" attributeHierarchyActive="false">
       <descriptions defaultDescription="CLIENT"/>
       <keyMapping columnObjectName="Join_4" columnName="CLIENT"/>
     </attribute>
-    <attribute id="GUID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GUID" displayAttribute="false" order="2" attributeHierarchyActive="false">
       <descriptions defaultDescription="GUID"/>
       <keyMapping columnObjectName="Join_4" columnName="GUID"/>
     </attribute>
-    <attribute id="OBJECT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OBJECT_ID" displayAttribute="false" order="3" attributeHierarchyActive="false">
       <descriptions defaultDescription="OBJECT_ID"/>
       <keyMapping columnObjectName="Join_4" columnName="OBJECT_ID"/>
     </attribute>
-    <attribute id="POSTING_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="POSTING_DATE" displayAttribute="false" order="4" attributeHierarchyActive="false">
       <descriptions defaultDescription="POSTING_DATE"/>
       <keyMapping columnObjectName="Join_4" columnName="POSTING_DATE"/>
     </attribute>
-    <attribute id="DESCRIPTION" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DESCRIPTION" displayAttribute="false" order="5" attributeHierarchyActive="false">
       <descriptions defaultDescription="DESCRIPTION"/>
       <keyMapping columnObjectName="Join_4" columnName="DESCRIPTION"/>
     </attribute>
-    <attribute id="SCENARIO" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SCENARIO" displayAttribute="false" order="6" attributeHierarchyActive="false">
       <descriptions defaultDescription="SCENARIO"/>
       <keyMapping columnObjectName="Join_4" columnName="SCENARIO"/>
     </attribute>
-    <attribute id="INPUT_CHANNEL" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="INPUT_CHANNEL" displayAttribute="false" order="7" attributeHierarchyActive="false">
       <descriptions defaultDescription="INPUT_CHANNEL"/>
       <keyMapping columnObjectName="Join_4" columnName="INPUT_CHANNEL"/>
     </attribute>
-    <attribute id="OBJECT_TYPE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OBJECT_TYPE" displayAttribute="false" order="8" attributeHierarchyActive="false">
       <descriptions defaultDescription="OBJECT_TYPE"/>
       <keyMapping columnObjectName="Join_4" columnName="OBJECT_TYPE"/>
     </attribute>
-    <attribute id="GUID_SET" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GUID_SET" displayAttribute="false" order="9" attributeHierarchyActive="false">
       <descriptions defaultDescription="GUID_SET"/>
       <keyMapping columnObjectName="Join_4" columnName="GUID_SET"/>
     </attribute>
-    <attribute id="OSSET_GUID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OSSET_GUID" displayAttribute="false" order="10" attributeHierarchyActive="false">
       <descriptions defaultDescription="GUID"/>
       <keyMapping columnObjectName="Join_4" columnName="OSSET_GUID"/>
     </attribute>
-    <attribute id="CODE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CODE" displayAttribute="false" order="11" attributeHierarchyActive="false">
       <descriptions defaultDescription="CODE"/>
       <keyMapping columnObjectName="Join_4" columnName="CODE"/>
     </attribute>
-    <attribute id="CODEGRUPPE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CODEGRUPPE" displayAttribute="false" order="12" attributeHierarchyActive="false">
       <descriptions defaultDescription="CODEGRUPPE"/>
       <keyMapping columnObjectName="Join_4" columnName="CODEGRUPPE"/>
     </attribute>
-    <attribute id="EXTERN_ACT_ID" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="EXTERN_ACT_ID" displayAttribute="false" order="13" attributeHierarchyActive="false">
       <descriptions defaultDescription="EXTERN_ACT_ID"/>
       <keyMapping columnObjectName="Join_4" columnName="EXTERN_ACT_ID"/>
     </attribute>
@@ -368,77 +368,77 @@
 </logicalModel>
 <layout>
   <shapes>
-    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="640.3761628534223" y="112"/>
+    <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
+      <upperLeftCorner x="640" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="CRMD_ORDERADM_H" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="776.9999952316284"/>
-      <rectangleSize height="30" width="221"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CRMD_ORDERADM_H">
+      <upperLeftCorner x="92" y="776"/>
+      <rectangleSize width="221" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="CRMD_ACTIVITY_H" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="676.2799880513137" y="356.9999988079071"/>
-      <rectangleSize height="30" width="199"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CRMD_ACTIVITY_H">
+      <upperLeftCorner x="676" y="356"/>
+      <rectangleSize width="199" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="149.16666666666674" y="636.9999964237213"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_1">
+      <upperLeftCorner x="149" y="636"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="CRMD_ORDERADM_H" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="CRMD_ORDERADM_H">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="192.671875"/>
+      <rectangleSize width="192"/>
     </shape>
-    <shape modelObjectName="CRMD_LINK" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="CRMD_LINK">
       <upperLeftCorner x="620" y="30"/>
-      <rectangleSize width="180.74609375"/>
+      <rectangleSize width="180"/>
     </shape>
-    <shape expanded="true" modelObjectName="CRMD_LINK" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="363.0000000000001" y="776.9999952316284"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CRMD_LINK">
+      <upperLeftCorner x="363" y="776"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="CRMD_SRV_OSSET" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="425.80682334693904" y="636.9999964237213"/>
-      <rectangleSize height="30" width="210"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CRMD_SRV_OSSET">
+      <upperLeftCorner x="425" y="636"/>
+      <rectangleSize width="210" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="175.83333333333348" y="496.9999976158142"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_2">
+      <upperLeftCorner x="175" y="496"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="Join_1">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="125.11767578125"/>
+      <rectangleSize width="125"/>
     </shape>
-    <shape modelObjectName="CRMD_SRV_OSSET" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="CRMD_SRV_OSSET">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="178.474609375"/>
+      <rectangleSize width="178"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="202.50000000000023" y="356.9999988079071"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_3">
+      <upperLeftCorner x="202" y="356"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="Join_2">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="CRMD_SRV_SUBJECT" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="CRMD_SRV_SUBJECT">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape expanded="true" modelObjectName="CRMD_SRV_SUBJECT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="539.9683201181747" y="496.9999976158142"/>
-      <rectangleSize height="30" width="216"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CRMD_SRV_SUBJECT">
+      <upperLeftCorner x="539" y="496"/>
+      <rectangleSize width="216" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="640.3761628534223" y="217"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_4">
+      <upperLeftCorner x="640" y="217"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput" modelObjectName="Join_3">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="CRMD_ACTIVITY_H" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput" modelObjectName="CRMD_ACTIVITY_H">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
     </shape>

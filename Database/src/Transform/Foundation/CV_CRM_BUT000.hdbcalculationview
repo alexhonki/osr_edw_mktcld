@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_CRM_BUT000" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld.transform.foundation::CV_CRM_BUT000" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_CRM_BUT000"/>
 <localVariables/>
 <variableMappings/>
@@ -528,7 +528,7 @@
     </shape>
   
     <shape expanded="true" modelObjectName="CV_CRM_BUT000" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="91.99999999999999" y="217"/>
+      <upperLeftCorner x="91" y="217"/>
       <rectangleSize height="30" width="196"/>
     </shape>
   </shapes>

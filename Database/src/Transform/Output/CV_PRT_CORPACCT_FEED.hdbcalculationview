@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRT_CORPACCT_FEED" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld.transform.output::CV_PRT_CORPACCT_FEED" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_BP_PRT_CORPACCT">
   <comment text="CV_BP_PRT_CORPACCT"/>
 </descriptions>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="osr.mktcld::CV_BP_PRT_CORPACCT">
-    <resourceUri>osr.mktcld::CV_BP_PRT_CORPACCT</resourceUri>
+  <DataSource id="osr.mktcld.transform.integration::CV_BP_PRT_CORPACCT">
+    <resourceUri>osr.mktcld.transform.integration::CV_BP_PRT_CORPACCT</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_PRTCLIENTOVERVIEW">
-    <resourceUri>osr.mktcld::CV_PRTCLIENTOVERVIEW</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_PRTCLIENTOVERVIEW">
+    <resourceUri>osr.mktcld.transform.foundation::CV_PRTCLIENTOVERVIEW</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -82,7 +82,7 @@
  END</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input node="osr.mktcld::CV_BP_PRT_CORPACCT"/>
+    <input node="osr.mktcld.transform.integration::CV_BP_PRT_CORPACCT"/>
     <filter>(&quot;RELTYP&quot;='ZDGE' and &quot;GROUP_STATUS&quot;='DGE')
 or
 (&quot;RELTYP&quot;='ZGRM' and &quot;GROUP_STATUS&quot;='GM')
@@ -103,7 +103,7 @@ or
  </formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
-    <input node="osr.mktcld::CV_PRTCLIENTOVERVIEW"/>
+    <input node="osr.mktcld.transform.foundation::CV_PRTCLIENTOVERVIEW"/>
     <filter>&quot;RMS_PTAX_THRESHOLD&quot; IS NOT NULL</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="leftOuter">
@@ -321,7 +321,9 @@ or
   
     <attribute id="UNDER_THRESHOLD" hidden="true" keepFlag="true" order="40" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="UNDER_THRESHOLD"/>
+  
       <keyMapping columnObjectName="Join_1" columnName="UNDER_THRESHOLD"/>
+  
     </attribute>
   </attributes>
   <calculatedAttributes>
@@ -330,37 +332,37 @@ or
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>'OSR_EDW'</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
     <calculatedAttribute id="OPT_IN_SMTP_ADDR" order="13" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="E-Mail Address Opt-In"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>'N'</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
     <calculatedAttribute id="OPT_IN_TELNR_LONG" order="15" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Phone Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
     <calculatedAttribute id="OPT_IN_TELNR_MOBILE" order="17" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Mobile Opt-In"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
     <calculatedAttribute id="OPT_IN_TELNR_MOBILE_SMS" order="18" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Mobile SMS Opt_in"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="1">
         <formula>'N'</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
     <calculatedAttribute id="CLIENT" order="19" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Client"/>
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>&quot;ID&quot;</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
   
     <calculatedAttribute id="TAXPAYER_STATUS" order="24" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Active Payroll Tax Customer"/>
@@ -370,13 +372,14 @@ or
         <formula>'Y'</formula>
   
       </keyCalculation>
-      </calculatedAttribute>
+  
+    </calculatedAttribute>
     <calculatedAttribute id="TAX_REVENUE_CODE" order="36" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false" hidden="true">
       <descriptions defaultDescription="Tax Revenue Code"/>
       <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="10">
         <formula>'PT'</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
     <calculatedAttribute id="CC_UNDER_THRESHOLD" order="39" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="13">
         <formula>CASE  
@@ -384,7 +387,7 @@ or
 	 ELSE '' 
  END</formula>
       </keyCalculation>
-      </calculatedAttribute>
+    </calculatedAttribute>
   </calculatedAttributes>
   <baseMeasures/>
   <calculatedMeasures/>
@@ -393,21 +396,21 @@ or
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="131" y="112"/>
+      <upperLeftCorner x="323.1592227123032" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="-130" y="340"/>
+      <upperLeftCorner x="92" y="376.9999988079071"/>
       <rectangleSize height="30" width="232"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PRTCLIENTOVERVIEW" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="242" y="348"/>
+      <upperLeftCorner x="374" y="376.9999988079071"/>
       <rectangleSize height="30" width="264"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="224"/>
+      <upperLeftCorner x="323.1592227123032" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
