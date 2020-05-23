@@ -1,40 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_BP_PRT_CORPACCT" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" dimensionType="STANDARD" schemaVersion="3.0" dataCategory="DIMENSION" cacheInvalidationPeriod="NONE" id="osr.mktcld.transform.integration::CV_BP_PRT_CORPACCT" applyPrivilegeType="NONE" outputViewType="Projection" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_BP_PRT_CORPACCT">
   <comment text="CV_BP_PRT_CORPACCT"/>
 </descriptions>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="osr.mktcld::CV_BP_PRT_ACTIVE">
-    <resourceUri>osr.mktcld::CV_BP_PRT_ACTIVE</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_BP_PRT_ACTIVE">
+    <resourceUri>osr.mktcld.transform.foundation::CV_BP_PRT_ACTIVE</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_BUT000_CURRENT">
-    <resourceUri>osr.mktcld::CV_BUT000_CURRENT</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_BUT000_CURRENT">
+    <resourceUri>osr.mktcld.transform.foundation::CV_BUT000_CURRENT</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_BUT021FS">
-    <resourceUri>osr.mktcld::CV_BUT021FS</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_BUT021FS">
+    <resourceUri>osr.mktcld.transform.foundation::CV_BUT021FS</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_ADRC">
-    <resourceUri>osr.mktcld::CV_ADRC</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_ADRC">
+    <resourceUri>osr.mktcld.transform.foundation::CV_ADRC</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_ADR6">
-    <resourceUri>osr.mktcld::CV_ADR6</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_ADR6">
+    <resourceUri>osr.mktcld.transform.foundation::CV_ADR6</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_ADR2">
-    <resourceUri>osr.mktcld::CV_ADR2</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_ADR2">
+    <resourceUri>osr.mktcld.transform.foundation::CV_ADR2</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_BP_CONTRACT">
-    <resourceUri>osr.mktcld::CV_BP_CONTRACT</resourceUri>
+  <DataSource id="osr.mktcld.transform.integration::CV_BP_CONTRACT">
+    <resourceUri>osr.mktcld.transform.integration::CV_BP_CONTRACT</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_BUT050">
-    <resourceUri>osr.mktcld::CV_BUT050</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_BUT0ID">
+    <resourceUri>osr.mktcld.transform.foundation::CV_BUT0ID</resourceUri>
   </DataSource>
-  <DataSource id="CV_ADR2_PHONE$$$$osr.mktcld::CV_ADR2$$">
-    <resourceUri>osr.mktcld::CV_ADR2</resourceUri>
+  <DataSource id="CV_BUT0ID_ABN$$$$osr.mktcld.transform.foundation::CV_BUT0ID$$">
+    <resourceUri>osr.mktcld.transform.foundation::CV_BUT0ID</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_BP_AGENCY_DATA">
-    <resourceUri>osr.mktcld::CV_BP_AGENCY_DATA</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_BUT050">
+    <resourceUri>osr.mktcld.transform.foundation::CV_BUT050</resourceUri>
+  </DataSource>
+  <DataSource id="CV_ADR2_PHONE$$$$osr.mktcld.transform.foundation::CV_ADR2$$">
+    <resourceUri>osr.mktcld.transform.foundation::CV_ADR2</resourceUri>
+  </DataSource>
+  <DataSource id="osr.mktcld.transform.integration::CV_BP_AGENCY_DATA">
+    <resourceUri>osr.mktcld.transform.integration::CV_BP_AGENCY_DATA</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -49,7 +55,7 @@
       <viewAttribute id="VALID_TO"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_BP_PRT_ACTIVE"/>
+    <input node="osr.mktcld.transform.foundation::CV_BP_PRT_ACTIVE"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BUT000_CURRENT" filterExpressionLanguage="SQL">
     <viewAttributes>
@@ -61,10 +67,14 @@
       <viewAttribute id="TITLE"/>
       <viewAttribute id="TYPE"/>
       <viewAttribute id="VALID_TO"/>
+    
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_BUT000_CURRENT"/>
-    <filter>TO_TIMESTAMP(&quot;VALID_TO&quot;)&gt;=CURRENT_TIMESTAMP</filter>
+    <input node="osr.mktcld.transform.foundation::CV_BUT000_CURRENT"/>
+    <filter>TO_DATE(TO_TIMESTAMP(&quot;VALID_TO&quot;))&gt;=CURRENT_DATE</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="inner">
     <viewAttributes>
@@ -75,18 +85,25 @@
       <viewAttribute id="NAME_ORG2"/>
       <viewAttribute id="NAME_ORG3"/>
       <viewAttribute id="NAME_ORG4"/>
+    
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CV_BP_PRT_ACTIVE">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
     </input>
     <input node="CV_BUT000_CURRENT">
-      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
     </input>
     <joinAttribute name="BPARTNER"/>
@@ -99,11 +116,18 @@
     
       <viewAttribute id="ADR_KIND"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_BUT021FS"/>
-    <filter>TO_TIMESTAMP(&quot;VALID_TO&quot;)&gt;=CURRENT_TIMESTAMP and &quot;ADR_KIND&quot;='XXDEFAULT'</filter>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_VALID_TO" datatype="DATE" expressionLanguage="SQL">
+        <formula>CASE 
+WHEN LENGTH(&quot;VALID_TO&quot;)&lt;14 THEN TO_DATE('19000101000000')
+ELSE TO_DATE(TO_TIMESTAMP(&quot;VALID_TO&quot;))
+END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="osr.mktcld.transform.foundation::CV_BUT021FS"/>
+    <filter>&quot;ADR_KIND&quot;='XXDEFAULT' and &quot;CC_VALID_TO&quot;&gt;=CURRENT_DATE</filter>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
@@ -112,20 +136,27 @@
       <viewAttribute id="NAME_ORG2"/>
       <viewAttribute id="NAME_ORG3"/>
       <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
       <viewAttribute id="ADDRNUMBER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_1">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_BUT021FS">
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDRNUMBER" target="ADDRNUMBER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
     </input>
     <joinAttribute name="BPARTNER"/>
@@ -142,8 +173,8 @@
       <viewAttribute id="DATE_TO"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_ADRC"/>
-    <filter>TO_TIMESTAMP(&quot;DATE_TO&quot;)&gt;=CURRENT_TIMESTAMP</filter>
+    <input node="osr.mktcld.transform.foundation::CV_ADRC"/>
+    <filter>TO_DATE(&quot;DATE_TO&quot;)&gt;=CURRENT_DATE</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -154,6 +185,9 @@
       <viewAttribute id="NAME_ORG2"/>
       <viewAttribute id="NAME_ORG3"/>
       <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="COUNTRY"/>
       <viewAttribute id="REGION"/>
@@ -164,33 +198,49 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDRNUMBER" target="ADDRNUMBER"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_ADRC">
-      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="COUNTRY" target="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGION" target="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CITY1" target="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POST_CODE1" target="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STREET" target="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="HOUSE_NUM1" target="HOUSE_NUM1"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
     </input>
     <joinAttribute name="ADDRNUMBER"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADR6">
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADR6" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="STD_EMAIL"/>
+    
+      <viewAttribute id="VALID_TO"/>
+    
+      <viewAttribute id="FLGDEFAULT"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_ADR6"/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_VALID_TO" datatype="DATE" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;VALID_TO&quot;='' then TO_DATE('99991231') 
+	 ELSE &quot;VALID_TO&quot; 
+ END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="osr.mktcld.transform.foundation::CV_ADR6"/>
+    <filter>&quot;CC_VALID_TO&quot;&gt;=CURRENT_DATE and &quot;FLGDEFAULT&quot;='X'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -201,6 +251,9 @@
       <viewAttribute id="NAME_ORG2"/>
       <viewAttribute id="NAME_ORG3"/>
       <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="COUNTRY"/>
       <viewAttribute id="REGION"/>
@@ -212,23 +265,27 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_3">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDRNUMBER" target="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="COUNTRY" target="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGION" target="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CITY1" target="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POST_CODE1" target="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STREET" target="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="HOUSE_NUM1" target="HOUSE_NUM1"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_ADR6">
-      <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STD_EMAIL" target="STD_EMAIL"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
     </input>
     <joinAttribute name="ADDRNUMBER"/>
@@ -240,10 +297,19 @@
       <viewAttribute id="TELNR_LONG"/>
     
       <viewAttribute id="R3_USER"/>
+    
+      <viewAttribute id="VALID_TO"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_ADR2"/>
-    <filter>&quot;R3_USER&quot;='3'</filter>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_VALID_TO" datatype="DATE" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;VALID_TO&quot;='' then TO_DATE('99991231') 
+	 ELSE &quot;VALID_TO&quot; 
+ END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="osr.mktcld.transform.foundation::CV_ADR2"/>
+    <filter>&quot;R3_USER&quot;='3' and &quot;CC_VALID_TO&quot;&gt;=CURRENT_DATE</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_5" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -254,6 +320,9 @@
       <viewAttribute id="NAME_ORG2"/>
       <viewAttribute id="NAME_ORG3"/>
       <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="COUNTRY"/>
       <viewAttribute id="REGION"/>
@@ -267,25 +336,29 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_4">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDRNUMBER" target="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="COUNTRY" target="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGION" target="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CITY1" target="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POST_CODE1" target="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STREET" target="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="HOUSE_NUM1" target="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STD_EMAIL" target="STD_EMAIL"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_ADR2_MOBILE">
-      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TELNR_LONG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TELNR_LONG" target="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TELNR_LONG" target="TELNR_LONG"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
     </input>
     <joinAttribute name="ADDRNUMBER"/>
@@ -305,7 +378,143 @@
       <viewAttribute id="FIRST_RETURN_DATE"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_BP_CONTRACT"/>
+    <input node="osr.mktcld.transform.integration::CV_BP_CONTRACT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_10" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="BPARTNER"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="NAME_ORG1"/>
+      <viewAttribute id="NAME_ORG2"/>
+      <viewAttribute id="NAME_ORG3"/>
+      <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POST_CODE1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="STD_EMAIL"/>
+      <viewAttribute id="TEL_NUMBER"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="GROUP_ID"/>
+      <viewAttribute id="RELTYP"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="ACN"/>
+      <viewAttribute id="GROUP_STATUS"/>
+      <viewAttribute id="REGISTRATION_DATE"/>
+      <viewAttribute id="LODGEMENT_FREQUENCY"/>
+      <viewAttribute id="LIABILITY_START_DATE"/>
+      <viewAttribute id="EMPLOYER_STATUS"/>
+    
+      <viewAttribute id="FIRST_RETURN_DATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_9">
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDRNUMBER" target="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="COUNTRY" target="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGION" target="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CITY1" target="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POST_CODE1" target="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STREET" target="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="HOUSE_NUM1" target="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STD_EMAIL" target="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TEL_NUMBER" target="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TELNR_LONG" target="TELNR_LONG"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" source="GROUP_ID" target="GROUP_ID"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" source="RELTYP" target="RELTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="ABN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
+    </input>
+    <input node="CV_BP_CONTRACT">
+      <mapping xsi:type="Calculation:AttributeMapping" source="GROUP_STATUS" target="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGISTRATION_DATE" target="REGISTRATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="LODGEMENT_FREQUENCY" target="LODGEMENT_FREQUENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="LIABILITY_START_DATE" target="LIABILITY_START_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="EMPLOYER_STATUS" target="EMPLOYER_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="FIRST_RETURN_DATE" target="FIRST_RETURN_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
+    </input>
+    <joinAttribute name="BPARTNER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_9" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="BPARTNER"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="NAME_ORG1"/>
+      <viewAttribute id="NAME_ORG2"/>
+      <viewAttribute id="NAME_ORG3"/>
+      <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="ADDRNUMBER"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="REGION"/>
+      <viewAttribute id="CITY1"/>
+      <viewAttribute id="POST_CODE1"/>
+      <viewAttribute id="STREET"/>
+      <viewAttribute id="HOUSE_NUM1"/>
+      <viewAttribute id="STD_EMAIL"/>
+      <viewAttribute id="TEL_NUMBER"/>
+      <viewAttribute id="TELNR_LONG"/>
+      <viewAttribute id="GROUP_ID"/>
+      <viewAttribute id="RELTYP"/>
+      <viewAttribute id="ABN"/>
+      <viewAttribute id="ACN"/>
+    
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/></viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_8">
+      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="GROUP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RELTYP" source="RELTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="ABN"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
+    </input>
+    <input node="CV_BUT0ID_ACN">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="IDNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
+    </input>
+    <joinAttribute name="BPARTNER"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_8" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -328,14 +537,11 @@
       <viewAttribute id="TELNR_LONG"/>
       <viewAttribute id="GROUP_ID"/>
       <viewAttribute id="RELTYP"/>
-      <viewAttribute id="GROUP_STATUS"/>
-      <viewAttribute id="REGISTRATION_DATE"/>
-      <viewAttribute id="LODGEMENT_FREQUENCY"/>
-      <viewAttribute id="LIABILITY_START_DATE"/>
-      <viewAttribute id="EMPLOYER_STATUS"/>
+      <viewAttribute id="ABN"/>
     
-      <viewAttribute id="FIRST_RETURN_DATE"/>
-    </viewAttributes>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_7">
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
@@ -355,21 +561,29 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
-    
       <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="GROUP_ID"/>
-    
       <mapping xsi:type="Calculation:AttributeMapping" target="RELTYP" source="RELTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
-    <input node="CV_BP_CONTRACT">
-      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="FIRST_RETURN_DATE"/>
+    <input node="CV_BUT0ID_ABN">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="IDNUMBER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
     </input>
     <joinAttribute name="BPARTNER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_BUT0ID_ACN" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="IDNUMBER"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="VALID_DATE_TO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input emptyUnionBehavior="undefined" node="osr.mktcld.transform.foundation::CV_BUT0ID"/>
+    <filter>TO_DATE(&quot;VALID_DATE_TO&quot;)&gt;=CURRENT_DATE and &quot;TYPE&quot;='ZACN'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_7" cardinality="C1_N" joinType="leftOuter">
     <viewAttributes>
@@ -393,33 +607,51 @@
       <viewAttribute id="GROUP_ID"/>
     
       <viewAttribute id="RELTYP"/>
-    </viewAttributes>
+    
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_6">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDRNUMBER" target="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="COUNTRY" target="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGION" target="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CITY1" target="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POST_CODE1" target="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STREET" target="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="HOUSE_NUM1" target="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STD_EMAIL" target="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TEL_NUMBER" target="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TELNR_LONG" target="TELNR_LONG"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_BUT050">
-      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="PARTNER1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="RELTYP" source="RELTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PARTNER1" target="GROUP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="RELTYP" target="RELTYP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER2"/>
     </input>
     <joinAttribute name="BPARTNER"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_BUT0ID_ABN" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="IDNUMBER"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="VALID_DATE_TO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="CV_BUT0ID_ABN$$$$osr.mktcld.transform.foundation::CV_BUT0ID$$"/>
+    <filter>TO_DATE(&quot;VALID_DATE_TO&quot;)&gt;=CURRENT_DATE and &quot;TYPE&quot;='ZABN'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_6" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -440,28 +672,35 @@
       <viewAttribute id="STD_EMAIL"/>
       <viewAttribute id="TEL_NUMBER"/>
       <viewAttribute id="TELNR_LONG"/>
-    </viewAttributes>
+    
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/></viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_5">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDRNUMBER" target="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="COUNTRY" target="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGION" target="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CITY1" target="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POST_CODE1" target="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STREET" target="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="HOUSE_NUM1" target="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STD_EMAIL" target="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TEL_NUMBER" target="TEL_NUMBER"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_ADR2_PHONE">
-      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TELNR_LONG" target="TELNR_LONG"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
     </input>
     <joinAttribute name="ADDRNUMBER"/>
@@ -475,8 +714,8 @@
       <viewAttribute id="RELNR"/>
       <viewAttribute id="DATE_TO"/></viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_BUT050"/>
-    <filter>TO_DATE(&quot;DATE_TO&quot;) &gt; CURRENT_DATE and &quot;RELTYP&quot; in ('ZDGE', 'ZGRM')</filter>
+    <input node="osr.mktcld.transform.foundation::CV_BUT050"/>
+    <filter>TO_DATE(&quot;DATE_TO&quot;)&gt;=CURRENT_DATE and &quot;RELTYP&quot; in ('ZDGE', 'ZGRM')</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADR2_PHONE" filterExpressionLanguage="SQL">
     <viewAttributes>
@@ -484,14 +723,22 @@
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="TEL_NUMBER"/>
       <viewAttribute id="R3_USER"/>
+    
+      <viewAttribute id="VALID_TO"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="CV_ADR2_PHONE$$$$osr.mktcld::CV_ADR2$$"/>
-    <filter>&quot;R3_USER&quot;='1'</filter>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_VALID_TO" datatype="DATE" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;VALID_TO&quot;='' then TO_DATE('99991231') 
+	 ELSE &quot;VALID_TO&quot; 
+ END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="CV_ADR2_PHONE$$$$osr.mktcld.transform.foundation::CV_ADR2$$"/>
+    <filter>&quot;R3_USER&quot;='1' and &quot;CC_VALID_TO&quot;&gt;=CURRENT_DATE</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BP_AGENCY_DATA">
     <viewAttributes>
-      <viewAttribute id="PARTNER"/>
       <viewAttribute id="ACN"/>
       <viewAttribute id="ABN"/>
       <viewAttribute id="ORG_STATUS"/>
@@ -502,9 +749,9 @@
       <viewAttribute id="ABN_CANCN_DT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_BP_AGENCY_DATA"/>
+    <input node="osr.mktcld.transform.integration::CV_BP_AGENCY_DATA"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_9" cardinality="C1_1" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_11" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="BPARTNER"/>
       <viewAttribute id="TITLE"/>
@@ -513,6 +760,9 @@
       <viewAttribute id="NAME_ORG2"/>
       <viewAttribute id="NAME_ORG3"/>
       <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="COUNTRY"/>
       <viewAttribute id="REGION"/>
@@ -541,178 +791,195 @@
       <viewAttribute id="ABN_CANCN_DT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="Join_8">
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="BPARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TYPE" source="TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRNUMBER" source="ADDRNUMBER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGION" source="REGION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CITY1" source="CITY1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POST_CODE1" source="POST_CODE1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STREET" source="STREET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="HOUSE_NUM1" source="HOUSE_NUM1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="STD_EMAIL" source="STD_EMAIL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TEL_NUMBER" source="TEL_NUMBER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="TELNR_LONG" source="TELNR_LONG"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_STATUS" source="GROUP_STATUS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="REGISTRATION_DATE" source="REGISTRATION_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LODGEMENT_FREQUENCY" source="LODGEMENT_FREQUENCY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="LIABILITY_START_DATE" source="LIABILITY_START_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="EMPLOYER_STATUS" source="EMPLOYER_STATUS"/>
+    <input node="Join_10">
+      <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="BPARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TITLE" target="TITLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TYPE" target="TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG1" target="NAME_ORG1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG2" target="NAME_ORG2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG3" target="NAME_ORG3"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_ORG4" target="NAME_ORG4"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDRNUMBER" target="ADDRNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="COUNTRY" target="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGION" target="REGION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CITY1" target="CITY1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POST_CODE1" target="POST_CODE1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STREET" target="STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="HOUSE_NUM1" target="HOUSE_NUM1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="STD_EMAIL" target="STD_EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TEL_NUMBER" target="TEL_NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="TELNR_LONG" target="TELNR_LONG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GROUP_STATUS" target="GROUP_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="REGISTRATION_DATE" target="REGISTRATION_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="LODGEMENT_FREQUENCY" target="LODGEMENT_FREQUENCY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="LIABILITY_START_DATE" target="LIABILITY_START_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="EMPLOYER_STATUS" target="EMPLOYER_STATUS"/>
     
-      <mapping xsi:type="Calculation:AttributeMapping" target="FIRST_RETURN_DATE" source="FIRST_RETURN_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="FIRST_RETURN_DATE" target="FIRST_RETURN_DATE"/>
     
-      <mapping xsi:type="Calculation:AttributeMapping" target="GROUP_ID" source="GROUP_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GROUP_ID" target="GROUP_ID"/>
     
-      <mapping xsi:type="Calculation:AttributeMapping" target="RELTYP" source="RELTYP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="RELTYP" target="RELTYP"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="ABN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAMEMIDDLE" source="NAMEMIDDLE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_BP_AGENCY_DATA">
-      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ORG_STATUS" target="ORG_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ORG_STATUS_DESCRIPTION" target="ORG_STATUS_DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MN_INDY_CLSN" target="MN_INDY_CLSN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="MN_INDY_CLSN_DESCN" target="MN_INDY_CLSN_DESCN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ABN_CANCN_DT" target="ABN_CANCN_DT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="ABN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS" source="ORG_STATUS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ORG_STATUS_DESCRIPTION" source="ORG_STATUS_DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN" source="MN_INDY_CLSN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="MN_INDY_CLSN_DESCN" source="MN_INDY_CLSN_DESCN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ABN_CANCN_DT" source="ABN_CANCN_DT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
     </input>
-    <joinAttribute name="BPARTNER"/>
+    <joinAttribute name="ABN"/>
   </calculationView>
 </calculationViews>
-<logicalModel id="Join_9">
+<logicalModel id="Join_11">
   <attributes>
-    <attribute id="BPARTNER" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="BPARTNER" displayAttribute="false" order="1" attributeHierarchyActive="false">
       <descriptions defaultDescription="BPARTNER"/>
-      <keyMapping columnObjectName="Join_9" columnName="BPARTNER"/>
+      <keyMapping columnObjectName="Join_11" columnName="BPARTNER"/>
     </attribute>
-    <attribute id="TITLE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TITLE" displayAttribute="false" order="2" attributeHierarchyActive="false">
       <descriptions defaultDescription="TITLE"/>
-      <keyMapping columnObjectName="Join_9" columnName="TITLE"/>
+      <keyMapping columnObjectName="Join_11" columnName="TITLE"/>
     </attribute>
-    <attribute id="TYPE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TYPE" displayAttribute="false" order="3" attributeHierarchyActive="false">
       <descriptions defaultDescription="TYPE"/>
-      <keyMapping columnObjectName="Join_9" columnName="TYPE"/>
+      <keyMapping columnObjectName="Join_11" columnName="TYPE"/>
     </attribute>
-    <attribute id="NAME_ORG1" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="NAME_ORG1" displayAttribute="false" order="4" attributeHierarchyActive="false">
       <descriptions defaultDescription="NAME_ORG1"/>
-      <keyMapping columnObjectName="Join_9" columnName="NAME_ORG1"/>
+      <keyMapping columnObjectName="Join_11" columnName="NAME_ORG1"/>
     </attribute>
-    <attribute id="NAME_ORG2" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="NAME_ORG2" displayAttribute="false" order="5" attributeHierarchyActive="false">
       <descriptions defaultDescription="NAME_ORG2"/>
-      <keyMapping columnObjectName="Join_9" columnName="NAME_ORG2"/>
+      <keyMapping columnObjectName="Join_11" columnName="NAME_ORG2"/>
     </attribute>
-    <attribute id="NAME_ORG3" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="NAME_ORG3" displayAttribute="false" order="6" attributeHierarchyActive="false">
       <descriptions defaultDescription="NAME_ORG3"/>
-      <keyMapping columnObjectName="Join_9" columnName="NAME_ORG3"/>
+      <keyMapping columnObjectName="Join_11" columnName="NAME_ORG3"/>
     </attribute>
-    <attribute id="NAME_ORG4" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="NAME_ORG4" displayAttribute="false" order="7" attributeHierarchyActive="false">
       <descriptions defaultDescription="NAME_ORG4"/>
-      <keyMapping columnObjectName="Join_9" columnName="NAME_ORG4"/>
+      <keyMapping columnObjectName="Join_11" columnName="NAME_ORG4"/>
     </attribute>
-    <attribute id="ADDRNUMBER" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="NAME_FIRST" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_FIRST"/>
+      <keyMapping columnObjectName="Join_11" columnName="NAME_FIRST"/>
+    </attribute>
+    <attribute id="NAMEMIDDLE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAMEMIDDLE"/>
+      <keyMapping columnObjectName="Join_11" columnName="NAMEMIDDLE"/>
+    </attribute>
+    <attribute id="NAME_LAST" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME_LAST"/>
+      <keyMapping columnObjectName="Join_11" columnName="NAME_LAST"/>
+    </attribute>
+    <attribute id="ADDRNUMBER" displayAttribute="false" order="11" attributeHierarchyActive="false">
       <descriptions defaultDescription="ADDRNUMBER"/>
-      <keyMapping columnObjectName="Join_9" columnName="ADDRNUMBER"/>
+      <keyMapping columnObjectName="Join_11" columnName="ADDRNUMBER"/>
     </attribute>
-    <attribute id="COUNTRY" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="COUNTRY" displayAttribute="false" order="12" attributeHierarchyActive="false">
       <descriptions defaultDescription="COUNTRY"/>
-      <keyMapping columnObjectName="Join_9" columnName="COUNTRY"/>
+      <keyMapping columnObjectName="Join_11" columnName="COUNTRY"/>
     </attribute>
-    <attribute id="REGION" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REGION" displayAttribute="false" order="13" attributeHierarchyActive="false">
       <descriptions defaultDescription="REGION"/>
-      <keyMapping columnObjectName="Join_9" columnName="REGION"/>
+      <keyMapping columnObjectName="Join_11" columnName="REGION"/>
     </attribute>
-    <attribute id="CITY1" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CITY1" displayAttribute="false" order="14" attributeHierarchyActive="false">
       <descriptions defaultDescription="CITY1"/>
-      <keyMapping columnObjectName="Join_9" columnName="CITY1"/>
+      <keyMapping columnObjectName="Join_11" columnName="CITY1"/>
     </attribute>
-    <attribute id="POST_CODE1" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="POST_CODE1" displayAttribute="false" order="15" attributeHierarchyActive="false">
       <descriptions defaultDescription="POST_CODE1"/>
-      <keyMapping columnObjectName="Join_9" columnName="POST_CODE1"/>
+      <keyMapping columnObjectName="Join_11" columnName="POST_CODE1"/>
     </attribute>
-    <attribute id="STREET" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="STREET" displayAttribute="false" order="16" attributeHierarchyActive="false">
       <descriptions defaultDescription="STREET"/>
-      <keyMapping columnObjectName="Join_9" columnName="STREET"/>
+      <keyMapping columnObjectName="Join_11" columnName="STREET"/>
     </attribute>
-    <attribute id="HOUSE_NUM1" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="HOUSE_NUM1" displayAttribute="false" order="17" attributeHierarchyActive="false">
       <descriptions defaultDescription="HOUSE_NUM1"/>
-      <keyMapping columnObjectName="Join_9" columnName="HOUSE_NUM1"/>
+      <keyMapping columnObjectName="Join_11" columnName="HOUSE_NUM1"/>
     </attribute>
-    <attribute id="STD_EMAIL" order="15" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="STD_EMAIL" displayAttribute="false" order="18" attributeHierarchyActive="false">
       <descriptions defaultDescription="STD_EMAIL"/>
-      <keyMapping columnObjectName="Join_9" columnName="STD_EMAIL"/>
+      <keyMapping columnObjectName="Join_11" columnName="STD_EMAIL"/>
     </attribute>
-    <attribute id="TEL_NUMBER" order="16" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TEL_NUMBER" displayAttribute="false" order="19" attributeHierarchyActive="false">
       <descriptions defaultDescription="TEL_NUMBER"/>
-      <keyMapping columnObjectName="Join_9" columnName="TEL_NUMBER"/>
+      <keyMapping columnObjectName="Join_11" columnName="TEL_NUMBER"/>
     </attribute>
-    <attribute id="TELNR_LONG" order="17" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="TELNR_LONG" displayAttribute="false" order="20" attributeHierarchyActive="false">
       <descriptions defaultDescription="TELNR_LONG"/>
-      <keyMapping columnObjectName="Join_9" columnName="TELNR_LONG"/>
+      <keyMapping columnObjectName="Join_11" columnName="TELNR_LONG"/>
     </attribute>
-    <attribute id="GROUP_STATUS" order="18" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GROUP_STATUS" displayAttribute="false" order="21" attributeHierarchyActive="false">
       <descriptions defaultDescription="GROUP_STATUS"/>
-      <keyMapping columnObjectName="Join_9" columnName="GROUP_STATUS"/>
+      <keyMapping columnObjectName="Join_11" columnName="GROUP_STATUS"/>
     </attribute>
-    <attribute id="GROUP_ID" order="19" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GROUP_ID" displayAttribute="false" order="22" attributeHierarchyActive="false">
       <descriptions defaultDescription="GROUP_ID"/>
-      <keyMapping columnObjectName="Join_9" columnName="GROUP_ID"/>
+      <keyMapping columnObjectName="Join_11" columnName="GROUP_ID"/>
     </attribute>
-    <attribute id="RELTYP" order="20" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="RELTYP" displayAttribute="false" order="23" attributeHierarchyActive="false">
       <descriptions defaultDescription="RELTYP"/>
-      <keyMapping columnObjectName="Join_9" columnName="RELTYP"/>
+      <keyMapping columnObjectName="Join_11" columnName="RELTYP"/>
     </attribute>
-    <attribute id="REGISTRATION_DATE" order="21" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="REGISTRATION_DATE" displayAttribute="false" order="24" attributeHierarchyActive="false">
       <descriptions defaultDescription="REGISTRATION_DATE"/>
-      <keyMapping columnObjectName="Join_9" columnName="REGISTRATION_DATE"/>
+      <keyMapping columnObjectName="Join_11" columnName="REGISTRATION_DATE"/>
     </attribute>
-    <attribute id="LODGEMENT_FREQUENCY" order="22" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LODGEMENT_FREQUENCY" displayAttribute="false" order="25" attributeHierarchyActive="false">
       <descriptions defaultDescription="LODGEMENT_FREQUENCY"/>
-      <keyMapping columnObjectName="Join_9" columnName="LODGEMENT_FREQUENCY"/>
+      <keyMapping columnObjectName="Join_11" columnName="LODGEMENT_FREQUENCY"/>
     </attribute>
-    <attribute id="LIABILITY_START_DATE" order="23" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="LIABILITY_START_DATE" displayAttribute="false" order="26" attributeHierarchyActive="false">
       <descriptions defaultDescription="LIABILITY_START_DATE"/>
-      <keyMapping columnObjectName="Join_9" columnName="LIABILITY_START_DATE"/>
+      <keyMapping columnObjectName="Join_11" columnName="LIABILITY_START_DATE"/>
     </attribute>
-    <attribute id="EMPLOYER_STATUS" order="24" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="EMPLOYER_STATUS" displayAttribute="false" order="27" attributeHierarchyActive="false">
       <descriptions defaultDescription="EMPLOYER_STATUS"/>
-      <keyMapping columnObjectName="Join_9" columnName="EMPLOYER_STATUS"/>
+      <keyMapping columnObjectName="Join_11" columnName="EMPLOYER_STATUS"/>
     </attribute>
-    <attribute id="FIRST_RETURN_DATE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="FIRST_RETURN_DATE" displayAttribute="false" order="28" attributeHierarchyActive="false">
       <descriptions defaultDescription="FIRST_RETURN_DATE"/>
-      <keyMapping columnObjectName="Join_9" columnName="FIRST_RETURN_DATE"/>
+      <keyMapping columnObjectName="Join_11" columnName="FIRST_RETURN_DATE"/>
     </attribute>
-    <attribute id="ACN" order="26" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ACN" displayAttribute="false" order="29" attributeHierarchyActive="false">
       <descriptions defaultDescription="ACN"/>
-      <keyMapping columnObjectName="Join_9" columnName="ACN"/>
+      <keyMapping columnObjectName="Join_11" columnName="ACN"/>
     </attribute>
-    <attribute id="ABN" order="27" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ABN" displayAttribute="false" order="30" attributeHierarchyActive="false">
       <descriptions defaultDescription="ABN"/>
-      <keyMapping columnObjectName="Join_9" columnName="ABN"/>
+      <keyMapping columnObjectName="Join_11" columnName="ABN"/>
     </attribute>
-    <attribute id="ORG_STATUS" order="28" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ORG_STATUS" displayAttribute="false" order="31" attributeHierarchyActive="false">
       <descriptions defaultDescription="ORG_STATUS"/>
-      <keyMapping columnObjectName="Join_9" columnName="ORG_STATUS"/>
+      <keyMapping columnObjectName="Join_11" columnName="ORG_STATUS"/>
     </attribute>
-    <attribute id="ORG_STATUS_DESCRIPTION" order="29" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ORG_STATUS_DESCRIPTION" displayAttribute="false" order="32" attributeHierarchyActive="false">
       <descriptions defaultDescription="ORG_STATUS_DESCRIPTION"/>
-      <keyMapping columnObjectName="Join_9" columnName="ORG_STATUS_DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_11" columnName="ORG_STATUS_DESCRIPTION"/>
     </attribute>
-    <attribute id="MN_INDY_CLSN" order="30" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="MN_INDY_CLSN" displayAttribute="false" order="33" attributeHierarchyActive="false">
       <descriptions defaultDescription="MN_INDY_CLSN"/>
-      <keyMapping columnObjectName="Join_9" columnName="MN_INDY_CLSN"/>
+      <keyMapping columnObjectName="Join_11" columnName="MN_INDY_CLSN"/>
     </attribute>
-    <attribute id="MN_INDY_CLSN_DESCN" order="31" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="MN_INDY_CLSN_DESCN" displayAttribute="false" order="34" attributeHierarchyActive="false">
       <descriptions defaultDescription="MN_INDY_CLSN_DESCN"/>
-      <keyMapping columnObjectName="Join_9" columnName="MN_INDY_CLSN_DESCN"/>
+      <keyMapping columnObjectName="Join_11" columnName="MN_INDY_CLSN_DESCN"/>
     </attribute>
-    <attribute id="ABN_CANCN_DT" order="32" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ABN_CANCN_DT" displayAttribute="false" order="35" attributeHierarchyActive="false">
       <descriptions defaultDescription="ABN_CANCN_DT"/>
-      <keyMapping columnObjectName="Join_9" columnName="ABN_CANCN_DT"/>
+      <keyMapping columnObjectName="Join_11" columnName="ABN_CANCN_DT"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -722,163 +989,196 @@
 </logicalModel>
 <layout>
   <shapes>
-    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="944" y="112"/>
+    <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
+      <upperLeftCorner x="825" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="CV_BP_PRT_ACTIVE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="1656"/>
-      <rectangleSize height="30" width="222"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BP_PRT_ACTIVE">
+      <upperLeftCorner x="91" y="1976"/>
+      <rectangleSize width="222" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="CV_BUT000_CURRENT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="363" y="1656"/>
-      <rectangleSize height="30" width="210"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BUT000_CURRENT">
+      <upperLeftCorner x="363" y="1976"/>
+      <rectangleSize width="210" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="149" y="1496"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_1">
+      <upperLeftCorner x="149" y="1816"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="CV_BP_PRT_ACTIVE" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="CV_BP_PRT_ACTIVE">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="185"/>
     </shape>
-    <shape modelObjectName="CV_BUT000_CURRENT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="CV_BUT000_CURRENT">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="197"/>
     </shape>
-    <shape expanded="true" modelObjectName="CV_BUT021FS" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="453" y="1496"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BUT021FS">
+      <upperLeftCorner x="435" y="1816"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="176" y="1336"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_2">
+      <upperLeftCorner x="176" y="1656"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="Join_1">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="CV_BUT021FS" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="CV_BUT021FS">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape expanded="true" modelObjectName="CV_ADRC" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="576" y="1336"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADRC">
+      <upperLeftCorner x="520" y="1656"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="202" y="1176"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_3">
+      <upperLeftCorner x="202" y="1496"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="Join_2">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="164"/>
     </shape>
-    <shape modelObjectName="CV_ADRC" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="CV_ADRC">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="164"/>
     </shape>
-    <shape expanded="true" modelObjectName="CV_ADR6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="720" y="1176"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR6">
+      <upperLeftCorner x="616" y="1496"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_4" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="229" y="1016"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_4">
+      <upperLeftCorner x="229" y="1336"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_3" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput" modelObjectName="Join_3">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="164"/>
     </shape>
-    <shape modelObjectName="CV_ADR6" modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="164"/>
-    </shape>
-  
-    <shape expanded="true" modelObjectName="CV_ADR2_MOBILE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="881" y="1016"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
-    <shape expanded="true" modelObjectName="Join_5" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="844" y="856"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
-    <shape modelObjectName="Join_4" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="250"/>
-    </shape>
-    <shape modelObjectName="CV_ADR2_MOBILE" modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput" modelObjectName="CV_ADR6">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="164"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="CV_BP_CONTRACT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1133" y="536"/>
-      <rectangleSize height="30" width="200"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR2_MOBILE">
+      <upperLeftCorner x="724" y="1336"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1091" y="376"/>
-      <rectangleSize height="30" width="160"/>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_5">
+      <upperLeftCorner x="256" y="1176"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput" modelObjectName="Join_4">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="CV_BP_CONTRACT" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput" modelObjectName="CV_ADR2_MOBILE">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="164"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BP_CONTRACT">
+      <upperLeftCorner x="744" y="536"/>
+      <rectangleSize width="200" height="30"/>
+    </shape>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_10">
+      <upperLeftCorner x="561" y="376"/>
+      <rectangleSize width="160" height="30"/>
+    </shape>
+    <shape modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput" modelObjectName="Join_9">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectNameSpace="Join_10" modelObjectType="JoinNodeInput" modelObjectName="CV_BP_CONTRACT">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="230"/>
     </shape>
-  
-    <shape expanded="true" modelObjectName="Join_7" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="838" y="536"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
-    <shape modelObjectName="Join_6" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="250"/>
-    </shape>
-    <shape modelObjectName="CV_BUT050" modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="143"/>
-    </shape>
-    <shape expanded="true" modelObjectName="Join_6" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1026" y="696"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
-    <shape modelObjectName="Join_5" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="250"/>
-    </shape>
-    <shape modelObjectName="CV_ADR2_PHONE" modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="250"/>
-    </shape>
-    <shape expanded="true" modelObjectName="CV_BUT050" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="812" y="696"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
-    <shape expanded="true" modelObjectName="CV_ADR2_PHONE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="1054" y="856"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
-  
-  
-  
-    <shape expanded="true" modelObjectName="CV_BP_AGENCY_DATA" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="820" y="376"/>
-      <rectangleSize height="30" width="221"/>
-    </shape>
     <shape expanded="true" modelObjectName="Join_9" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="944" y="217"/>
+      <upperLeftCorner x="534" y="536"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Join_8" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="CV_BP_AGENCY_DATA" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+    <shape modelObjectName="CV_BUT0ID_ACN" modelObjectNameSpace="Join_9" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="172"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_8" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="786" y="696"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Join_7" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="CV_BUT0ID_ABN" modelObjectNameSpace="Join_8" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="172"/>
+    </shape>
+    <shape expanded="true" modelObjectName="CV_BUT0ID_ACN" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="507" y="696"/>
+      <rectangleSize width="160"/>
+    </shape>
+  
+  
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_7">
+      <upperLeftCorner x="603" y="856"/>
+      <rectangleSize width="160" height="30"/>
+    </shape>
+    <shape modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput" modelObjectName="Join_6">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectNameSpace="Join_7" modelObjectType="JoinNodeInput" modelObjectName="CV_BUT050">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="143"/>
+    </shape>
+    <shape expanded="true" modelObjectName="CV_BUT0ID_ABN" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="813" y="856"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_6">
+      <upperLeftCorner x="815" y="1016"/>
+      <rectangleSize width="160" height="30"/>
+    </shape>
+    <shape modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput" modelObjectName="Join_5">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectNameSpace="Join_6" modelObjectType="JoinNodeInput" modelObjectName="CV_ADR2_PHONE">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BUT050">
+      <upperLeftCorner x="576" y="1016"/>
+      <rectangleSize width="160" height="30"/>
+    </shape>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR2_PHONE">
+      <upperLeftCorner x="842" y="1176"/>
+      <rectangleSize width="160" height="30"/>
+    </shape>
+  
+  
+  
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BP_AGENCY_DATA">
+      <upperLeftCorner x="856" y="376"/>
+      <rectangleSize width="221" height="30"/>
+    </shape>
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_11">
+      <upperLeftCorner x="825" y="217"/>
+      <rectangleSize width="160" height="30"/>
+    </shape>
+    <shape modelObjectNameSpace="Join_11" modelObjectType="JoinNodeInput" modelObjectName="Join_10">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectNameSpace="Join_11" modelObjectType="JoinNodeInput" modelObjectName="CV_BP_AGENCY_DATA">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="240"/>
     </shape></shapes>

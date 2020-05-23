@@ -1,4 +1,4 @@
-FUNCTION "osr.mktcld::TF_PRTCLIENTOVERVIEW"( )
+FUNCTION "osr.mktcld.transform.foundation::TF_PRTCLIENTOVERVIEW"( )
       RETURNS TABLE (
     	PARTNER         	NVARCHAR(10),
     	PARTNER1			NVARCHAR(10),

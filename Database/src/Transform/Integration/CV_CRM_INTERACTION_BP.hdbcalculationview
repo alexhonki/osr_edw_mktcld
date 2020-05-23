@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_CRM_INTERACTION_BP" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" dimensionType="STANDARD" schemaVersion="3.0" dataCategory="DIMENSION" cacheInvalidationPeriod="NONE" id="osr.mktcld.transform.integration::CV_CRM_INTERACTION_BP" applyPrivilegeType="NONE" outputViewType="Projection" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_CRM_INTERACTION_BP"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="osr.mktcld::CV_CRMD_ORDERADM_H">
-    <resourceUri>osr.mktcld::CV_CRMD_ORDERADM_H</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRMD_ORDERADM_H">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRMD_ORDERADM_H</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRMD_LINK">
-    <resourceUri>osr.mktcld::CV_CRMD_LINK</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRMD_LINK">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRMD_LINK</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRMD_PARTNER">
-    <resourceUri>osr.mktcld::CV_CRMD_PARTNER</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRMD_PARTNER">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRMD_PARTNER</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRM_BUT000">
-    <resourceUri>osr.mktcld::CV_CRM_BUT000</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::CV_CRM_BUT000">
+    <resourceUri>osr.mktcld.transform.foundation::CV_CRM_BUT000</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -58,7 +58,7 @@
       <viewAttribute id="Z_SOURCE_SYS"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRMD_ORDERADM_H"/>
+    <input node="osr.mktcld.transform.foundation::CV_CRMD_ORDERADM_H"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_CRMD_LINK" filterExpressionLanguage="SQL">
     <viewAttributes>
@@ -74,7 +74,7 @@
       <viewAttribute id="Z_RUN_SEQ_ID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRMD_LINK"/>
+    <input node="osr.mktcld.transform.foundation::CV_CRMD_LINK"/>
     <filter>&quot;OBJTYPE_SET&quot;='07'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="leftOuter">
@@ -91,17 +91,17 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CV_CRMD_ORDERADM">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESS_TYPE" source="PROCESS_TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CLIENT" target="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID" target="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_ID" target="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PROCESS_TYPE" target="PROCESS_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POSTING_DATE" target="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="DESCRIPTION" target="DESCRIPTION"/>
     </input>
     <input node="CV_CRMD_LINK">
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJTYPE_HI" source="OBJTYPE_HI"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJTYPE_SET" source="OBJTYPE_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID_SET" target="GUID_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJTYPE_HI" target="OBJTYPE_HI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJTYPE_SET" target="OBJTYPE_SET"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID_HI"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
     </input>
@@ -122,8 +122,7 @@
       <viewAttribute id="PARTNER_FCT"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRMD_PARTNER"/>
-  
+    <input node="osr.mktcld.transform.foundation::CV_CRMD_PARTNER"/>
     <filter>&quot;PARTNER_FCT&quot;='00000009'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_N" joinType="leftOuter">
@@ -146,23 +145,23 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_1">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESS_TYPE" source="PROCESS_TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJTYPE_HI" source="OBJTYPE_HI"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJTYPE_SET" source="OBJTYPE_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CLIENT" target="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID" target="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_ID" target="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PROCESS_TYPE" target="PROCESS_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POSTING_DATE" target="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="DESCRIPTION" target="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID_SET" target="GUID_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJTYPE_HI" target="OBJTYPE_HI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJTYPE_SET" target="OBJTYPE_SET"/>
     </input>
     <input node="CV_CRMD_PARTNER">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="KIND_OF_ENTRY" source="KIND_OF_ENTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_NO" source="PARTNER_NO"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDR_NR" source="ADDR_NR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDR_NP" source="ADDR_NP"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDR_TYPE" source="ADDR_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PARTNER_GUID" target="PARTNER_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KIND_OF_ENTRY" target="KIND_OF_ENTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PARTNER_NO" target="PARTNER_NO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDR_NR" target="ADDR_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDR_NP" target="ADDR_NP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDR_TYPE" target="ADDR_TYPE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID"/>
     </input>
@@ -192,26 +191,26 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_2">
-      <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID" source="GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJECT_ID" source="OBJECT_ID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PROCESS_TYPE" source="PROCESS_TYPE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="POSTING_DATE" source="POSTING_DATE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="DESCRIPTION" source="DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="GUID_SET" source="GUID_SET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJTYPE_HI" source="OBJTYPE_HI"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="OBJTYPE_SET" source="OBJTYPE_SET"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_GUID" source="PARTNER_GUID"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="KIND_OF_ENTRY" source="KIND_OF_ENTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_NO" source="PARTNER_NO"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDR_NR" source="ADDR_NR"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDR_NP" source="ADDR_NP"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ADDR_TYPE" source="ADDR_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="CLIENT" target="CLIENT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID" target="GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJECT_ID" target="OBJECT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PROCESS_TYPE" target="PROCESS_TYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="POSTING_DATE" target="POSTING_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="DESCRIPTION" target="DESCRIPTION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="GUID_SET" target="GUID_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJTYPE_HI" target="OBJTYPE_HI"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="OBJTYPE_SET" target="OBJTYPE_SET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PARTNER_GUID" target="PARTNER_GUID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="KIND_OF_ENTRY" target="KIND_OF_ENTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PARTNER_NO" target="PARTNER_NO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDR_NR" target="ADDR_NR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDR_NP" target="ADDR_NP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="ADDR_TYPE" target="ADDR_TYPE"/>
     </input>
     <input node="CV_CRM_BUT000">
-      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER" source="PARTNER"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_FIRST" source="NAME_FIRST"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="PARTNER" target="PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_FIRST" target="NAME_FIRST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" source="NAME_LAST" target="NAME_LAST"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_NO" source="PARTNER_GUID"/>
     </input>
@@ -227,80 +226,80 @@
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PARTNER_GUID"/></viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRM_BUT000"/>
+    <input node="osr.mktcld.transform.foundation::CV_CRM_BUT000"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_3">
   <attributes>
-    <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="CLIENT" displayAttribute="false" order="1" attributeHierarchyActive="false">
       <descriptions defaultDescription="CLIENT"/>
       <keyMapping columnObjectName="Join_3" columnName="CLIENT"/>
     </attribute>
-    <attribute id="GUID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GUID" displayAttribute="false" order="2" attributeHierarchyActive="false">
       <descriptions defaultDescription="GUID"/>
       <keyMapping columnObjectName="Join_3" columnName="GUID"/>
     </attribute>
-    <attribute id="OBJECT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OBJECT_ID" displayAttribute="false" order="3" attributeHierarchyActive="false">
       <descriptions defaultDescription="OBJECT_ID"/>
       <keyMapping columnObjectName="Join_3" columnName="OBJECT_ID"/>
     </attribute>
-    <attribute id="PROCESS_TYPE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PROCESS_TYPE" displayAttribute="false" order="4" attributeHierarchyActive="false">
       <descriptions defaultDescription="PROCESS_TYPE"/>
       <keyMapping columnObjectName="Join_3" columnName="PROCESS_TYPE"/>
     </attribute>
-    <attribute id="POSTING_DATE" order="5" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="POSTING_DATE" displayAttribute="false" order="5" attributeHierarchyActive="false">
       <descriptions defaultDescription="POSTING_DATE"/>
       <keyMapping columnObjectName="Join_3" columnName="POSTING_DATE"/>
     </attribute>
-    <attribute id="DESCRIPTION" order="6" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="DESCRIPTION" displayAttribute="false" order="6" attributeHierarchyActive="false">
       <descriptions defaultDescription="DESCRIPTION"/>
       <keyMapping columnObjectName="Join_3" columnName="DESCRIPTION"/>
     </attribute>
-    <attribute id="GUID_SET" order="7" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="GUID_SET" displayAttribute="false" order="7" attributeHierarchyActive="false">
       <descriptions defaultDescription="GUID_SET"/>
       <keyMapping columnObjectName="Join_3" columnName="GUID_SET"/>
     </attribute>
-    <attribute id="OBJTYPE_HI" order="8" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OBJTYPE_HI" displayAttribute="false" order="8" attributeHierarchyActive="false">
       <descriptions defaultDescription="OBJTYPE_HI"/>
       <keyMapping columnObjectName="Join_3" columnName="OBJTYPE_HI"/>
     </attribute>
-    <attribute id="OBJTYPE_SET" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="OBJTYPE_SET" displayAttribute="false" order="9" attributeHierarchyActive="false">
       <descriptions defaultDescription="OBJTYPE_SET"/>
       <keyMapping columnObjectName="Join_3" columnName="OBJTYPE_SET"/>
     </attribute>
-    <attribute id="PARTNER_GUID" order="10" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PARTNER_GUID" displayAttribute="false" order="10" attributeHierarchyActive="false">
       <descriptions defaultDescription="PARTNER_GUID"/>
       <keyMapping columnObjectName="Join_3" columnName="PARTNER_GUID"/>
     </attribute>
-    <attribute id="KIND_OF_ENTRY" order="11" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="KIND_OF_ENTRY" displayAttribute="false" order="11" attributeHierarchyActive="false">
       <descriptions defaultDescription="KIND_OF_ENTRY"/>
       <keyMapping columnObjectName="Join_3" columnName="KIND_OF_ENTRY"/>
     </attribute>
-    <attribute id="PARTNER_NO" order="12" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PARTNER_NO" displayAttribute="false" order="12" attributeHierarchyActive="false">
       <descriptions defaultDescription="PARTNER_NO"/>
       <keyMapping columnObjectName="Join_3" columnName="PARTNER_NO"/>
     </attribute>
-    <attribute id="ADDR_NR" order="13" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ADDR_NR" displayAttribute="false" order="13" attributeHierarchyActive="false">
       <descriptions defaultDescription="ADDR_NR"/>
       <keyMapping columnObjectName="Join_3" columnName="ADDR_NR"/>
     </attribute>
-    <attribute id="ADDR_NP" order="14" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ADDR_NP" displayAttribute="false" order="14" attributeHierarchyActive="false">
       <descriptions defaultDescription="ADDR_NP"/>
       <keyMapping columnObjectName="Join_3" columnName="ADDR_NP"/>
     </attribute>
-    <attribute id="ADDR_TYPE" order="15" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="ADDR_TYPE" displayAttribute="false" order="15" attributeHierarchyActive="false">
       <descriptions defaultDescription="ADDR_TYPE"/>
       <keyMapping columnObjectName="Join_3" columnName="ADDR_TYPE"/>
     </attribute>
-    <attribute id="PARTNER" order="16" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PARTNER" displayAttribute="false" order="16" attributeHierarchyActive="false">
       <descriptions defaultDescription="PARTNER"/>
       <keyMapping columnObjectName="Join_3" columnName="PARTNER"/>
     </attribute>
-    <attribute id="NAME_FIRST" order="17" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="NAME_FIRST" displayAttribute="false" order="17" attributeHierarchyActive="false">
       <descriptions defaultDescription="NAME_FIRST"/>
       <keyMapping columnObjectName="Join_3" columnName="NAME_FIRST"/>
     </attribute>
-    <attribute id="NAME_LAST" order="18" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="NAME_LAST" displayAttribute="false" order="18" attributeHierarchyActive="false">
       <descriptions defaultDescription="NAME_LAST"/>
       <keyMapping columnObjectName="Join_3" columnName="NAME_LAST"/>
     </attribute>
@@ -312,63 +311,63 @@
 </logicalModel>
 <layout>
   <shapes>
-    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+    <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
       <upperLeftCorner x="468" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="CV_CRMD_ORDERADM" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_CRMD_ORDERADM">
       <upperLeftCorner x="91" y="636"/>
-      <rectangleSize height="30" width="224"/>
+      <rectangleSize width="224" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="CV_CRMD_LINK" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_CRMD_LINK">
       <upperLeftCorner x="365" y="636"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_1">
       <upperLeftCorner x="150" y="496"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="CV_CRMD_ORDERADM" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="CV_CRMD_ORDERADM">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="211"/>
     </shape>
-    <shape modelObjectName="CV_CRMD_LINK" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="CV_CRMD_LINK">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="180"/>
     </shape>
-    <shape expanded="true" modelObjectName="CV_CRMD_PARTNER" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_CRMD_PARTNER">
       <upperLeftCorner x="431" y="496"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_2">
       <upperLeftCorner x="177" y="356"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="Join_1">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="250"/>
     </shape>
-    <shape modelObjectName="CV_CRMD_PARTNER" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="CV_CRMD_PARTNER">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="187"/>
     </shape>
-    <shape expanded="true" modelObjectName="Join_3" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_3">
       <upperLeftCorner x="468" y="217"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
-    <shape modelObjectName="Join_2" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="Join_2">
       <upperLeftCorner x="20" y="30"/>
       <rectangleSize width="176"/>
     </shape>
-    <shape modelObjectName="CV_CRM_BUT000" modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput">
+    <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="CV_CRM_BUT000">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="171"/>
     </shape>
-    <shape expanded="true" modelObjectName="CV_CRM_BUT000" modelObjectNameSpace="CalculationView">
+    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_CRM_BUT000">
       <upperLeftCorner x="535" y="356"/>
-      <rectangleSize height="30" width="160"/>
+      <rectangleSize width="160" height="30"/>
     </shape>
   </shapes>
 </layout>

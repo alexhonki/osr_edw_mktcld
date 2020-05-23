@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_PRTCLIENTOVERVIEW" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld.transform.foundation::CV_PRTCLIENTOVERVIEW" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_PRTCLIENTOVERVIEW"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="osr.mktcld::TF_PRTCLIENTOVERVIEW" type="TABLE_FUNCTION">
-    <resourceUri>osr.mktcld::TF_PRTCLIENTOVERVIEW</resourceUri>
+  <DataSource id="osr.mktcld.transform.foundation::TF_PRTCLIENTOVERVIEW" type="TABLE_FUNCTION">
+    <resourceUri>osr.mktcld.transform.foundation::TF_PRTCLIENTOVERVIEW</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -21,7 +21,7 @@
       <viewAttribute id="VALID_TO"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::TF_PRTCLIENTOVERVIEW"/>
+    <input node="osr.mktcld.transform.foundation::TF_PRTCLIENTOVERVIEW"/>
   </calculationView>
 </calculationViews>
 <logicalModel id="T_PrtClientOverview">

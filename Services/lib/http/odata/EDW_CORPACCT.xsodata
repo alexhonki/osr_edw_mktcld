@@ -5,7 +5,7 @@
  */
  
 service {       
-    "osr.mktcld::CV_PRT_CORPACCT_SCPI" as "Corporate_Account"
+    "osr.mktcld.transform.scpi::CV_PRT_CORPACCT_SCPI" as "Corporate_Account"
     key generate local "GenID";
 }
 

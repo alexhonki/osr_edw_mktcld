@@ -3,7 +3,7 @@
   "responsible": {
     "email": "dwfalerts@gmail.com"
   },
-  "maxParallelExecution": 3,
+  "maxParallelExecution": 10,
   "resumeBehavior": "NO_RESUME",
   "taskList": {
     "1": {

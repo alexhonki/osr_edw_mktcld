@@ -1,5 +1,8 @@
 {
   "description": "COVID-19: EDW to SCPI Data Feed",
+  "responsible": {
+    "email": "dwfalerts@gmail.com"
+  },
   "maxParallelExecution": 10,
   "resumeBehavior": "NO_RESUME",
   "taskList": {

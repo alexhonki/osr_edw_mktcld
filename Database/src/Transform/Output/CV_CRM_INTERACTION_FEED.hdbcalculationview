@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld::CV_CRM_INTERACTION_FEED" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="osr.mktcld.transform.output::CV_CRM_INTERACTION_FEED" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CV_PRT_INTERACTION_FEED"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="osr.mktcld::CV_CRM_INTERACTION_CODE">
-    <resourceUri>osr.mktcld::CV_CRM_INTERACTION_CODE</resourceUri>
+  <DataSource id="osr.mktcld.transform.integration::CV_CRM_INTERACTION_CODE">
+    <resourceUri>osr.mktcld.transform.integration::CV_CRM_INTERACTION_CODE</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRM_INTERACTION_OPEN">
-    <resourceUri>osr.mktcld::CV_CRM_INTERACTION_OPEN</resourceUri>
+  <DataSource id="osr.mktcld.transform.integration::CV_CRM_INTERACTION_OPEN">
+    <resourceUri>osr.mktcld.transform.integration::CV_CRM_INTERACTION_OPEN</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld::CV_CRM_INTERACTION_BP">
-    <resourceUri>osr.mktcld::CV_CRM_INTERACTION_BP</resourceUri>
+  <DataSource id="osr.mktcld.transform.integration::CV_CRM_INTERACTION_BP">
+    <resourceUri>osr.mktcld.transform.integration::CV_CRM_INTERACTION_BP</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews>
@@ -32,7 +32,7 @@
       <viewAttribute id="EXTERN_ACT_ID"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRM_INTERACTION_CODE"/>
+    <input node="osr.mktcld.transform.integration::CV_CRM_INTERACTION_CODE"/>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_CRM_INTERACTION_OPEN">
     <viewAttributes>
@@ -89,7 +89,7 @@
       <viewAttribute id="CHGNR"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRM_INTERACTION_OPEN"/>
+    <input node="osr.mktcld.transform.integration::CV_CRM_INTERACTION_OPEN"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
     <viewAttributes>
@@ -143,7 +143,7 @@
       <viewAttribute id="PARTNER"/>
     </viewAttributes>
     <calculatedViewAttributes/>
-    <input node="osr.mktcld::CV_CRM_INTERACTION_BP"/>
+    <input node="osr.mktcld.transform.integration::CV_CRM_INTERACTION_BP"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="inner">
     <viewAttributes>
