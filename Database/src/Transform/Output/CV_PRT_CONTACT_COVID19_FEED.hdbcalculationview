@@ -121,18 +121,33 @@
       <viewAttribute id="NAME_ORG2"/>
       <viewAttribute id="NAME_ORG3"/>
       <viewAttribute id="NAME_ORG4"/>
+    
+      <viewAttribute id="TYPE"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="300" expressionLanguage="SQL">
-        <formula>TRIM(CONCAT(CONCAT(CONCAT(&quot;NAME_ORG1&quot;, &quot;NAME_ORG2&quot;), &quot;NAME_ORG3&quot;), &quot;NAME_ORG4&quot;))</formula>
+        <formula>CASE  
+	 WHEN &quot;TYPE&quot;=2 then &quot;CC_NAME_COMPANY&quot; 
+	 ELSE &quot;CC_NAME_INDIVIDUAL&quot; 
+ END</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_BP_NUMBER" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>TRIM(LEADING '0' FROM &quot;BPARTNER&quot;)</formula>
       </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="CC_NAME_INDIVIDUAL" datatype="VARCHAR" length="120" expressionLanguage="SQL">
+        <formula>TRIM(CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_FIRST&quot;), ' '), TRIM(&quot;NAMEMIDDLE&quot;)), ' '), TRIM(&quot;NAME_LAST&quot;)))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_NAME_COMPANY" datatype="VARCHAR" length="160" expressionLanguage="SQL">
+        <formula>TRIM(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_ORG1&quot;), ' '), TRIM(&quot;NAME_ORG2&quot;)), ' '), TRIM(&quot;NAME_ORG3&quot;)), ' '), TRIM(&quot;NAME_ORG4&quot;)))</formula>
+      </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="osr.mktcld.transform.integration::CV_BP_PRT_CORPACCT"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="QUAL_BPARTNER"/>
       <viewAttribute id="QUAL_EMAIL"/>

@@ -13,9 +13,6 @@
   <DataSource id="osr.mktcld.transform.foundation::CV_AGENCY_DATA">
     <resourceUri>osr.mktcld.transform.foundation::CV_AGENCY_DATA</resourceUri>
   </DataSource>
-  <DataSource id="osr.mktcld.transform.foundation::CV_BUT0ID">
-    <resourceUri>osr.mktcld.transform.foundation::CV_BUT0ID</resourceUri>
-  </DataSource>
 </dataSources>
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="COMPANY_REGISTER">
@@ -44,7 +41,14 @@
     
       <viewAttribute id="ABN_CANCN_DT"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_ACN" datatype="VARCHAR" length="13" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;ACN&quot;='' then RIGHT(&quot;ABN&quot;, 9) 
+	 ELSE &quot;ACN&quot; 
+ END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="osr.mktcld.transform.foundation::CV_AGENCY_DATA"/>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
@@ -66,7 +70,7 @@
     </input>
     <joinAttribute name="ORG_STATUS"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="leftOuter">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_N" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="ACN"/>
       <viewAttribute id="ABN"/>
@@ -76,112 +80,56 @@
       <viewAttribute id="MN_INDY_CLSN_DESCN"/>
     
       <viewAttribute id="ABN_CANCN_DT"/>
+    
+      <viewAttribute hidden="true" id="JOIN$ACN$ACN"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="Join_1">
-      <mapping xsi:type="Calculation:AttributeMapping" source="ACN" target="ACN"/>
       <mapping xsi:type="Calculation:AttributeMapping" source="ABN" target="ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" source="ORG_STATUS" target="ORG_STATUS"/>
       <mapping xsi:type="Calculation:AttributeMapping" source="ORG_STATUS_DESCRIPTION" target="ORG_STATUS_DESCRIPTION"/>
+    
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ACN$ACN" source="ACN"/>
     </input>
     <input node="AGENCY_DATA">
       <mapping xsi:type="Calculation:AttributeMapping" source="MN_INDY_CLSN" target="MN_INDY_CLSN"/>
       <mapping xsi:type="Calculation:AttributeMapping" source="MN_INDY_CLSN_DESCN" target="MN_INDY_CLSN_DESCN"/>
       <mapping xsi:type="Calculation:AttributeMapping" source="ABN_CANCN_DT" target="ABN_CANCN_DT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="ACN"/>
-    </input>
-    <joinAttribute name="ACN"/>
-  </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="CV_BUT0ID" filterExpressionLanguage="SQL">
-    <viewAttributes>
-      <viewAttribute id="CLIENT"/>
-      <viewAttribute id="PARTNER"/>
-      <viewAttribute id="TYPE"/>
-      <viewAttribute id="IDNUMBER"/>
-      <viewAttribute id="VALID_DATE_TO"/>
-    </viewAttributes>
-    <calculatedViewAttributes>
-      <calculatedViewAttribute datatype="NVARCHAR" length="60" expressionLanguage="SQL" id="CC_ACN">
-        <formula>CASE 
-	 WHEN &quot;TYPE&quot;='ZACN' then &quot;IDNUMBER&quot; 
-	 ELSE '' 
- END</formula>
-      </calculatedViewAttribute>
-      <calculatedViewAttribute datatype="NVARCHAR" length="60" expressionLanguage="SQL" id="CC_ABN">
-        <formula>CASE 
-	 WHEN &quot;TYPE&quot;='ZABN' then &quot;IDNUMBER&quot; 
-	 ELSE '' 
- END</formula>
-      </calculatedViewAttribute>
-    </calculatedViewAttributes>
-    <input node="osr.mktcld.transform.foundation::CV_BUT0ID"/>
-    <filter>&quot;VALID_DATE_TO&quot;='99991231' and &quot;TYPE&quot; in ('ZABN', 'ZACN')</filter>
-  </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="inner">
-    <viewAttributes>
-      <viewAttribute id="ACN"/>
-      <viewAttribute id="ABN"/>
-      <viewAttribute id="ORG_STATUS"/>
-      <viewAttribute id="ORG_STATUS_DESCRIPTION"/>
-      <viewAttribute id="MN_INDY_CLSN"/>
-      <viewAttribute id="MN_INDY_CLSN_DESCN"/>
-      <viewAttribute id="ABN_CANCN_DT"/>
-      <viewAttribute id="PARTNER"/>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="Join_2">
-      <mapping xsi:type="Calculation:AttributeMapping" source="ACN" target="ACN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" source="ABN" target="ABN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" source="ORG_STATUS" target="ORG_STATUS"/>
-      <mapping xsi:type="Calculation:AttributeMapping" source="ORG_STATUS_DESCRIPTION" target="ORG_STATUS_DESCRIPTION"/>
-      <mapping xsi:type="Calculation:AttributeMapping" source="MN_INDY_CLSN" target="MN_INDY_CLSN"/>
-      <mapping xsi:type="Calculation:AttributeMapping" source="MN_INDY_CLSN_DESCN" target="MN_INDY_CLSN_DESCN"/>
-    
-      <mapping xsi:type="Calculation:AttributeMapping" source="ABN_CANCN_DT" target="ABN_CANCN_DT"/>
-    </input>
-    <input node="CV_BUT0ID">
-      <mapping xsi:type="Calculation:AttributeMapping" source="PARTNER" target="PARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="CC_ACN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ACN$ACN" source="ACN"/>
     </input>
-    <joinAttribute name="ACN"/>
+    <joinAttribute name="JOIN$ACN$ACN"/>
   </calculationView>
 </calculationViews>
-<logicalModel id="Join_3">
+<logicalModel id="Join_2">
   <attributes>
-    <attribute id="ACN" displayAttribute="false" order="1" attributeHierarchyActive="false">
+    <attribute id="ACN" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ACN"/>
-      <keyMapping columnObjectName="Join_3" columnName="ACN"/>
+      <keyMapping columnObjectName="Join_2" columnName="ACN"/>
     </attribute>
-    <attribute id="ABN" displayAttribute="false" order="2" attributeHierarchyActive="false">
+    <attribute id="ABN" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ABN"/>
-      <keyMapping columnObjectName="Join_3" columnName="ABN"/>
+      <keyMapping columnObjectName="Join_2" columnName="ABN"/>
     </attribute>
-    <attribute id="ORG_STATUS" displayAttribute="false" order="3" attributeHierarchyActive="false">
+    <attribute id="ORG_STATUS" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ORG_STATUS"/>
-      <keyMapping columnObjectName="Join_3" columnName="ORG_STATUS"/>
+      <keyMapping columnObjectName="Join_2" columnName="ORG_STATUS"/>
     </attribute>
-    <attribute id="ORG_STATUS_DESCRIPTION" displayAttribute="false" order="4" attributeHierarchyActive="false">
-      <descriptions defaultDescription="DESCRIPTION"/>
-      <keyMapping columnObjectName="Join_3" columnName="ORG_STATUS_DESCRIPTION"/>
+    <attribute id="ORG_STATUS_DESCRIPTION" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORG_STATUS_DESCRIPTION"/>
+      <keyMapping columnObjectName="Join_2" columnName="ORG_STATUS_DESCRIPTION"/>
     </attribute>
-    <attribute id="MN_INDY_CLSN" displayAttribute="false" order="5" attributeHierarchyActive="false">
+    <attribute id="MN_INDY_CLSN" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="MN_INDY_CLSN"/>
-      <keyMapping columnObjectName="Join_3" columnName="MN_INDY_CLSN"/>
+      <keyMapping columnObjectName="Join_2" columnName="MN_INDY_CLSN"/>
     </attribute>
-    <attribute id="MN_INDY_CLSN_DESCN" displayAttribute="false" order="6" attributeHierarchyActive="false">
+    <attribute id="MN_INDY_CLSN_DESCN" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="MN_INDY_CLSN_DESCN"/>
-      <keyMapping columnObjectName="Join_3" columnName="MN_INDY_CLSN_DESCN"/>
+      <keyMapping columnObjectName="Join_2" columnName="MN_INDY_CLSN_DESCN"/>
     </attribute>
-    <attribute id="ABN_CANCN_DT" displayAttribute="false" order="7" attributeHierarchyActive="false">
+    <attribute id="ABN_CANCN_DT" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ABN_CANCN_DT"/>
-      <keyMapping columnObjectName="Join_3" columnName="ABN_CANCN_DT"/>
-    </attribute>
-  
-    <attribute id="PARTNER" displayAttribute="false" order="8" attributeHierarchyActive="false">
-      <descriptions defaultDescription="PARTNER"/>
-  
-      <keyMapping columnObjectName="Join_3" columnName="PARTNER"/>
-  
+      <keyMapping columnObjectName="Join_2" columnName="ABN_CANCN_DT"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -192,25 +140,25 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
-      <upperLeftCorner x="460" y="112"/>
+      <upperLeftCorner x="373.9699948780488" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="COMPANY_REGISTER">
-      <upperLeftCorner x="91" y="696"/>
+      <upperLeftCorner x="92" y="536.9999976158142"/>
       <rectangleSize width="214" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="ORG_STATUS">
-      <upperLeftCorner x="356" y="696"/>
+      <upperLeftCorner x="356" y="536.9999976158142"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="AGENCY_DATA">
-      <upperLeftCorner x="423" y="536"/>
+      <upperLeftCorner x="437.77352618304997" y="376.9999988079071"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_1">
-      <upperLeftCorner x="145" y="536"/>
+      <upperLeftCorner x="145.66666666666669" y="376.9999988079071"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="COMPANY_REGISTER">
@@ -222,7 +170,7 @@
       <rectangleSize width="144"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_2">
-      <upperLeftCorner x="172" y="376"/>
+      <upperLeftCorner x="373.96999487804874" y="217"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="Join_1">
@@ -232,24 +180,6 @@
     <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="AGENCY_DATA">
       <upperLeftCorner x="320" y="30"/>
       <rectangleSize width="153"/>
-    </shape>
-  
-    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BUT0ID">
-      <upperLeftCorner x="528" y="376"/>
-      <rectangleSize width="160" height="30"/>
-    </shape>
-    <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_3">
-      <upperLeftCorner x="460" y="217"/>
-      <rectangleSize width="160" height="30"/>
-    </shape>
-    <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="Join_2">
-      <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="250"/>
-    </shape>
-    <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="CV_BUT0ID">
-      <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="172"/>
-    </shape>
-  </shapes>
+    </shape></shapes>
 </layout>
 </Calculation:scenario>

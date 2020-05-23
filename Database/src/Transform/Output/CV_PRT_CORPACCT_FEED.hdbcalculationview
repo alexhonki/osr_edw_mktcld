@@ -48,6 +48,10 @@
       <viewAttribute id="MN_INDY_CLSN"/>
       <viewAttribute id="MN_INDY_CLSN_DESCN"/>
       <viewAttribute id="ABN_CANCN_DT"/>
+    
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_GROUP_ID" datatype="VARCHAR" length="13" expressionLanguage="SQL">
@@ -61,7 +65,10 @@
         <formula>TRIM(LEADING '0' FROM &quot;BPARTNER&quot;)</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_COMPANY_NAME" datatype="VARCHAR" length="300" expressionLanguage="SQL">
-        <formula>TRIM(CONCAT(CONCAT(CONCAT(&quot;NAME_ORG1&quot;, &quot;NAME_ORG2&quot;), &quot;NAME_ORG3&quot;), &quot;NAME_ORG4&quot;))</formula>
+        <formula>CASE  
+	 WHEN &quot;TYPE&quot;=2 then &quot;CC_NAME_COMPANY&quot; 
+	 ELSE &quot;CC_NAME_INDIVIDUAL&quot; 
+ END</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_ENTITY_TYPE" datatype="VARCHAR" length="13" expressionLanguage="SQL">
         <formula>CASE  
@@ -80,6 +87,13 @@
 	 WHEN &quot;ABN_CANCN_DT&quot; &lt; CURRENT_DATE then 'X' 
 	 ELSE '' 
  END</formula>
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="CC_NAME_INDIVIDUAL" datatype="VARCHAR" length="120" expressionLanguage="SQL">
+        <formula>TRIM(CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_FIRST&quot;), ' '), TRIM(&quot;NAMEMIDDLE&quot;)), ' '), TRIM(&quot;NAME_LAST&quot;)))</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="CC_NAME_COMPANY" datatype="VARCHAR" length="160" expressionLanguage="SQL">
+        <formula>TRIM(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_ORG1&quot;), ' '), TRIM(&quot;NAME_ORG2&quot;)), ' '), TRIM(&quot;NAME_ORG3&quot;)), ' '), TRIM(&quot;NAME_ORG4&quot;)))</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="osr.mktcld.transform.integration::CV_BP_PRT_CORPACCT"/>
@@ -396,21 +410,21 @@ or
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="323.1592227123032" y="112"/>
+      <upperLeftCorner x="323" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="376.9999988079071"/>
+      <upperLeftCorner x="91" y="376"/>
       <rectangleSize height="30" width="232"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CV_PRTCLIENTOVERVIEW" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="374" y="376.9999988079071"/>
+      <upperLeftCorner x="374" y="376"/>
       <rectangleSize height="30" width="264"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="323.1592227123032" y="217"/>
+      <upperLeftCorner x="323" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CV_BP_PRT_CORPACCT" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">

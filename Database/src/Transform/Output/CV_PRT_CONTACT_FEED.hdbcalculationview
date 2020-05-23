@@ -47,7 +47,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" source="BPARTNER" target="ID"/>
     </input>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="ID_ORIGIN"/>
       <viewAttribute id="ID"/>
@@ -76,10 +76,16 @@
       <viewAttribute id="VALID_TO"/>
       <viewAttribute id="ADR_KIND"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_VALID_TO" datatype="DATE" expressionLanguage="SQL">
+        <formula>CASE 
+WHEN LENGTH(&quot;VALID_TO&quot;)&lt;14 THEN TO_DATE('19000101000000')
+ELSE TO_DATE(TO_TIMESTAMP(&quot;VALID_TO&quot;))
+END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="osr.mktcld.transform.foundation::CV_BUT021FS"/>
-    <filter>TO_TIMESTAMP(&quot;VALID_TO&quot;)&gt;=CURRENT_TIMESTAMP and 
-&quot;ADR_KIND&quot;='PRT_MAIL'</filter>
+    <filter>&quot;ADR_KIND&quot;='PRT_MAIL' and &quot;CC_VALID_TO&quot;&gt;=CURRENT_DATE</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADRC" filterExpressionLanguage="SQL">
     <viewAttributes>
@@ -94,7 +100,7 @@
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="osr.mktcld.transform.foundation::CV_ADRC"/>
-    <filter>TO_TIMESTAMP(&quot;DATE_TO&quot;)&gt;=CURRENT_TIMESTAMP</filter>
+    <filter>TO_DATE(&quot;DATE_TO&quot;)&gt;=CURRENT_DATE</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -130,14 +136,25 @@
     </input>
     <joinAttribute name="ADDRNUMBER"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADR6">
+  <calculationView xsi:type="Calculation:ProjectionView" id="CV_ADR6" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="STD_EMAIL"/>
       <viewAttribute id="VALID_TO"/>
+    
+      <viewAttribute id="FLGDEFAULT"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_VALID_TO" datatype="DATE" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;VALID_TO&quot;='' then TO_DATE('99991231') 
+	 ELSE &quot;VALID_TO&quot; 
+ END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="osr.mktcld.transform.foundation::CV_ADR6"/>
+  
+    <filter>&quot;CC_VALID_TO&quot;&gt;=CURRENT_DATE and &quot;FLGDEFAULT&quot;='X'</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_3" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -182,10 +199,19 @@
       <viewAttribute id="TEL_NUMBER"/>
     
       <viewAttribute id="R3_USER"/>
+    
+      <viewAttribute id="VALID_TO"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_VALID_TO" datatype="DATE" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;VALID_TO&quot;='' then TO_DATE('99991231') 
+	 ELSE &quot;VALID_TO&quot; 
+ END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="osr.mktcld.transform.foundation::CV_ADR2"/>
-    <filter>&quot;R3_USER&quot;='3'</filter>
+    <filter>&quot;R3_USER&quot;='3' and &quot;CC_VALID_TO&quot;&gt;=CURRENT_DATE</filter>
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_4" cardinality="C1_1" joinType="leftOuter">
     <viewAttributes>
@@ -272,10 +298,19 @@
       <viewAttribute id="ADDRNUMBER"/>
       <viewAttribute id="TEL_NUMBER"/>
       <viewAttribute id="R3_USER"/>
+    
+      <viewAttribute id="VALID_TO"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_VALID_TO" datatype="DATE" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;VALID_TO&quot;='' then TO_DATE('99991231') 
+	 ELSE &quot;VALID_TO&quot; 
+ END</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="CV_ADR2_PHONE$$$$osr.mktcld.transform.foundation::CV_ADR2$$" emptyUnionBehavior="undefined"/>
-    <filter>&quot;R3_USER&quot;='1'</filter>
+    <filter>&quot;R3_USER&quot;='1' and &quot;CC_VALID_TO&quot;&gt;=CURRENT_DATE</filter>
   </calculationView>
 </calculationViews>
 <logicalModel id="Join_5">
@@ -418,16 +453,16 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectNameSpace="MeasureGroup" modelObjectName="Output">
-      <upperLeftCorner x="703" y="112"/>
+      <upperLeftCorner x="703.8192835043358" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BP_PRT_CORPACCT">
-      <upperLeftCorner x="92" y="996"/>
+      <upperLeftCorner x="92.00000000000001" y="1016.9999940395355"/>
       <rectangleSize width="201" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_1">
-      <upperLeftCorner x="139" y="836"/>
+      <upperLeftCorner x="139.16666666666663" y="856.9999952316284"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" modelObjectName="CV_BP_PRT_CORPACCT">
@@ -439,15 +474,15 @@
       <rectangleSize width="164"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_BUT021FS">
-      <upperLeftCorner x="343" y="996"/>
+      <upperLeftCorner x="343.00000000000017" y="1016.9999940395355"/>
       <rectangleSize width="216" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADRC">
-      <upperLeftCorner x="424" y="836"/>
+      <upperLeftCorner x="424.81261562039833" y="856.9999952316284"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_2">
-      <upperLeftCorner x="165" y="676"/>
+      <upperLeftCorner x="165.83333333333326" y="696.9999964237213"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput" modelObjectName="Join_1">
@@ -459,11 +494,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR6">
-      <upperLeftCorner x="519" y="676"/>
+      <upperLeftCorner x="519.174957323235" y="696.9999964237213"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_3">
-      <upperLeftCorner x="192" y="516"/>
+      <upperLeftCorner x="192.4999999999999" y="536.9999976158142"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_3" modelObjectType="JoinNodeInput" modelObjectName="Join_2">
@@ -475,11 +510,11 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR2_MOBILE">
-      <upperLeftCorner x="628" y="516"/>
+      <upperLeftCorner x="628.6775372028072" y="536.9999976158142"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_4">
-      <upperLeftCorner x="219" y="356"/>
+      <upperLeftCorner x="219.16666666666652" y="376.9999988079071"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_4" modelObjectType="JoinNodeInput" modelObjectName="Join_3">
@@ -492,7 +527,7 @@
     </shape>
   
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="Join_5">
-      <upperLeftCorner x="703" y="217"/>
+      <upperLeftCorner x="703.8192835043358" y="217"/>
       <rectangleSize width="160" height="30"/>
     </shape>
     <shape modelObjectNameSpace="Join_5" modelObjectType="JoinNodeInput" modelObjectName="Join_4">
@@ -504,7 +539,7 @@
       <rectangleSize width="169"/>
     </shape>
     <shape expanded="true" modelObjectNameSpace="CalculationView" modelObjectName="CV_ADR2_PHONE">
-      <upperLeftCorner x="752" y="356"/>
+      <upperLeftCorner x="752.2051405002964" y="376.9999988079071"/>
       <rectangleSize width="160"/>
     </shape>
   </shapes>
