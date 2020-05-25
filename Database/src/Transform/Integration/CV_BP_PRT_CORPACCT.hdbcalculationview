@@ -511,7 +511,7 @@ END</formula>
       <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_BUT0ID_ACN">
-      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="IDNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACN" source="CC_ACN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
     </input>
     <joinAttribute name="BPARTNER"/>
@@ -569,7 +569,7 @@ END</formula>
       <mapping xsi:type="Calculation:AttributeMapping" target="NAME_LAST" source="NAME_LAST"/>
     </input>
     <input node="CV_BUT0ID_ABN">
-      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="IDNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ABN" source="CC_ABN"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="BPARTNER" source="PARTNER"/>
     </input>
     <joinAttribute name="BPARTNER"/>
@@ -581,7 +581,11 @@ END</formula>
       <viewAttribute id="TYPE"/>
       <viewAttribute id="VALID_DATE_TO"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_ACN" datatype="NVARCHAR" length="9" expressionLanguage="SQL">
+        <formula>TRIM(LEADING '0' FROM &quot;IDNUMBER&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input emptyUnionBehavior="undefined" node="osr.mktcld.transform.foundation::CV_BUT0ID"/>
     <filter>TO_DATE(&quot;VALID_DATE_TO&quot;)&gt;=CURRENT_DATE and &quot;TYPE&quot;='ZACN'</filter>
   </calculationView>
@@ -649,7 +653,11 @@ END</formula>
       <viewAttribute id="TYPE"/>
       <viewAttribute id="VALID_DATE_TO"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_ABN" datatype="NVARCHAR" length="11" expressionLanguage="SQL">
+        <formula>TRIM(LEADING '0' FROM &quot;IDNUMBER&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="CV_BUT0ID_ABN$$$$osr.mktcld.transform.foundation::CV_BUT0ID$$"/>
     <filter>TO_DATE(&quot;VALID_DATE_TO&quot;)&gt;=CURRENT_DATE and &quot;TYPE&quot;='ZABN'</filter>
   </calculationView>
