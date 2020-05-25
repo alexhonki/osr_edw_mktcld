@@ -576,14 +576,14 @@ END</formula>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BUT0ID_ACN" filterExpressionLanguage="SQL">
     <viewAttributes>
-      <viewAttribute id="IDNUMBER"/>
       <viewAttribute id="PARTNER"/>
+      <viewAttribute id="IDNUMBER"/>
       <viewAttribute id="TYPE"/>
       <viewAttribute id="VALID_DATE_TO"/>
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_ACN" datatype="NVARCHAR" length="9" expressionLanguage="SQL">
-        <formula>TRIM(LEADING '0' FROM &quot;IDNUMBER&quot;)</formula>
+        <formula>TRIM(LEADING '0' FROM REPLACE_REGEXPR (' ' IN &quot;IDNUMBER&quot; WITH ''))</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input emptyUnionBehavior="undefined" node="osr.mktcld.transform.foundation::CV_BUT0ID"/>
@@ -648,8 +648,8 @@ END</formula>
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="CV_BUT0ID_ABN" filterExpressionLanguage="SQL">
     <viewAttributes>
-      <viewAttribute id="IDNUMBER"/>
       <viewAttribute id="PARTNER"/>
+      <viewAttribute id="IDNUMBER"/>
       <viewAttribute id="TYPE"/>
       <viewAttribute id="VALID_DATE_TO"/>
     </viewAttributes>
