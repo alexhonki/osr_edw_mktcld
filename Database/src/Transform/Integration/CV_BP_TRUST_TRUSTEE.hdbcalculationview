@@ -39,7 +39,15 @@
       <viewAttribute id="NAME_ORG4"/>
       <viewAttribute id="VALID_TO"/>
     </viewAttributes>
-    <calculatedViewAttributes/>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_NAME_COMPANY" datatype="VARCHAR" length="160" expressionLanguage="SQL">
+        <formula>UPPER(
+    TRIM(
+        CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_ORG1&quot;), ' '), TRIM(&quot;NAME_ORG2&quot;)), ' '), TRIM(&quot;NAME_ORG3&quot;)), ' '), TRIM(&quot;NAME_ORG4&quot;))
+        )
+)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
     <input node="osr.mktcld.transform.foundation::CV_BUT000_CURRENT"/>
     <filter>TO_TIMESTAMP(&quot;VALID_TO&quot;)&gt;=CURRENT_DATE and &quot;TITLE&quot;='Z005'</filter>
   </calculationView>
@@ -48,62 +56,32 @@
       <viewAttribute id="CLIENT"/>
       <viewAttribute id="PARTNER_TRUST"/>
       <viewAttribute id="TITLE"/>
-      <viewAttribute id="NAME_ORG1"/>
-      <viewAttribute id="NAME_ORG2"/>
-      <viewAttribute id="NAME_ORG3"/>
-      <viewAttribute id="NAME_ORG4"/>
-      <viewAttribute id="VALID_TO"/>
+      <viewAttribute id="CC_NAME_COMPANY"/>
       <viewAttribute id="PARTNER_TRUSTEE"/>
-    
-      <viewAttribute id="PARTNER_TRUSTEE_NAME_INDIVIDUAL"/>
-      <viewAttribute id="PARTNER_TRUSTEE_NAME_COMPANY"/>
+      <viewAttribute id="CC_TRUSTEE_NAME"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="CURRENT_TRUST">
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_TRUST" source="PARTNER"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="TITLE" source="TITLE"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG1" source="NAME_ORG1"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG2" source="NAME_ORG2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG3" source="NAME_ORG3"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_ORG4" source="NAME_ORG4"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="VALID_TO" source="VALID_TO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_NAME_COMPANY" source="CC_NAME_COMPANY"/>
     </input>
     <input node="Join_2">
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_TRUSTEE" source="PARTNER2"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_TRUSTEE_NAME_INDIVIDUAL" source="CC_NAME_INDIVIDUAL"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_TRUSTEE_NAME_COMPANY" source="CC_NAME_COMPANY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_TRUSTEE_NAME" source="CC_TRUSTEE_NAME"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CLIENT" source="CLIENT"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PARTNER_TRUST" source="PARTNER1"/>
     </input>
     <joinAttribute name="CLIENT"/>
     <joinAttribute name="PARTNER_TRUST"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:ProjectionView" id="TRUSTEE_NAME" filterExpressionLanguage="SQL">
-    <viewAttributes>
-      <viewAttribute id="CLIENT"/>
-      <viewAttribute id="PARTNER"/>
-      <viewAttribute id="NAME_ORG1"/>
-      <viewAttribute id="NAME_ORG2"/>
-      <viewAttribute id="NAME_ORG3"/>
-    
-      <viewAttribute id="NAME_ORG4"/>
-      <viewAttribute id="NAME_FIRST"/>
-      <viewAttribute id="NAMEMIDDLE"/>
-      <viewAttribute id="NAME_LAST"/>
-      <viewAttribute id="VALID_TO"/>
-    </viewAttributes>
-    <calculatedViewAttributes/>
-    <input node="TRUSTEE_NAME$$$$osr.mktcld.transform.foundation::CV_BUT000_CURRENT$$"/>
-  
-    <filter>TO_TIMESTAMP(&quot;VALID_TO&quot;)&gt;=CURRENT_DATE</filter>
-  </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
-      <viewAttribute id="CLIENT"/>
-      <viewAttribute id="RELNR"/>
-      <viewAttribute id="PARTNER1"/>
       <viewAttribute id="PARTNER2"/>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PARTNER1"/>
+      <viewAttribute id="RELNR"/>
       <viewAttribute id="DATE_TO"/>
       <viewAttribute id="RELTYP"/>
       <viewAttribute id="NAME_ORG1"/>
@@ -116,10 +94,25 @@
     </viewAttributes>
     <calculatedViewAttributes>
       <calculatedViewAttribute id="CC_NAME_INDIVIDUAL" datatype="VARCHAR" length="120" expressionLanguage="SQL">
-        <formula>TRIM(CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_FIRST&quot;), ' '), TRIM(&quot;NAMEMIDDLE&quot;)), ' '), TRIM(&quot;NAME_LAST&quot;)))</formula>
+        <formula>UPPER(
+    TRIM(
+        CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_FIRST&quot;), ' '), TRIM(&quot;NAMEMIDDLE&quot;)), ' '), TRIM(&quot;NAME_LAST&quot;))
+    )
+)</formula>
       </calculatedViewAttribute>
       <calculatedViewAttribute id="CC_NAME_COMPANY" datatype="VARCHAR" length="160" expressionLanguage="SQL">
-        <formula>TRIM(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_ORG1&quot;), ' '), TRIM(&quot;NAME_ORG2&quot;)), ' '), TRIM(&quot;NAME_ORG3&quot;)), ' '), TRIM(&quot;NAME_ORG4&quot;)))</formula>
+        <formula>UPPER(
+    TRIM(
+        CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(CONCAT(TRIM(&quot;NAME_ORG1&quot;), ' '), TRIM(&quot;NAME_ORG2&quot;)), ' '), TRIM(&quot;NAME_ORG3&quot;)), ' '), TRIM(&quot;NAME_ORG4&quot;))
+        )
+)</formula>
+      </calculatedViewAttribute>
+    
+      <calculatedViewAttribute id="CC_TRUSTEE_NAME" datatype="VARCHAR" length="160" expressionLanguage="SQL">
+        <formula>CASE  
+	 WHEN &quot;CC_NAME_INDIVIDUAL&quot;='' then &quot;CC_NAME_COMPANY&quot; 
+	 ELSE &quot;CC_NAME_INDIVIDUAL&quot; 
+ END</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="CURRENT_TRUSTEE">
@@ -144,53 +137,69 @@
     <joinAttribute name="CLIENT"/>
     <joinAttribute name="PARTNER2"/>
   </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="TRUSTEE_NAME" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="NAME_ORG1"/>
+      <viewAttribute id="NAME_ORG2"/>
+      <viewAttribute id="NAME_ORG3"/>
+    
+      <viewAttribute id="NAME_ORG4"/>
+      <viewAttribute id="NAME_FIRST"/>
+      <viewAttribute id="NAMEMIDDLE"/>
+      <viewAttribute id="NAME_LAST"/>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PARTNER"/>
+      <viewAttribute id="VALID_TO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="TRUSTEE_NAME$$$$osr.mktcld.transform.foundation::CV_BUT000_CURRENT$$"/>
+    <filter>TO_TIMESTAMP(&quot;VALID_TO&quot;)&gt;=CURRENT_DATE</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:RankView" id="Rank_1">
+    <viewAttributes>
+      <viewAttribute id="CLIENT"/>
+      <viewAttribute id="PARTNER_TRUST"/>
+      <viewAttribute id="TITLE"/>
+      <viewAttribute id="PARTNER_TRUSTEE"/>
+      <viewAttribute id="CC_TRUSTEE_NAME"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Join_1"/>
+    <windowFunction dynamicPartitionAttributes="false">
+      <partitionViewAttributeName>PARTNER_TRUST</partitionViewAttributeName>
+      <order byViewAttributeName="PARTNER_TRUSTEE" direction="DESC"/>
+      <rankThreshold>
+        <value>5</value>
+      </rankThreshold>
+      <rankViewAttributeName>CC_RANK</rankViewAttributeName>
+    </windowFunction>
+  </calculationView>
 </calculationViews>
-<logicalModel id="Join_1">
+<logicalModel id="Rank_1">
   <attributes>
     <attribute id="CLIENT" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CLIENT"/>
-      <keyMapping columnObjectName="Join_1" columnName="CLIENT"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CLIENT"/>
     </attribute>
     <attribute id="PARTNER_TRUST" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PARTNER"/>
-      <keyMapping columnObjectName="Join_1" columnName="PARTNER_TRUST"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PARTNER_TRUST"/>
     </attribute>
     <attribute id="TITLE" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="TITLE"/>
-      <keyMapping columnObjectName="Join_1" columnName="TITLE"/>
+      <keyMapping columnObjectName="Rank_1" columnName="TITLE"/>
     </attribute>
-    <attribute id="NAME_ORG1" order="4" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="NAME_ORG1"/>
-      <keyMapping columnObjectName="Join_1" columnName="NAME_ORG1"/>
-    </attribute>
-    <attribute id="NAME_ORG2" order="5" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="NAME_ORG2"/>
-      <keyMapping columnObjectName="Join_1" columnName="NAME_ORG2"/>
-    </attribute>
-    <attribute id="NAME_ORG3" order="6" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="NAME_ORG3"/>
-      <keyMapping columnObjectName="Join_1" columnName="NAME_ORG3"/>
-    </attribute>
-    <attribute id="NAME_ORG4" order="7" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="NAME_ORG4"/>
-      <keyMapping columnObjectName="Join_1" columnName="NAME_ORG4"/>
-    </attribute>
-    <attribute id="VALID_TO" order="8" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="VALID_TO"/>
-      <keyMapping columnObjectName="Join_1" columnName="VALID_TO"/>
-    </attribute>
-    <attribute id="PARTNER_TRUSTEE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="PARTNER_TRUSTEE" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PARTNER2"/>
-      <keyMapping columnObjectName="Join_1" columnName="PARTNER_TRUSTEE"/>
+      <keyMapping columnObjectName="Rank_1" columnName="PARTNER_TRUSTEE"/>
     </attribute>
-  
-    <attribute id="PARTNER_TRUSTEE_NAME_INDIVIDUAL" order="10" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_NAME_INDIVIDUAL"/>
-      <keyMapping columnObjectName="Join_1" columnName="PARTNER_TRUSTEE_NAME_INDIVIDUAL"/>
+    <attribute id="CC_TRUSTEE_NAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CC_TRUSTEE_NAME"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CC_TRUSTEE_NAME"/>
     </attribute>
-    <attribute id="PARTNER_TRUSTEE_NAME_COMPANY" order="11" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="CC_NAME_COMPANY"/>
-      <keyMapping columnObjectName="Join_1" columnName="PARTNER_TRUSTEE_NAME_COMPANY"/>
+    <attribute id="CC_RANK" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CC_RANK"/>
+      <keyMapping columnObjectName="Rank_1" columnName="CC_RANK"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -201,21 +210,21 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="390.48552245390755" y="112"/>
+      <upperLeftCorner x="407.54109173477286" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="CURRENT_TRUSTEE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="521.9999976158142"/>
+      <upperLeftCorner x="92.00000000000003" y="661.9999964237213"/>
       <rectangleSize height="30" width="228"/>
     </shape>
     <shape expanded="true" modelObjectName="CURRENT_TRUST" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="447.7785972493141" y="376.9999988079071"/>
+      <upperLeftCorner x="447.78411401866936" y="501.9999976158142"/>
       <rectangleSize height="30" width="175"/>
     </shape>
     <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="390.48552245390755" y="217"/>
+      <upperLeftCorner x="391.6720583689456" y="341.9999988079071"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CURRENT_TRUST" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
@@ -226,13 +235,9 @@
       <upperLeftCorner x="702" y="30"/>
       <rectangleSize width="185"/>
     </shape>
-    <shape expanded="true" modelObjectName="TRUSTEE_NAME" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="370.00000000000006" y="521.9999976158142"/>
-      <rectangleSize height="30" width="160"/>
-    </shape>
   
     <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="152.66666666666663" y="380.3333321412405"/>
+      <upperLeftCorner x="152.66666666666666" y="501.9999976158142"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="CURRENT_TRUSTEE" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
@@ -241,7 +246,16 @@
     </shape>
     <shape modelObjectName="TRUSTEE_NAME" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="162.009765625"/>
+      <rectangleSize width="162"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="TRUSTEE_NAME" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="370.0000000000001" y="661.9999964237213"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Rank_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="391.6720583689456" y="236.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
 </layout>
